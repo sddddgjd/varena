@@ -1,0 +1,8 @@
+# Append .php when a file by that name exists
+RewriteEngine on
+RewriteCond %{REQUEST_URI} /[-a-zA-Z]+$
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule (.*)$ $1.php [L]
+
+AddType application/x-httpd-php .php
+php_flag display_errors on

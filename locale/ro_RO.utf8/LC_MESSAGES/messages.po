@@ -1,0 +1,317 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Varena2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-03 18:14+0200\n"
+"PO-Revision-Date: 2016-03-03 18:15+0200\n"
+"Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
+"Language-Team: cata@francu.com\n"
+"Language: ro_RO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-SearchPath-0: lib\n"
+"X-Poedit-SearchPath-1: templates\n"
+"X-Poedit-SearchPath-2: www\n"
+
+#: lib/model/User.php:22
+msgid ""
+"Your name must be between 3 and 50 characters long and consist of letters, "
+"digits, spaces, '-', '.' and '_'."
+msgstr ""
+"Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
+"cifre, spații, '-', '.' și '_'."
+
+#: lib/model/User.php:29
+msgid "The email address is invalid."
+msgstr "Adresa de e-mail este incorectă."
+
+#: lib/model/User.php:37
+msgid "The email address is already in use."
+msgstr "Adresa de e-mail este deja folosită."
+
+#: www/auth/account.php:36
+msgid "Could not find your OpenID; did you really log in?"
+msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
+
+#: www/auth/account.php:49
+msgid "Changes saved."
+msgstr "Am salvat modificările."
+
+#: www/auth/account.php:58 templates/auth/account.tpl:1
+msgid "my account"
+msgstr "contul meu"
+
+#: www/auth/login.php:22 templates/auth/login.tpl:1
+msgid "OpenID login"
+msgstr "conectare cu OpenID"
+
+#: www/index.php:5
+msgid "Home page"
+msgstr "Pagina principală"
+
+#: templates/auth/account.tpl:6
+msgid "username"
+msgstr "nume de utilizator"
+
+#: templates/auth/account.tpl:9
+msgid "choose a username"
+msgstr "alege-ți un nume de utilizator"
+
+#: templates/auth/account.tpl:10
+msgid "required; 3-20 characters including letters, digits, '-', '.' and '_'"
+msgstr "obligatoriu; 3-20 caractere incluzând litere, cifre, '-', '.' și '_'"
+
+#: templates/auth/account.tpl:17
+msgid "name"
+msgstr "nume"
+
+#: templates/auth/account.tpl:19
+msgid "enter your full name"
+msgstr "introdu numele tău complet"
+
+#: templates/auth/account.tpl:20
+msgid "optional; 3-50 characters"
+msgstr "opțional; 3-50 caractere"
+
+#: templates/auth/account.tpl:24
+msgid "email"
+msgstr "e-mail"
+
+#: templates/auth/account.tpl:26
+msgid "enter your email address"
+msgstr "introdu adresa de e-mail"
+
+#: templates/auth/account.tpl:31
+msgid "save"
+msgstr "salvează"
+
+#: templates/auth/account.tpl:37
+msgid "OpenID identities"
+msgstr "Identități OpenID"
+
+#: templates/auth/account.tpl:45
+msgid "link another OpenID to this account"
+msgstr "leagă alt OpenID de acest cont"
+
+#: templates/auth/beginAuth.tpl:1
+msgid "Redirecting you to your OpenID provider..."
+msgstr "Te redirectăm către furnizorul de OpenID..."
+
+#: templates/auth/emailLogin.tpl:1
+msgid "Email login"
+msgstr "Conectare prin e-mail"
+
+#: templates/auth/emailLogin.tpl:6
+msgid "login"
+msgstr "conectare"
+
+#: templates/auth/emailLogin.tpl:10
+msgid ""
+"You can use this form to request a one-time token to login via email. This "
+"may be necessary in two cases:"
+msgstr ""
+"Cu acest formular poți cere un cod de unică folosință cu care să te "
+"conectezi prin e-mail. Poți avea nevoie de aceasta în două cazuri:"
+
+#: templates/auth/emailLogin.tpl:13
+msgid "Your OpenID provider is currently down;"
+msgstr "Furnizorul tău de OpenID este momentan indisponibil;"
+
+#: templates/auth/emailLogin.tpl:14
+msgid ""
+"Your account was migrated from another system and is not linked with any "
+"OpenID yet."
+msgstr ""
+"Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
+"OpenID."
+
+#: templates/auth/login.tpl:10
+msgid "If you have a Google or Yahoo account, you can use it as an OpenID:"
+msgstr "Dacă ai un cont de Google say Yahoo, îl poți folosi ca OpenID:"
+
+#: templates/auth/login.tpl:13
+msgid "Google account login"
+msgstr "Conectare cu contul Google"
+
+#: templates/auth/login.tpl:14
+msgid "Yahoo account login"
+msgstr "Conectare cu contul Yahoo"
+
+#: templates/auth/login.tpl:19
+msgid ""
+"If your OpenID provider is currently down, you can %srequest a one-time token"
+"%s via email."
+msgstr ""
+"Dacă furnizorul tău de OpenID este indisponibil momentan, poți %scere un cod "
+"de unică folosință%s prin e-mail."
+
+#: templates/auth/login.tpl:21
+msgid "What is OpenID?"
+msgstr "Ce este OpenID?"
+
+#: templates/auth/login.tpl:24
+msgid "OpenID logo"
+msgstr "logo OpenID"
+
+#: templates/auth/login.tpl:25
+msgid "is a faster, easier way to log in on the Internet."
+msgstr ""
+"este o modalitate mai rapidă și mai ușoară de a te autentifica pe Internet."
+
+#: templates/auth/login.tpl:29
+msgid "No need to create a new account on this site;"
+msgstr "Nu este nevoie să îți creezi un cont nou pe acest site;"
+
+#: templates/auth/login.tpl:30
+msgid "No need to remember yet another password;"
+msgstr "Nu este nevoie să memorezi o parolă în plus;"
+
+#: templates/auth/login.tpl:31
+msgid ""
+"Once created, an OpenID account can be reused on any website that accepts "
+"OpenIDs;"
+msgstr ""
+"Un cont OpenID, odată creat, poate fi refolosit pe orice site care acceptă "
+"OpenID;"
+
+#: templates/auth/login.tpl:32
+msgid ""
+"Chances are you already have an OpenID, because many popular sites (Google, "
+"Yahoo and others) act as OpenID providers."
+msgstr ""
+"Este posibil să ai deja un OpenID, deoarece multe site-uri populare (Google, "
+"Yahoo și altele) servesc ca furnizori de OpenID."
+
+#: templates/auth/login.tpl:35
+msgid "You can read more on the %sOpenID website%s."
+msgstr ""
+"Poți citi mai multe informații pe %ssite-ul OpenID%s (în limba engleză)."
+
+#: templates/auth/login.tpl:37
+msgid "How do I obtain an OpenID?"
+msgstr "Cum obțin un OpenID?"
+
+#: templates/auth/login.tpl:39
+msgid "Check %sthe list of OpenID providers%s."
+msgstr "Consultă %slista de furnizori de OpenID%s."
+
+#: templates/email/emailLogin.tpl:1
+msgid "Hi,"
+msgstr "Bună ziua,"
+
+#: templates/email/emailLogin.tpl:3
+msgid ""
+"You are receiving this message because you requested a one-time login token. "
+"To complete your login, please visit this link within one hour:"
+msgstr ""
+"Primești acest mesaj deoarece ai cerut un cod de conectare de unică "
+"folosință. Pentru a completa conectarea, te rugăm să vizitezi această adresă "
+"în cel mult o oră:"
+
+#: templates/email/emailLogin.tpl:7
+msgid "If you did not request this token, please discard this message."
+msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
+
+#: templates/email/emailLogin.tpl:9
+msgid "Thank you,"
+msgstr "Mulțumiri,"
+
+#: templates/index.tpl:1
+msgid "Varena2 is working for you!"
+msgstr "Varena2 funcționează!"
+
+#: templates/layout.tpl:19
+msgid "home"
+msgstr "acasă"
+
+#: templates/layout.tpl:21
+msgid "logout"
+msgstr "deconectare"
+
+#~ msgid ""
+#~ "The username must be between 3 and 50 characters long and consist of "
+#~ "letters, digits, spaces, '-', '.' and '_'."
+#~ msgstr "Numele de utilizator trebuie să aibă între 3 și 50 de cara"
+
+#~ msgid "You have entered an invalid OpenID."
+#~ msgstr "Ai introdus un OpenID incorect."
+
+#~ msgid "We cannot redirect you to the OpenID server"
+#~ msgstr "Nu te putem redirecta către serverul de OpenID"
+
+#~ msgid "OpenID login canceled."
+#~ msgstr "conectare cu OpenID anulată."
+
+#~ msgid "OpenID login failed"
+#~ msgstr "conectare cu OpenID eșuată."
+
+#~ msgid ""
+#~ "The username must be between 3 and 20 characters long and consist of "
+#~ "letters, digits, '-', '.' and '_'."
+#~ msgstr ""
+#~ "Numele de utilizator trebuie să aibă între 3 și 20 de caractere și să "
+#~ "constea din litere, cifre, '-', '.' și '_'"
+
+#~ msgid "This username is already in use."
+#~ msgstr "Acest nume de utilizator este deja folosit."
+
+#~ msgid "New OpenID linked to your account."
+#~ msgstr "Noul OpenID a fost legat de contul tău."
+
+#~ msgid "This OpenID is already linked to your account."
+#~ msgstr "Acest OpenID este deja legat de contul tău."
+
+#~ msgid ""
+#~ "This OpenID is already linked to another account. We cannot merge "
+#~ "accounts. Please close the other account before linking the OpenID to "
+#~ "this one."
+#~ msgstr ""
+#~ "Acest OpenID este deja legat de alt cont. Sistemul nu poate uni conturi. "
+#~ "Te rugăm să închizi celălalt cont înainte de a lega OpenID-ul de acesta."
+
+#~ msgid "Please pick a username to complete your login."
+#~ msgstr "Alege-ți un nume de utilizator pentru a completa conectarea."
+
+#~ msgid "Please enter an email address."
+#~ msgstr "Te rugăm să introduci o adresă de e-mail."
+
+#~ msgid "There is no account with that email address."
+#~ msgstr "Nu există niciun cont cu această adresă de e-mail."
+
+#~ msgid ""
+#~ "We have sent you a one-time login code. Please check your email to "
+#~ "complete the login process."
+#~ msgstr ""
+#~ "Ți-am trimis un cod de unică folosință. Te rugăm să-ți verifici e-mailul "
+#~ "pentru a completa procesul de conectare."
+
+#~ msgid "Invalid token"
+#~ msgstr "Cod invalid"
+
+#~ msgid ""
+#~ "You have successfully logged in. Please remember to link an OpenID to "
+#~ "your account."
+#~ msgstr "Conectare reușită. Nu uita să legi un OpenID de contul tău."
+
+#~ msgid "Email login token"
+#~ msgstr "Cod de conectare prin e-mail"
+
+#~ msgid "Mule is working for you!"
+#~ msgstr "Mule funcționează!"
+
+#~ msgid "User %s obtained %d points."
+#~ msgstr "Utilizatorul %s a obținut %d puncte."
+
+#~ msgid "OpenId login"
+#~ msgstr "conectare cu OpenID"
+
+#~ msgid "Text to be localized"
+#~ msgstr "asdfg"
+
+#~ msgid "locale test English here"
+#~ msgstr "traducere în română aici ĂÂÎȘȚ€ß«»„”"

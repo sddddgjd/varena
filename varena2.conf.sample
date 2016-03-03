@@ -1,0 +1,25 @@
+[general]
+
+; Database connection
+; database = "mysql://user[:password]@host/database"
+database = "mysql://root@localhost/varena2"
+
+; Locale for localized formats
+locale = ro_RO.utf8
+
+; Name of the cookie we set on the client browser for persistent logins
+loginCookieName = loginCookie
+
+[email]
+
+; When false, prevent the system from sending out any emails
+enabled = false
+
+; From address when sending emails
+fromHeader = "From: Varena2 <email@example.com>"
+
+; Reply-to address when sending emails
+replyToHeader = "Reply-To: Varena2 <email@example.com>"
+
+; signature line at the end of outgoing emails
+signature = "The Varena2 team"
