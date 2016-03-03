@@ -14,30 +14,50 @@
   <body>
     <div class="title">Varena2</div>
 
-    <div class="menu">
-      <ul>
-        <li><a href="{$wwwRoot}">{"home"|_}</a></li>
-        {if $user}
-          <li class="right"><a href="{$wwwRoot}auth/logout">{"logout"|_}</a></li>
-          <li class="right"><a href="{$wwwRoot}auth/account">{"my account"|_}</a></li>
-          <li class="userName right">{$user->getDisplayName()}</li>
-        {else}
-          <li class="right"><a id="openidLink" href="{$wwwRoot}auth/login">{"OpenID login"|_}</a></li>
-        {/if}
-      </ul>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">varena2</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{$wwwRoot}">{"home"|_}</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {if $user}
+              <li>{$user->getDisplayName()}</li>
+              <li><a href="{$wwwRoot}auth/account">{"my account"|_}</a></li>
+              <li><a href="{$wwwRoot}auth/logout">{"logout"|_}</a></li>
+            {else}
+              <li><a href="{$wwwRoot}auth/login">{"login"|_}</a></li>
+            {/if}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      {if $flashMessage}
+        <div class="flashMessage {$flashMessageType}Type">{$flashMessage}</div>
+      {/if}
+
+      <div id="template">
+        {include file=$templateName}
+      </div>
+
+      <footer class="footer">
+        <div id="license">
+          licență aici
+        </div>
+      </footer>
     </div>
-
-    {if $flashMessage}
-      <div class="flashMessage {$flashMessageType}Type">{$flashMessage}</div>
-    {/if}
-
-    <div id="template">
-      {include file=$templateName}
-    </div>
-
-    <footer>
-      <div id="license"></div>
-    </footer>
   </body>
 
 </html>
