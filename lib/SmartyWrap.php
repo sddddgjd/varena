@@ -24,14 +24,12 @@ class SmartyWrap {
     return str_replace("\n", "\r\n", $result); // Acording to specs
   }
 
-  static function display($templateName) {
-    // TODO convert to inherited templates
+  static function display($template) {
     self::assign('cssFiles', self::$cssFiles);
     self::assign('jsFiles', self::$jsFiles);
-    self::assign('templateName', $templateName);
     self::assign('flashMessage', FlashMessage::getMessage());
     self::assign('flashMessageType', FlashMessage::getMessageType());
-    self::$theSmarty->display($templateName);
+    self::$theSmarty->display($template);
   }
 
   static function addCss(/* Variable-length argument list */) {
