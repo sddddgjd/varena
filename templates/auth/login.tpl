@@ -1,39 +1,45 @@
-<h3>{"OpenID login"|_}</h3>
+{extends file="layout.tpl"}
 
-<form method="post" action="login">
-  OpenID:
-  <input type="text" name="openid" value="{$openid}" size="50" autofocus="autofocus"/>
-  <input type=submit id="login" name="submitButton" value="{'login'|_}"/>  
-</form>
-<br/>
+{block name="title"}{"login"|_|ucfirst}{/block}
 
-{"If you have a Google or Yahoo account, you can use it as an OpenID:"|_}<br/><br/>
+{block name=content}
+  <h3>{"login"|_}</h3>
 
-<div id="openidProviders">
-  <a href="{$wwwRoot}auth/login?openid=google"><img src="{$wwwRoot}img/openid/google.png" alt="{'Google account login'|_}"/></a>
-  <a href="{$wwwRoot}auth/login?openid=yahoo"><img src="{$wwwRoot}img/openid/yahoo.png" alt="{'Yahoo account login'|_}"/></a>
-</div>
+  <form method="post" action="login">
+    OpenID:
+    <input type="text" name="openid" value="{$openid}" size="50" autofocus="autofocus"/>
+    <input type=submit id="login" name="submitButton" value="{'login'|_}"/>  
+  </form>
+  <br/>
 
-<h3>{"Email login"|_}</h3>
+  {"If you have a Google or Yahoo account, you can use it as an OpenID:"|_}<br/><br/>
 
-{"If your OpenID provider is currently down, you can %srequest a one-time token%s via email."|_|sprintf:'<a href="emailLogin">':'</a>'}
+  <div id="openidProviders">
+    <a href="{$wwwRoot}auth/login?openid=google"><img src="{$wwwRoot}img/openid/google.png" alt="{'Google account login'|_}"/></a>
+    <a href="{$wwwRoot}auth/login?openid=yahoo"><img src="{$wwwRoot}img/openid/yahoo.png" alt="{'Yahoo account login'|_}"/></a>
+  </div>
 
-<h3>{"What is OpenID?"|_}</h3>
+  <h3>{"Email login"|_}</h3>
 
-<div id="openidHeadline">
-  <img src="{$wwwRoot}img/openid/openid.png" alt="{'OpenID logo'|_}"/>
-  <span>{'is a faster, easier way to log in on the Internet.'|_}</span>
-</div>
+  {"If your OpenID provider is currently down, you can %srequest a one-time token%s via email."|_|sprintf:'<a href="emailLogin">':'</a>'}
 
-<ul>
-  <li>{'No need to create a new account on this site;'|_}</li>
-  <li>{'No need to remember yet another password;'|_}</li>
-  <li>{'Once created, an OpenID account can be reused on any website that accepts OpenIDs;'|_}</li>
-  <li>{'Chances are you already have an OpenID, because many popular sites (Google, Yahoo and others) act as OpenID providers.'|_}</li>
-</ul>
+  <h3>{"What is OpenID?"|_}</h3>
 
-{'You can read more on the %sOpenID website%s.'|_|sprintf:'<a href="http://openid.net/">':'</a>'}
+  <div id="openidHeadline">
+    <img src="{$wwwRoot}img/openid/openid.png" alt="{'OpenID logo'|_}"/>
+    <span>{'is a faster, easier way to log in on the Internet.'|_}</span>
+  </div>
 
-<h3>{'How do I obtain an OpenID?'|_}</h3>
+  <ul>
+    <li>{'No need to create a new account on this site;'|_}</li>
+    <li>{'No need to remember yet another password;'|_}</li>
+    <li>{'Once created, an OpenID account can be reused on any website that accepts OpenIDs;'|_}</li>
+    <li>{'Chances are you already have an OpenID, because many popular sites (Google, Yahoo and others) act as OpenID providers.'|_}</li>
+  </ul>
 
-{'Check %sthe list of OpenID providers%s.'|_|sprintf:'<a href="http://openid.net/get-an-openid/">':'</a>'}
+  {'You can read more on the %sOpenID website%s.'|_|sprintf:'<a href="http://openid.net/">':'</a>'}
+
+  <h3>{'How do I obtain an OpenID?'|_}</h3>
+
+  {'Check %sthe list of OpenID providers%s.'|_|sprintf:'<a href="http://openid.net/get-an-openid/">':'</a>'}
+{/block}

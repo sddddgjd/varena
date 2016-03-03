@@ -31,7 +31,7 @@ class SmartyWrap {
     self::assign('templateName', $templateName);
     self::assign('flashMessage', FlashMessage::getMessage());
     self::assign('flashMessageType', FlashMessage::getMessageType());
-    self::$theSmarty->display('layout.tpl');
+    self::$theSmarty->display($templateName);
   }
 
   static function addCss(/* Variable-length argument list */) {

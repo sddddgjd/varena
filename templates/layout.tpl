@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>{$pageTitle|ucfirst} | Varena2</title>
+    <title>
+      {block name=title}{/block}
+      | Varena2
+    </title>
     <meta charset="utf-8">
     {foreach from=$cssFiles item=cssFile}
       <link type="text/css" href="{$wwwRoot}css/{$cssFile}" rel="stylesheet"/>
@@ -49,7 +52,7 @@
       {/if}
 
       <div id="template">
-        {include file=$templateName}
+        {block name=content}{/block}
       </div>
 
       <footer class="footer">
