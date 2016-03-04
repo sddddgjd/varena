@@ -11,34 +11,33 @@ class User extends BaseObject {
   }
 
   /**
-   * Validates a user for correctness. If $flashErrors is set, then sets flash error messages.
-   */
-  function validate($flashErrors = true) {
-    $valid = true;
+   * Validates a user for correctness. Returns an array of errors.
+   **/
+  function validate() {
+    $errors = [];
 
     if (!preg_match("/^[-._ 0-9\p{L}]{3,50}$/u", $this->name)) {
-      $valid = false;
-      if ($flashErrors) {
-        FlashMessage::add(_("Your name must be between 3 and 50 characters long and consist of letters, digits, spaces, '-', '.' and '_'."));
-      }
+      $errors[] = _("Your name must be between 3 and 50 characters long and consist of letters, digits, spaces, '-', '.' and '_'.");
     }
 
     if (!$this->email || !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-      $valid = false;
-      if ($flashErrors) {
-        FlashMessage::add(_('The email address is invalid.'));
-      }
+      $errors[] = _('The email address is invalid.');
     }
 
-    $otherUser = User::get_by_email($this->email);
-    if ($otherUser && ($otherUser->id != $this->id)) {
-      $valid = false;
-      if ($flashErrors) {
-        FlashMessage::add(_('The email address is already in use.'));
-      }
+    $otherUser = Model::factory('User')
+               ->where('email', $this->email)
+               ->where_not_equal('id', $this->id)
+               ->find_one();
+    if ($otherUser) {
+      $errors[] = _('The email address is already in use.');
     }
 
-    return $valid;
+    $l = strlen($this->password);
+    if ($l < 6 || $l > 200) {
+      $errors[] = _('The password must be between 6 and 200 characters long.');
+    }
+
+    return $errors;
   }
 
 }

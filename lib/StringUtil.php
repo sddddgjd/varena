@@ -17,14 +17,6 @@ class StringUtil {
     return mb_substr($s, $i, 1);
   }
 
-  static function randomCapitalLetters($length) {
-    $result = '';
-    for ($i = 0; $i < $length; $i++) {
-      $result .= chr(rand(0, 25) + ord('A'));
-    }
-    return $result;
-  }
-
   static function shortenString($s, $maxLength) {
     $l = mb_strlen($s);
     if ($l >= $maxLength) {

@@ -5,6 +5,16 @@
 {block name=content}
   <div class="container">
 
+    {if $errors}
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="alert alert-danger" role="alert">
+          {foreach from=$errors item=e}
+            <p>{$e}</p>
+          {/foreach}
+        </div>
+      </div>
+    {/if}
+
     {***************************** Login box *****************************}
     <div id="login-box" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
@@ -17,11 +27,11 @@
           <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
           <form method="post" role="form">
-            <input type="hidden" name="data" value="login">
+            <input type="hidden" name="method" value="login">
 
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" name="email" value="" placeholder="{"email"|_}" required>
+              <input type="text" class="form-control" name="email" value="{$email}" placeholder="{"email"|_}" required>
             </div>
 
             <div class="voffset4"></div>
@@ -41,7 +51,8 @@
             <div class="input-group">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="remember" value="1"> {"Remember me"|_}
+                  <input type="checkbox" name="remember" value="1" {if $remember}checked{/if}>
+                  {"Remember me"|_}
                 </label>
               </div>
             </div>
@@ -75,18 +86,18 @@
         <div class="panel-body">
 
           <form method="post" role="form">
-            <input type="hidden" name="data" value="signup">
+            <input type="hidden" name="method" value="signup">
 
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" name="email" value="" placeholder="{"email"|_}" required>
+              <input type="text" class="form-control" name="email" value="{$email}" placeholder="{"email"|_}" required>
             </div>
             
             <div class="voffset4"></div>
 
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" class="form-control" name="name" value="" placeholder="{"name (optional)"|_}">
+              <input type="text" class="form-control" name="name" value="{$name}" placeholder="{"name"|_}" required>
             </div>
             
             <div class="voffset4"></div>
@@ -94,6 +105,13 @@
             <div class="input-group">
               <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
               <input type="password" class="form-control" name="password" placeholder="{"password"|_}" required>
+            </div>
+
+            <div class="voffset4"></div>
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" class="form-control" name="password2" placeholder="{"password (again)"|_}" required>
             </div>
 
             <div class="voffset4"></div>

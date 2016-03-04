@@ -50,15 +50,25 @@ class Session {
     }
   }
 
-  static function login($user) {
+  static function login($user, $remember) {
     self::set('user', $user);
-    $cookie = Model::factory('LoginCookie')->create();
-    $cookie->userId = $user->id;
-    $cookie->value = StringUtil::randomCapitalLetters(12);
-    $cookie->save();
-    $cookieName = Config::get('general.loginCookieName');
-    setcookie($cookieName, $cookie->value, time() + self::ONE_MONTH_IN_SECONDS, '/');
-    Util::redirect(Util::$wwwRoot);
+
+    if ($remember) {
+      $token = base64_encode(random_bytes(33)); // 44 bytes in base64
+
+      $at = Model::factory('AuthToken')->create();
+      $at->userId = $user->id;
+      $at->selector = base64_encode(random_bytes(9)); // 12 bytes in base64
+      $at->token = hash('sha256', $token);
+      $at->save();
+
+      $cookieName = Config::get('general.loginCookieName');
+      setcookie($cookieName,
+                $at->selector . ':' . $token,
+                time() + self::ONE_MONTH_IN_SECONDS,
+                '/');
+      Util::redirect(Util::$wwwRoot);
+    }
   }
 
   static function logout() {

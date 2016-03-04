@@ -23,7 +23,7 @@ class Util {
     FlashMessage::restoreFromSession();
     SmartyWrap::init();
   }
-  
+
   private static function definePaths() {
     self::$rootPath = realpath(__DIR__ . '/..');
     $scriptName = $_SERVER['SCRIPT_NAME'];
@@ -87,11 +87,14 @@ class Util {
     exit;
   }
 
-  static function getRequestParameter($name, $default = null) {
-    return array_key_exists($name, $_REQUEST) ? StringUtil::sanitize($_REQUEST[$name]) : $default;
+  /* Reads a request parameter */
+  static function get($name, $default = null) {
+    return array_key_exists($name, $_REQUEST)
+      ? StringUtil::sanitize($_REQUEST[$name])
+      : $default;
   }
 
-  static function getCheckboxValue($name, $default = false) {
+  static function getCheckbox($name, $default = false) {
     return array_key_exists($name, $_REQUEST);
   }
 }

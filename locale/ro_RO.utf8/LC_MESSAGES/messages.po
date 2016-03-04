@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-04 16:58+0200\n"
-"PO-Revision-Date: 2016-03-04 16:59+0200\n"
+"POT-Creation-Date: 2016-03-04 19:15+0200\n"
+"PO-Revision-Date: 2016-03-04 19:15+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
-#: lib/model/User.php:22
+#: lib/model/User.php:20
 msgid ""
 "Your name must be between 3 and 50 characters long and consist of letters, "
 "digits, spaces, '-', '.' and '_'."
@@ -26,13 +26,17 @@ msgstr ""
 "Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
 "cifre, spații, '-', '.' și '_'."
 
-#: lib/model/User.php:29
+#: lib/model/User.php:24
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:37
+#: lib/model/User.php:32
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
+
+#: lib/model/User.php:37
+msgid "The password must be between 6 and 200 characters long."
+msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
 #: www/auth/account.php:36
 msgid "Could not find your OpenID; did you really log in?"
@@ -42,17 +46,17 @@ msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
 msgid "Changes saved."
 msgstr "Am salvat modificările."
 
-#: www/auth/account.php:58 templates/auth/account.tpl:1
+#: www/auth/login.php:18
+msgid "Incorrect email or password."
+msgstr "Adresa de e-mail sau parola sunt incorecte."
+
+#: www/auth/login.php:27
+msgid "Passwords don't match."
+msgstr "Parolele nu coincid."
+
+#: templates/auth/account.tpl:1
 msgid "my account"
 msgstr "contul meu"
-
-#: www/auth/login.php:23
-msgid "OpenID login"
-msgstr "conectare cu OpenID"
-
-#: www/index.php:5
-msgid "Home page"
-msgstr "Pagina principală"
 
 #: templates/auth/account.tpl:6
 msgid "username"
@@ -130,43 +134,43 @@ msgstr ""
 "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
 "OpenID."
 
-#: templates/auth/login.tpl:31
+#: templates/auth/login.tpl:41
 msgid "password"
 msgstr "parolă"
 
-#: templates/auth/login.tpl:35
+#: templates/auth/login.tpl:45
 msgid "Forgot password?"
 msgstr "Ți-ai uitat parola?"
 
-#: templates/auth/login.tpl:44
+#: templates/auth/login.tpl:55
 msgid "Remember me"
 msgstr "Ține-mă minte"
 
-#: templates/auth/login.tpl:59
+#: templates/auth/login.tpl:70
 msgid "Don't have an account?"
 msgstr "Nu ai cont?"
 
-#: templates/auth/login.tpl:61
+#: templates/auth/login.tpl:72
 msgid "Sign up here."
 msgstr "Înregistrează-te aici."
 
-#: templates/auth/login.tpl:72
+#: templates/auth/login.tpl:83
 msgid "Sign Up"
 msgstr "Înregistrare"
 
-#: templates/auth/login.tpl:89
-msgid "name (optional)"
-msgstr "nume (opțional)"
+#: templates/auth/login.tpl:114
+msgid "password (again)"
+msgstr "parolă (din nou)"
 
-#: templates/auth/login.tpl:103
+#: templates/auth/login.tpl:121
 msgid "sign up"
 msgstr "înregistrare"
 
-#: templates/auth/login.tpl:112
+#: templates/auth/login.tpl:130
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/login.tpl:114
+#: templates/auth/login.tpl:132
 msgid "Log in here."
 msgstr "Conectează-te aici."
 
@@ -202,6 +206,15 @@ msgstr "acasă"
 #: templates/layout.tpl:37
 msgid "logout"
 msgstr "deconectare"
+
+#~ msgid "OpenID login"
+#~ msgstr "conectare cu OpenID"
+
+#~ msgid "Home page"
+#~ msgstr "Pagina principală"
+
+#~ msgid "name (optional)"
+#~ msgstr "nume (opțional)"
 
 #~ msgid "Sign up here"
 #~ msgstr "Înregistrează-te aici."
