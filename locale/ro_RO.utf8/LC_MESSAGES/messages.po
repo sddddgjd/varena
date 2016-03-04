@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-03 18:14+0200\n"
-"PO-Revision-Date: 2016-03-03 18:15+0200\n"
+"POT-Creation-Date: 2016-03-04 16:58+0200\n"
+"PO-Revision-Date: 2016-03-04 16:59+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -46,7 +46,7 @@ msgstr "Am salvat modificările."
 msgid "my account"
 msgstr "contul meu"
 
-#: www/auth/login.php:22 templates/auth/login.tpl:1
+#: www/auth/login.php:23
 msgid "OpenID login"
 msgstr "conectare cu OpenID"
 
@@ -130,75 +130,45 @@ msgstr ""
 "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
 "OpenID."
 
-#: templates/auth/login.tpl:10
-msgid "If you have a Google or Yahoo account, you can use it as an OpenID:"
-msgstr "Dacă ai un cont de Google say Yahoo, îl poți folosi ca OpenID:"
-
-#: templates/auth/login.tpl:13
-msgid "Google account login"
-msgstr "Conectare cu contul Google"
-
-#: templates/auth/login.tpl:14
-msgid "Yahoo account login"
-msgstr "Conectare cu contul Yahoo"
-
-#: templates/auth/login.tpl:19
-msgid ""
-"If your OpenID provider is currently down, you can %srequest a one-time token"
-"%s via email."
-msgstr ""
-"Dacă furnizorul tău de OpenID este indisponibil momentan, poți %scere un cod "
-"de unică folosință%s prin e-mail."
-
-#: templates/auth/login.tpl:21
-msgid "What is OpenID?"
-msgstr "Ce este OpenID?"
-
-#: templates/auth/login.tpl:24
-msgid "OpenID logo"
-msgstr "logo OpenID"
-
-#: templates/auth/login.tpl:25
-msgid "is a faster, easier way to log in on the Internet."
-msgstr ""
-"este o modalitate mai rapidă și mai ușoară de a te autentifica pe Internet."
-
-#: templates/auth/login.tpl:29
-msgid "No need to create a new account on this site;"
-msgstr "Nu este nevoie să îți creezi un cont nou pe acest site;"
-
-#: templates/auth/login.tpl:30
-msgid "No need to remember yet another password;"
-msgstr "Nu este nevoie să memorezi o parolă în plus;"
-
 #: templates/auth/login.tpl:31
-msgid ""
-"Once created, an OpenID account can be reused on any website that accepts "
-"OpenIDs;"
-msgstr ""
-"Un cont OpenID, odată creat, poate fi refolosit pe orice site care acceptă "
-"OpenID;"
-
-#: templates/auth/login.tpl:32
-msgid ""
-"Chances are you already have an OpenID, because many popular sites (Google, "
-"Yahoo and others) act as OpenID providers."
-msgstr ""
-"Este posibil să ai deja un OpenID, deoarece multe site-uri populare (Google, "
-"Yahoo și altele) servesc ca furnizori de OpenID."
+msgid "password"
+msgstr "parolă"
 
 #: templates/auth/login.tpl:35
-msgid "You can read more on the %sOpenID website%s."
-msgstr ""
-"Poți citi mai multe informații pe %ssite-ul OpenID%s (în limba engleză)."
+msgid "Forgot password?"
+msgstr "Ți-ai uitat parola?"
 
-#: templates/auth/login.tpl:37
-msgid "How do I obtain an OpenID?"
-msgstr "Cum obțin un OpenID?"
+#: templates/auth/login.tpl:44
+msgid "Remember me"
+msgstr "Ține-mă minte"
 
-#: templates/auth/login.tpl:39
-msgid "Check %sthe list of OpenID providers%s."
-msgstr "Consultă %slista de furnizori de OpenID%s."
+#: templates/auth/login.tpl:59
+msgid "Don't have an account?"
+msgstr "Nu ai cont?"
+
+#: templates/auth/login.tpl:61
+msgid "Sign up here."
+msgstr "Înregistrează-te aici."
+
+#: templates/auth/login.tpl:72
+msgid "Sign Up"
+msgstr "Înregistrare"
+
+#: templates/auth/login.tpl:89
+msgid "name (optional)"
+msgstr "nume (opțional)"
+
+#: templates/auth/login.tpl:103
+msgid "sign up"
+msgstr "înregistrare"
+
+#: templates/auth/login.tpl:112
+msgid "Already have an account?"
+msgstr "Ai deja un cont?"
+
+#: templates/auth/login.tpl:114
+msgid "Log in here."
+msgstr "Conectează-te aici."
 
 #: templates/email/emailLogin.tpl:1
 msgid "Hi,"
@@ -221,17 +191,77 @@ msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
-#: templates/index.tpl:1
+#: templates/index.tpl:6
 msgid "Varena2 is working for you!"
 msgstr "Varena2 funcționează!"
 
-#: templates/layout.tpl:19
+#: templates/layout.tpl:31
 msgid "home"
 msgstr "acasă"
 
-#: templates/layout.tpl:21
+#: templates/layout.tpl:37
 msgid "logout"
 msgstr "deconectare"
+
+#~ msgid "Sign up here"
+#~ msgstr "Înregistrează-te aici."
+
+#~ msgid "If you have a Google or Yahoo account, you can use it as an OpenID:"
+#~ msgstr "Dacă ai un cont de Google say Yahoo, îl poți folosi ca OpenID:"
+
+#~ msgid "Google account login"
+#~ msgstr "Conectare cu contul Google"
+
+#~ msgid "Yahoo account login"
+#~ msgstr "Conectare cu contul Yahoo"
+
+#~ msgid ""
+#~ "If your OpenID provider is currently down, you can %srequest a one-time "
+#~ "token%s via email."
+#~ msgstr ""
+#~ "Dacă furnizorul tău de OpenID este indisponibil momentan, poți %scere un "
+#~ "cod de unică folosință%s prin e-mail."
+
+#~ msgid "What is OpenID?"
+#~ msgstr "Ce este OpenID?"
+
+#~ msgid "OpenID logo"
+#~ msgstr "logo OpenID"
+
+#~ msgid "is a faster, easier way to log in on the Internet."
+#~ msgstr ""
+#~ "este o modalitate mai rapidă și mai ușoară de a te autentifica pe "
+#~ "Internet."
+
+#~ msgid "No need to create a new account on this site;"
+#~ msgstr "Nu este nevoie să îți creezi un cont nou pe acest site;"
+
+#~ msgid "No need to remember yet another password;"
+#~ msgstr "Nu este nevoie să memorezi o parolă în plus;"
+
+#~ msgid ""
+#~ "Once created, an OpenID account can be reused on any website that accepts "
+#~ "OpenIDs;"
+#~ msgstr ""
+#~ "Un cont OpenID, odată creat, poate fi refolosit pe orice site care "
+#~ "acceptă OpenID;"
+
+#~ msgid ""
+#~ "Chances are you already have an OpenID, because many popular sites "
+#~ "(Google, Yahoo and others) act as OpenID providers."
+#~ msgstr ""
+#~ "Este posibil să ai deja un OpenID, deoarece multe site-uri populare "
+#~ "(Google, Yahoo și altele) servesc ca furnizori de OpenID."
+
+#~ msgid "You can read more on the %sOpenID website%s."
+#~ msgstr ""
+#~ "Poți citi mai multe informații pe %ssite-ul OpenID%s (în limba engleză)."
+
+#~ msgid "How do I obtain an OpenID?"
+#~ msgstr "Cum obțin un OpenID?"
+
+#~ msgid "Check %sthe list of OpenID providers%s."
+#~ msgstr "Consultă %slista de furnizori de OpenID%s."
 
 #~ msgid ""
 #~ "The username must be between 3 and 50 characters long and consist of "

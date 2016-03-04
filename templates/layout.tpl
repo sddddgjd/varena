@@ -15,9 +15,6 @@
   </head>
 
   <body>
-    <div class="title">Varena2</div>
-
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -51,16 +48,14 @@
         <div class="flashMessage {$flashMessageType}Type">{$flashMessage}</div>
       {/if}
 
-      <div id="template">
-        {block name=content}{/block}
-      </div>
-
-      <footer class="footer">
-        <div id="license">
-          licență aici
-        </div>
-      </footer>
+      {block name=content}{/block}
     </div>
+
+    <footer class="footer">
+      <div id="license">
+        licență aici
+      </div>
+    </footer>
   </body>
 
 </html>

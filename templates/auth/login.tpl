@@ -3,43 +3,119 @@
 {block name="title"}{"login"|_|ucfirst}{/block}
 
 {block name=content}
-  <h3>{"login"|_}</h3>
+  <div class="container">
 
-  <form method="post" action="login">
-    OpenID:
-    <input type="text" name="openid" value="{$openid}" size="50" autofocus="autofocus"/>
-    <input type=submit id="login" name="submitButton" value="{'login'|_}"/>  
-  </form>
-  <br/>
+    {***************************** Login box *****************************}
+    <div id="login-box" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">{"login"|_|ucfirst}</div>
+        </div>
 
-  {"If you have a Google or Yahoo account, you can use it as an OpenID:"|_}<br/><br/>
+        <div class="panel-body">
 
-  <div id="openidProviders">
-    <a href="{$wwwRoot}auth/login?openid=google"><img src="{$wwwRoot}img/openid/google.png" alt="{'Google account login'|_}"/></a>
-    <a href="{$wwwRoot}auth/login?openid=yahoo"><img src="{$wwwRoot}img/openid/yahoo.png" alt="{'Yahoo account login'|_}"/></a>
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+          <form method="post" role="form">
+            <input type="hidden" name="data" value="login">
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input type="text" class="form-control" name="email" value="" placeholder="{"email"|_}" required>
+            </div>
+
+            <div class="voffset4"></div>
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" class="form-control" name="password" placeholder="{"password"|_}" required>
+            </div>
+            <p class="pull-right">
+              <a href="recoverPassword.php">
+                {"Forgot password?"|_}
+              </a>
+            </p>
+
+            <div class="voffset4"></div>
+
+            <div class="input-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember" value="1"> {"Remember me"|_}
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="controls">
+                <input type="submit" class="btn btn-primary" value="{"login"|_}">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel-footer">
+          <p>
+            {"Don't have an account?"|_}
+            <a id="signup-link" href="#">
+              {"Sign up here."|_}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {***************************** Signup box *****************************}
+    <div id="signup-box" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="panel-title">{"Sign Up"|_}</div>
+        </div>
+
+        <div class="panel-body">
+
+          <form method="post" role="form">
+            <input type="hidden" name="data" value="signup">
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input type="text" class="form-control" name="email" value="" placeholder="{"email"|_}" required>
+            </div>
+            
+            <div class="voffset4"></div>
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input type="text" class="form-control" name="name" value="" placeholder="{"name (optional)"|_}">
+            </div>
+            
+            <div class="voffset4"></div>
+
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input type="password" class="form-control" name="password" placeholder="{"password"|_}" required>
+            </div>
+
+            <div class="voffset4"></div>
+
+            <div class="form-group">
+              <div class="controls">
+                <input type="submit" class="btn btn-primary" value="{"sign up"|_}">
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="panel-footer">
+          <p>
+            {"Already have an account?"|_}
+            <a id="login-link" href="#">
+              {"Log in here."|_}
+            </a>
+        </div>
+      </div>
+
+    </div>
   </div>
-
-  <h3>{"Email login"|_}</h3>
-
-  {"If your OpenID provider is currently down, you can %srequest a one-time token%s via email."|_|sprintf:'<a href="emailLogin">':'</a>'}
-
-  <h3>{"What is OpenID?"|_}</h3>
-
-  <div id="openidHeadline">
-    <img src="{$wwwRoot}img/openid/openid.png" alt="{'OpenID logo'|_}"/>
-    <span>{'is a faster, easier way to log in on the Internet.'|_}</span>
-  </div>
-
-  <ul>
-    <li>{'No need to create a new account on this site;'|_}</li>
-    <li>{'No need to remember yet another password;'|_}</li>
-    <li>{'Once created, an OpenID account can be reused on any website that accepts OpenIDs;'|_}</li>
-    <li>{'Chances are you already have an OpenID, because many popular sites (Google, Yahoo and others) act as OpenID providers.'|_}</li>
-  </ul>
-
-  {'You can read more on the %sOpenID website%s.'|_|sprintf:'<a href="http://openid.net/">':'</a>'}
-
-  <h3>{'How do I obtain an OpenID?'|_}</h3>
-
-  {'Check %sthe list of OpenID providers%s.'|_|sprintf:'<a href="http://openid.net/get-an-openid/">':'</a>'}
 {/block}

@@ -25,6 +25,14 @@ class SmartyWrap {
   }
 
   static function display($template) {
+    // Add {$template}.js if the file exists
+    $baseName = pathinfo($template)['filename'];
+    $jsFile = $baseName . '.js';
+    $fileName = Util::$rootPath . '/www/js/' . $jsFile;
+    if (file_exists($fileName)) {
+      self::$jsFiles[] = $jsFile;
+    }
+
     self::assign('cssFiles', self::$cssFiles);
     self::assign('jsFiles', self::$jsFiles);
     self::assign('flashMessage', FlashMessage::getMessage());

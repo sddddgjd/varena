@@ -1,60 +1,24 @@
+body {
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
+
 h3:first-letter {
   text-transform: uppercase;
 }
 
-table {
-  border-collapse: collapse;
-}
-
-a {
-  color: #000;
-}
-
-div.title {
-  background: #444;
-  color: white;
-  font-size: 20px;
-  padding: 5px 10px;
-  margin-bottom: 0px;
-}
-
-/** forms **/
-
-table.form td {
-  padding-bottom: 10px;
-  padding-right: 20px;
-  vertical-align: text-top;
-}
-
-div.fieldDesc {
-  color: #444;
-  font-size: 12px;
-  margin-top: 3px;
-}
-
-/** flash messages **/
-
-div.flashMessage {
-  clear: both;
-  margin: 10px auto;
-  padding: 10px 10px 10px 35px;
-  width: 600px;
-}
-
-div.infoType {
-  background: #cfc url("../img/silk/accept.png") 8px 12px no-repeat;
-  border: 1px solid green;
-  color: green;
-}
-
-div.warningType {
-  background: #feefb3 url("../img/silk/error.png") 8px 12px no-repeat;
-  border: 1px solid #9f6000;
-  color: #9f6000;
-}
-
-div.errorType {
-  background: #fcc url("../img/silk/exclamation.png") 8px 12px no-repeat;
-  border: 1px solid red;
-  color: red;
-}
+/* as suggested by http://pdenya.com/2013/08/08/vertical-space-in-bootstrap/ */
+.voffset  { margin-top: 2px; }
+.voffset1 { margin-top: 5px; }
+.voffset2 { margin-top: 10px; }
+.voffset3 { margin-top: 15px; }
+.voffset4 { margin-top: 30px; }
+.voffset5 { margin-top: 40px; }
+.voffset6 { margin-top: 60px; }
+.voffset7 { margin-top: 80px; }
+.voffset8 { margin-top: 100px; }
+.voffset9 { margin-top: 150px; }
