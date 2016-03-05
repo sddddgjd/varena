@@ -15,7 +15,7 @@ if ($method == 'login') {
   if ($u && password_verify($password, $u->password)) {
     Session::login($u, $remember);
   } else {
-    $errors = [ _('Incorrect email or password.') ];
+    $errors['email'] = [ _('Incorrect email or password.') ];
   }
 } else if ($method == 'signup') {
   $u = Model::factory('User')->create();
@@ -24,7 +24,7 @@ if ($method == 'login') {
   $u->password = $password;
   $errors = $u->validate();
   if ($password != $password2) {
-    $errors[] = _("Passwords don't match.");
+    $errors['password2'][] = _("Passwords don't match.");
   }
   if (!count($errors)) {
     $u->password = password_hash($password, PASSWORD_DEFAULT);
@@ -32,6 +32,7 @@ if ($method == 'login') {
   }
 }
 
+SmartyWrap::assign('method', $method);
 SmartyWrap::assign('errors', $errors);
 SmartyWrap::assign('email', $email);
 SmartyWrap::assign('name', $name);

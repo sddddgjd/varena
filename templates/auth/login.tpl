@@ -2,21 +2,32 @@
 
 {block name="title"}{"login"|_|ucfirst}{/block}
 
+{function input type="text" field=null value="" glyph=null placeholder="" required=false}
+  <div class="input-group {if $errors.$field}has-error{/if}">
+    {if $glyph}
+      <span class="input-group-addon">
+        <i class="glyphicon glyphicon-{$glyph}"></i>
+      </span>
+    {/if}
+    <input type="{$type}"
+           class="form-control"
+           name="{$field}"
+           value="{$value}"
+           placeholder="{$placeholder}"
+           {if $required}required{/if}>
+  </div>
+  {foreach from=$errors.$field|default:null item=e}
+    <div class="text-danger">{$e}</div>
+  {/foreach}
+{/function}
+
 {block name=content}
   <div class="container">
 
-    {if $errors}
-      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="alert alert-danger" role="alert">
-          {foreach from=$errors item=e}
-            <p>{$e}</p>
-          {/foreach}
-        </div>
-      </div>
-    {/if}
-
     {***************************** Login box *****************************}
-    <div id="login-box" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div id="login-box"
+         {if $method == "signup"}style="display: none"{/if}
+         class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
         <div class="panel-heading">
           <div class="panel-title">{"login"|_|ucfirst}</div>
@@ -24,22 +35,15 @@
 
         <div class="panel-body">
 
-          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
           <form method="post" role="form">
             <input type="hidden" name="method" value="login">
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" name="email" value="{$email}" placeholder="{"email"|_}" required>
-            </div>
-
+            {input field="email" value=$email glyph="envelope" placeholder={"email"|_} required=true}
+            
             <div class="voffset4"></div>
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" class="form-control" name="password" placeholder="{"password"|_}" required>
-            </div>
+            {input field="password" type="password" glyph="lock" placeholder={"password"|_} required=true}
+
             <p class="pull-right">
               <a href="recoverPassword.php">
                 {"Forgot password?"|_}
@@ -77,7 +81,9 @@
     </div>
 
     {***************************** Signup box *****************************}
-    <div id="signup-box" style="display: none" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div id="signup-box"
+         {if $method != "signup"}style="display: none"{/if}
+         class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
         <div class="panel-heading">
           <div class="panel-title">{"Sign Up"|_}</div>
@@ -88,31 +94,19 @@
           <form method="post" role="form">
             <input type="hidden" name="method" value="signup">
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-              <input type="text" class="form-control" name="email" value="{$email}" placeholder="{"email"|_}" required>
-            </div>
+            {input field="email" value=$email glyph="envelope" placeholder={"email"|_} required=true}
             
             <div class="voffset4"></div>
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" class="form-control" name="name" value="{$name}" placeholder="{"name"|_}" required>
-            </div>
+            {input field="name" value=$name glyph="user" placeholder={"name"|_} required=true}
             
             <div class="voffset4"></div>
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" class="form-control" name="password" placeholder="{"password"|_}" required>
-            </div>
+            {input field="password" type="password" glyph="lock" placeholder={"password"|_} required=true}
 
             <div class="voffset4"></div>
 
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-              <input type="password" class="form-control" name="password2" placeholder="{"password (again)"|_}" required>
-            </div>
+            {input field="password2" type="password" glyph="lock" placeholder={"password (again)"|_} required=true}
 
             <div class="voffset4"></div>
 
