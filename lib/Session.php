@@ -36,7 +36,11 @@ class Session {
   }
 
   static function getUser() {
-    return self::get('user');
+    $userId = self::get('userId');
+    $user = $userId
+          ? User::get_by_id($userId)
+          : null;
+    return $user;
   }
 
   private static function kill() {
@@ -51,7 +55,7 @@ class Session {
   }
 
   static function login($user, $remember) {
-    self::set('user', $user);
+    self::set('userId', $user->id);
 
     if ($remember) {
       $token = base64_encode(random_bytes(33)); // 44 bytes in base64
@@ -67,17 +71,17 @@ class Session {
                 $at->selector . ':' . $token,
                 time() + self::ONE_MONTH_IN_SECONDS,
                 '/');
-      Util::redirect(Util::$wwwRoot);
     }
+
+    Util::redirect(Util::$wwwRoot);
   }
 
   static function logout() {
     $cookieName = Config::get('general.loginCookieName');
     if (isset($_COOKIE[$cookieName])) {
-      LoginCookie::delete_all_by_value($_COOKIE[$cookieName]);
+      setcookie($cookieName, NULL, time() - 3600, '/');
+      unset($_COOKIE[$cookieName]);
     }
-    setcookie($cookieName, NULL, time() - 3600, '/');
-    unset($_COOKIE[$cookieName]);
     self::kill();
     Util::redirect(Util::$wwwRoot);
   }
@@ -87,20 +91,18 @@ class Session {
     if (!isset($_COOKIE[$cookieName])) {
       return;
     }
-    $cookie = LoginCookie::get_by_value($_COOKIE[$cookieName]);
-    $user = $cookie ? User::get_by_id($cookie->userId) : null;
-    if ($user) {
-      self::set('user', $user);
+
+    list($selector, $token) = explode(':', $_COOKIE[$cookieName]);
+    $at = AuthToken::get_by_selector($selector);
+
+    if ($at &&
+        hash_equals($at->token, hash('sha256', $token))) {
+      self::set('userId', $at->userId);
     } else {
-      // The cookie is invalid
+      // invalid cookie
       setcookie($cookieName, NULL, time() - 3600, '/');
-      unset($_COOKIE[$cookieName]);
-      if ($cookie) {
-        $cookie->delete();
-      }
     }
   }
-
 }
 
 ?>

@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -32,9 +32,15 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {if $user}
-              <li>{$user->getDisplayName()}</li>
-              <li><a href="{$wwwRoot}auth/account">{"my account"|_}</a></li>
-              <li><a href="{$wwwRoot}auth/logout">{"logout"|_}</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  {$user->getDisplayName()} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="{$wwwRoot}auth/account">{"my account"|_}</a></li>
+                  <li><a href="{$wwwRoot}auth/logout">{"logout"|_}</a></li>
+                </ul>
+              </li>
             {else}
               <li><a href="{$wwwRoot}auth/login">{"login"|_}</a></li>
             {/if}
@@ -44,10 +50,6 @@
     </nav>
 
     <div class="container">
-      {if $flashMessage}
-        <div class="flashMessage {$flashMessageType}Type">{$flashMessage}</div>
-      {/if}
-
       {block name=content}{/block}
     </div>
 

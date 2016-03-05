@@ -77,7 +77,7 @@
     </div>
 
     {***************************** Signup box *****************************}
-    <div id="signup-box" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div id="signup-box" style="display: none" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div class="panel panel-info">
         <div class="panel-heading">
           <div class="panel-title">{"Sign Up"|_}</div>
