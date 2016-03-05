@@ -2,14 +2,6 @@
 
 class User extends BaseObject {
 
-  function getDisplayName() {
-    $s = $this->email;
-    if ($this->name) {
-      $s = $this->name;
-    }
-    return StringUtil::shortenString($s, 30);
-  }
-
   /**
    * Validates a user for correctness. Returns an array of errors.
    **/
