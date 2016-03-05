@@ -15,9 +15,10 @@ class Util {
     spl_autoload_register('self::autoloadClasses');
     Config::load(self::$rootPath . "/varena2.conf");
     self::setLocale();
-    require_once self::$rootPath . '/lib/idiorm/idiorm.php';
-    require_once self::$rootPath . '/lib/idiorm/paris.php';
-    require_once self::$rootPath . '/lib/smarty/Smarty.class.php';
+    $tp = self::$rootPath . '/lib/third-party'; // third-party libs
+    require_once "{$tp}/idiorm/idiorm.php";
+    require_once "{$tp}/idiorm/paris.php";
+    require_once "{$tp}/smarty/Smarty.class.php";
     Db::init(Config::get('general.database'));
     Session::init();
     FlashMessage::restoreFromSession();
