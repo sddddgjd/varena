@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-05 14:44+0200\n"
-"PO-Revision-Date: 2016-03-05 14:44+0200\n"
+"POT-Creation-Date: 2016-03-05 20:59+0200\n"
+"PO-Revision-Date: 2016-03-05 21:00+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -18,7 +18,19 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
-#: lib/model/User.php:20
+#: lib/model/Problem.php:12
+msgid "The problem name must be at least 2 characters long."
+msgstr "Numele problemei trebuie să aibă cel puțin două caractere."
+
+#: lib/model/Problem.php:16
+msgid "The statement cannot be empty."
+msgstr "Enunțul nu poate fi vid."
+
+#: lib/model/Problem.php:24
+msgid "There already exists a problem with this name."
+msgstr "Există deja o problemă cu acest nume."
+
+#: lib/model/User.php:12
 msgid ""
 "Your name must be between 3 and 50 characters long and consist of letters, "
 "digits, spaces, '-', '.' and '_'."
@@ -26,15 +38,15 @@ msgstr ""
 "Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
 "cifre, spații, '-', '.' și '_'."
 
-#: lib/model/User.php:24
+#: lib/model/User.php:16
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:32
+#: lib/model/User.php:25
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
 
-#: lib/model/User.php:37
+#: lib/model/User.php:30
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
@@ -134,45 +146,61 @@ msgstr ""
 "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
 "OpenID."
 
-#: templates/auth/login.tpl:41
+#: templates/auth/login.tpl:43
 msgid "password"
 msgstr "parolă"
 
-#: templates/auth/login.tpl:45
+#: templates/auth/login.tpl:47
 msgid "Forgot password?"
 msgstr "Ți-ai uitat parola?"
 
-#: templates/auth/login.tpl:55
+#: templates/auth/login.tpl:57
 msgid "Remember me"
 msgstr "Ține-mă minte"
 
-#: templates/auth/login.tpl:70
+#: templates/auth/login.tpl:72
 msgid "Don't have an account?"
 msgstr "Nu ai cont?"
 
-#: templates/auth/login.tpl:72
+#: templates/auth/login.tpl:74
 msgid "Sign up here."
 msgstr "Înregistrează-te aici."
 
-#: templates/auth/login.tpl:83
+#: templates/auth/login.tpl:87
 msgid "Sign Up"
 msgstr "Înregistrare"
 
-#: templates/auth/login.tpl:114
+#: templates/auth/login.tpl:107
 msgid "password (again)"
 msgstr "parolă (din nou)"
 
-#: templates/auth/login.tpl:121
+#: templates/auth/login.tpl:113
 msgid "sign up"
 msgstr "înregistrare"
 
-#: templates/auth/login.tpl:130
+#: templates/auth/login.tpl:122
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/login.tpl:132
+#: templates/auth/login.tpl:124
 msgid "Log in here."
 msgstr "Conectează-te aici."
+
+#: templates/editProblem.tpl:6
+msgid "edit problem"
+msgstr "editare problemă"
+
+#: templates/editProblem.tpl:16
+msgid "problem name"
+msgstr "numele problemei"
+
+#: templates/editProblem.tpl:22
+msgid "statement"
+msgstr "enunț"
+
+#: templates/editProblem.tpl:28
+msgid "problem statement"
+msgstr "enunțul problemei"
 
 #: templates/email/emailLogin.tpl:1
 msgid "Hi,"
@@ -207,7 +235,7 @@ msgstr "acasă"
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:42
+#: templates/layout.tpl:43
 msgid "logout"
 msgstr "deconectare"
 

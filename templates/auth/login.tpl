@@ -16,9 +16,7 @@
            placeholder="{$placeholder}"
            {if $required}required{/if}>
   </div>
-  {foreach from=$errors.$field|default:null item=e}
-    <div class="text-danger">{$e}</div>
-  {/foreach}
+  {include 'bits/fieldErrors.tpl' errors=$errors.$field}
 {/function}
 
 {block name=content}
