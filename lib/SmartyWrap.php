@@ -35,7 +35,7 @@ class SmartyWrap {
 
     self::assign('cssFiles', self::$cssFiles);
     self::assign('jsFiles', self::$jsFiles);
-    self::assign('flashMessage', FlashMessage::getMessage());
+    self::assign('flashMessages', FlashMessage::getMessages());
     self::assign('flashMessageType', FlashMessage::getMessageType());
     self::$theSmarty->display($template);
   }

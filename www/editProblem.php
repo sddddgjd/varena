@@ -11,7 +11,7 @@ $save = Util::get('save');
 
 $problem = Problem::get_by_id($id);
 if (!$problem) {
-  // TODO flash error
+  FlashMessage::add(_('Problem not found.'));
   Util::redirect(Util::$wwwRoot);
 }
 

@@ -1,18 +1,18 @@
 <?php
 
 class FlashMessage {
-  public static $message = '';
+  public static $messages = [];
   public static $type = '';
   private static $anyErrors = false;
 
-  static function add($message, $type = 'error') {
-    self::$message .= $message . '<br/>';
+  static function add($message, $type = 'danger') {
+    self::$messages[] = $message;
     self::$type = $type;
-    self::$anyErrors |= ($type == 'error');
+    self::$anyErrors |= ($type == 'danger');
   }
 
-  static function getMessage() {
-    return self::$message ? self::$message : null;
+  static function getMessages() {
+    return self::$messages;
   }
 
   static function hasErrors() {
@@ -24,17 +24,18 @@ class FlashMessage {
   }
 
   static function saveToSession() {
-    if (self::$message) {
-      Session::set('flashMessage', self::$message);
+    if (count(self::$messages)) {
+      Session::set('flashMessages', self::$messages);
       Session::set('flashMessageType', self::$type);
     }
   }
 
   static function restoreFromSession() {
-    if (($message = Session::get('flashMessage')) && ($type = Session::get('flashMessageType'))) {
-      self::$message = $message; // Already has a trailing <br/>
+    if (($messages = Session::get('flashMessages')) &&
+        ($type = Session::get('flashMessageType'))) {
+      self::$messages = $messages;
       self::$type = $type;
-      Session::unsetVariable('flashMessage');
+      Session::unsetVariable('flashMessages');
       Session::unsetVariable('flashMessageType');
     }
   }
