@@ -6,7 +6,7 @@
   <h3>{$problem->name}</h3>
 
   <div>
-    {$problem->statement}
+    {$problem->getHtml()}
   </div>
 
   <a href="editProblem.php?id={$problem->id}">editează</a>

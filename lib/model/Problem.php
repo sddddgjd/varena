@@ -1,6 +1,15 @@
 <?php
 
 class Problem extends BaseObject {
+  private $html = null;
+
+  function getHtml() {
+    if ($this->html === null) {
+      $p = new Parsedown();
+      $this->html = $p->text($this->statement);
+    }
+    return $this->html;
+  }
   
   /**
    * Validates a problem for correctness. Returns an array of { field => array of errors }.

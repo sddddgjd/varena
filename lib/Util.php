@@ -33,13 +33,13 @@ class Util {
   }
 
   static function autoloadClasses($className) {
-    $fileName = self::$rootPath . "/lib/{$className}.php";
-    if (file_exists($fileName)) {
-      require_once($fileName);
-    }
-    $fileName = self::$rootPath . "/lib/model/{$className}.php";
-    if (file_exists($fileName)) {
-      require_once($fileName);
+    $paths = ['/lib', '/lib/model', '/lib/third-party'];
+    foreach ($paths as $p) {
+      $fileName = self::$rootPath . "{$p}/{$className}.php";
+      if (file_exists($fileName)) {
+        require_once($fileName);
+        return;
+      }
     }
   }
 
