@@ -53,11 +53,11 @@
     </div>
 
     <button type="submit" class="btn btn-default" name="preview">
-      <span class="glyphicon glyphicon-refresh"></span>
+      <i class="glyphicon glyphicon-refresh"></i>
       {"preview"|_}
     </button>
     <button type="submit" class="btn btn-default" name="save">
-      <span class="glyphicon glyphicon-floppy-disk"></span>
+      <i class="glyphicon glyphicon-floppy-disk"></i>
       {"save"|_}
     </button>
   </form>
