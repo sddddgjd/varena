@@ -16,7 +16,7 @@
            placeholder="{$placeholder}"
            {if $required}required{/if}>
   </div>
-  {include 'bits/fieldErrors.tpl' errors=$errors.$field}
+  {include 'bits/fieldErrors.tpl' errors=$errors.$field|default:null}
 {/function}
 
 {block name=content}

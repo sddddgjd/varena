@@ -9,5 +9,7 @@
     {$problem->getHtml()}
   </div>
 
-  <a href="editProblem.php?id={$problem->id}">editează</a>
+  {if $problem->editableBy($user)}
+    <a href="editProblem.php?id={$problem->id}">editează</a>
+  {/if}
 {/block}

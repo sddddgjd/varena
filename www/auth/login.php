@@ -2,6 +2,8 @@
 
 require_once '../../lib/Util.php';
 
+Util::requireNotLoggedIn();
+
 $method = Util::get('method');
 $email = Util::get('email');
 $name = Util::get('name');
@@ -30,6 +32,7 @@ if ($method == 'login') {
     $u->password = password_hash($password, PASSWORD_DEFAULT);
     $u->save();
   }
+  Session::login($u, false);
 }
 
 SmartyWrap::assign('method', $method);

@@ -36,6 +36,18 @@ class Problem extends BaseObject {
     return $errors;
   }
 
+  /**
+   * Current policy:
+   * * anonymous users can not edit anything (duh);
+   * * admins can edit all problems;
+   * * users can edit problems they created.
+   **/
+  function editableBy($user) {
+    return $user &&
+      ($user->admin ||
+       ($user->id == $this->userId));
+  }
+
 }
 
 ?>

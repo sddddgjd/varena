@@ -15,6 +15,11 @@ if (!$problem) {
   Util::redirect(Util::$wwwRoot);
 }
 
+if (!$problem->editableBy(Session::getUser())) {
+  FlashMessage::add(_('You cannot edit this problem.'));
+  Util::redirect("problem.php?id={$id}");
+}
+
 if ($save) {
   $problem->name = $name;
   $problem->statement = $statement;

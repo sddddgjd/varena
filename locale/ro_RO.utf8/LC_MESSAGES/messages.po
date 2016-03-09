@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-06 19:22+0200\n"
-"PO-Revision-Date: 2016-03-06 19:22+0200\n"
+"POT-Creation-Date: 2016-03-09 12:36+0200\n"
+"PO-Revision-Date: 2016-03-09 12:36+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -18,15 +18,27 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
-#: lib/model/Problem.php:12
+#: lib/Util.php:65
+msgid "You are already logged in."
+msgstr "Ești deja conectat."
+
+#: lib/Util.php:72
+msgid "Please log in to continue."
+msgstr "Conectează-te pentru a continua."
+
+#: lib/Util.php:80
+msgid "Access denied."
+msgstr "Acces interzis."
+
+#: lib/model/Problem.php:21
 msgid "The problem name must be at least 2 characters long."
 msgstr "Numele problemei trebuie să aibă cel puțin două caractere."
 
-#: lib/model/Problem.php:16
+#: lib/model/Problem.php:25
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:24
+#: lib/model/Problem.php:33
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
@@ -58,17 +70,21 @@ msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
 msgid "Changes saved."
 msgstr "Am salvat modificările."
 
-#: www/auth/login.php:18
+#: www/auth/login.php:20
 msgid "Incorrect email or password."
 msgstr "Adresa de e-mail sau parola sunt incorecte."
 
-#: www/auth/login.php:27
+#: www/auth/login.php:29
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
 #: www/editProblem.php:14
 msgid "Problem not found."
 msgstr "Problema nu există."
+
+#: www/editProblem.php:19
+msgid "You cannot edit this problem."
+msgstr "Nu poți edita această problemă."
 
 #: templates/auth/account.tpl:1
 msgid "my account"
@@ -150,43 +166,43 @@ msgstr ""
 "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
 "OpenID."
 
-#: templates/auth/login.tpl:43
+#: templates/auth/login.tpl:44
 msgid "password"
 msgstr "parolă"
 
-#: templates/auth/login.tpl:47
+#: templates/auth/login.tpl:48
 msgid "Forgot password?"
 msgstr "Ți-ai uitat parola?"
 
-#: templates/auth/login.tpl:57
+#: templates/auth/login.tpl:58
 msgid "Remember me"
 msgstr "Ține-mă minte"
 
-#: templates/auth/login.tpl:72
+#: templates/auth/login.tpl:73
 msgid "Don't have an account?"
 msgstr "Nu ai cont?"
 
-#: templates/auth/login.tpl:74
+#: templates/auth/login.tpl:75
 msgid "Sign up here."
 msgstr "Înregistrează-te aici."
 
-#: templates/auth/login.tpl:87
+#: templates/auth/login.tpl:88
 msgid "Sign Up"
 msgstr "Înregistrare"
 
-#: templates/auth/login.tpl:107
+#: templates/auth/login.tpl:108
 msgid "password (again)"
 msgstr "parolă (din nou)"
 
-#: templates/auth/login.tpl:113
+#: templates/auth/login.tpl:114
 msgid "sign up"
 msgstr "înregistrare"
 
-#: templates/auth/login.tpl:122
+#: templates/auth/login.tpl:123
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/login.tpl:124
+#: templates/auth/login.tpl:125
 msgid "Log in here."
 msgstr "Conectează-te aici."
 

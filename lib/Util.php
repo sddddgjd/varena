@@ -62,13 +62,14 @@ class Util {
 
   static function requireNotLoggedIn() {
     if (Session::getUser()) {
+      FlashMessage::add(_('You are already logged in.'), 'warning');
       self::redirect(self::$wwwRoot);
     }
   }
 
   static function requireLoggedIn() {
     if (!Session::getUser()) {
-      FlashMessage::add('Pentru a avea acces la această pagină, trebuie să vă autentificați', 'warning');
+      FlashMessage::add(_('Please log in to continue.'), 'warning');
       self::redirect(self::$wwwRoot . 'auth/login');
     }
   }
@@ -76,7 +77,7 @@ class Util {
   static function requireAdmin() {
     self::requireLoggedIn();
     if (!Session::getUser()->admin) {
-      FlashMessage::add('Nu aveți acces la această pagină.');
+      FlashMessage::add(_('Access denied.'));
       self::redirect(self::$wwwRoot);
     }
   }
