@@ -88,17 +88,6 @@ class Util {
     header("Location: $location");
     exit;
   }
-
-  /* Reads a request parameter */
-  static function get($name, $default = null) {
-    return array_key_exists($name, $_REQUEST)
-      ? StringUtil::sanitize($_REQUEST[$name])
-      : $default;
-  }
-
-  static function getCheckbox($name, $default = false) {
-    return array_key_exists($name, $_REQUEST);
-  }
 }
 
 ?>

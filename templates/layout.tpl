@@ -29,7 +29,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="{$wwwRoot}">{"home"|_}</a></li>
-            <li><a href="{$wwwRoot}/problems.php">{"problems"|_}</a></li>
+            <li><a href="{$wwwRoot}problems.php">{"problems"|_}</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {if $user}

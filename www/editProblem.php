@@ -4,10 +4,11 @@ require_once '../lib/Util.php';
 
 Util::requireLoggedIn();
 
-$id = Util::get('id');
-$name = Util::get('name');
-$statement = Util::get('statement');
-$save = Util::get('save');
+$id = Request::get('id');
+$name = Request::get('name');
+$statement = Request::get('statement');
+$preview = Request::isset('preview');
+$save = Request::isset('save');
 
 $problem = Problem::get_by_id($id);
 if (!$problem) {
@@ -20,16 +21,19 @@ if (!$problem->editableBy(Session::getUser())) {
   Util::redirect("problem.php?id={$id}");
 }
 
-if ($save) {
+if ($save || $preview) {
   $problem->name = $name;
   $problem->statement = $statement;
 
   $errors = $problem->validate();
-  if (!$errors) {
+  if ($errors) {
+    SmartyWrap::assign('errors', $errors);
+  }
+  if ($save && !$errors) {
     $problem->save();
     Util::redirect("problem.php?id={$id}");
-  } else {
-    SmartyWrap::assign('errors', $errors);
+  } else if ($preview) { // preview
+    SmartyWrap::assign('previewed', true);
   }
 }
 

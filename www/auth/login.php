@@ -4,12 +4,12 @@ require_once '../../lib/Util.php';
 
 Util::requireNotLoggedIn();
 
-$method = Util::get('method');
-$email = Util::get('email');
-$name = Util::get('name');
-$password = Util::get('password');
-$password2 = Util::get('password2');
-$remember = Util::getCheckbox('remember');
+$method = Request::get('method');
+$email = Request::get('email');
+$name = Request::get('name');
+$password = Request::get('password');
+$password2 = Request::get('password2');
+$remember = Request::isset('remember');
 $errors = [];
 
 if ($method == 'login') {

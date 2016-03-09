@@ -2,7 +2,7 @@
 
 require_once '../lib/Util.php';
 
-$id = Util::get('id');
+$id = Request::get('id');
 
 $problem = Problem::get_by_id($id);
 
