@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 13:29+0200\n"
-"PO-Revision-Date: 2016-03-09 13:29+0200\n"
+"POT-Creation-Date: 2016-03-09 15:38+0200\n"
+"PO-Revision-Date: 2016-03-09 15:38+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -62,6 +62,10 @@ msgstr "Adresa de e-mail este deja folosită."
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
+#: www/attachments.php:12 www/editProblem.php:15 www/problem.php:10
+msgid "Problem not found."
+msgstr "Problema nu există."
+
 #: www/auth/account.php:36
 msgid "Could not find your OpenID; did you really log in?"
 msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
@@ -78,13 +82,33 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/editProblem.php:15
-msgid "Problem not found."
-msgstr "Problema nu există."
-
 #: www/editProblem.php:20
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
+
+#: templates/attachments.tpl:4
+msgid "attachments"
+msgstr "fișiere atașate"
+
+#: templates/attachments.tpl:16
+msgid "name"
+msgstr "nume"
+
+#: templates/attachments.tpl:17
+msgid "size"
+msgstr "mărime"
+
+#: templates/attachments.tpl:18
+msgid "uploader"
+msgstr "autor"
+
+#: templates/attachments.tpl:19
+msgid "date"
+msgstr "dată"
+
+#: templates/attachments.tpl:34
+msgid "back"
+msgstr "înapoi"
 
 #: templates/auth/account.tpl:1
 msgid "my account"
@@ -101,10 +125,6 @@ msgstr "alege-ți un nume de utilizator"
 #: templates/auth/account.tpl:10
 msgid "required; 3-20 characters including letters, digits, '-', '.' and '_'"
 msgstr "obligatoriu; 3-20 caractere incluzând litere, cifre, '-', '.' și '_'"
-
-#: templates/auth/account.tpl:17
-msgid "name"
-msgstr "nume"
 
 #: templates/auth/account.tpl:19
 msgid "enter your full name"
@@ -226,7 +246,7 @@ msgstr "enunț"
 msgid "problem statement"
 msgstr "enunțul problemei"
 
-#: templates/editProblem.tpl:55
+#: templates/editProblem.tpl:57
 msgid "preview"
 msgstr "previzualizează"
 
@@ -266,6 +286,10 @@ msgstr "probleme"
 #: templates/layout.tpl:43
 msgid "logout"
 msgstr "deconectare"
+
+#: templates/problem.tpl:13
+msgid "edit"
+msgstr "editează"
 
 #~ msgid "OpenID login"
 #~ msgstr "conectare cu OpenID"
