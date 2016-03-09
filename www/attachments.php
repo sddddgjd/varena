@@ -15,16 +15,16 @@ if (!$problem) {
   Util::redirect(Util::$wwwRoot);
 }
 
-if (!$problem->editableBy($user)) {
-  FlashMessage::add(_('You cannot edit this problem.'));
-  Util::redirect("problem.php?id={$id}");
-}
-
 if ($files) {
+  if (!$problem->editableBy($user)) {
+    FlashMessage::add(_('You cannot edit this problem.'));
+    Util::redirect("problem.php?id={$id}");
+  }
+
   if (processUploads($files, $problem, $user)) {
     $msg = sprintf(_('%s file(s) uploaded successfully.'),
                    count($files['name']));
-    FlashMessage::add($msg, 'info');
+    FlashMessage::add($msg, 'success');
   }
   Util::redirect("attachments.php?id={$id}");
 }

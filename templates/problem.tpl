@@ -11,6 +11,6 @@
 
   {if $problem->editableBy($user)}
     <a href="editProblem.php?id={$problem->id}">{"edit"|_}</a> |
-    <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a>
   {/if}
+  <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a>
 {/block}

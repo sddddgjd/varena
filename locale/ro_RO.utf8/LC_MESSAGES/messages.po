@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 18:42+0200\n"
-"PO-Revision-Date: 2016-03-09 18:44+0200\n"
+"POT-Creation-Date: 2016-03-09 19:08+0200\n"
+"PO-Revision-Date: 2016-03-09 19:08+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -66,7 +66,7 @@ msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:19 www/editProblem.php:20
+#: www/attachments.php:20 www/deleteAttachment.php:19 www/editProblem.php:20
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
@@ -96,6 +96,14 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
+#: www/deleteAttachment.php:11
+msgid "Attachment not found."
+msgstr "Fișier inexistent."
+
+#: www/deleteAttachment.php:26
+msgid "Attachment deleted."
+msgstr "Am șters fișierul atașat."
+
 #: templates/attachments.tpl:4
 msgid "attachments"
 msgstr "fișiere atașate"
@@ -120,15 +128,19 @@ msgstr "autor"
 msgid "date"
 msgstr "dată"
 
-#: templates/attachments.tpl:40
+#: templates/attachments.tpl:27
+msgid "actions"
+msgstr "acțiuni"
+
+#: templates/attachments.tpl:51
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:49
+#: templates/attachments.tpl:60
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:60
+#: templates/attachments.tpl:71
 msgid "upload"
 msgstr "încarcă"
 

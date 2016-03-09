@@ -23,6 +23,9 @@
           <th>{"size"|_}</th>
           <th>{"uploader"|_}</th>
           <th>{"date"|_}</th>
+          {if $problem->editableBy($user)}
+            <th>{"actions"|_}</th>
+          {/if}
         </tr>
         <tbody>
           {foreach from=$attachments item=a}
@@ -31,6 +34,14 @@
               <td>{include "bits/fileSize.tpl" s=$a->size}</td>
               <td>{include "bits/userLink.tpl" u=$a->getUser()}</td>
               <td>{include "bits/dateTime.tpl" ts=$a->created}</td>
+              {if $problem->editableBy($user)}
+                <td>
+                  <a class="deleteAttachment"
+                     href="deleteAttachment.php?id={$a->id}">
+                    șterge
+                  </a>
+                </td>
+              {/if}
             </tr>
           {/foreach}
         </tbody>

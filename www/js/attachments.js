@@ -17,4 +17,9 @@ $(function() {
     var msg = count > 1 ? count + ' files selected' : label;
     text.val(msg);
   });
+
+  $('a.deleteAttachment').click(function() {
+    var name = $(this).closest('td').siblings().first().text();
+    return confirm('Really delete «' + name + '»?');
+  });
 });
