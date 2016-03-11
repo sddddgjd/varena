@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-09 19:08+0200\n"
-"PO-Revision-Date: 2016-03-09 19:08+0200\n"
+"POT-Creation-Date: 2016-03-11 10:49+0200\n"
+"PO-Revision-Date: 2016-03-11 10:50+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -62,11 +62,11 @@ msgstr "Adresa de e-mail este deja folosită."
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
-#: www/attachments.php:14 www/editProblem.php:15 www/problem.php:10
+#: www/attachments.php:14 www/editProblem.php:18 www/problem.php:10
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:20 www/deleteAttachment.php:19 www/editProblem.php:20
+#: www/attachments.php:20 www/deleteAttachment.php:19 www/editProblem.php:23
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
@@ -260,29 +260,37 @@ msgstr "Ai deja un cont?"
 msgid "Log in here."
 msgstr "Conectează-te aici."
 
-#: templates/editProblem.tpl:6
+#: templates/editProblem.tpl:10
 msgid "edit problem"
 msgstr "editare problemă"
 
-#: templates/editProblem.tpl:11
+#: templates/editProblem.tpl:12
+msgid "add a problem"
+msgstr "adaugă o problemă"
+
+#: templates/editProblem.tpl:19
 msgid "This is only a preview. Don't forget to save your changes!"
 msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 
-#: templates/editProblem.tpl:34
+#: templates/editProblem.tpl:42
 msgid "problem name"
 msgstr "numele problemei"
 
-#: templates/editProblem.tpl:40
+#: templates/editProblem.tpl:48
 msgid "statement"
 msgstr "enunț"
 
-#: templates/editProblem.tpl:46
+#: templates/editProblem.tpl:54
 msgid "problem statement"
 msgstr "enunțul problemei"
 
-#: templates/editProblem.tpl:57
+#: templates/editProblem.tpl:65
 msgid "preview"
 msgstr "previzualizează"
+
+#: templates/editProblem.tpl:73
+msgid "cancel"
+msgstr "anulează"
 
 #: templates/email/emailLogin.tpl:1
 msgid "Hi,"

@@ -27,7 +27,7 @@ class Problem extends BaseObject {
 
     $other = Model::factory('Problem')
            ->where('name', $this->name)
-           ->where_not_equal('id', $this->id)
+           ->where_not_equal('id', (int) $this->id) // could be "" when adding a new problem
            ->find_one();
     if ($other) {
       $errors['name'] = _('There already exists a problem with this name.');

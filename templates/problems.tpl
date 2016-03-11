@@ -10,4 +10,8 @@
       <li><a href="{$wwwRoot}problem?id={$p->id}">{$p->name}</a></li>
     {/foreach}
   </ul>
+
+  {if $user}
+    <a href="editProblem.php">adaugă o problemă</a>
+  {/if}
 {/block}

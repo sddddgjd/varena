@@ -1,9 +1,17 @@
 {extends file="layout.tpl"}
 
-{block name=title}{$problem->name}{/block}
+{block name=title}
+  {($problem->name) ? {$problem->name} : "new problem"|_}
+{/block}
 
 {block name=content}
-  <h3>{"edit problem"|_}</h3>
+  <h3>
+    {if $problem->id}
+      {"edit problem"|_}
+    {else}
+      {"add a problem"|_}
+    {/if}
+  </h3>
 
   {if isset($previewed)}
     <div class="container">
@@ -24,7 +32,7 @@
   {/if}
 
   <form method="post" role="form">
-    <div class="form-group {if $errors.name}has-error{/if}">
+    <div class="form-group {if isset($errors.name)}has-error{/if}">
       <label for="name">{"name"|_}</label>
       <input type="text"
              class="form-control"
@@ -36,7 +44,7 @@
       {include "bits/fieldErrors.tpl" errors=$errors.name|default:null}
     </div>
 
-    <div class="form-group {if $errors.statement}has-error{/if}">
+    <div class="form-group {if isset($errors.statement)}has-error{/if}">
       <label for="statement">{"statement"|_}</label>
       {strip}
       <textarea class="form-control"
@@ -60,5 +68,11 @@
       <i class="glyphicon glyphicon-floppy-disk"></i>
       {"save"|_}
     </button>
+
+    {if $problem->id}
+      <a href="problem.php?id={$problem->id}">{"cancel"|_}</a>
+    {else}
+      <a href="problems.php">{"cancel"|_}</a>
+    {/if}
   </form>
 {/block}

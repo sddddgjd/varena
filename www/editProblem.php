@@ -10,15 +10,22 @@ $statement = Request::get('statement');
 $preview = Request::isset('preview');
 $save = Request::isset('save');
 
-$problem = Problem::get_by_id($id);
-if (!$problem) {
-  FlashMessage::add(_('Problem not found.'));
-  Util::redirect(Util::$wwwRoot);
-}
+$user = Session::getUser();
 
-if (!$problem->editableBy(Session::getUser())) {
-  FlashMessage::add(_('You cannot edit this problem.'));
-  Util::redirect("problem.php?id={$id}");
+if ($id) {
+  $problem = Problem::get_by_id($id);
+  if (!$problem) {
+    FlashMessage::add(_('Problem not found.'));
+    Util::redirect(Util::$wwwRoot);
+  }
+
+  if (!$problem->editableBy($user)) {
+    FlashMessage::add(_('You cannot edit this problem.'));
+    Util::redirect("problem.php?id={$id}");
+  }
+} else {
+  $problem = Model::factory('Problem')->create();
+  $problem->userId = $user->id;
 }
 
 if ($save || $preview) {
@@ -31,7 +38,7 @@ if ($save || $preview) {
   }
   if ($save && !$errors) {
     $problem->save();
-    Util::redirect("problem.php?id={$id}");
+    Util::redirect("problem.php?id={$problem->id}");
   } else if ($preview) { // preview
     SmartyWrap::assign('previewed', true);
   }
