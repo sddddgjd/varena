@@ -25,7 +25,7 @@
         <div class="panel-title">{$problem->name}</div>
       </div>
 
-      <div class="panel-body">
+      <div class="panel-body" id="statement">
         {$problem->getHtml()}
       </div>
     </div>

@@ -5,7 +5,7 @@
 {block name=content}
   <h3>{$problem->name}</h3>
 
-  <div>
+  <div id="statement">
     {$problem->getHtml()}
   </div>
 

@@ -1,0 +1,14 @@
+RewriteEngine on
+Options -MultiViews
+# Uncomment the next line when running varena2 in a subdirectory
+# RewriteBase /~user/varena2/www/
+
+RewriteRule ^file/([^/]+)/([^/]+)$ file.php?problemName=$1&fileName=$2 [L]
+
+# Append .php when a file by that name exists
+RewriteCond %{REQUEST_URI} /[-a-zA-Z]+$
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule (.*)$ $1.php [L]
+
+AddType application/x-httpd-php .php
+php_flag display_errors on

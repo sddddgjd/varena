@@ -43,3 +43,15 @@ h3:first-letter {
   cursor: inherit;
   display: block;
 }
+
+/* styles for ParsedownExtra */
+
+#statement .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#statement .right {
+  float: right;
+}

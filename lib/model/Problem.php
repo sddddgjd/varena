@@ -5,7 +5,7 @@ class Problem extends BaseObject {
 
   function getHtml() {
     if ($this->html === null) {
-      $p = new Parsedown();
+      $p = new ParsedownExtra();
       $this->html = $p->text($this->statement);
     }
     return $this->html;
