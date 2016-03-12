@@ -31,8 +31,8 @@ if ($method == 'login') {
   if (!count($errors)) {
     $u->password = password_hash($password, PASSWORD_DEFAULT);
     $u->save();
+    Session::login($u, false);
   }
-  Session::login($u, false);
 }
 
 SmartyWrap::assign('method', $method);
