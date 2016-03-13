@@ -18,8 +18,8 @@ $(function() {
     text.val(msg);
   });
 
-  $('a.deleteAttachment').click(function() {
-    var name = $(this).closest('td').siblings().first().text();
-    return confirm('Really delete «' + name + '»?');
+  $('#master-checkbox').click(function() {
+    var state = $(this).prop('checked');
+    $('[name="attachmentIds[]"]').prop('checked', state);
   });
 });

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 10:49+0200\n"
-"PO-Revision-Date: 2016-03-11 10:50+0200\n"
+"POT-Creation-Date: 2016-03-13 19:56+0200\n"
+"PO-Revision-Date: 2016-03-13 19:57+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -62,20 +62,25 @@ msgstr "Adresa de e-mail este deja folosită."
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
-#: www/attachments.php:14 www/editProblem.php:18 www/problem.php:10
+#: www/attachments.php:15 www/editProblem.php:18 www/problem.php:10
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:20 www/deleteAttachment.php:19 www/editProblem.php:23
+#: www/attachments.php:21 www/attachments.php:35 www/editProblem.php:23
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
-#: www/attachments.php:25
+#: www/attachments.php:26
 #, php-format
 msgid "%s file(s) uploaded successfully."
 msgstr "Am încărcat cu succes %s fișier(e)."
 
-#: www/attachments.php:71
+#: www/attachments.php:42
+#, php-format
+msgid "%s attachment(s) deleted."
+msgstr "Am șters %s fișiere."
+
+#: www/attachments.php:90
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
@@ -96,14 +101,6 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/deleteAttachment.php:11
-msgid "Attachment not found."
-msgstr "Fișier inexistent."
-
-#: www/deleteAttachment.php:26
-msgid "Attachment deleted."
-msgstr "Am șters fișierul atașat."
-
 #: templates/attachments.tpl:4
 msgid "attachments"
 msgstr "fișiere atașate"
@@ -112,35 +109,39 @@ msgstr "fișiere atașate"
 msgid "back"
 msgstr "înapoi"
 
-#: templates/attachments.tpl:22
+#: templates/attachments.tpl:28
 msgid "name"
 msgstr "nume"
 
-#: templates/attachments.tpl:23
+#: templates/attachments.tpl:29
 msgid "size"
 msgstr "mărime"
 
-#: templates/attachments.tpl:24
+#: templates/attachments.tpl:30
 msgid "uploader"
 msgstr "autor"
 
-#: templates/attachments.tpl:25
+#: templates/attachments.tpl:31
 msgid "date"
 msgstr "dată"
 
-#: templates/attachments.tpl:27
-msgid "actions"
-msgstr "acțiuni"
+#: templates/attachments.tpl:58
+msgid "download"
+msgstr "descarcă"
 
-#: templates/attachments.tpl:51
+#: templates/attachments.tpl:62
+msgid "delete"
+msgstr "șterge"
+
+#: templates/attachments.tpl:66
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:60
+#: templates/attachments.tpl:75
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:71
+#: templates/attachments.tpl:86
 msgid "upload"
 msgstr "încarcă"
 
@@ -332,6 +333,15 @@ msgstr "deconectare"
 #: templates/problem.tpl:13
 msgid "edit"
 msgstr "editează"
+
+#~ msgid "Attachment not found."
+#~ msgstr "Fișier inexistent."
+
+#~ msgid "Attachment deleted."
+#~ msgstr "Am șters fișierul atașat."
+
+#~ msgid "actions"
+#~ msgstr "acțiuni"
 
 #~ msgid "OpenID login"
 #~ msgstr "conectare cu OpenID"

@@ -25,6 +25,11 @@ class Attachment extends BaseObject {
                    $this->getProblem()->name,
                    $this->name);
   }
+
+  function delete() {
+    @unlink($this->getFullPath());
+    return parent::delete();
+  }
 }
 
 ?>

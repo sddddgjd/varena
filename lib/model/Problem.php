@@ -48,6 +48,13 @@ class Problem extends BaseObject {
        ($user->id == $this->userId));
   }
 
+  /**
+   * Current policy: true
+   **/
+  function testsViewableBy($user) {
+    return true;
+  }
+
 }
 
 ?>

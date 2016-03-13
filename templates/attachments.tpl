@@ -13,40 +13,55 @@
 
   <div class="voffset3"></div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">{"attachments"|_} ({$attachments|count})</div>
+  <form method="post" role="form">
+    <div class="panel panel-default">
+      <div class="panel-heading">{"attachments"|_} ({$attachments|count})</div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>{"name"|_}</th>
-          <th>{"size"|_}</th>
-          <th>{"uploader"|_}</th>
-          <th>{"date"|_}</th>
-          {if $problem->editableBy($user)}
-            <th>{"actions"|_}</th>
-          {/if}
-        </tr>
+      <table class="table">
+        <thead>
+          <tr>
+            {if $massActions}
+              <th>
+                <input type="checkbox" id="master-checkbox">
+              </th>
+            {/if}
+            <th>{"name"|_}</th>
+            <th>{"size"|_}</th>
+            <th>{"uploader"|_}</th>
+            <th>{"date"|_}</th>
+          </tr>
+        </thead>
         <tbody>
           {foreach from=$attachments item=a}
             <tr>
-              <td>{$a->name}</td>
+              {if $massActions}
+                <td>
+                  <input type="checkbox" name="attachmentIds[]" value="{$a->id}">
+                </td>
+              {/if}
+              <td>
+                <a href="file/{$problem->name}/{$a->name}">
+                  {$a->name}
+                </a>
+              </td>
               <td>{include "bits/fileSize.tpl" s=$a->size}</td>
               <td>{include "bits/userLink.tpl" u=$a->getUser()}</td>
               <td>{include "bits/dateTime.tpl" ts=$a->created}</td>
-              {if $problem->editableBy($user)}
-                <td>
-                  <a class="deleteAttachment"
-                     href="deleteAttachment.php?id={$a->id}">
-                    șterge
-                  </a>
-                </td>
-              {/if}
             </tr>
           {/foreach}
         </tbody>
-    </table>
-  </div>
+      </table>
+    </div>
+
+    <button type="submit" class="btn btn-default" name="download">
+      <i class="glyphicon glyphicon-download-alt"></i>
+      {"download"|_}
+    </button>
+    <button type="submit" class="btn btn-default" name="delete">
+      <i class="glyphicon glyphicon-remove"></i>
+      {"delete"|_}
+    </button>
+  </form>
 
   <h3>{"Add attachments"|_}</h3>
 
@@ -58,7 +73,7 @@
           <span class="btn btn-default btn-file">
             <i class="glyphicon glyphicon-folder-open"></i>
             &nbsp; {"browse..."|_}
-            <input type="file" name="files[]" multiple data-max-size="10000000">
+            <input type="file" name="files[]" multiple data-max-size="100000000">
           </span>
         </span>
         <input type="text" class="form-control" readonly>

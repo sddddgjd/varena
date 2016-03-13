@@ -2,10 +2,11 @@
 
 require_once '../lib/Util.php';
 
-Util::requireLoggedIn();
-
 $id = Request::get('id');
 $files = Request::getFiles('files');
+$attachmentIds = Request::get('attachmentIds', []);
+$download = Request::isset('download');
+$delete = Request::isset('delete');
 
 $problem = Problem::get_by_id($id);
 $user = Session::getUser();
@@ -29,13 +30,31 @@ if ($files) {
   Util::redirect("attachments.php?id={$id}");
 }
 
+if ($delete) {
+  if (!$problem->editableBy($user)) {
+    FlashMessage::add(_('You cannot edit this problem.'));
+    Util::redirect("problem.php?id={$id}");
+  }
+  foreach ($attachmentIds as $aid) {
+    Attachment::delete_all_by_id($aid);
+  }
+  
+  $msg = sprintf(_('%s attachment(s) deleted.'), count($attachmentIds));
+  FlashMessage::add($msg, 'success');
+  Util::redirect("attachments.php?id={$id}");
+}
+
 $attachments = Model::factory('Attachment')
   ->where('problemId', $problem->id)
   ->order_by_asc('name')
   ->find_many();
 
+$massActions = $problem->editableBy($user) ||
+             $problem->testsViewableBy($user);
+
 SmartyWrap::assign('problem', $problem);
 SmartyWrap::assign('attachments', $attachments);
+SmartyWrap::assign('massActions', $massActions);
 SmartyWrap::display('attachments.tpl');
 
 /**************************************************************************/
