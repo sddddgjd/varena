@@ -20,7 +20,7 @@ class Attachment extends BaseObject {
   }
 
   function getFullPath() {
-    return sprintf("%s/uploads/%s/%s",
+    return sprintf("%s/uploads/attachments/%s/%s",
                    Util::$rootPath,
                    $this->getProblem()->name,
                    $this->name);
