@@ -82,7 +82,7 @@
     </div>
 
     <button type="submit" class="btn btn-default">
-      <i class="glyphicon glyphicon-refresh"></i>
+      <i class="glyphicon glyphicon-upload"></i>
       {"upload"|_}
     </button>
   </form>

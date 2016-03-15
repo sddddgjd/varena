@@ -52,6 +52,7 @@ $attachments = Model::factory('Attachment')
 $massActions = $problem->editableBy($user) ||
              $problem->testsViewableBy($user);
 
+SmartyWrap::addJs('fileUpload');
 SmartyWrap::assign('problem', $problem);
 SmartyWrap::assign('attachments', $attachments);
 SmartyWrap::assign('massActions', $massActions);

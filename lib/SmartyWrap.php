@@ -62,6 +62,7 @@ class SmartyWrap {
       switch($id) {
         case 'jquery':           self::$jsFiles[1] = 'jquery-2.2.1.min.js'; break; 
         case 'bootstrap':        self::$jsFiles[2] = 'bootstrap-3.3.6.min.js'; break; 
+        case 'fileUpload':       self::$jsFiles[3] = 'fileUpload.js'; break; 
         default:
           FlashMessage::add("Cannot load JS script {$id}");
           Util::redirect(Util::$wwRoot);

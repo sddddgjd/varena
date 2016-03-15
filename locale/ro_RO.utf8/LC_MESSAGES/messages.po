@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-13 19:56+0200\n"
-"PO-Revision-Date: 2016-03-13 19:57+0200\n"
+"POT-Creation-Date: 2016-03-15 18:29+0200\n"
+"PO-Revision-Date: 2016-03-15 18:30+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -62,7 +62,7 @@ msgstr "Adresa de e-mail este deja folosită."
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
-#: www/attachments.php:15 www/editProblem.php:18 www/problem.php:10
+#: www/attachments.php:15 www/editProblem.php:18 www/problem.php:11
 msgid "Problem not found."
 msgstr "Problema nu există."
 
@@ -80,7 +80,7 @@ msgstr "Am încărcat cu succes %s fișier(e)."
 msgid "%s attachment(s) deleted."
 msgstr "Am șters %s fișiere."
 
-#: www/attachments.php:90
+#: www/attachments.php:91 www/problem.php:37
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
@@ -100,6 +100,15 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 #: www/auth/login.php:29
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
+
+#: www/problem.php:22
+msgid "Source file uploaded successfully."
+msgstr "Am încărcat sursa cu succes."
+
+#: www/problem.php:50
+#, php-format
+msgid "Unknown extension «.%s»."
+msgstr "Extensie necunoscută «.%s»."
 
 #: templates/attachments.tpl:4
 msgid "attachments"
@@ -333,6 +342,10 @@ msgstr "deconectare"
 #: templates/problem.tpl:13
 msgid "edit"
 msgstr "editează"
+
+#: templates/problem.tpl:18
+msgid "submit a source file"
+msgstr "trimite o sursă"
 
 #~ msgid "Attachment not found."
 #~ msgstr "Fișier inexistent."
