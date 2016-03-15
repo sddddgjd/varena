@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-15 18:29+0200\n"
-"PO-Revision-Date: 2016-03-15 18:30+0200\n"
+"POT-Creation-Date: 2016-03-15 18:56+0200\n"
+"PO-Revision-Date: 2016-03-15 18:56+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -110,7 +110,7 @@ msgstr "Am încărcat sursa cu succes."
 msgid "Unknown extension «.%s»."
 msgstr "Extensie necunoscută «.%s»."
 
-#: templates/attachments.tpl:4
+#: templates/attachments.tpl:4 templates/problem.tpl:15
 msgid "attachments"
 msgstr "fișiere atașate"
 
@@ -146,15 +146,15 @@ msgstr "șterge"
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:75
+#: templates/attachments.tpl:75 templates/problem.tpl:27
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:86
+#: templates/attachments.tpl:86 templates/problem.tpl:38
 msgid "upload"
 msgstr "încarcă"
 
-#: templates/auth/account.tpl:1
+#: templates/auth/account.tpl:1 templates/layout.tpl:43
 msgid "my account"
 msgstr "contul meu"
 
@@ -206,7 +206,7 @@ msgstr "Te redirectăm către furnizorul de OpenID..."
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6
+#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:48
 msgid "login"
 msgstr "conectare"
 
@@ -270,6 +270,14 @@ msgstr "Ai deja un cont?"
 msgid "Log in here."
 msgstr "Conectează-te aici."
 
+#: templates/bits/sourceStatus.tpl:2
+msgid "pending"
+msgstr "în așteptare"
+
+#: templates/bits/sourceStatus.tpl:4
+msgid "unknown"
+msgstr "necunoscut(ă)"
+
 #: templates/editProblem.tpl:10
 msgid "edit problem"
 msgstr "editare problemă"
@@ -323,6 +331,30 @@ msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
+#: templates/evaluator.tpl:3 templates/layout.tpl:33
+msgid "evaluator"
+msgstr "evaluator"
+
+#: templates/evaluator.tpl:6
+msgid "evaluator queue"
+msgstr "coada de evaluare"
+
+#: templates/evaluator.tpl:11
+msgid "ID"
+msgstr "ID"
+
+#: templates/evaluator.tpl:12
+msgid "user"
+msgstr "utilizator"
+
+#: templates/evaluator.tpl:13
+msgid "problem"
+msgstr "problemă"
+
+#: templates/evaluator.tpl:16
+msgid "status"
+msgstr "stare"
+
 #: templates/index.tpl:6
 msgid "Varena2 is working for you!"
 msgstr "Varena2 funcționează!"
@@ -335,7 +367,7 @@ msgstr "acasă"
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:43
+#: templates/layout.tpl:44
 msgid "logout"
 msgstr "deconectare"
 
