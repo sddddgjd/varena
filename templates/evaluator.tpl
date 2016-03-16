@@ -19,7 +19,7 @@
     <tbody>
       {foreach from=$sources item=s}
         <tr>
-          <td>{$s->id}</td>
+          <td><a href="source.php?id={$s->id}">{$s->id}</a></td>
           <td>{include "bits/userLink.tpl" u=$s->getUser()}</td>
           <td>{include "bits/problemLink.tpl" p=$s->getProblem()}</td>
           <td>{include "bits/fileSize.tpl" s=$s->sourceCode|count_characters:true}</td>

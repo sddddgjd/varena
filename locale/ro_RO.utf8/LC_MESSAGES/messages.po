@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-15 18:56+0200\n"
-"PO-Revision-Date: 2016-03-15 18:56+0200\n"
+"POT-Creation-Date: 2016-03-16 19:47+0200\n"
+"PO-Revision-Date: 2016-03-16 19:47+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -110,6 +110,10 @@ msgstr "Am încărcat sursa cu succes."
 msgid "Unknown extension «.%s»."
 msgstr "Extensie necunoscută «.%s»."
 
+#: www/source.php:10
+msgid "Source not found."
+msgstr "Sursa nu există."
+
 #: templates/attachments.tpl:4 templates/problem.tpl:15
 msgid "attachments"
 msgstr "fișiere atașate"
@@ -122,7 +126,7 @@ msgstr "înapoi"
 msgid "name"
 msgstr "nume"
 
-#: templates/attachments.tpl:29
+#: templates/attachments.tpl:29 templates/source.tpl:17
 msgid "size"
 msgstr "mărime"
 
@@ -130,7 +134,7 @@ msgstr "mărime"
 msgid "uploader"
 msgstr "autor"
 
-#: templates/attachments.tpl:31
+#: templates/attachments.tpl:31 templates/source.tpl:19
 msgid "date"
 msgstr "dată"
 
@@ -343,11 +347,11 @@ msgstr "coada de evaluare"
 msgid "ID"
 msgstr "ID"
 
-#: templates/evaluator.tpl:12
+#: templates/evaluator.tpl:12 templates/source.tpl:11
 msgid "user"
 msgstr "utilizator"
 
-#: templates/evaluator.tpl:13
+#: templates/evaluator.tpl:13 templates/source.tpl:13
 msgid "problem"
 msgstr "problemă"
 
@@ -378,6 +382,26 @@ msgstr "editează"
 #: templates/problem.tpl:18
 msgid "submit a source file"
 msgstr "trimite o sursă"
+
+#: templates/source.tpl:3
+msgid "source"
+msgstr "sursă"
+
+#: templates/source.tpl:23
+msgid "compiler"
+msgstr "compilator"
+
+#: templates/source.tpl:25
+msgid "score"
+msgstr "scor"
+
+#: templates/source.tpl:36
+msgid "evaluation report"
+msgstr "raport de evaluare"
+
+#: templates/source.tpl:41
+msgid "source code"
+msgstr "cod-sursă"
 
 #~ msgid "Attachment not found."
 #~ msgstr "Fișier inexistent."

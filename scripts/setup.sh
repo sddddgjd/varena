@@ -19,4 +19,3 @@ fi
 # Make some directories world-writable
 chmod 777 templates_c
 chmod 777 uploads/attachments
-chmod 777 uploads/test-cases
