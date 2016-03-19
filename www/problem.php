@@ -44,7 +44,7 @@ function processUploads($file, $problem, $user) {
   $s->userId = $user->id;
   $s->sourceCode = file_get_contents($file['tmp_name']);
   $s->extension = mb_strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-  $s->status = Source::STATUS_PENDING;
+  $s->status = Source::STATUS_NEW;
 
   if (!in_array($s->extension, Source::$ACCEPTED_EXTENSIONS)) {
     FlashMessage::add(sprintf(_('Unknown extension «.%s».'),
@@ -53,6 +53,10 @@ function processUploads($file, $problem, $user) {
   }
 
   $s->save();
+
+  // Notify the evaluator
+  Util::notifyEvaluator($s);
+
   return true;
 }
 

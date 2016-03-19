@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-16 19:47+0200\n"
-"PO-Revision-Date: 2016-03-16 19:47+0200\n"
+"POT-Creation-Date: 2016-03-19 18:36+0200\n"
+"PO-Revision-Date: 2016-03-19 18:37+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -41,6 +41,18 @@ msgstr "Enunțul nu poate fi vid."
 #: lib/model/Problem.php:33
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
+
+#: lib/model/Source.php:17
+msgid "new"
+msgstr "nou"
+
+#: lib/model/Source.php:18
+msgid "pending"
+msgstr "se evaluează"
+
+#: lib/model/Source.php:19
+msgid "done"
+msgstr "evaluat"
 
 #: lib/model/User.php:12
 msgid ""
@@ -158,7 +170,7 @@ msgstr "alege..."
 msgid "upload"
 msgstr "încarcă"
 
-#: templates/auth/account.tpl:1 templates/layout.tpl:43
+#: templates/auth/account.tpl:1
 msgid "my account"
 msgstr "contul meu"
 
@@ -210,7 +222,7 @@ msgstr "Te redirectăm către furnizorul de OpenID..."
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:48
+#: templates/auth/emailLogin.tpl:6
 msgid "login"
 msgstr "conectare"
 
@@ -274,14 +286,6 @@ msgstr "Ai deja un cont?"
 msgid "Log in here."
 msgstr "Conectează-te aici."
 
-#: templates/bits/sourceStatus.tpl:2
-msgid "pending"
-msgstr "în așteptare"
-
-#: templates/bits/sourceStatus.tpl:4
-msgid "unknown"
-msgstr "necunoscut(ă)"
-
 #: templates/editProblem.tpl:10
 msgid "edit problem"
 msgstr "editare problemă"
@@ -335,7 +339,7 @@ msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
-#: templates/evaluator.tpl:3 templates/layout.tpl:33
+#: templates/evaluator.tpl:3
 msgid "evaluator"
 msgstr "evaluator"
 
@@ -367,7 +371,7 @@ msgstr "Varena2 funcționează!"
 msgid "home"
 msgstr "acasă"
 
-#: templates/layout.tpl:32
+#: templates/layout.tpl:32 templates/problems.tpl:3
 msgid "problems"
 msgstr "probleme"
 
@@ -402,6 +406,9 @@ msgstr "raport de evaluare"
 #: templates/source.tpl:41
 msgid "source code"
 msgstr "cod-sursă"
+
+#~ msgid "unknown"
+#~ msgstr "necunoscut(ă)"
 
 #~ msgid "Attachment not found."
 #~ msgstr "Fișier inexistent."

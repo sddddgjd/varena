@@ -24,7 +24,7 @@
           <td>{include "bits/problemLink.tpl" p=$s->getProblem()}</td>
           <td>{include "bits/fileSize.tpl" s=$s->sourceCode|count_characters:true}</td>
           <td>{include "bits/dateTime.tpl" ts=$s->created}</td>
-          <td>{include "bits/sourceStatus.tpl" status=$s->status}</td>
+          <td>{$s->getStatusName()}</td>
         </tr>
       {/foreach}
     </tbody>

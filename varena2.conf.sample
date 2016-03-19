@@ -10,6 +10,19 @@ locale = ro_RO.utf8
 ; Name of the cookie we set on the client browser for persistent logins
 loginCookieName = loginCookie
 
+[eval]
+
+; Evaluator IP addresses
+ip[] = 127.0.0.1
+; ip[] = 123.45.67.89
+
+; Port on which to listen for notifications
+port = 4556
+
+; Index of this eval instance (0-based). Used for sharding.
+; Use -1 to forbid this installation from running an eval loop.
+index = 0
+
 [email]
 
 ; When false, prevent the system from sending out any emails

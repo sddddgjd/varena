@@ -88,6 +88,22 @@ class Util {
     header("Location: $location");
     exit;
   }
+
+  /* Notify the appropriate evaluator that a new source is available. */
+  static function notifyEvaluator($source) {
+    $port = Config::get('eval.port');
+    $ips = Config::get('eval.ip');
+    $index = $source->id % count($ips);
+
+    $sock = socket_create(AF_INET, SOCK_STREAM, 0)
+            or die("Socket create error.\n");
+    socket_set_nonblock($sock);
+
+    // Try to open a connection, but don't make a fuss if we can't.
+    // The evaluator may be down at the moment.
+    @socket_connect($sock, $ips[$index], $port);
+    socket_close($sock);
+  }
 }
 
 ?>
