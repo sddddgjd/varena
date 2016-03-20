@@ -13,6 +13,61 @@ class Problem extends BaseObject {
     }
     return $this->html;
   }
+
+  /**
+   * Returns an array of [first, last] pairs. Throws an exception if
+   * testGroups is inconsistent.
+   **/
+  function getTestGroups() {
+    $result = [];
+
+    if (!$this->testGroups) {
+      for ($i = 1; $i <= $this->numTests; $i++) {
+        $result[] = [$i, $i];
+      }
+    } else {
+      $prev = 0;
+      $groups = explode(';', $this->testGroups);
+
+      foreach ($groups as $i => $g) {
+        $parts = explode('-', $g);
+        if (count($parts) == 1) {
+          $first = $last = $parts[0]; // single test case
+        } else if (count($parts) == 2) {
+          list($first, $last) = $parts;
+        } else {
+          throw new Exception(sprintf(_('Too many dashes in group %d.'), $i + 1));
+        }
+
+        if (!ctype_digit($first) || !ctype_digit($last)) {
+          throw new Exception(sprintf(_('Illegal character in group %d.'), $i + 1));
+        }
+
+        if ($first > $last) {
+          throw new Exception(sprintf(_('Wrong order in group %d.'), $i + 1));
+        }
+
+        if ($first != $prev + 1) {
+          throw new Exception(sprintf(_('Group %d should start at test %d.'),
+                                      $i + 1, $prev + 1));
+        }
+
+        if ($last > $this->numTests) {
+          throw new Exception(sprintf(_('Value exceeds number of tests in group %d.'), $i + 1));
+        }
+
+        $result[] = [$first, $last];
+        $prev = $last;
+      }
+
+      if ($prev != $this->numTests) {
+        throw new Exception(sprintf(_('Tests %d through %d are missing.'),
+                                    $prev + 1, $this->numTests));
+      }
+    }
+
+    return $result;
+  }
   
   /**
    * Validates a problem for correctness. Returns an array of { field => array of errors }.
@@ -51,7 +106,11 @@ class Problem extends BaseObject {
       $errors['memoryLimit'] = _('The memory limit must be positive.');
     }
 
-    // TODO validate testGroups
+    try {
+      $this->getTestGroups();
+    } catch (Exception $e) {
+      $errors['testGroups'] = $e->getMessage();
+    }
 
     return $errors;
   }

@@ -90,7 +90,7 @@
           {input field="timeLimit" step="0.01" label={"time limit (seconds)"|_}}
           {input field="memoryLimit" label={"memory limit (kibibytes)"|_}}
           {input field="numTests" label={"number of tests"|_}}
-          {input field="testGroups" label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
+          {input field="testGroups" type="text" label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
           {input field="evalFile" type="text" label={"evaluator"|_} placeholder={"leave empty for diff evaluation"|_}}
 
           <div class="checkbox">
