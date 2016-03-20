@@ -75,6 +75,7 @@ class Problem extends BaseObject {
     return true;
   }
 
+  // TODO: either disable renaming or, when renaming, rename the attachment directory.
 }
 
 ?>
