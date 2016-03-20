@@ -1,6 +1,9 @@
 <?php
 
 class Problem extends BaseObject {
+  const MIN_TESTS = 1;
+  const MAX_TESTS = 100;
+
   private $html = null;
 
   function getHtml() {
@@ -21,10 +24,6 @@ class Problem extends BaseObject {
       $errors['name'] = _('The problem name must be at least 2 characters long.');
     }
 
-    if (!$this->statement) {
-      $errors['statement'] = _('The statement cannot be empty.');
-    }
-
     $other = Model::factory('Problem')
            ->where('name', $this->name)
            ->where_not_equal('id', (int) $this->id) // could be "" when adding a new problem
@@ -32,6 +31,27 @@ class Problem extends BaseObject {
     if ($other) {
       $errors['name'] = _('There already exists a problem with this name.');
     }
+
+    if (!$this->statement) {
+      $errors['statement'] = _('The statement cannot be empty.');
+    }
+
+    if ($this->numTests < self::MIN_TESTS ||
+        $this->numTests > self::MAX_TESTS) {
+      $errors['numTests'] = sprintf(_('Problems must have between %d and %d tests.'),
+                                    self::MIN_TESTS,
+                                    self::MAX_TESTS);
+    }
+
+    if ($this->timeLimit <= 0) {
+      $errors['timeLimit'] = _('The time limit must be positive.');
+    }
+
+    if ($this->memoryLimit <= 0) {
+      $errors['memoryLimit'] = _('The memory limit must be positive.');
+    }
+
+    // TODO validate testGroups
 
     return $errors;
   }

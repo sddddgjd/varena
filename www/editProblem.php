@@ -5,8 +5,6 @@ require_once '../lib/Util.php';
 Util::requireLoggedIn();
 
 $id = Request::get('id');
-$name = Request::get('name');
-$statement = Request::get('statement');
 $preview = Request::isset('preview');
 $save = Request::isset('save');
 
@@ -29,8 +27,14 @@ if ($id) {
 }
 
 if ($save || $preview) {
-  $problem->name = $name;
-  $problem->statement = $statement;
+  $problem->name = Request::get('name');
+  $problem->statement = Request::get('statement');
+  $problem->numTests = Request::get('numTests');
+  $problem->testGroups = Request::get('testGroups');
+  $problem->hasWitness = Request::get('hasWitness');
+  $problem->evalFile = Request::get('evalFile');
+  $problem->timeLimit = Request::get('timeLimit');
+  $problem->memoryLimit = Request::get('memoryLimit');
 
   $errors = $problem->validate();
   if ($errors) {
@@ -38,6 +42,7 @@ if ($save || $preview) {
   }
   if ($save && !$errors) {
     $problem->save();
+    FlashMessage::add(_('Problem saved.'), 'success');
     Util::redirect("problem.php?id={$problem->id}");
   } else if ($preview) { // preview
     SmartyWrap::assign('previewed', true);
