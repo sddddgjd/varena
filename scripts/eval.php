@@ -76,69 +76,10 @@ function pingListener() {
 /************************** actual evaluation ***************************/
 
 function evalSource($s) {
-  $p = $s->getProblem();
-  printf("Evaluating source %d submitted by [%s] for problem [%s]\n",
-         $s->id, $s->getUser()->name, $p->name);
-  $s->status = Source::STATUS_PENDING;
-  $s->save();
+  $e = new EvalUtil($s);
+  $e->updateStatus(Source::STATUS_PENDING);
 
-  $evalDir = Config::get('eval.cacheDir');
-  $dir = "{$evalDir}/{$p->name}/";
-  $api = Config::get('eval.api');
+  $e->fetchAllData();
 
-  // fetch the test data
-  for ($i = 1; $i <= $p->numTests; $i++) {
-    // input file
-    $file = $dir . sprintf(Attachment::PATTERN_TEST_IN, $i);
-    $url = "{$api}" .
-         "?resource=testInput" .
-         "&problemId={$p->id}" .
-         "&test={$i}";
-
-    fetchDataFile($file, $url);
-
-    if ($p->hasWitness) {
-      // output file
-      $file = $dir . sprintf(Attachment::PATTERN_TEST_OK, $i);
-      $url = "{$api}" .
-           "?resource=testWitness" .
-           "&problemId={$p->id}" .
-           "&test={$i}";
-
-      fetchDataFile($file, $url);
-    }
-  }
-
-  if ($p->grader) {
-    // grader file
-    $file = $dir . sprintf(Attachment::PATTERN_GRADER, $p->grader);
-    $url = "{$api}" .
-         "?resource=grader" .
-         "&problemId={$p->id}";
-
-    fetchDataFile($file, $url);
-  }
-
-  $s->status = Source::STATUS_DONE;
-  $s->save();
-}
-
-function fetchDataFile($file, $url) {
-
-  @mkdir(dirname($file), 0777, true);
-
-  $password = Config::get('general.apiPassword');
-  $lastModified = file_exists($file)
-                ? filemtime($file)
-                : 0;
-
-  $url .= "&password={$password}" .
-       "&lastModified={$lastModified}";
-  
-  list ($contents, $httpCode) = Http::fetchUrl($url);
-  printf("* Fetching file %s ==> return code = %d (%s)\n",
-           $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
-  if ($httpCode == 200) {
-    file_put_contents($file, $contents);
-  }
+  $e->updateStatus(Source::STATUS_DONE);
 }
