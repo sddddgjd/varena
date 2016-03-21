@@ -4,14 +4,12 @@
 class Http {
   const HTTP_OK = 200;
   const HTTP_MOVED = 301;
-  const HTTP_NOT_MODIFIED = 304;
   const HTTP_FORBIDDEN = 403;
   const HTTP_NOT_FOUND = 404;
 
   const STATUS_NAMES = [
     self::HTTP_OK => 'OK',
     self::HTTP_MOVED => 'Moved Permanently',
-    self::HTTP_NOT_MODIFIED => 'Not Modified',
     self::HTTP_FORBIDDEN => 'Forbidden',
     self::HTTP_NOT_FOUND => 'Not Found',
   ];

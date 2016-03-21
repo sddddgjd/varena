@@ -82,21 +82,22 @@ class EvalUtil {
                    $this->api, 'source', $this->source->id);
   }
 
-  function fetchDataFile($file, $url) {
+  /**
+   * $obj is a database object whose 'created' field indicates whether
+   * we need to refetch the file.
+   **/
+  function fetchDataFile($obj, $file, $url) {
     @mkdir(dirname($file), 0777, true);
 
-    $lastModified = file_exists($file)
-                  ? filemtime($file)
-                  : 0;
-
-    $url .= "&password={$this->password}" .
-         "&lastModified={$lastModified}";
-  
-    list ($contents, $httpCode) = Http::fetchUrl($url);
-    printf("* Fetching file %s ==> return code = %d (%s)\n",
-           $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
-    if ($httpCode == 200) {
-      file_put_contents($file, $contents);
+    if (!file_exists($file) ||
+        (filemtime($file) < $obj->created)) {
+      $url .= "&password={$this->password}";
+      list ($contents, $httpCode) = Http::fetchUrl($url);
+      printf("* Fetching file %s ==> return code = %d (%s)\n",
+        $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
+      if ($httpCode == 200) {
+        file_put_contents($file, $contents);
+      }
     }
   }
 
@@ -104,29 +105,32 @@ class EvalUtil {
   function fetchAllData() {
     for ($i = 1; $i <= $this->problem->numTests; $i++) {
       // input file
+      $a = $this->problem->getTestInput($i);
       $file = $this->getInputFileName($i);
       $url = $this->getInputUrl($i);
-      $this->fetchDataFile($file, $url);
+      $this->fetchDataFile($a, $file, $url);
 
       // witness file
       if ($this->problem->hasWitness) {
+        $a = $this->problem->getTestWitness($i);
         $file = $this->getWitnessFileName($i);
         $url = $this->getWitnessUrl($i);
-        $this->fetchDataFile($file, $url);
+        $this->fetchDataFile($a, $file, $url);
       }
     }
 
     // grader file
     if ($this->problem->grader) {
+      $a = $this->problem->getGrader();
       $file = $this->getGraderFileName();
       $url = $this->getGraderUrl();
-      $this->fetchDataFile($file, $url);
+      $this->fetchDataFile($a, $file, $url);
     }
 
     // source file
     $file = $this->getSourceFileName();
     $url = $this->getSourceUrl();
-    $this->fetchDataFile($file, $url);
+    $this->fetchDataFile($this->source, $file, $url);
   }
 
   /**
@@ -152,7 +156,7 @@ class EvalUtil {
   }
 
   function compileGrader() {
-    if (!$this->source->grader) {
+    if (!$this->problem->grader) {
       return;
     }
     try {

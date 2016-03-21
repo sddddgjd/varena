@@ -36,7 +36,7 @@ switch ($resource) {
   case 'source':
     $sourceId = Request::get('sourceId');
     $s = Source::get_by_id($sourceId) or terminate(Http::HTTP_NOT_FOUND);
-    dumpSourceCode($s);
+    print $s->sourceCode;
     break;
     
   default:
@@ -52,23 +52,7 @@ function terminate($statusCode) {
 
 function dumpFile($file) {
   file_exists($file) or terminate(Http::HTTP_NOT_FOUND);
-
-  // Print the file if it's newer than $lastModified, otherwise return 304
-  $lastModified = Request::get('lastModified');
-  if (filemtime($file) <= $lastModified) {
-    terminate(Http::HTTP_NOT_MODIFIED);
-  }
-
   readfile($file);
-}
-
-function dumpSourceCode($source) {
-  $lastModified = Request::get('lastModified');
-  if ($source->created <= $lastModified) {
-    terminate(Http::HTTP_NOT_MODIFIED);
-  }
-
-  print $source->sourceCode;
 }
 
 ?>
