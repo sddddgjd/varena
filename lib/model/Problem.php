@@ -20,6 +20,30 @@ class Problem extends BaseObject {
                    $this->name);
   }
 
+  /* Returns the attachment corresponding to the input file for test case $num. */
+  function getTestInput($num) {
+    return Attachment::get_by_problemId_name(
+      $this->id,
+      sprintf(Attachment::PATTERN_TEST_IN, $num)
+    );
+  }
+
+  /* Returns the attachment corresponding to the witness file for test case $num. */
+  function getTestWitness($num) {
+    return Attachment::get_by_problemId_name(
+      $this->id,
+      sprintf(Attachment::PATTERN_TEST_OK, $num)
+    );
+  }
+
+  /* Returns the attachment corresponding to the grader. */
+  function getGrader() {
+    return Attachment::get_by_problemId_name(
+      $this->id,
+      sprintf(Attachment::PATTERN_GRADER, $this->grader)
+    );
+  }
+
   /**
    * Returns an array of [first, last] pairs. Throws an exception if
    * testGroups is inconsistent.

@@ -13,13 +13,13 @@ $user = Session::getUser();
 
 if (!$problem) {
   FlashMessage::add(_('Problem not found.'));
-  Util::redirect(Util::$wwwRoot);
+  Http::redirect(Util::$wwwRoot);
 }
 
 if ($files) {
   if (!$problem->editableBy($user)) {
     FlashMessage::add(_('You cannot edit this problem.'));
-    Util::redirect("problem.php?id={$id}");
+    Http::redirect("problem.php?id={$id}");
   }
 
   if (processUploads($files, $problem, $user)) {
@@ -27,13 +27,13 @@ if ($files) {
                    count($files['name']));
     FlashMessage::add($msg, 'success');
   }
-  Util::redirect("attachments.php?id={$id}");
+  Http::redirect("attachments.php?id={$id}");
 }
 
 if ($delete) {
   if (!$problem->editableBy($user)) {
     FlashMessage::add(_('You cannot edit this problem.'));
-    Util::redirect("problem.php?id={$id}");
+    Http::redirect("problem.php?id={$id}");
   }
   foreach ($attachmentIds as $aid) {
     Attachment::delete_all_by_id($aid);
@@ -41,7 +41,7 @@ if ($delete) {
   
   $msg = sprintf(_('%s attachment(s) deleted.'), count($attachmentIds));
   FlashMessage::add($msg, 'success');
-  Util::redirect("attachments.php?id={$id}");
+  Http::redirect("attachments.php?id={$id}");
 }
 
 $attachments = Model::factory('Attachment')

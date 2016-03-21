@@ -50,7 +50,7 @@ class SmartyWrap {
         case 'main':               self::$cssFiles[3] = 'main.css'; break;
         default:
           FlashMessage::add("Cannot load CSS file {$id}");
-          Util::redirect(Util::$wwwRoot);
+          Http::redirect(Util::$wwwRoot);
       }
     }
   }
@@ -64,7 +64,7 @@ class SmartyWrap {
         case 'fileUpload':       self::$jsFiles[3] = 'fileUpload.js'; break; 
         default:
           FlashMessage::add("Cannot load JS script {$id}");
-          Util::redirect(Util::$wwRoot);
+          Http::redirect(Util::$wwRoot);
       }
     }
   }

@@ -63,14 +63,14 @@ class Util {
   static function requireNotLoggedIn() {
     if (Session::getUser()) {
       FlashMessage::add(_('You are already logged in.'), 'warning');
-      self::redirect(self::$wwwRoot);
+      Http::redirect(self::$wwwRoot);
     }
   }
 
   static function requireLoggedIn() {
     if (!Session::getUser()) {
       FlashMessage::add(_('Please log in to continue.'), 'warning');
-      self::redirect(self::$wwwRoot . 'auth/login');
+      Http::redirect(self::$wwwRoot . 'auth/login');
     }
   }
 
@@ -78,15 +78,8 @@ class Util {
     self::requireLoggedIn();
     if (!Session::getUser()->admin) {
       FlashMessage::add(_('Access denied.'));
-      self::redirect(self::$wwwRoot);
+      Http::redirect(self::$wwwRoot);
     }
-  }
-
-  static function redirect($location) {
-    FlashMessage::saveToSession();
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: $location");
-    exit;
   }
 
   /* Notify the appropriate evaluator that a new source is available. */

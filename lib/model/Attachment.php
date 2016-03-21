@@ -1,6 +1,9 @@
 <?php
 
 class Attachment extends BaseObject {
+  const PATTERN_TEST_IN = 'grader_test%d.in';
+  const PATTERN_TEST_OK = 'grader_test%d.ok';
+  const PATTERN_GRADER = 'grader_%s';
 
   private $user = null;
   private $problem = null;

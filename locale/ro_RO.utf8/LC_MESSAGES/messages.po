@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 21:36+0200\n"
-"PO-Revision-Date: 2016-03-20 21:37+0200\n"
+"POT-Creation-Date: 2016-03-21 16:00+0200\n"
+"PO-Revision-Date: 2016-03-21 16:03+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -30,58 +30,58 @@ msgstr "Conectează-te pentru a continua."
 msgid "Access denied."
 msgstr "Acces interzis."
 
-#: lib/model/Problem.php:39
+#: lib/model/Problem.php:69
 #, php-format
 msgid "Too many dashes in group %d."
 msgstr "Prea multe cratime în grupul %d."
 
-#: lib/model/Problem.php:43
+#: lib/model/Problem.php:73
 #, php-format
 msgid "Illegal character in group %d."
 msgstr "Caracter incorect în grupul %d."
 
-#: lib/model/Problem.php:47
+#: lib/model/Problem.php:77
 #, php-format
 msgid "Wrong order in group %d."
 msgstr "Ordine greșită în grupul %d."
 
-#: lib/model/Problem.php:51
+#: lib/model/Problem.php:81
 #, php-format
 msgid "Group %d should start at test %d."
 msgstr "Grupul %d trebuie să înceapă la testul %d."
 
-#: lib/model/Problem.php:56
+#: lib/model/Problem.php:86
 #, php-format
 msgid "Value exceeds number of tests in group %d."
 msgstr "Valoarea depășește numărul de teste în grupul %d."
 
-#: lib/model/Problem.php:64
+#: lib/model/Problem.php:94
 #, php-format
 msgid "Tests %d through %d are missing."
 msgstr "Testele de la %d la %d lipsesc."
 
-#: lib/model/Problem.php:79
+#: lib/model/Problem.php:109
 msgid "The problem name must be at least 2 characters long."
 msgstr "Numele problemei trebuie să aibă cel puțin două caractere."
 
-#: lib/model/Problem.php:87
+#: lib/model/Problem.php:117
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
-#: lib/model/Problem.php:91
+#: lib/model/Problem.php:121
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:96
+#: lib/model/Problem.php:126
 #, php-format
 msgid "Problems must have between %d and %d tests."
 msgstr "Problemele trebuie să aibă între %d și %d de teste."
 
-#: lib/model/Problem.php:102
+#: lib/model/Problem.php:132
 msgid "The time limit must be positive."
 msgstr "Limita de timp trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:106
+#: lib/model/Problem.php:136
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
@@ -156,7 +156,7 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/editProblem.php:46
+#: www/editProblem.php:48
 msgid ""
 "The problem name has changed. Remember to update any markdown references to "
 "attachments."
@@ -164,7 +164,7 @@ msgstr ""
 "Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
 "markdown la fișiere atașate."
 
-#: www/editProblem.php:51
+#: www/editProblem.php:53
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
@@ -390,7 +390,7 @@ msgid "e.g. 1-5; 6; 7; 8-10"
 msgstr "de ex. 1-5; 6; 7; 8-10"
 
 #: templates/editProblem.tpl:94
-msgid "evaluator"
+msgid "grader"
 msgstr "evaluator"
 
 #: templates/editProblem.tpl:94
@@ -429,6 +429,10 @@ msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
 #: templates/email/emailLogin.tpl:9
 msgid "Thank you,"
 msgstr "Mulțumiri,"
+
+#: templates/evaluator.tpl:3
+msgid "evaluator"
+msgstr "evaluator"
 
 #: templates/evaluator.tpl:6
 msgid "evaluator queue"

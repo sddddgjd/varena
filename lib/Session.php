@@ -73,7 +73,7 @@ class Session {
                 '/');
     }
 
-    Util::redirect(Util::$wwwRoot);
+    Http::redirect(Util::$wwwRoot);
   }
 
   static function logout() {
@@ -83,7 +83,7 @@ class Session {
       unset($_COOKIE[$cookieName]);
     }
     self::kill();
-    Util::redirect(Util::$wwwRoot);
+    Http::redirect(Util::$wwwRoot);
   }
 
   static function loadUserFromCookie() {

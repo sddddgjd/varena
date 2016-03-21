@@ -10,6 +10,9 @@ locale = ro_RO.utf8
 ; Name of the cookie we set on the client browser for persistent logins
 loginCookieName = loginCookie
 
+; Password that must be supplied with all API requests
+apiPassword = 1234
+
 [eval]
 
 ; Evaluator IP addresses
@@ -23,8 +26,11 @@ port = 4556
 ; Use -1 to forbid this installation from running an eval loop.
 index = 0
 
-; Cache directory for evals and test data; include trailing slash.
-cacheDir = /tmp/
+; URL of the API
+api = http://localhost/varena2/www/api.php
+
+; Cache directory for evals and test data
+cacheDir = "/tmp/eval"
 
 [email]
 

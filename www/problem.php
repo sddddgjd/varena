@@ -9,7 +9,7 @@ $problem = Problem::get_by_id($id);
 
 if (!$problem) {
   FlashMessage::add(_('Problem not found.'));
-  Util::redirect(Util::$wwwRoot);
+  Http::redirect(Util::$wwwRoot);
 }
 
 if ($file) {
@@ -21,7 +21,7 @@ if ($file) {
   if (processUploads($file, $problem, $user)) {
     FlashMessage::add(_('Source file uploaded successfully.'), 'success');
   }
-  Util::redirect("problem.php?id={$problem->id}");
+  Http::redirect("problem.php?id={$problem->id}");
 }
 
 SmartyWrap::addJs('fileUpload');

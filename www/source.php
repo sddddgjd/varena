@@ -8,7 +8,7 @@ $source = Source::get_by_id($id);
 
 if (!$source) {
   FlashMessage::add(_('Source not found.'));
-  Util::redirect(Util::$wwwRoot);
+  Http::redirect(Util::$wwwRoot);
 }
 
 SmartyWrap::assign('s', $source);

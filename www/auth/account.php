@@ -47,7 +47,7 @@ if ($submitButton) {
     } else {
       Session::set('user', $user); // cache the new values
       FlashMessage::add(_('Changes saved.'), 'info');
-      Util::redirect('account');
+      Http::redirect('account');
     }
   }
 }
