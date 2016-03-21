@@ -83,6 +83,7 @@ function evalSource($s) {
     $eval->fetchAllData();
     $eval->compileGrader();
     $eval->compileSource();
+    $eval->runAllTests();
 
     $eval->updateStatus(Source::STATUS_DONE);
   } catch (Exception $e) {

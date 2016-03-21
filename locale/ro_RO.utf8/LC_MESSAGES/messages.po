@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 18:42+0200\n"
-"PO-Revision-Date: 2016-03-21 18:43+0200\n"
+"POT-Creation-Date: 2016-03-21 19:45+0200\n"
+"PO-Revision-Date: 2016-03-21 19:46+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -85,37 +85,33 @@ msgstr "Limita de timp trebuie să fie pozitivă."
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
+#: lib/model/Source.php:16
+msgid "passed"
+msgstr "trecut"
+
+#: lib/model/Source.php:17
+msgid "time limit exceeded"
+msgstr "limită de timp depășită"
+
+#: lib/model/Source.php:18
+msgid "memory limit exceeded"
+msgstr "limită de memorie depășită"
+
+#: lib/model/Source.php:19
+msgid "nonzero exit code"
+msgstr "cod de ieșire nenul"
+
+#: lib/model/Source.php:20
+msgid "no output file"
+msgstr "fișierul de ieșire nu există"
+
+#: lib/model/Source.php:21
+msgid "wrong answer"
+msgstr "răspuns incorect"
+
 #: lib/model/Source.php:22
-msgid "new"
-msgstr "nou"
-
-#: lib/model/Source.php:23
-msgid "pending"
-msgstr "se evaluează"
-
-#: lib/model/Source.php:24
-msgid "missing test files"
-msgstr "lipsesc fișiere de test"
-
-#: lib/model/Source.php:25
-msgid "missing grader"
-msgstr "evaluatorul lipsește"
-
-#: lib/model/Source.php:26
-msgid "grader does not compile"
-msgstr "evaluatorul nu se compilează"
-
-#: lib/model/Source.php:27
-msgid "missing source file"
-msgstr "fișierul sursă lipsește"
-
-#: lib/model/Source.php:28
-msgid "compilation error"
-msgstr "eroare de compilare"
-
-#: lib/model/Source.php:29
-msgid "done"
-msgstr "evaluat"
+msgid "deferred to grader"
+msgstr "pasat la evaluator"
 
 #: lib/model/User.php:12
 msgid ""
@@ -517,6 +513,30 @@ msgstr "raport de evaluare"
 #: templates/source.tpl:41
 msgid "source code"
 msgstr "cod-sursă"
+
+#~ msgid "new"
+#~ msgstr "nou"
+
+#~ msgid "pending"
+#~ msgstr "se evaluează"
+
+#~ msgid "missing test files"
+#~ msgstr "lipsesc fișiere de test"
+
+#~ msgid "missing grader"
+#~ msgstr "evaluatorul lipsește"
+
+#~ msgid "grader does not compile"
+#~ msgstr "evaluatorul nu se compilează"
+
+#~ msgid "missing source file"
+#~ msgstr "fișierul sursă lipsește"
+
+#~ msgid "compilation error"
+#~ msgstr "eroare de compilare"
+
+#~ msgid "done"
+#~ msgstr "evaluat"
 
 #~ msgid "unknown"
 #~ msgstr "necunoscut(ă)"

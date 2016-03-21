@@ -27,10 +27,13 @@ port = 4556
 index = 0
 
 ; URL of the API
-api = http://localhost/varena2/www/api.php
+api = "http://localhost/varena2/www/api.php"
 
 ; Cache directory for evals and test data
 cacheDir = "/tmp/eval"
+
+; Directory where we copy and run each test
+workDir = "/tmp/eval-work"
 
 [email]
 

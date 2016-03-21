@@ -8,6 +8,7 @@ class EvalUtil {
   private $problem;
   private $user;
   private $dataDir;
+  private $workDir;
   private $api;
   private $password;
   private $graderExtension;
@@ -24,6 +25,7 @@ class EvalUtil {
     $this->user = $source->getUser();
     $this->dataDir = sprintf("%s/%s", Config::get('eval.cacheDir'),
                              $this->problem->name);
+    $this->workDir = Config::get('eval.workDir');
     $this->api = Config::get('eval.api');
     $this->password = Config::get('general.apiPassword');
     $this->graderExtension = mb_strtolower(
@@ -82,6 +84,26 @@ class EvalUtil {
                    $this->api, 'source', $this->source->id);
   }
 
+  function getWorkInputFile() {
+    return "{$this->workDir}/{$this->problem->name}.in";
+  }
+
+  function getWorkOutputFile() {
+    return "{$this->workDir}/{$this->problem->name}.out";
+  }
+
+  function getWorkWitnessFile() {
+    return "{$this->workDir}/{$this->problem->name}.ok";
+  }
+
+  function getWorkBinary() {
+    return "{$this->workDir}/binary";
+  }
+
+  function getWorkGraderBinary() {
+    return "{$this->workDir}/grader";
+  }
+
   /**
    * $obj is a database object whose 'created' field indicates whether
    * we need to refetch the file.
@@ -97,6 +119,8 @@ class EvalUtil {
         $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
       if ($httpCode == 200) {
         file_put_contents($file, $contents);
+      } else {
+        throw new Exception(Source::STATUS_NO_TESTS);
       }
     }
   }
@@ -190,6 +214,30 @@ class EvalUtil {
 
     if ($exitCode) {
       throw new Exception(Source::STATUS_COMPILE_ERROR);
+    }
+  }
+
+  function runAllTests() {
+    for ($i = 1; $i <= $this->problem->numTests; $i++) {
+      exec("rm -rf {$this->workDir}");
+      @mkdir($this->workDir, 0777, true);
+
+      // copy the binary and input file
+      copy($this->getSourceBinary(), $this->getWorkBinary());
+      copy($this->getInputFileName(), $this->getWorkInputFile());
+
+      // TODO run the program in jail
+
+      // evaluate the output
+      if ($this->problem->hasGrader) {
+      } else {
+        $command = sprintf('diff -qBbEa %s %s',
+                           $this->getWitnessFileName($i),
+                           $this->getWorkOutputFile());
+        exec($command, $ignored, $exitCode);
+      }
+
+      exec("rm -rf {$this->workDir}");
     }
   }
 }
