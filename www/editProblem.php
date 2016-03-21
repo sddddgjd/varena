@@ -27,11 +27,12 @@ if ($id) {
 }
 
 if ($save || $preview) {
+  $origDir = $problem->getAttachmentDir();
   $problem->name = Request::get('name');
   $problem->statement = Request::get('statement');
   $problem->numTests = Request::get('numTests');
   $problem->testGroups = Request::get('testGroups');
-  $problem->hasWitness = Request::get('hasWitness');
+  $problem->hasWitness = Request::isset('hasWitness');
   $problem->evalFile = Request::get('evalFile');
   $problem->timeLimit = Request::get('timeLimit');
   $problem->memoryLimit = Request::get('memoryLimit');
@@ -41,7 +42,14 @@ if ($save || $preview) {
     SmartyWrap::assign('errors', $errors);
   }
   if ($save && !$errors) {
+    $dir = $problem->getAttachmentDir();
+    if ($problem->id && ($dir != $origDir)) {
+      @rename($origDir, $dir); // may not exist yet
+      FlashMessage::add(_('The problem name has changed. Remember to update any markdown references to attachments.'), 'warning');
+    }
+    
     $problem->save();
+
     FlashMessage::add(_('Problem saved.'), 'success');
     Util::redirect("problem.php?id={$problem->id}");
   } else if ($preview) { // preview

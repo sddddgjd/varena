@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 21:22+0200\n"
-"PO-Revision-Date: 2016-03-20 21:23+0200\n"
+"POT-Creation-Date: 2016-03-20 21:36+0200\n"
+"PO-Revision-Date: 2016-03-20 21:37+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -156,7 +156,15 @@ msgstr "Adresa de e-mail sau parola sunt incorecte."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/editProblem.php:45
+#: www/editProblem.php:46
+msgid ""
+"The problem name has changed. Remember to update any markdown references to "
+"attachments."
+msgstr ""
+"Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
+"markdown la fișiere atașate."
+
+#: www/editProblem.php:51
 msgid "Problem saved."
 msgstr "Am salvat problema."
 

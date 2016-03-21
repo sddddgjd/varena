@@ -54,11 +54,11 @@
 
     {if count($flashMessages)}
       <div class="container">
-        <div class="alert alert-{$flashMessageType} col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-          {foreach from=$flashMessages item=m}
-            <div>{$m}</div>
-          {/foreach}
-        </div>
+        {foreach from=$flashMessages item=m}
+          <div class="alert alert-{$m.type} col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div>{$m.text}</div>
+          </div>
+        {/foreach}
       </div>
     {/if}
 

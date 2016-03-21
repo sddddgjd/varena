@@ -14,6 +14,12 @@ class Problem extends BaseObject {
     return $this->html;
   }
 
+  function getAttachmentDir() {
+    return sprintf("%s/uploads/attachments/%s",
+                   Util::$rootPath,
+                   $this->name);
+  }
+
   /**
    * Returns an array of [first, last] pairs. Throws an exception if
    * testGroups is inconsistent.
@@ -134,7 +140,6 @@ class Problem extends BaseObject {
     return true;
   }
 
-  // TODO: either disable renaming or, when renaming, rename the attachment directory.
 }
 
 ?>
