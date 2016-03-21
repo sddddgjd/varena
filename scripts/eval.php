@@ -6,9 +6,9 @@ if (Config::get('eval.index') < 0) {
   die("This installation isn't configured to run an eval loop.\n");
 }
 
-// $s = Source::get_by_id(2);
-// evalSource($s);
-// exit;
+$s = Source::get_by_id(2);
+evalSource($s);
+exit;
 
 $pid = pcntl_fork();
 
@@ -76,10 +76,17 @@ function pingListener() {
 /************************** actual evaluation ***************************/
 
 function evalSource($s) {
-  $e = new EvalUtil($s);
-  $e->updateStatus(Source::STATUS_PENDING);
+  try {
+    $eval = new EvalUtil($s);
+    $eval->updateStatus(Source::STATUS_PENDING);
 
-  $e->fetchAllData();
+    $eval->fetchAllData();
+    $eval->compileGrader();
+    $eval->compileSource();
 
-  $e->updateStatus(Source::STATUS_DONE);
+    $eval->updateStatus(Source::STATUS_DONE);
+  } catch (Exception $e) {
+    $status = $e->getMessage();
+    $eval->updateStatus($status);
+  }
 }

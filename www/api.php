@@ -68,7 +68,7 @@ function dumpSourceCode($source) {
     terminate(Http::HTTP_NOT_MODIFIED);
   }
 
-  print $s->sourceCode;
+  print $source->sourceCode;
 }
 
 ?>
