@@ -76,8 +76,9 @@ function evalSource($s) {
          $s->id, $s->getUser()->name, $s->getProblem()->name);
   $s->status = Source::STATUS_PENDING;
   $s->save();
-  // ...
-  for ($i = 0; $i < 1000000000; $i++);
+
+  // 
+
   $s->status = Source::STATUS_DONE;
   $s->save();
 }

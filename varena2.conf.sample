@@ -23,6 +23,9 @@ port = 4556
 ; Use -1 to forbid this installation from running an eval loop.
 index = 0
 
+; Cache directory for evals and test data; include trailing slash.
+cacheDir = /tmp/
+
 [email]
 
 ; When false, prevent the system from sending out any emails
