@@ -224,7 +224,7 @@ class EvalUtil {
 
       // copy the binary and input file
       copy($this->getSourceBinary(), $this->getWorkBinary());
-      copy($this->getInputFileName(), $this->getWorkInputFile());
+      copy($this->getInputFileName($i), $this->getWorkInputFile());
 
       // TODO run the program in jail
 

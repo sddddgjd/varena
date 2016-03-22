@@ -29,7 +29,7 @@ index = 0
 ; URL of the API
 api = "http://localhost/varena2/www/api.php"
 
-; Cache directory for evals and test data
+; Cache directory for test data, graders, sources and binaries
 cacheDir = "/tmp/eval"
 
 ; Directory where we copy and run each test

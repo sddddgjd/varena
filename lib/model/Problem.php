@@ -136,6 +136,10 @@ class Problem extends BaseObject {
       $errors['memoryLimit'] = _('The memory limit must be positive.');
     }
 
+    if (!$this->grader && !$this->hasWitness) {
+      $errors['grader'] = _('Problems must either use a grader or .ok files (or both).');
+    }
+
     try {
       $this->getTestGroups();
     } catch (Exception $e) {

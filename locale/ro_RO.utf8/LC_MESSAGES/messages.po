@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 19:45+0200\n"
-"PO-Revision-Date: 2016-03-21 19:46+0200\n"
+"POT-Creation-Date: 2016-03-22 11:32+0200\n"
+"PO-Revision-Date: 2016-03-22 11:32+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -33,27 +33,27 @@ msgstr "Acces interzis."
 #: lib/model/Problem.php:69
 #, php-format
 msgid "Too many dashes in group %d."
-msgstr "Prea multe cratime în grupul %d."
+msgstr "Prea multe cratime în grupa %d."
 
 #: lib/model/Problem.php:73
 #, php-format
 msgid "Illegal character in group %d."
-msgstr "Caracter incorect în grupul %d."
+msgstr "Caracter incorect în grupa %d."
 
 #: lib/model/Problem.php:77
 #, php-format
 msgid "Wrong order in group %d."
-msgstr "Ordine greșită în grupul %d."
+msgstr "Ordine greșită în grupa %d."
 
 #: lib/model/Problem.php:81
 #, php-format
 msgid "Group %d should start at test %d."
-msgstr "Grupul %d trebuie să înceapă la testul %d."
+msgstr "Grupa %d trebuie să înceapă la testul %d."
 
 #: lib/model/Problem.php:86
 #, php-format
 msgid "Value exceeds number of tests in group %d."
-msgstr "Valoarea depășește numărul de teste în grupul %d."
+msgstr "Valoarea depășește numărul de teste în grupa %d."
 
 #: lib/model/Problem.php:94
 #, php-format
@@ -85,31 +85,68 @@ msgstr "Limita de timp trebuie să fie pozitivă."
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
-#: lib/model/Source.php:16
+#: lib/model/Problem.php:140
+msgid "Problems must either use a grader or .ok files (or both)."
+msgstr ""
+"Problemele trebuie să folosească un evaluator sau fișiere .ok (sau ambele)."
+
+#: lib/model/Source.php:22
+msgid "new"
+msgstr "nou"
+
+#: lib/model/Source.php:23
+msgid "pending"
+msgstr "se evaluează"
+
+#: lib/model/Source.php:24
+msgid "missing test files"
+msgstr "lipsesc fișiere de test"
+
+#: lib/model/Source.php:25
+msgid "missing grader"
+msgstr "evaluatorul lipsește"
+
+#: lib/model/Source.php:26
+msgid "grader does not compile"
+msgstr "evaluatorul nu se compilează"
+
+#: lib/model/Source.php:27
+msgid "missing source file"
+msgstr "fișierul sursă lipsește"
+
+#: lib/model/Source.php:28
+msgid "compilation error"
+msgstr "eroare de compilare"
+
+#: lib/model/Source.php:29
+msgid "done"
+msgstr "evaluat"
+
+#: lib/model/Test.php:16
 msgid "passed"
 msgstr "trecut"
 
-#: lib/model/Source.php:17
+#: lib/model/Test.php:17
 msgid "time limit exceeded"
 msgstr "limită de timp depășită"
 
-#: lib/model/Source.php:18
+#: lib/model/Test.php:18
 msgid "memory limit exceeded"
 msgstr "limită de memorie depășită"
 
-#: lib/model/Source.php:19
+#: lib/model/Test.php:19
 msgid "nonzero exit code"
 msgstr "cod de ieșire nenul"
 
-#: lib/model/Source.php:20
+#: lib/model/Test.php:20
 msgid "no output file"
 msgstr "fișierul de ieșire nu există"
 
-#: lib/model/Source.php:21
+#: lib/model/Test.php:21
 msgid "wrong answer"
 msgstr "răspuns incorect"
 
-#: lib/model/Source.php:22
+#: lib/model/Test.php:22
 msgid "deferred to grader"
 msgstr "pasat la evaluator"
 
@@ -151,7 +188,7 @@ msgstr "Am încărcat cu succes %s fișier(e)."
 msgid "%s attachment(s) deleted."
 msgstr "Am șters %s fișiere."
 
-#: www/attachments.php:91 www/problem.php:37
+#: www/attachments.php:95 www/problem.php:37
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
@@ -413,15 +450,15 @@ msgstr "evaluator"
 msgid "leave empty for diff evaluation"
 msgstr "lasă gol pentru evaluare cu diff"
 
-#: templates/editProblem.tpl:102
+#: templates/editProblem.tpl:103
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:113
+#: templates/editProblem.tpl:114
 msgid "preview"
 msgstr "previzualizează"
 
-#: templates/editProblem.tpl:121
+#: templates/editProblem.tpl:122
 msgid "cancel"
 msgstr "anulează"
 
@@ -513,30 +550,6 @@ msgstr "raport de evaluare"
 #: templates/source.tpl:41
 msgid "source code"
 msgstr "cod-sursă"
-
-#~ msgid "new"
-#~ msgstr "nou"
-
-#~ msgid "pending"
-#~ msgstr "se evaluează"
-
-#~ msgid "missing test files"
-#~ msgstr "lipsesc fișiere de test"
-
-#~ msgid "missing grader"
-#~ msgstr "evaluatorul lipsește"
-
-#~ msgid "grader does not compile"
-#~ msgstr "evaluatorul nu se compilează"
-
-#~ msgid "missing source file"
-#~ msgstr "fișierul sursă lipsește"
-
-#~ msgid "compilation error"
-#~ msgstr "eroare de compilare"
-
-#~ msgid "done"
-#~ msgstr "evaluat"
 
 #~ msgid "unknown"
 #~ msgstr "necunoscut(ă)"

@@ -81,6 +81,10 @@ function processUploads($files, $problem, $user) {
       if (!file_exists(dirname($path))) {
         mkdir(dirname($path));
       }
+
+      // Delete other attachments by the same name, for the same problem
+      Attachment::delete_all_by_problemId_name($a->problemId, $a->name);
+
       if (move_uploaded_file($files['tmp_name'][$i], $path)) {
         $a->save();
         $e = false;

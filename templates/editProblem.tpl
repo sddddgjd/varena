@@ -96,6 +96,7 @@
           <div class="checkbox">
             <label for="hasWitness">
               <input type="checkbox"
+                     id="hasWitness"
                      name="hasWitness"
                      value="1"
                      {if $problem->hasWitness}checked{/if}>
