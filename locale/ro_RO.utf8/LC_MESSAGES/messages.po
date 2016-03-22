@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 11:32+0200\n"
-"PO-Revision-Date: 2016-03-22 11:32+0200\n"
+"POT-Creation-Date: 2016-03-22 18:19+0200\n"
+"PO-Revision-Date: 2016-03-22 18:22+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -88,7 +88,7 @@ msgstr "Limita de memorie trebuie să fie pozitivă."
 #: lib/model/Problem.php:140
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
-"Problemele trebuie să folosească un evaluator sau fișiere .ok (sau ambele)."
+"Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
 
 #: lib/model/Source.php:22
 msgid "new"
@@ -104,11 +104,11 @@ msgstr "lipsesc fișiere de test"
 
 #: lib/model/Source.php:25
 msgid "missing grader"
-msgstr "evaluatorul lipsește"
+msgstr "verificatorul lipsește"
 
 #: lib/model/Source.php:26
 msgid "grader does not compile"
-msgstr "evaluatorul nu se compilează"
+msgstr "verificatorul nu se compilează"
 
 #: lib/model/Source.php:27
 msgid "missing source file"
@@ -122,33 +122,37 @@ msgstr "eroare de compilare"
 msgid "done"
 msgstr "evaluat"
 
-#: lib/model/Test.php:16
+#: lib/model/Test.php:17
 msgid "passed"
 msgstr "trecut"
 
-#: lib/model/Test.php:17
+#: lib/model/Test.php:18
 msgid "time limit exceeded"
 msgstr "limită de timp depășită"
 
-#: lib/model/Test.php:18
+#: lib/model/Test.php:19
 msgid "memory limit exceeded"
 msgstr "limită de memorie depășită"
 
-#: lib/model/Test.php:19
+#: lib/model/Test.php:20
 msgid "nonzero exit code"
 msgstr "cod de ieșire nenul"
 
-#: lib/model/Test.php:20
+#: lib/model/Test.php:21
+msgid "terminated by jail"
+msgstr "terminat de jail"
+
+#: lib/model/Test.php:22
 msgid "no output file"
 msgstr "fișierul de ieșire nu există"
 
-#: lib/model/Test.php:21
+#: lib/model/Test.php:23
 msgid "wrong answer"
 msgstr "răspuns incorect"
 
-#: lib/model/Test.php:22
-msgid "deferred to grader"
-msgstr "pasat la evaluator"
+#: lib/model/Test.php:24
+msgid "graded"
+msgstr "verificat"
 
 #: lib/model/User.php:12
 msgid ""
@@ -444,7 +448,7 @@ msgstr "de ex. 1-5; 6; 7; 8-10"
 
 #: templates/editProblem.tpl:94
 msgid "grader"
-msgstr "evaluator"
+msgstr "verificator (grader)"
 
 #: templates/editProblem.tpl:94
 msgid "leave empty for diff evaluation"
@@ -550,167 +554,3 @@ msgstr "raport de evaluare"
 #: templates/source.tpl:41
 msgid "source code"
 msgstr "cod-sursă"
-
-#~ msgid "unknown"
-#~ msgstr "necunoscut(ă)"
-
-#~ msgid "Attachment not found."
-#~ msgstr "Fișier inexistent."
-
-#~ msgid "Attachment deleted."
-#~ msgstr "Am șters fișierul atașat."
-
-#~ msgid "actions"
-#~ msgstr "acțiuni"
-
-#~ msgid "OpenID login"
-#~ msgstr "conectare cu OpenID"
-
-#~ msgid "Home page"
-#~ msgstr "Pagina principală"
-
-#~ msgid "name (optional)"
-#~ msgstr "nume (opțional)"
-
-#~ msgid "Sign up here"
-#~ msgstr "Înregistrează-te aici."
-
-#~ msgid "If you have a Google or Yahoo account, you can use it as an OpenID:"
-#~ msgstr "Dacă ai un cont de Google say Yahoo, îl poți folosi ca OpenID:"
-
-#~ msgid "Google account login"
-#~ msgstr "Conectare cu contul Google"
-
-#~ msgid "Yahoo account login"
-#~ msgstr "Conectare cu contul Yahoo"
-
-#~ msgid ""
-#~ "If your OpenID provider is currently down, you can %srequest a one-time "
-#~ "token%s via email."
-#~ msgstr ""
-#~ "Dacă furnizorul tău de OpenID este indisponibil momentan, poți %scere un "
-#~ "cod de unică folosință%s prin e-mail."
-
-#~ msgid "What is OpenID?"
-#~ msgstr "Ce este OpenID?"
-
-#~ msgid "OpenID logo"
-#~ msgstr "logo OpenID"
-
-#~ msgid "is a faster, easier way to log in on the Internet."
-#~ msgstr ""
-#~ "este o modalitate mai rapidă și mai ușoară de a te autentifica pe "
-#~ "Internet."
-
-#~ msgid "No need to create a new account on this site;"
-#~ msgstr "Nu este nevoie să îți creezi un cont nou pe acest site;"
-
-#~ msgid "No need to remember yet another password;"
-#~ msgstr "Nu este nevoie să memorezi o parolă în plus;"
-
-#~ msgid ""
-#~ "Once created, an OpenID account can be reused on any website that accepts "
-#~ "OpenIDs;"
-#~ msgstr ""
-#~ "Un cont OpenID, odată creat, poate fi refolosit pe orice site care "
-#~ "acceptă OpenID;"
-
-#~ msgid ""
-#~ "Chances are you already have an OpenID, because many popular sites "
-#~ "(Google, Yahoo and others) act as OpenID providers."
-#~ msgstr ""
-#~ "Este posibil să ai deja un OpenID, deoarece multe site-uri populare "
-#~ "(Google, Yahoo și altele) servesc ca furnizori de OpenID."
-
-#~ msgid "You can read more on the %sOpenID website%s."
-#~ msgstr ""
-#~ "Poți citi mai multe informații pe %ssite-ul OpenID%s (în limba engleză)."
-
-#~ msgid "How do I obtain an OpenID?"
-#~ msgstr "Cum obțin un OpenID?"
-
-#~ msgid "Check %sthe list of OpenID providers%s."
-#~ msgstr "Consultă %slista de furnizori de OpenID%s."
-
-#~ msgid ""
-#~ "The username must be between 3 and 50 characters long and consist of "
-#~ "letters, digits, spaces, '-', '.' and '_'."
-#~ msgstr "Numele de utilizator trebuie să aibă între 3 și 50 de cara"
-
-#~ msgid "You have entered an invalid OpenID."
-#~ msgstr "Ai introdus un OpenID incorect."
-
-#~ msgid "We cannot redirect you to the OpenID server"
-#~ msgstr "Nu te putem redirecta către serverul de OpenID"
-
-#~ msgid "OpenID login canceled."
-#~ msgstr "conectare cu OpenID anulată."
-
-#~ msgid "OpenID login failed"
-#~ msgstr "conectare cu OpenID eșuată."
-
-#~ msgid ""
-#~ "The username must be between 3 and 20 characters long and consist of "
-#~ "letters, digits, '-', '.' and '_'."
-#~ msgstr ""
-#~ "Numele de utilizator trebuie să aibă între 3 și 20 de caractere și să "
-#~ "constea din litere, cifre, '-', '.' și '_'"
-
-#~ msgid "This username is already in use."
-#~ msgstr "Acest nume de utilizator este deja folosit."
-
-#~ msgid "New OpenID linked to your account."
-#~ msgstr "Noul OpenID a fost legat de contul tău."
-
-#~ msgid "This OpenID is already linked to your account."
-#~ msgstr "Acest OpenID este deja legat de contul tău."
-
-#~ msgid ""
-#~ "This OpenID is already linked to another account. We cannot merge "
-#~ "accounts. Please close the other account before linking the OpenID to "
-#~ "this one."
-#~ msgstr ""
-#~ "Acest OpenID este deja legat de alt cont. Sistemul nu poate uni conturi. "
-#~ "Te rugăm să închizi celălalt cont înainte de a lega OpenID-ul de acesta."
-
-#~ msgid "Please pick a username to complete your login."
-#~ msgstr "Alege-ți un nume de utilizator pentru a completa conectarea."
-
-#~ msgid "Please enter an email address."
-#~ msgstr "Te rugăm să introduci o adresă de e-mail."
-
-#~ msgid "There is no account with that email address."
-#~ msgstr "Nu există niciun cont cu această adresă de e-mail."
-
-#~ msgid ""
-#~ "We have sent you a one-time login code. Please check your email to "
-#~ "complete the login process."
-#~ msgstr ""
-#~ "Ți-am trimis un cod de unică folosință. Te rugăm să-ți verifici e-mailul "
-#~ "pentru a completa procesul de conectare."
-
-#~ msgid "Invalid token"
-#~ msgstr "Cod invalid"
-
-#~ msgid ""
-#~ "You have successfully logged in. Please remember to link an OpenID to "
-#~ "your account."
-#~ msgstr "Conectare reușită. Nu uita să legi un OpenID de contul tău."
-
-#~ msgid "Email login token"
-#~ msgstr "Cod de conectare prin e-mail"
-
-#~ msgid "Mule is working for you!"
-#~ msgstr "Mule funcționează!"
-
-#~ msgid "User %s obtained %d points."
-#~ msgstr "Utilizatorul %s a obținut %d puncte."
-
-#~ msgid "OpenId login"
-#~ msgstr "conectare cu OpenID"
-
-#~ msgid "Text to be localized"
-#~ msgstr "asdfg"
-
-#~ msgid "locale test English here"
-#~ msgstr "traducere în română aici ĂÂÎȘȚ€ß«»„”"

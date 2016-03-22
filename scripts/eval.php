@@ -6,9 +6,9 @@ if (Config::get('eval.index') < 0) {
   die("This installation isn't configured to run an eval loop.\n");
 }
 
-$s = Source::get_by_id(2);
-evalSource($s);
-exit;
+// $s = Source::get_by_id(10);
+// evalSource($s);
+// exit;
 
 $pid = pcntl_fork();
 
@@ -84,6 +84,7 @@ function evalSource($s) {
     $eval->compileGrader();
     $eval->compileSource();
     $eval->runAllTests();
+    $eval->computeScore();
 
     $eval->updateStatus(Source::STATUS_DONE);
   } catch (Exception $e) {

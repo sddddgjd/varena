@@ -116,7 +116,7 @@ class EvalUtil {
       $url .= "&password={$this->password}";
       list ($contents, $httpCode) = Http::fetchUrl($url);
       printf("* Fetching file %s ==> return code = %d (%s)\n",
-        $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
+             $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
       if ($httpCode == 200) {
         file_put_contents($file, $contents);
       } else {
@@ -217,27 +217,165 @@ class EvalUtil {
     }
   }
 
+  /**
+   * Returns a Test object with as much information populated as is known.
+   * This is tailored to jrun, in absence of a better standard.
+   **/
+  function jailedRun() {
+    $command = sprintf("%s/scripts/jrun/jrun -p %s -d %s -m %d -t %d -w %d " .
+                       "--block-syscalls-file %s/scripts/jrun/bad_syscalls",
+                       Util::$rootPath,
+                       $this->getWorkBinary(),
+                       $this->workDir,
+                       $this->problem->memoryLimit,
+                       $this->problem->timeLimit * 1000,
+                       $this->problem->timeLimit * 10000, // wall time
+                       Util::$rootPath);
+    $jailOutput = exec($command);
+
+    // interpret jrun's output
+    $regexp = '/^(?<verdict>OK|FAIL): ' .
+            'time (?<time>\\d+)ms ' .
+            'memory (?<memory>\\d+)kb ' .
+            'status (?<exitCode>[^:]+): ' .
+            '(?<message>.*)$/';
+    preg_match($regexp, $jailOutput, $data);
+    var_dump($jailOutput);
+    var_dump($data);
+
+    $t = Model::factory('Test')->create();
+    $t->sourceId = $this->source->id;
+    $t->exitCode = $data['exitCode'];
+    $t->runningTime = $data['time'] / 1000;
+    $t->memoryUsed = $data['memory'];
+    if ($data['message'] != 'Execution successful.') {
+      $t->message = $data['message'];
+    }
+
+    return $t;
+  }
+
+  /**
+   * Runs the grader and decides between STATUS_PASSED and STATUS_GRADED.
+   * Updates $t's status, score and message.
+   **/
+  function runGrader($t) {
+    // copy the witness file, if it exists, and the grader binary
+    copy($this->getGraderBinary(), $this->getWorkGraderBinary());
+    chmod($this->getWorkGraderBinary(), 0755); // copy() loses the permissions
+    if ($this->problem->hasWitness) {
+      copy($this->getWitnessFileName($t->number), $this->getWorkWitnessFile());
+    }
+
+    // We need to use proc_open to capture both stdout and stderr.
+    $descriptorspec = [
+      0 => ["pipe", "r"],  // stdin
+      1 => ["pipe", "w"],  // stdout
+      2 => ["pipe", "w"],  // stderr
+    ];
+    $p = proc_open($this->getWorkGraderBinary(),
+                   $descriptorspec,
+                   $pipes,
+                   $this->workDir);
+    $stdout = trim(stream_get_contents($pipes[1]));
+    $stderr = trim(stream_get_contents($pipes[2]));
+    fclose($pipes[0]);
+    fclose($pipes[1]);
+    fclose($pipes[2]);
+    proc_close($p);
+
+    $t->score = $stdout;
+    $t->message = $stderr;
+    $t->status = ($t->score == 100) ? Test::STATUS_PASSED : Test::STATUS_GRADED;
+  }
+
+  /**
+   * Runs diff and decides between STATUS_PASSED and STATUS_WRONG_ANSWER.
+   * Updates $t's status and score.
+   **/
+  function runDiff($t) {
+    $command = sprintf('diff -qBbEa %s %s',
+                       $this->getWitnessFileName($t->number),
+                       $this->getWorkOutputFile());
+    exec($command, $ignored, $exitCode);
+    if ($exitCode) {
+      $t->status = Test::STATUS_WRONG_ANSWER;
+    } else {
+      $t->status = Test::STATUS_PASSED;
+      $t->score = 100;
+    }
+  }
+
   function runAllTests() {
+    // purge old test records, just in case
+    Test::delete_all_by_sourceId($this->source->id);
+
     for ($i = 1; $i <= $this->problem->numTests; $i++) {
       exec("rm -rf {$this->workDir}");
       @mkdir($this->workDir, 0777, true);
 
       // copy the binary and input file
       copy($this->getSourceBinary(), $this->getWorkBinary());
+      chmod($this->getWorkBinary(), 0755); // copy() loses the permissions
       copy($this->getInputFileName($i), $this->getWorkInputFile());
 
-      // TODO run the program in jail
+      $t = $this->jailedRun();
+      $t->number = $i;
 
-      // evaluate the output
-      if ($this->problem->hasGrader) {
+      if ($t->runningTime > $this->problem->timeLimit) {
+        $t->status = Test::STATUS_TLE;
+      } else if ($t->memoryUsed > $this->problem->memoryLimit) {
+        $t->status = Test::STATUS_MLE;
+      } else if ($t->exitCode != 0) {
+        $t->status = Test::STATUS_NONZERO;
+      } else if ($t->message) {
+        $t->status = Test::STATUS_JAILED;
+      } else if (!file_exists($this->getWorkOutputFile())) {
+        $t->status = Test::STATUS_NO_OUTPUT;
+      } else if ($this->problem->grader) {
+        $this->runGrader($t);
       } else {
-        $command = sprintf('diff -qBbEa %s %s',
-                           $this->getWitnessFileName($i),
-                           $this->getWorkOutputFile());
-        exec($command, $ignored, $exitCode);
+        $this->runDiff($t);
       }
+
+      $t->save();
 
       exec("rm -rf {$this->workDir}");
     }
+  }
+
+  /**
+   * Compute Source->score based on Test->score and Problem->testGroups.
+   */
+  function computeScore() {
+    // Load the tests and map them by number
+    $tests = Test::get_all_by_sourceId($this->source->id);
+    $tmap = [];
+    foreach ($tests as $t) {
+      $tmap[$t->number] = $t;
+    }
+
+    $groups = $this->problem->getTestGroups();
+    $score = 0;
+
+    foreach ($groups as list($first, $last)) {
+      if ($first == $last) {
+        // single tests always count
+        $p = $tmap[$first]->score / 100 * (100 / $this->problem->numTests);
+        $score += $p;
+      } else {
+        // grouped tests get all or nothing
+        $passed = 0;
+        for ($i = $first; $i <= $last; $i++) {
+          $passed += ($tmap[$i]->score == 100);
+        }
+        if ($passed == $last - $first + 1) {
+          $p = ($last - $first + 1) * (100 / $this->problem->numTests);
+          $score += $p;
+        }
+      }
+    }
+    $this->source->score = $score;
+    $this->source->save();
   }
 }
