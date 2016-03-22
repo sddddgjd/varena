@@ -240,8 +240,6 @@ class EvalUtil {
             'status (?<exitCode>[^:]+): ' .
             '(?<message>.*)$/';
     preg_match($regexp, $jailOutput, $data);
-    var_dump($jailOutput);
-    var_dump($data);
 
     $t = Model::factory('Test')->create();
     $t->sourceId = $this->source->id;

@@ -207,7 +207,7 @@ void exit_gracefully(int status)
          child_failed ? "FAIL" : "OK",
          child_time,
          child_memory,
-         WEXITSTATUS(status),
+         status,
          message);
   exit(0);
 }
