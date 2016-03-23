@@ -240,8 +240,6 @@ class EvalUtil {
             'status (?<exitCode>[^:]+): ' .
             '(?<message>.*)$/';
     preg_match($regexp, $jailOutput, $data);
-    var_dump($jailOutput);
-    var_dump($data);
 
     $t = Model::factory('Test')->create();
     $t->sourceId = $this->source->id;
@@ -348,34 +346,7 @@ class EvalUtil {
    * Compute Source->score based on Test->score and Problem->testGroups.
    */
   function computeScore() {
-    // Load the tests and map them by number
-    $tests = Test::get_all_by_sourceId($this->source->id);
-    $tmap = [];
-    foreach ($tests as $t) {
-      $tmap[$t->number] = $t;
-    }
-
-    $groups = $this->problem->getTestGroups();
-    $score = 0;
-
-    foreach ($groups as list($first, $last)) {
-      if ($first == $last) {
-        // single tests always count
-        $p = $tmap[$first]->score / 100 * (100 / $this->problem->numTests);
-        $score += $p;
-      } else {
-        // grouped tests get all or nothing
-        $passed = 0;
-        for ($i = $first; $i <= $last; $i++) {
-          $passed += ($tmap[$i]->score == 100);
-        }
-        if ($passed == $last - $first + 1) {
-          $p = ($last - $first + 1) * (100 / $this->problem->numTests);
-          $score += $p;
-        }
-      }
-    }
-    $this->source->score = $score;
+    $this->source->computeScore();
     $this->source->save();
   }
 }

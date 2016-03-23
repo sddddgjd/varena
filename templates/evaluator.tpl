@@ -24,7 +24,14 @@
           <td>{include "bits/problemLink.tpl" p=$s->getProblem()}</td>
           <td>{include "bits/fileSize.tpl" s=$s->sourceCode|count_characters:true}</td>
           <td>{include "bits/dateTime.tpl" ts=$s->created}</td>
-          <td>{$s->getStatusName()}</td>
+          <td>
+            <a href="source.php?id={$s->id}">
+              {$s->getStatusName()}
+            </a>
+            {if $s->hasScore()}
+              ({$s->score} {"points"|_})
+            {/if}
+          </td>
         </tr>
       {/foreach}
     </tbody>

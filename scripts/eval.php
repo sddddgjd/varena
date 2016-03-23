@@ -6,7 +6,7 @@ if (Config::get('eval.index') < 0) {
   die("This installation isn't configured to run an eval loop.\n");
 }
 
-// $s = Source::get_by_id(10);
+// $s = Source::get_by_id(7);
 // evalSource($s);
 // exit;
 
@@ -35,7 +35,7 @@ function evalLoop() {
     do {
       // Find a new or pending job
       $source = Model::factory('Source')
-              ->where_in('status', [Source::STATUS_NEW, Source::STATUS_PENDING])
+              ->where_not_in('status', [Source::STATUS_DONE, Source::STATUS_COMPILE_ERROR])
               ->where_raw('id % ? = ?', [$mod, $rem])
               ->order_by_asc('id')
               ->find_one();
