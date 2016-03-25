@@ -244,7 +244,7 @@ class EvalUtil {
     $t = Model::factory('Test')->create();
     $t->sourceId = $this->source->id;
     $t->exitCode = $data['exitCode'];
-    $t->runningTime = $data['time'] / 1000;
+    $t->runningTime = $data['time'];
     $t->memoryUsed = $data['memory'];
     if ($data['message'] != 'Execution successful.') {
       $t->message = $data['message'];
@@ -320,7 +320,7 @@ class EvalUtil {
       $t = $this->jailedRun();
       $t->number = $i;
 
-      if ($t->runningTime > $this->problem->timeLimit) {
+      if ($t->runningTime > 1000 * $this->problem->timeLimit) {
         $t->status = Test::STATUS_TLE;
       } else if ($t->memoryUsed > $this->problem->memoryLimit) {
         $t->status = Test::STATUS_MLE;
@@ -346,34 +346,7 @@ class EvalUtil {
    * Compute Source->score based on Test->score and Problem->testGroups.
    */
   function computeScore() {
-    // Load the tests and map them by number
-    $tests = Test::get_all_by_sourceId($this->source->id);
-    $tmap = [];
-    foreach ($tests as $t) {
-      $tmap[$t->number] = $t;
-    }
-
-    $groups = $this->problem->getTestGroups();
-    $score = 0;
-
-    foreach ($groups as list($first, $last)) {
-      if ($first == $last) {
-        // single tests always count
-        $p = $tmap[$first]->score / 100 * (100 / $this->problem->numTests);
-        $score += $p;
-      } else {
-        // grouped tests get all or nothing
-        $passed = 0;
-        for ($i = $first; $i <= $last; $i++) {
-          $passed += ($tmap[$i]->score == 100);
-        }
-        if ($passed == $last - $first + 1) {
-          $p = ($last - $first + 1) * (100 / $this->problem->numTests);
-          $score += $p;
-        }
-      }
-    }
-    $this->source->score = $score;
+    $this->source->computeScore();
     $this->source->save();
   }
 }

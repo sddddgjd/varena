@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 18:19+0200\n"
-"PO-Revision-Date: 2016-03-22 18:22+0200\n"
+"POT-Creation-Date: 2016-03-25 19:17+0200\n"
+"PO-Revision-Date: 2016-03-25 19:17+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -60,39 +60,39 @@ msgstr "Valoarea depășește numărul de teste în grupa %d."
 msgid "Tests %d through %d are missing."
 msgstr "Testele de la %d la %d lipsesc."
 
-#: lib/model/Problem.php:109
+#: lib/model/Problem.php:117
 msgid "The problem name must be at least 2 characters long."
 msgstr "Numele problemei trebuie să aibă cel puțin două caractere."
 
-#: lib/model/Problem.php:117
+#: lib/model/Problem.php:125
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
-#: lib/model/Problem.php:121
+#: lib/model/Problem.php:129
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:126
+#: lib/model/Problem.php:134
 #, php-format
 msgid "Problems must have between %d and %d tests."
 msgstr "Problemele trebuie să aibă între %d și %d de teste."
 
-#: lib/model/Problem.php:132
+#: lib/model/Problem.php:140
 msgid "The time limit must be positive."
 msgstr "Limita de timp trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:136
+#: lib/model/Problem.php:144
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:140
+#: lib/model/Problem.php:148
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
 
 #: lib/model/Source.php:22
 msgid "new"
-msgstr "nou"
+msgstr "nouă"
 
 #: lib/model/Source.php:23
 msgid "pending"
@@ -120,39 +120,42 @@ msgstr "eroare de compilare"
 
 #: lib/model/Source.php:29
 msgid "done"
-msgstr "evaluat"
+msgstr "evaluată"
 
 #: lib/model/Test.php:17
 msgid "passed"
 msgstr "trecut"
 
-#: lib/model/Test.php:18
+#: lib/model/Test.php:20
 msgid "time limit exceeded"
 msgstr "limită de timp depășită"
 
-#: lib/model/Test.php:19
+#: lib/model/Test.php:23
 msgid "memory limit exceeded"
 msgstr "limită de memorie depășită"
 
-#: lib/model/Test.php:20
-msgid "nonzero exit code"
-msgstr "cod de ieșire nenul"
+#: lib/model/Test.php:26
+#, php-format
+msgid "nonzero exit code (%d)"
+msgstr "cod de ieșire nenul (%d)"
 
-#: lib/model/Test.php:21
-msgid "terminated by jail"
-msgstr "terminat de jail"
+#: lib/model/Test.php:29
+#, php-format
+msgid "terminated by jail (%s)"
+msgstr "terminat de jail (%s)"
 
-#: lib/model/Test.php:22
+#: lib/model/Test.php:32
 msgid "no output file"
 msgstr "fișierul de ieșire nu există"
 
-#: lib/model/Test.php:23
+#: lib/model/Test.php:35
 msgid "wrong answer"
 msgstr "răspuns incorect"
 
-#: lib/model/Test.php:24
-msgid "graded"
-msgstr "verificat"
+#: lib/model/Test.php:38
+#, php-format
+msgid "graded (%s)"
+msgstr "verificat (%s)"
 
 #: lib/model/User.php:12
 msgid ""
@@ -250,7 +253,7 @@ msgstr "înapoi"
 msgid "name"
 msgstr "nume"
 
-#: templates/attachments.tpl:29 templates/source.tpl:17
+#: templates/attachments.tpl:29 templates/source.tpl:19
 msgid "size"
 msgstr "mărime"
 
@@ -258,7 +261,7 @@ msgstr "mărime"
 msgid "uploader"
 msgstr "autor"
 
-#: templates/attachments.tpl:31 templates/source.tpl:19
+#: templates/attachments.tpl:31 templates/source.tpl:13
 msgid "date"
 msgstr "dată"
 
@@ -274,11 +277,11 @@ msgstr "șterge"
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:75 templates/problem.tpl:27
+#: templates/attachments.tpl:75 templates/problem.tpl:28
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:86 templates/problem.tpl:38
+#: templates/attachments.tpl:86 templates/problem.tpl:39
 msgid "upload"
 msgstr "încarcă"
 
@@ -499,17 +502,21 @@ msgstr "coada de evaluare"
 msgid "ID"
 msgstr "ID"
 
-#: templates/evaluator.tpl:12 templates/source.tpl:11
+#: templates/evaluator.tpl:12 templates/source.tpl:23
 msgid "user"
 msgstr "utilizator"
 
-#: templates/evaluator.tpl:13 templates/source.tpl:13
+#: templates/evaluator.tpl:13 templates/source.tpl:29
 msgid "problem"
 msgstr "problemă"
 
-#: templates/evaluator.tpl:16
+#: templates/evaluator.tpl:16 templates/source.tpl:11
 msgid "status"
 msgstr "stare"
+
+#: templates/evaluator.tpl:32 templates/source.tpl:69
+msgid "points"
+msgstr "puncte"
 
 #: templates/index.tpl:6
 msgid "Varena2 is working for you!"
@@ -523,7 +530,7 @@ msgstr "acasă"
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:44
+#: templates/layout.tpl:48
 msgid "logout"
 msgstr "deconectare"
 
@@ -531,7 +538,11 @@ msgstr "deconectare"
 msgid "edit"
 msgstr "editează"
 
-#: templates/problem.tpl:18
+#: templates/problem.tpl:16
+msgid "submitted sources"
+msgstr "surse trimise"
+
+#: templates/problem.tpl:19
 msgid "submit a source file"
 msgstr "trimite o sursă"
 
@@ -539,18 +550,66 @@ msgstr "trimite o sursă"
 msgid "source"
 msgstr "sursă"
 
-#: templates/source.tpl:23
-msgid "compiler"
-msgstr "compilator"
-
-#: templates/source.tpl:25
+#: templates/source.tpl:17
 msgid "score"
 msgstr "scor"
 
-#: templates/source.tpl:36
+#: templates/source.tpl:25
+msgid "compiler"
+msgstr "compilator"
+
+#: templates/source.tpl:42
 msgid "evaluation report"
 msgstr "raport de evaluare"
 
-#: templates/source.tpl:41
+#: templates/source.tpl:47
+msgid "compilation report"
+msgstr "raport de compilare"
+
+#: templates/source.tpl:52
 msgid "source code"
 msgstr "cod-sursă"
+
+#: templates/source.tpl:61
+msgid "Score"
+msgstr "Scor"
+
+#: templates/source.tpl:65
+msgid "test #"
+msgstr "test #"
+
+#: templates/source.tpl:66
+msgid "CPU time (ms)"
+msgstr "timp (ms)"
+
+#: templates/source.tpl:67
+msgid "memory used (kb)"
+msgstr "memorie (kb)"
+
+#: templates/source.tpl:68
+msgid "message"
+msgstr "mesaj"
+
+#: templates/source.tpl:71
+msgid "group points"
+msgstr "puncte pe grup"
+
+#: templates/source.tpl:94
+msgid "total score"
+msgstr "scor total"
+
+#: templates/source.tpl:100
+msgid "Source status:"
+msgstr "Starea sursei:"
+
+#: templates/source.tpl:102
+msgid "This source was not evaluated yet. Please try again later."
+msgstr "Această sursă nu a fost încă evaluată. Te rog să încerci mai târziu."
+
+#: templates/source.tpl:108
+msgid "Compiler command"
+msgstr "Comanda de compilare"
+
+#: templates/source.tpl:112
+msgid "Compiler output"
+msgstr "Ieșirea compilatorului"

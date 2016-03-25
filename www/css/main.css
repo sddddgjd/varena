@@ -23,6 +23,16 @@ h3:first-letter {
 .voffset8 { margin-top: 100px; }
 .voffset9 { margin-top: 150px; }
 
+.table td.group-score {
+  vertical-align: middle;
+}
+
+.table-bordered tr.first-in-group {
+  border-top: 2px solid #bbbbbb;
+}
+
+/* Prettier file upload button */
+
 .btn-file {
   position: relative;
   overflow: hidden;

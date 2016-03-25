@@ -53,7 +53,7 @@ class Problem extends BaseObject {
 
     if (!$this->testGroups) {
       for ($i = 1; $i <= $this->numTests; $i++) {
-        $result[] = [$i, $i];
+        $result[] = ['first' => $i, 'last' => $i];
       }
     } else {
       $prev = 0;
@@ -86,7 +86,7 @@ class Problem extends BaseObject {
           throw new Exception(sprintf(_('Value exceeds number of tests in group %d.'), $i + 1));
         }
 
-        $result[] = [$first, $last];
+        $result[] = ['first' => $first, 'last' => $last];
         $prev = $last;
       }
 
@@ -97,6 +97,14 @@ class Problem extends BaseObject {
     }
 
     return $result;
+  }
+
+  /**
+   * Returns an array of test number => points.
+   * Boring for now, but in the future some tests may be worth more than others.
+   **/
+  function getTestPoints() {
+    return array_fill(1, $this->numTests, 100 / $this->numTests);
   }
   
   /**
