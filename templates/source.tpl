@@ -63,7 +63,7 @@
             <thead>
               <tr>
                 <th>{"test #"|_}</th>
-                <th>{"CPU time (s)"|_}</th>
+                <th>{"CPU time (ms)"|_}</th>
                 <th>{"memory used (kb)"|_}</th>
                 <th>{"message"|_}</th>
                 <th>{"points"|_}</th>

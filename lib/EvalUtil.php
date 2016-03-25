@@ -244,7 +244,7 @@ class EvalUtil {
     $t = Model::factory('Test')->create();
     $t->sourceId = $this->source->id;
     $t->exitCode = $data['exitCode'];
-    $t->runningTime = $data['time'] / 1000;
+    $t->runningTime = $data['time'];
     $t->memoryUsed = $data['memory'];
     if ($data['message'] != 'Execution successful.') {
       $t->message = $data['message'];
@@ -320,7 +320,7 @@ class EvalUtil {
       $t = $this->jailedRun();
       $t->number = $i;
 
-      if ($t->runningTime > $this->problem->timeLimit) {
+      if ($t->runningTime > 1000 * $this->problem->timeLimit) {
         $t->status = Test::STATUS_TLE;
       } else if ($t->memoryUsed > $this->problem->memoryLimit) {
         $t->status = Test::STATUS_MLE;
