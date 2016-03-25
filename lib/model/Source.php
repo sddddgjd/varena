@@ -50,10 +50,15 @@ class Source extends BaseObject {
 
   /**
    * Computes this->score based on Test->score and Problem->testGroups.
-   * Returns an array of group scores.
+   * Returns intermediary data: points per test, points per test group.
    * Does not call save().
    */
   function computeScore() {
+    if (!$this->hasTests()) {
+      $this->score = 0;
+      return null;
+    }
+
     // Load the tests and map them by number
     $tests = Model::factory('Test')
            ->where('sourceId', $this->id)
@@ -95,7 +100,10 @@ class Source extends BaseObject {
       $this->score += $g['score'];
     }
 
-    return $groups;
+    return [
+      'groups' => $groups,
+      'points' => $points,
+    ];
   }
 
   /* Returns true if the status indicates the score field is meaningful. */

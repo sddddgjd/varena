@@ -84,9 +84,11 @@ function evalSource($s) {
     $eval->compileGrader();
     $eval->compileSource();
     $eval->runAllTests();
+
+    // update status first, so hasTests() returns true
+    $eval->updateStatus(Source::STATUS_DONE);
     $eval->computeScore();
 
-    $eval->updateStatus(Source::STATUS_DONE);
   } catch (Exception $e) {
     $status = $e->getMessage();
     $eval->updateStatus($status);

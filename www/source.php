@@ -14,27 +14,35 @@ if (!$s) {
 $format = EvalUtil::COMPILERS[$s->extension];
 $command = sprintf($format, "file.{$s->extension}", "file");
 
-$groups = $s->computeScore();
+if ($s->hasTests()) {
+  $scoreInfo = $s->computeScore();
+  $points = $scoreInfo['points'];
+  $groups = $scoreInfo['groups'];
 
-$data = [];
-foreach ($tests as $t) {
-  $data[$t->number] = [
-    'runningTime' => $t->runningTime,
-    'memoryUsed' => $t->memoryUsed,
-    'message' => $t->message,
-    'score' => $points[$t->number] * $t->score / 100,
-    'rowSpan' => 0,
-    'groupScore' => 0,
-  ];
-}
+  $tests = Model::factory('Test')
+         ->where('sourceId', $s->id)
+         ->order_by_asc('number')
+         ->find_many();
+  $data = [];
+  foreach ($tests as $t) {
+    $data[$t->number] = [
+      'runningTime' => $t->runningTime,
+      'memoryUsed' => $t->memoryUsed,
+      'message' => $t->getMessage(),
+      'score' => $points[$t->number] * $t->score / 100,
+      'rowSpan' => 0,
+      'groupScore' => 0,
+    ];
+  }
 
-foreach ($groups as $gr) {
-  $data[$gr['first']]['rowSpan'] = $gr['last'] - $gr['first'] + 1;
-  $data[$gr['first']]['groupScore'] = $gr['score'];
+  foreach ($groups as $gr) {
+    $data[$gr['first']]['rowSpan'] = $gr['last'] - $gr['first'] + 1;
+    $data[$gr['first']]['groupScore'] = $gr['score'];
+  }
+  SmartyWrap::assign('data', $data);
 }
 
 SmartyWrap::assign('s', $s);
 SmartyWrap::assign('problem', $s->getProblem());
 SmartyWrap::assign('command', $command);
-SmartyWrap::assign('data', $data);
 SmartyWrap::display('source.tpl');

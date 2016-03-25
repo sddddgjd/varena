@@ -74,18 +74,27 @@
             </thead>
             <tbody>
               {foreach $data as $number => $t}
-                <tr>
+                <tr {if $problem->testGroups && $t.rowSpan}class="first-in-group"{/if}>
                   <td>{$number}</td>
                   <td>{$t.runningTime}</td>
                   <td>{$t.memoryUsed}</td>
                   <td>{$t.message}</td>
                   <td>{$t.score}</td>
                   {if $problem->testGroups && $t.rowSpan}
-                    <td rowspan="{$t.rowSpan}">{$t.groupScore}</td>
+                    <td rowspan="{$t.rowSpan}" class="group-score">
+                      {$t.groupScore}
+                    </td>
                   {/if}
                 </tr>
               {/foreach}
             </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="{if $problem->testGroups}5{else}4{/if}">
+                  {"total score"|_}
+                </th>
+                <th>{$s->score}</th>
+            </tfoot>
           </table>
         {else}
           <h4>{"Source status:"|_} {$s->getStatusName()}</h4>
