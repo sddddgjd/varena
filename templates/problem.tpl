@@ -12,7 +12,8 @@
   {if $problem->editableBy($user)}
     <a href="editProblem.php?id={$problem->id}">{"edit"|_}</a> |
   {/if}
-  <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a>
+  <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a> |
+  <a href="evaluator.php?problemId={$problem->id}">{"submitted sources"|_}</a>
 
   {if $user}
     <h3>{"submit a source file"|_}</h3>

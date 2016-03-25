@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-25 19:03+0200\n"
-"PO-Revision-Date: 2016-03-25 19:03+0200\n"
+"POT-Creation-Date: 2016-03-25 19:17+0200\n"
+"PO-Revision-Date: 2016-03-25 19:17+0200\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -277,11 +277,11 @@ msgstr "șterge"
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:75 templates/problem.tpl:27
+#: templates/attachments.tpl:75 templates/problem.tpl:28
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:86 templates/problem.tpl:38
+#: templates/attachments.tpl:86 templates/problem.tpl:39
 msgid "upload"
 msgstr "încarcă"
 
@@ -530,7 +530,7 @@ msgstr "acasă"
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:44
+#: templates/layout.tpl:48
 msgid "logout"
 msgstr "deconectare"
 
@@ -538,7 +538,11 @@ msgstr "deconectare"
 msgid "edit"
 msgstr "editează"
 
-#: templates/problem.tpl:18
+#: templates/problem.tpl:16
+msgid "submitted sources"
+msgstr "surse trimise"
+
+#: templates/problem.tpl:19
 msgid "submit a source file"
 msgstr "trimite o sursă"
 
