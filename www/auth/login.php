@@ -6,6 +6,7 @@ Util::requireNotLoggedIn();
 
 $method = Request::get('method');
 $email = Request::get('email');
+$username = Request::get('username');
 $name = Request::get('name');
 $password = Request::get('password');
 $password2 = Request::get('password2');
@@ -22,6 +23,7 @@ if ($method == 'login') {
 } else if ($method == 'signup') {
   $u = Model::factory('User')->create();
   $u->email = $email;
+  $u->username = $username;
   $u->name = $name;
   $u->password = $password;
   $errors = $u->validate();
@@ -38,6 +40,7 @@ if ($method == 'login') {
 SmartyWrap::assign('method', $method);
 SmartyWrap::assign('errors', $errors);
 SmartyWrap::assign('email', $email);
+SmartyWrap::assign('username', $username);
 SmartyWrap::assign('name', $name);
 SmartyWrap::assign('remember', $remember);
 SmartyWrap::display('auth/login.tpl');

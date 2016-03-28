@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-25 19:17+0200\n"
-"PO-Revision-Date: 2016-03-25 19:17+0200\n"
+"POT-Creation-Date: 2016-03-28 17:36+0300\n"
+"PO-Revision-Date: 2016-03-28 17:38+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -157,23 +157,39 @@ msgstr "răspuns incorect"
 msgid "graded (%s)"
 msgstr "verificat (%s)"
 
-#: lib/model/User.php:12
+#: lib/model/User.php:14
 msgid ""
-"Your name must be between 3 and 50 characters long and consist of letters, "
-"digits, spaces, '-', '.' and '_'."
+"Your username must be between 3 and 25 characters long and consist of "
+"letters, digits, '-', '.' and '_'."
 msgstr ""
-"Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
-"cifre, spații, '-', '.' și '_'."
+"Numele de utilizator trebuie să aibă între 3 și 25 de caractere și să "
+"conțină litere, cifre, '-', '.' și '_'."
 
 #: lib/model/User.php:16
+msgid "Your username must contain at least three letters."
+msgstr "Numele de utilizator trebuie să conțină cel puțin trei litere."
+
+#: lib/model/User.php:24
+msgid "This username is taken."
+msgstr "Numele de utilizator este luat."
+
+#: lib/model/User.php:28
+msgid ""
+"Your name must be between 3 and 50 characters long and consist of letters, "
+"spaces, '-' and '.'."
+msgstr ""
+"Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
+"spații, '-' și '.'."
+
+#: lib/model/User.php:32
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:25
+#: lib/model/User.php:40
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
 
-#: lib/model/User.php:30
+#: lib/model/User.php:45
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
@@ -208,11 +224,11 @@ msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
 msgid "Changes saved."
 msgstr "Am salvat modificările."
 
-#: www/auth/login.php:20
+#: www/auth/login.php:21
 msgid "Incorrect email or password."
 msgstr "Adresa de e-mail sau parola sunt incorecte."
 
-#: www/auth/login.php:29
+#: www/auth/login.php:31
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
@@ -385,19 +401,23 @@ msgstr "Înregistrează-te aici."
 msgid "Sign Up"
 msgstr "Înregistrare"
 
-#: templates/auth/login.tpl:105
+#: templates/auth/login.tpl:101
+msgid "name (optional)"
+msgstr "nume (opțional)"
+
+#: templates/auth/login.tpl:109
 msgid "password (again)"
 msgstr "parolă (din nou)"
 
-#: templates/auth/login.tpl:111
+#: templates/auth/login.tpl:115
 msgid "sign up"
 msgstr "înregistrare"
 
-#: templates/auth/login.tpl:120
+#: templates/auth/login.tpl:124
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/login.tpl:122
+#: templates/auth/login.tpl:126
 msgid "Log in here."
 msgstr "Conectează-te aici."
 

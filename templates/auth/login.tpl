@@ -94,7 +94,11 @@
           
           <div class="voffset4"></div>
 
-          {input field="name" value=$name glyph="user" placeholder={"name"|_} required=true}
+          {input field="username" value=$username glyph="user" placeholder={"username"|_} required=true}
+          
+          <div class="voffset4"></div>
+
+          {input field="name" value=$name glyph="pencil" placeholder={"name (optional)"|_}}
           
           <div class="voffset4"></div>
 
