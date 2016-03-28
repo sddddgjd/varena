@@ -13,6 +13,14 @@ loginCookieName = loginCookie
 ; Password that must be supplied with all API requests
 apiPassword = 1234
 
+[logging]
+
+; Log file name. Can also be "php://stdout" or "php://stderr"
+file = "/tmp/varena2.log"
+
+; Maximum priority level. See <http://php.net/manual/en/function.syslog.php>.
+level = LOG_DEBUG
+
 [eval]
 
 ; Evaluator IP addresses
