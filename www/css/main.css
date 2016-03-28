@@ -11,6 +11,15 @@ h3:first-letter {
   text-transform: uppercase;
 }
 
+/* footer style */
+
+.footer {
+  border-top: 1px solid #bbbbbb;
+  margin-top: 20px;
+  padding-top: 10px;
+  height: 50px;
+}
+
 /* as suggested by http://pdenya.com/2013/08/08/vertical-space-in-bootstrap/ */
 .voffset  { margin-top: 2px; }
 .voffset1 { margin-top: 5px; }

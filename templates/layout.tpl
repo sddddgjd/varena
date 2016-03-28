@@ -71,8 +71,11 @@
     </div>
 
     <footer class="footer">
-      <div id="license">
-        licență aici
+      <div class="container">
+        <p class="text-muted">
+          © 2016 Cătălin Frâncu |
+          <a href="https://github.com/CatalinFrancu/varena2">GitHub</a>
+        </p>
       </div>
     </footer>
   </body>
