@@ -41,7 +41,7 @@
           {input field="password" type="password" glyph="lock" placeholder={"password"|_} required=true}
 
           <p class="pull-right">
-            <a href="recoverPassword.php">
+            <a href="changePass">
               {"Forgot password?"|_}
             </a>
           </p>

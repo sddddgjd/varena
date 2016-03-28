@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-28 17:36+0300\n"
-"PO-Revision-Date: 2016-03-28 17:38+0300\n"
+"POT-Creation-Date: 2016-03-28 19:30+0300\n"
+"PO-Revision-Date: 2016-03-28 19:34+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -157,7 +157,7 @@ msgstr "răspuns incorect"
 msgid "graded (%s)"
 msgstr "verificat (%s)"
 
-#: lib/model/User.php:14
+#: lib/model/User.php:15
 msgid ""
 "Your username must be between 3 and 25 characters long and consist of "
 "letters, digits, '-', '.' and '_'."
@@ -165,15 +165,15 @@ msgstr ""
 "Numele de utilizator trebuie să aibă între 3 și 25 de caractere și să "
 "conțină litere, cifre, '-', '.' și '_'."
 
-#: lib/model/User.php:16
+#: lib/model/User.php:17
 msgid "Your username must contain at least three letters."
 msgstr "Numele de utilizator trebuie să conțină cel puțin trei litere."
 
-#: lib/model/User.php:24
+#: lib/model/User.php:25
 msgid "This username is taken."
 msgstr "Numele de utilizator este luat."
 
-#: lib/model/User.php:28
+#: lib/model/User.php:29
 msgid ""
 "Your name must be between 3 and 50 characters long and consist of letters, "
 "spaces, '-' and '.'."
@@ -181,17 +181,21 @@ msgstr ""
 "Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
 "spații, '-' și '.'."
 
-#: lib/model/User.php:32
+#: lib/model/User.php:33
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:40
+#: lib/model/User.php:41
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
 
-#: lib/model/User.php:45
+#: lib/model/User.php:57
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
+
+#: lib/model/User.php:61
+msgid "Passwords don't match."
+msgstr "Parolele nu coincid."
 
 #: www/attachments.php:15 www/editProblem.php:16 www/problem.php:11
 msgid "Problem not found."
@@ -224,13 +228,42 @@ msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
 msgid "Changes saved."
 msgstr "Am salvat modificările."
 
+#: www/auth/changePass.php:15
+msgid ""
+"The system is configured not to send out any emails. Please contact an "
+"administrator."
+msgstr ""
+"Sistemul este configurat să nu trimită emailuri. Te rugăm să contactezi un "
+"administrator."
+
+#: www/auth/changePass.php:35
+msgid "Password change"
+msgstr "Schimbarea parolei"
+
+#: www/auth/changePass.php:47
+#, php-format
+msgid ""
+"We have sent an email to <b>%s</b>. Click on the included link to change "
+"your password."
+msgstr ""
+"Am trimit un mesaj către <b>%s</b>. Deschide linkul inclus pentru a-ți "
+"schimba parola."
+
 #: www/auth/login.php:21
 msgid "Incorrect email or password."
 msgstr "Adresa de e-mail sau parola sunt incorecte."
 
-#: www/auth/login.php:31
-msgid "Passwords don't match."
-msgstr "Parolele nu coincid."
+#: www/auth/newPass.php:18
+msgid "You have entered an invalid token."
+msgstr "Ai introdus un cod incorect."
+
+#: www/auth/newPass.php:25
+msgid "Please contact an administrator."
+msgstr "Te rugăm să contactezi un administrator."
+
+#: www/auth/newPass.php:37
+msgid "Password changed."
+msgstr "Am schimbat parola."
 
 #: www/editProblem.php:48
 msgid ""
@@ -301,7 +334,7 @@ msgstr "alege..."
 msgid "upload"
 msgstr "încarcă"
 
-#: templates/auth/account.tpl:1
+#: templates/auth/account.tpl:1 templates/layout.tpl:47
 msgid "my account"
 msgstr "contul meu"
 
@@ -349,11 +382,33 @@ msgstr "leagă alt OpenID de acest cont"
 msgid "Redirecting you to your OpenID provider..."
 msgstr "Te redirectăm către furnizorul de OpenID..."
 
+#: templates/auth/changePass.tpl:3
+msgid "password change"
+msgstr "schimbarea parolei"
+
+#: templates/auth/changePass.tpl:31
+msgid "Type in your email and we'll send you an email to change your password."
+msgstr ""
+"Introdu adresa de e-mail și îți vom trimite un mesaj pentru a-ți schimba "
+"parola."
+
+#: templates/auth/changePass.tpl:41
+msgid "send"
+msgstr "trimite"
+
+#: templates/auth/changePass.tpl:49
+msgid "Know your password?"
+msgstr "Îți știi parola?"
+
+#: templates/auth/changePass.tpl:51
+msgid "Log in here."
+msgstr "Conectează-te aici."
+
 #: templates/auth/emailLogin.tpl:1
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6
+#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:52
 msgid "login"
 msgstr "conectare"
 
@@ -417,9 +472,17 @@ msgstr "înregistrare"
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/login.tpl:126
-msgid "Log in here."
-msgstr "Conectează-te aici."
+#: templates/auth/newPass.tpl:3
+msgid "new password"
+msgstr "parolă nouă"
+
+#: templates/auth/newPass.tpl:26
+msgid "Choose a new password"
+msgstr "Alege-ți o parolă nouă"
+
+#: templates/auth/newPass.tpl:43
+msgid "change password"
+msgstr "schimbă parola"
 
 #: templates/editProblem.tpl:24
 msgid "edit problem"
@@ -489,28 +552,27 @@ msgstr "previzualizează"
 msgid "cancel"
 msgstr "anulează"
 
-#: templates/email/emailLogin.tpl:1
+#: templates/email/changePass.tpl:1
 msgid "Hi,"
-msgstr "Bună ziua,"
+msgstr "Salut,"
 
-#: templates/email/emailLogin.tpl:3
+#: templates/email/changePass.tpl:3
 msgid ""
-"You are receiving this message because you requested a one-time login token. "
-"To complete your login, please visit this link within one hour:"
+"You are receiving this message because you requested a password change. To "
+"change your password, please click this link within 15 minutes:"
 msgstr ""
-"Primești acest mesaj deoarece ai cerut un cod de conectare de unică "
-"folosință. Pentru a completa conectarea, te rugăm să vizitezi această adresă "
-"în cel mult o oră:"
+"Primești acest mesaj pentru că ai cerut schimbarea parolei. Pentru a-ți "
+"schimba parola, deschide acest link în maximum 15 minute:"
 
-#: templates/email/emailLogin.tpl:7
-msgid "If you did not request this token, please discard this message."
-msgstr "Dacă nu tu ai cerut codul, te rugăm să ignori acest mesaj."
+#: templates/email/changePass.tpl:7
+msgid "If you did not request this change, please discard this message."
+msgstr "Dacă nu ai cerut această schimbare, te rugăm să ignori acest mesaj."
 
-#: templates/email/emailLogin.tpl:9
+#: templates/email/changePass.tpl:9
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
-#: templates/evaluator.tpl:3
+#: templates/evaluator.tpl:3 templates/layout.tpl:35
 msgid "evaluator"
 msgstr "evaluator"
 
@@ -546,7 +608,7 @@ msgstr "Varena2 funcționează!"
 msgid "home"
 msgstr "acasă"
 
-#: templates/layout.tpl:32 templates/problems.tpl:3
+#: templates/layout.tpl:32
 msgid "problems"
 msgstr "probleme"
 

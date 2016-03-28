@@ -4,6 +4,7 @@ class User extends BaseObject {
 
   /**
    * Validates a user for correctness. Returns an array of { field => array of errors }.
+   * Passwords are validated separately.
    **/
   function validate() {
     $id = $this->id ? $this->id : 0; // users have no ID during signup
@@ -40,14 +41,28 @@ class User extends BaseObject {
       $errors['email'][] = _('The email address is already in use.');
     }
 
+    return $errors;
+  }
+
+  /**
+   * Password validation. We need a separate function because:
+   * - sometimes users change their passwords (and we need them in plaintext);
+   * - passwords are typed twice;
+   **/
+  function validatePassword($password2) {
+    $errors = [];
+
     $l = strlen($this->password);
     if ($l < 6 || $l > 200) {
       $errors['password'][] = _('The password must be between 6 and 200 characters long.');
     }
 
+    if ($this->password != $password2) {
+      $errors['password2'][] = _("Passwords don't match.");
+    }
+
     return $errors;
   }
-
 }
 
 ?>

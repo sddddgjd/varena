@@ -26,10 +26,8 @@ if ($method == 'login') {
   $u->username = $username;
   $u->name = $name;
   $u->password = $password;
-  $errors = $u->validate();
-  if ($password != $password2) {
-    $errors['password2'][] = _("Passwords don't match.");
-  }
+  $errors = array_merge($u->validate(), $u->validatePassword($password2));
+
   if (!count($errors)) {
     $u->password = password_hash($password, PASSWORD_DEFAULT);
     $u->save();
