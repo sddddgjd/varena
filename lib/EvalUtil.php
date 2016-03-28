@@ -31,8 +31,8 @@ class EvalUtil {
     $this->graderExtension = mb_strtolower(
       pathinfo($this->problem->grader, PATHINFO_EXTENSION));
 
-    printf("Evaluating source %d submitted by [%s] for problem [%s]\n",
-           $this->source->id, $this->user->name, $this->problem->name);
+    Log::notice('Evaluating source %d submitted by [%s] for problem [%s]',
+                $this->source->id, $this->user->name, $this->problem->name);
   }
 
   function updateStatus($s) {
@@ -115,8 +115,8 @@ class EvalUtil {
         (filemtime($file) < $obj->created)) {
       $url .= "&password={$this->password}";
       list ($contents, $httpCode) = Http::fetchUrl($url);
-      printf("* Fetching file %s ==> return code = %d (%s)\n",
-             $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
+      Log::info('Fetching file %s ==> return code = %d (%s)',
+                $file, $httpCode, Http::STATUS_NAMES[$httpCode]);
       if ($httpCode == 200) {
         file_put_contents($file, $contents);
       } else {
@@ -168,7 +168,7 @@ class EvalUtil {
     }
     if (!file_exists($binary) ||
         (filemtime($binary) < filemtime($source))) {
-      print "* Compiling {$source} into {$binary}\n";
+      Log::info("Compiling {$source} into {$binary}");
       $compiler = self::COMPILERS[$extension];
       $command = sprintf($compiler, $source, $binary);
       exec($command, $output, $exitCode);
@@ -232,6 +232,7 @@ class EvalUtil {
                        $this->problem->timeLimit * 10000, // wall time
                        Util::$rootPath);
     $jailOutput = exec($command);
+    Log::debug("Jail output: {$jailOutput}");
 
     // interpret jrun's output
     $regexp = '/^(?<verdict>OK|FAIL): ' .
@@ -309,6 +310,7 @@ class EvalUtil {
     Test::delete_all_by_sourceId($this->source->id);
 
     for ($i = 1; $i <= $this->problem->numTests; $i++) {
+      Log::info("Running test {$i} for source {$this->source->id}");
       exec("rm -rf {$this->workDir}");
       @mkdir($this->workDir, 0777, true);
 

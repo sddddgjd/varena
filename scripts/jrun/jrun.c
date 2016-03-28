@@ -207,7 +207,7 @@ void exit_gracefully(int status)
          child_failed ? "FAIL" : "OK",
          child_time,
          child_memory,
-         status,
+         WEXITSTATUS(status),
          message);
   exit(0);
 }
@@ -485,7 +485,7 @@ void main_loop()
       check_child_limits();
       if (child_failed == 0) {
         child_failed = 1;
-        sprintf(message, "Killed by signal %d(%s).",
+        sprintf(message, "Killed by signal %d (%s).",
                 WTERMSIG(status), signal_name[WTERMSIG(status)]);
       }
       exit_gracefully(status);
