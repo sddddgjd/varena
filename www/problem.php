@@ -24,8 +24,24 @@ if ($file) {
   Http::redirect("problem.php?id={$problem->id}");
 }
 
-SmartyWrap::addJs('fileUpload');
+// Load the most recent source from the user
+$user = Session::getUser();
+if ($user) {
+  $source = Model::factory('Source')
+          ->where('problemId', $problem->id)
+          ->where('userId', $user->id)
+          // Keep in sync with Source->hasScore()
+          ->where_in('status', [Source::STATUS_DONE, Source::STATUS_COMPILE_ERROR])
+          ->order_by_desc('created')
+          ->find_one();
+  $score = $source ? $source->score : null;
+} else {
+  $score = null;
+}
+
 SmartyWrap::assign('problem', $problem);
+SmartyWrap::assign('score', $score);
+SmartyWrap::addJs('fileUpload');
 SmartyWrap::display('problem.tpl');
 
 /**************************************************************************/

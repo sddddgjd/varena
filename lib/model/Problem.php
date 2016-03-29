@@ -4,7 +4,15 @@ class Problem extends BaseObject {
   const MIN_TESTS = 1;
   const MAX_TESTS = 100;
 
+  private $user = null;
   private $html = null;
+
+  function getUser() {
+    if (!$this->user) {
+      $this->user = User::get_by_id($this->userId);
+    }
+    return $this->user;
+  }
 
   function getHtml() {
     if ($this->html === null) {

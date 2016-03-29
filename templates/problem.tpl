@@ -5,6 +5,23 @@
 {block name=content}
   <h1>{$problem->name}</h1>
 
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>{"time limit"|_}</th>
+        <td>{$problem->timeLimit} s</td>
+        <th>{"added by"|_}</th>
+        <td>{include "bits/userLink.tpl" u=$problem->getUser()}</td>
+      </tr>
+      <tr>
+        <th>{"memory limit"|_}</th>
+        <td>{$problem->memoryLimit} KiB</td>
+        <th>{"your score"|_}</th>
+        <td>{if $score === null}{"N/A"|_}{else}{$score} {"points"|_}{/if}</td>
+      </tr>
+    </tbody>
+  </table>
+
   <div id="statement">
     {$problem->getHtml()}
   </div>

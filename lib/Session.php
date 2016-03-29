@@ -6,6 +6,8 @@
 class Session {
   const ONE_MONTH_IN_SECONDS = 30 * 86400;
 
+  static $user = null;
+
   static function init() {
     if (isset($_COOKIE[session_name()])) {
       session_start();
@@ -36,11 +38,13 @@ class Session {
   }
 
   static function getUser() {
-    $userId = self::get('userId');
-    $user = $userId
-          ? User::get_by_id($userId)
-          : null;
-    return $user;
+    if (!self::$user) {
+      $userId = self::get('userId');
+      self::$user = $userId
+                  ? User::get_by_id($userId)
+                  : null;
+    }
+    return self::$user;
   }
 
   private static function kill() {

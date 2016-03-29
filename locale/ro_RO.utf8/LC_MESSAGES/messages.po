@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-28 19:30+0300\n"
-"PO-Revision-Date: 2016-03-28 19:34+0300\n"
+"POT-Creation-Date: 2016-03-29 19:26+0300\n"
+"PO-Revision-Date: 2016-03-29 19:27+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -30,62 +30,62 @@ msgstr "Conectează-te pentru a continua."
 msgid "Access denied."
 msgstr "Acces interzis."
 
-#: lib/model/Problem.php:69
+#: lib/model/Problem.php:78
 #, php-format
 msgid "Too many dashes in group %d."
 msgstr "Prea multe cratime în grupa %d."
 
-#: lib/model/Problem.php:73
+#: lib/model/Problem.php:82
 #, php-format
 msgid "Illegal character in group %d."
 msgstr "Caracter incorect în grupa %d."
 
-#: lib/model/Problem.php:77
+#: lib/model/Problem.php:86
 #, php-format
 msgid "Wrong order in group %d."
 msgstr "Ordine greșită în grupa %d."
 
-#: lib/model/Problem.php:81
+#: lib/model/Problem.php:90
 #, php-format
 msgid "Group %d should start at test %d."
 msgstr "Grupa %d trebuie să înceapă la testul %d."
 
-#: lib/model/Problem.php:86
+#: lib/model/Problem.php:95
 #, php-format
 msgid "Value exceeds number of tests in group %d."
 msgstr "Valoarea depășește numărul de teste în grupa %d."
 
-#: lib/model/Problem.php:94
+#: lib/model/Problem.php:103
 #, php-format
 msgid "Tests %d through %d are missing."
 msgstr "Testele de la %d la %d lipsesc."
 
-#: lib/model/Problem.php:117
+#: lib/model/Problem.php:126
 msgid "The problem name must be at least 2 characters long."
 msgstr "Numele problemei trebuie să aibă cel puțin două caractere."
 
-#: lib/model/Problem.php:125
+#: lib/model/Problem.php:134
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
-#: lib/model/Problem.php:129
+#: lib/model/Problem.php:138
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:134
+#: lib/model/Problem.php:143
 #, php-format
 msgid "Problems must have between %d and %d tests."
 msgstr "Problemele trebuie să aibă între %d și %d de teste."
 
-#: lib/model/Problem.php:140
+#: lib/model/Problem.php:149
 msgid "The time limit must be positive."
 msgstr "Limita de timp trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:144
+#: lib/model/Problem.php:153
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:148
+#: lib/model/Problem.php:157
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
@@ -215,7 +215,7 @@ msgstr "Am încărcat cu succes %s fișier(e)."
 msgid "%s attachment(s) deleted."
 msgstr "Am șters %s fișiere."
 
-#: www/attachments.php:95 www/problem.php:37
+#: www/attachments.php:95 www/problem.php:53
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
@@ -281,7 +281,7 @@ msgstr "Am salvat problema."
 msgid "Source file uploaded successfully."
 msgstr "Am încărcat sursa cu succes."
 
-#: www/problem.php:50
+#: www/problem.php:66
 #, php-format
 msgid "Unknown extension «.%s»."
 msgstr "Extensie necunoscută «.%s»."
@@ -290,7 +290,7 @@ msgstr "Extensie necunoscută «.%s»."
 msgid "Source not found."
 msgstr "Sursa nu există."
 
-#: templates/attachments.tpl:4 templates/problem.tpl:15
+#: templates/attachments.tpl:4 templates/problem.tpl:32
 msgid "attachments"
 msgstr "fișiere atașate"
 
@@ -326,15 +326,15 @@ msgstr "șterge"
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:75 templates/problem.tpl:28
+#: templates/attachments.tpl:75 templates/problem.tpl:45
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:86 templates/problem.tpl:39
+#: templates/attachments.tpl:86 templates/problem.tpl:56
 msgid "upload"
 msgstr "încarcă"
 
-#: templates/auth/account.tpl:1 templates/layout.tpl:47
+#: templates/auth/account.tpl:1 templates/layout.tpl:48
 msgid "my account"
 msgstr "contul meu"
 
@@ -408,7 +408,7 @@ msgstr "Conectează-te aici."
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:52
+#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:53
 msgid "login"
 msgstr "conectare"
 
@@ -572,7 +572,7 @@ msgstr "Dacă nu ai cerut această schimbare, te rugăm să ignori acest mesaj."
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
-#: templates/evaluator.tpl:3 templates/layout.tpl:35
+#: templates/evaluator.tpl:3 templates/layout.tpl:36
 msgid "evaluator"
 msgstr "evaluator"
 
@@ -596,7 +596,7 @@ msgstr "problemă"
 msgid "status"
 msgstr "stare"
 
-#: templates/evaluator.tpl:32 templates/source.tpl:69
+#: templates/evaluator.tpl:32 templates/problem.tpl:20
 msgid "points"
 msgstr "puncte"
 
@@ -604,27 +604,47 @@ msgstr "puncte"
 msgid "Varena2 is working for you!"
 msgstr "Varena2 funcționează!"
 
-#: templates/layout.tpl:31
+#: templates/layout.tpl:32
 msgid "home"
 msgstr "acasă"
 
-#: templates/layout.tpl:32
+#: templates/layout.tpl:33
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:48
+#: templates/layout.tpl:49
 msgid "logout"
 msgstr "deconectare"
 
+#: templates/problem.tpl:11
+msgid "time limit"
+msgstr "limită de timp"
+
 #: templates/problem.tpl:13
+msgid "added by"
+msgstr "adăugată de"
+
+#: templates/problem.tpl:17
+msgid "memory limit"
+msgstr "limită de memorie"
+
+#: templates/problem.tpl:19
+msgid "your score"
+msgstr "scorul tău"
+
+#: templates/problem.tpl:20
+msgid "N/A"
+msgstr "N/A"
+
+#: templates/problem.tpl:30
 msgid "edit"
 msgstr "editează"
 
-#: templates/problem.tpl:16
+#: templates/problem.tpl:33
 msgid "submitted sources"
 msgstr "surse trimise"
 
-#: templates/problem.tpl:19
+#: templates/problem.tpl:36
 msgid "submit a source file"
 msgstr "trimite o sursă"
 
@@ -665,8 +685,8 @@ msgid "CPU time (ms)"
 msgstr "timp (ms)"
 
 #: templates/source.tpl:67
-msgid "memory used (kb)"
-msgstr "memorie (kb)"
+msgid "memory used (KiB)"
+msgstr "memorie folosită (KiB)"
 
 #: templates/source.tpl:68
 msgid "message"
