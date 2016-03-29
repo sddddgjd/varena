@@ -8,8 +8,9 @@ class Problem extends BaseObject {
 
   function getHtml() {
     if ($this->html === null) {
-      $p = new ParsedownExtra();
-      $this->html = $p->text($this->statement);
+      require_once Util::$rootPath . '/lib/third-party/Textile/Parser.php';
+      $p = new Netcarver\Textile\Parser();
+      $this->html = $p->parse($this->statement);
     }
     return $this->html;
   }

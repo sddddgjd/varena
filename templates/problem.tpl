@@ -3,7 +3,7 @@
 {block name=title}{$problem->name}{/block}
 
 {block name=content}
-  <h3>{$problem->name}</h3>
+  <h1>{$problem->name}</h1>
 
   <div id="statement">
     {$problem->getHtml()}
