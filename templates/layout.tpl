@@ -5,6 +5,7 @@
       {block name=title}{/block}
       | Varena2
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     {foreach from=$cssFiles item=cssFile}
       <link type="text/css" href="{$wwwRoot}css/{$cssFile}" rel="stylesheet"/>
@@ -15,7 +16,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
