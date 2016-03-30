@@ -4,20 +4,6 @@
   {($problem->name) ? {$problem->name} : "new problem"|_}
 {/block}
 
-{function input field=null type="number" step="" value="" label="" placeholder=""}
-  <div class="form-group {if isset($errors.$field)}has-error{/if}">
-    <label for="{$field}">{$label}</label>
-    <input type="{$type}"
-           {if $step}step="{$step}"{/if}
-           class="form-control"
-           id="{$field}"
-           name="{$field}"
-           value="{$problem->$field}"
-           placeholder="{$placeholder}">
-    {include "bits/fieldErrors.tpl" errors=$errors.$field|default:null}
-  </div>
-{/function}
-
 {block name=content}
   <h3>
     {if $problem->id}
@@ -90,27 +76,23 @@
 
           <div class="form-group {if isset($errors.statement)}has-error{/if}">
             <label for="statement">{"statement"|_}</label>
-            {strip}
             <textarea class="form-control"
                       rows="20"
                       id="statement"
                       name="statement"
                       placeholder="{"problem statement"|_}"
                       autofocus
-                      required>
-              {$problem->statement}
-            </textarea>
-            {/strip}
+                      >{$problem->statement}</textarea>
             {include "bits/fieldErrors.tpl" errors=$errors.statement|default:null}
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="parametersTab">
-          {input field="timeLimit" step="0.01" label={"time limit (seconds)"|_}}
-          {input field="memoryLimit" label={"memory limit (kibibytes)"|_}}
-          {input field="numTests" label={"number of tests"|_}}
-          {input field="testGroups" type="text" label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
-          {input field="grader" type="text" label={"grader"|_} placeholder={"leave empty for diff evaluation"|_}}
+          {include "bits/fgf.tpl" field="timeLimit" step="0.01" label={"time limit (seconds)"|_}}
+          {include "bits/fgf.tpl" field="memoryLimit" label={"memory limit (kibibytes)"|_}}
+          {include "bits/fgf.tpl" field="numTests" label={"number of tests"|_}}
+          {include "bits/fgf.tpl" field="testGroups" type="text" label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
+          {include "bits/fgf.tpl" field="grader" type="text" label={"grader"|_} placeholder={"leave empty for diff evaluation"|_}}
 
           <div class="checkbox">
             <label for="hasWitness">

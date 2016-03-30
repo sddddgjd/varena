@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 18:14+0300\n"
-"PO-Revision-Date: 2016-03-30 18:14+0300\n"
+"POT-Creation-Date: 2016-03-30 19:05+0300\n"
+"PO-Revision-Date: 2016-03-30 19:05+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -307,7 +307,7 @@ msgstr "înapoi"
 msgid "name"
 msgstr "nume"
 
-#: templates/attachments.tpl:29 templates/source.tpl:19
+#: templates/attachments.tpl:29 templates/evaluator.tpl:14
 msgid "size"
 msgstr "mărime"
 
@@ -315,7 +315,7 @@ msgstr "mărime"
 msgid "uploader"
 msgstr "autor"
 
-#: templates/attachments.tpl:31 templates/source.tpl:13
+#: templates/attachments.tpl:31 templates/evaluator.tpl:15
 msgid "date"
 msgstr "dată"
 
@@ -391,21 +391,21 @@ msgstr "Te redirectăm către furnizorul de OpenID..."
 msgid "password change"
 msgstr "schimbarea parolei"
 
-#: templates/auth/changePass.tpl:31
+#: templates/auth/changePass.tpl:14
 msgid "Type in your email and we'll send you an email to change your password."
 msgstr ""
 "Introdu adresa de e-mail și îți vom trimite un mesaj pentru a-ți schimba "
 "parola."
 
-#: templates/auth/changePass.tpl:41
+#: templates/auth/changePass.tpl:24
 msgid "send"
 msgstr "trimite"
 
-#: templates/auth/changePass.tpl:49
+#: templates/auth/changePass.tpl:32
 msgid "Know your password?"
 msgstr "Îți știi parola?"
 
-#: templates/auth/changePass.tpl:51
+#: templates/auth/changePass.tpl:34
 msgid "Log in here."
 msgstr "Conectează-te aici."
 
@@ -437,43 +437,43 @@ msgstr ""
 "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
 "OpenID."
 
-#: templates/auth/login.tpl:41
+#: templates/auth/login.tpl:24
 msgid "password"
 msgstr "parolă"
 
-#: templates/auth/login.tpl:45
+#: templates/auth/login.tpl:28
 msgid "Forgot password?"
 msgstr "Ți-ai uitat parola?"
 
-#: templates/auth/login.tpl:55
+#: templates/auth/login.tpl:38
 msgid "Remember me"
 msgstr "Ține-mă minte"
 
-#: templates/auth/login.tpl:70
+#: templates/auth/login.tpl:53
 msgid "Don't have an account?"
 msgstr "Nu ai cont?"
 
-#: templates/auth/login.tpl:72
+#: templates/auth/login.tpl:55
 msgid "Sign up here."
 msgstr "Înregistrează-te aici."
 
-#: templates/auth/login.tpl:85
+#: templates/auth/login.tpl:68
 msgid "Sign Up"
 msgstr "Înregistrare"
 
-#: templates/auth/login.tpl:101
+#: templates/auth/login.tpl:84
 msgid "name (optional)"
 msgstr "nume (opțional)"
 
-#: templates/auth/login.tpl:109
+#: templates/auth/login.tpl:92
 msgid "password (again)"
 msgstr "parolă (din nou)"
 
-#: templates/auth/login.tpl:115
+#: templates/auth/login.tpl:98
 msgid "sign up"
 msgstr "înregistrare"
 
-#: templates/auth/login.tpl:124
+#: templates/auth/login.tpl:107
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
@@ -481,87 +481,87 @@ msgstr "Ai deja un cont?"
 msgid "new password"
 msgstr "parolă nouă"
 
-#: templates/auth/newPass.tpl:26
+#: templates/auth/newPass.tpl:9
 msgid "Choose a new password"
 msgstr "Alege-ți o parolă nouă"
 
-#: templates/auth/newPass.tpl:43
+#: templates/auth/newPass.tpl:26
 msgid "change password"
 msgstr "schimbă parola"
 
-#: templates/editProblem.tpl:24
+#: templates/editProblem.tpl:10
 msgid "edit problem"
 msgstr "editare problemă"
 
-#: templates/editProblem.tpl:26
+#: templates/editProblem.tpl:12
 msgid "add a problem"
 msgstr "adaugă o problemă"
 
-#: templates/editProblem.tpl:33
+#: templates/editProblem.tpl:19
 msgid "This is only a preview. Don't forget to save your changes!"
 msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 
-#: templates/editProblem.tpl:54
+#: templates/editProblem.tpl:40
 msgid "statement"
 msgstr "enunț"
 
-#: templates/editProblem.tpl:59
+#: templates/editProblem.tpl:45
 msgid "parameters"
 msgstr "parametri"
 
-#: templates/editProblem.tpl:78
+#: templates/editProblem.tpl:64
 msgid "problem name"
 msgstr "numele problemei"
 
-#: templates/editProblem.tpl:83
+#: templates/editProblem.tpl:69
 msgid "generate a statement template based on the problem's name"
 msgstr "generează un șablon de enunț pe baza numelui problemei"
 
-#: templates/editProblem.tpl:85
+#: templates/editProblem.tpl:71
 msgid "generate template"
 msgstr "generează șablon"
 
-#: templates/editProblem.tpl:98
+#: templates/editProblem.tpl:83
 msgid "problem statement"
 msgstr "enunțul problemei"
 
-#: templates/editProblem.tpl:109
+#: templates/editProblem.tpl:91
 msgid "time limit (seconds)"
 msgstr "limită de timp (secunde)"
 
-#: templates/editProblem.tpl:110
+#: templates/editProblem.tpl:92
 msgid "memory limit (kibibytes)"
 msgstr "limită de memorie (kibibytes)"
 
-#: templates/editProblem.tpl:111
+#: templates/editProblem.tpl:93
 msgid "number of tests"
 msgstr "numărul de teste"
 
-#: templates/editProblem.tpl:112
+#: templates/editProblem.tpl:94
 msgid "test grouping"
 msgstr "gruparea testelor"
 
-#: templates/editProblem.tpl:112
+#: templates/editProblem.tpl:94
 msgid "e.g. 1-5; 6; 7; 8-10"
 msgstr "de ex. 1-5; 6; 7; 8-10"
 
-#: templates/editProblem.tpl:113
+#: templates/editProblem.tpl:95
 msgid "grader"
 msgstr "verificator (grader)"
 
-#: templates/editProblem.tpl:113
+#: templates/editProblem.tpl:95
 msgid "leave empty for diff evaluation"
 msgstr "lasă gol pentru evaluare cu diff"
 
-#: templates/editProblem.tpl:122
+#: templates/editProblem.tpl:104
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:133
+#: templates/editProblem.tpl:115
 msgid "preview"
 msgstr "previzualizează"
 
-#: templates/editProblem.tpl:141
+#: templates/editProblem.tpl:123
 msgid "cancel"
 msgstr "anulează"
 
@@ -585,7 +585,7 @@ msgstr "Dacă nu ai cerut această schimbare, te rugăm să ignori acest mesaj."
 msgid "Thank you,"
 msgstr "Mulțumiri,"
 
-#: templates/evaluator.tpl:3 templates/layout.tpl:36
+#: templates/evaluator.tpl:3
 msgid "evaluator"
 msgstr "evaluator"
 
@@ -597,19 +597,19 @@ msgstr "coada de evaluare"
 msgid "ID"
 msgstr "ID"
 
-#: templates/evaluator.tpl:12 templates/source.tpl:23
+#: templates/evaluator.tpl:12
 msgid "user"
 msgstr "utilizator"
 
-#: templates/evaluator.tpl:13 templates/source.tpl:29
+#: templates/evaluator.tpl:13
 msgid "problem"
 msgstr "problemă"
 
-#: templates/evaluator.tpl:16 templates/source.tpl:11
+#: templates/evaluator.tpl:16
 msgid "status"
 msgstr "stare"
 
-#: templates/evaluator.tpl:32 templates/problem.tpl:20
+#: templates/evaluator.tpl:32
 msgid "points"
 msgstr "puncte"
 

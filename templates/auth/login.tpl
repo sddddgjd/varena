@@ -2,23 +2,6 @@
 
 {block name="title"}{"login"|_|ucfirst}{/block}
 
-{function input type="text" field=null value="" glyph=null placeholder="" required=false}
-  <div class="input-group {if $errors.$field}has-error{/if}">
-    {if $glyph}
-      <span class="input-group-addon">
-        <i class="glyphicon glyphicon-{$glyph}"></i>
-      </span>
-    {/if}
-    <input type="{$type}"
-           class="form-control"
-           name="{$field}"
-           value="{$value}"
-           placeholder="{$placeholder}"
-           {if $required}required{/if}>
-  </div>
-  {include 'bits/fieldErrors.tpl' errors=$errors.$field|default:null}
-{/function}
-
 {block name=content}
   {***************************** Login box *****************************}
   <div id="login-box"
@@ -34,11 +17,11 @@
         <form method="post" role="form">
           <input type="hidden" name="method" value="login">
 
-          {input field="email" value=$email glyph="envelope" placeholder={"email"|_} required=true}
+          {include "bits/igf.tpl" type="email" field="email" value=$email glyph="envelope" placeholder={"email"|_} autofocus=true}
           
           <div class="voffset4"></div>
 
-          {input field="password" type="password" glyph="lock" placeholder={"password"|_} required=true}
+          {include "bits/igf.tpl" field="password" type="password" glyph="lock" placeholder={"password"|_}}
 
           <p class="pull-right">
             <a href="changePass">
@@ -90,23 +73,23 @@
         <form method="post" role="form">
           <input type="hidden" name="method" value="signup">
 
-          {input field="email" value=$email glyph="envelope" placeholder={"email"|_} required=true}
+          {include "bits/igf.tpl" type="email" field="email" value=$email glyph="envelope" placeholder={"email"|_}}
           
           <div class="voffset4"></div>
 
-          {input field="username" value=$username glyph="user" placeholder={"username"|_} required=true}
+          {include "bits/igf.tpl" field="username" value=$username glyph="user" placeholder={"username"|_}}
           
           <div class="voffset4"></div>
 
-          {input field="name" value=$name glyph="pencil" placeholder={"name (optional)"|_}}
+          {include "bits/igf.tpl" field="name" value=$name glyph="pencil" placeholder={"name (optional)"|_} required=false}
           
           <div class="voffset4"></div>
 
-          {input field="password" type="password" glyph="lock" placeholder={"password"|_} required=true}
+          {include "bits/igf.tpl" field="password" type="password" glyph="lock" placeholder={"password"|_}}
 
           <div class="voffset4"></div>
 
-          {input field="password2" type="password" glyph="lock" placeholder={"password (again)"|_} required=true}
+          {include "bits/igf.tpl" field="password2" type="password" glyph="lock" placeholder={"password (again)"|_}}
 
           <div class="voffset4"></div>
 
