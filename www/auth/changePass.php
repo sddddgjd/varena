@@ -29,6 +29,7 @@ if ($email) {
     SmartyWrap::assign('homePage', Util::getFullServerUrl());
     SmartyWrap::assign('token', $et->token);
     SmartyWrap::assign('signature', Config::get('email.signature'));
+    SmartyWrap::assign('minutes', EmailToken::DURATION / 60);
     $body = SmartyWrap::fetchEmail('changePass.tpl');
 
     // Send out the email.

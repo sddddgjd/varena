@@ -1,6 +1,6 @@
 {'Hi,'|_}
 
-{'You are receiving this message because you requested a password change. To change your password, please click this link within 15 minutes:'|_}
+{'You are receiving this message because you requested a password change. To change your password, please click this link within %d minutes:'|_|sprintf:$minutes}
 
 {$homePage}auth/newPass?token={$token}
 

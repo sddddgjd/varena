@@ -12,10 +12,13 @@ $token = Request::get('token');
 $password = Request::get('password');
 $password2 = Request::get('password2');
 
-$et = EmailToken::get_by_token($token);
+$et = Model::factory('EmailToken')
+    ->where('token', $token)
+    ->where_gte('created', time() - EmailToken::DURATION)
+    ->find_one();
 
 if (!$et) {
-  FlashMessage::add(_('You have entered an invalid token.'));
+  FlashMessage::add(_('You have entered an invalid or expired token.'));
   Http::redirect(Util::$wwwRoot);
 }
 
@@ -34,6 +37,7 @@ if ($password || $password2) {
   if (!count($errors)) {
     $u->password = password_hash($password, PASSWORD_DEFAULT);
     $u->save();
+    $et->delete();
     FlashMessage::add(_('Password changed.'), 'success');
     Session::login($u, false);
   }
