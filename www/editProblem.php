@@ -5,6 +5,7 @@ require_once '../lib/Util.php';
 Util::requireLoggedIn();
 
 $id = Request::get('id');
+$generate = Request::isset('generate');
 $preview = Request::isset('preview');
 $save = Request::isset('save');
 
@@ -26,7 +27,7 @@ if ($id) {
   $problem->userId = $user->id;
 }
 
-if ($save || $preview) {
+if ($generate || $save || $preview) {
   $origDir = $problem->getAttachmentDir();
   $problem->name = Request::get('name');
   $problem->statement = Request::get('statement');
@@ -37,23 +38,28 @@ if ($save || $preview) {
   $problem->timeLimit = Request::get('timeLimit');
   $problem->memoryLimit = Request::get('memoryLimit');
 
-  $errors = $problem->validate();
-  if ($errors) {
-    SmartyWrap::assign('errors', $errors);
-  }
-  if ($save && !$errors) {
-    $dir = $problem->getAttachmentDir();
-    if ($problem->id && ($dir != $origDir)) {
-      @rename($origDir, $dir); // may not exist yet
-      FlashMessage::add(_('The problem name has changed. Remember to update any markdown references to attachments.'), 'warning');
+  if ($generate) {
+    SmartyWrap::assign('problem', $problem);
+    $problem->statement = SmartyWrap::fetch('textile/problem.tpl');
+  } else { // preview / save
+    $errors = $problem->validate();
+    if ($errors) {
+      SmartyWrap::assign('errors', $errors);
     }
+    if ($save && !$errors) {
+      $dir = $problem->getAttachmentDir();
+      if ($problem->id && ($dir != $origDir)) {
+        @rename($origDir, $dir); // may not exist yet
+        FlashMessage::add(_('The problem name has changed. Remember to update any statement references (file names, attachments).'), 'warning');
+      }
     
-    $problem->save();
+      $problem->save();
 
-    FlashMessage::add(_('Problem saved.'), 'success');
-    Http::redirect("problem.php?id={$problem->id}");
-  } else if ($preview) { // preview
-    SmartyWrap::assign('previewed', true);
+      FlashMessage::add(_('Problem saved.'), 'success');
+      Http::redirect("problem.php?id={$problem->id}");
+    } else if ($preview) { // preview
+      SmartyWrap::assign('previewed', true);
+    }
   }
 }
 

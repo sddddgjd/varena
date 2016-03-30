@@ -17,6 +17,8 @@ class Problem extends BaseObject {
   function getHtml() {
     if ($this->html === null) {
       require_once Util::$rootPath . '/lib/third-party/Textile/Parser.php';
+      require_once Util::$rootPath . '/lib/third-party/Textile/DataBag.php';
+      require_once Util::$rootPath . '/lib/third-party/Textile/Tag.php';
       $p = new Netcarver\Textile\Parser();
       $this->html = $p->parse($this->statement);
     }
@@ -122,8 +124,8 @@ class Problem extends BaseObject {
   function validate() {
     $errors = [];
 
-    if (mb_strlen($this->name) < 2) {
-      $errors['name'] = _('The problem name must be at least 2 characters long.');
+    if (!preg_match('/^[a-z0-9]{2,15}$/', $this->name)) {
+      $errors['name'] = _('The problem name must be between 2 and 15 symbols long and contain lowercase letters and digits only.');
     }
 
     $other = Model::factory('Problem')

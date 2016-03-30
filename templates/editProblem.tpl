@@ -67,7 +67,26 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="statementTab">
 
-          {input field="name" type="text" label={"name"|_} placeholder={"problem name"|_}}
+          {* Cannot reuse code here - label + input + button *}
+          <label for="name">{"name"|_}</label>
+          <div class="input-group {if isset($errors.name)}has-error{/if}">
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   name="name"
+                   value="{$problem->name}"
+                   placeholder="{"problem name"|_}">
+            <span class="input-group-btn">
+              <button type="submit"
+                      class="btn btn-default"
+                      name="generate"
+                      title="{"generate a statement template based on the problem's name"|_}">
+                <i class="glyphicon glyphicon-pencil"></i>
+                {"generate template"|_}
+              </button>
+            </span>
+          </div>
+          {include "bits/fieldErrors.tpl" errors=$errors.name|default:null}
 
           <div class="form-group {if isset($errors.statement)}has-error{/if}">
             <label for="statement">{"statement"|_}</label>
