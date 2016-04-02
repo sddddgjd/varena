@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-30 19:05+0300\n"
-"PO-Revision-Date: 2016-03-30 19:05+0300\n"
+"POT-Creation-Date: 2016-04-02 16:13+0300\n"
+"PO-Revision-Date: 2016-04-02 16:14+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -18,6 +18,50 @@ msgstr ""
 "X-Poedit-SearchPath-0: lib\n"
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
+
+#: lib/Permission.php:34
+msgid "add/rename roles, delete unused roles"
+msgstr "adaugă/redenumește roluri, șterge roluri nefolosite"
+
+#: lib/Permission.php:35
+msgid "map users to roles"
+msgstr "asignează utilizatori la roluri"
+
+#: lib/Permission.php:36
+msgid "map roles to permissions"
+msgstr "asignează roluri la permisiuni"
+
+#: lib/Permission.php:38
+msgid "add problems"
+msgstr "adaugă probleme"
+
+#: lib/Permission.php:39
+msgid "edit problems"
+msgstr "editează probleme"
+
+#: lib/Permission.php:40
+msgid "delete problems"
+msgstr "șterge probleme"
+
+#: lib/Permission.php:42
+msgid "add/delete attachments"
+msgstr "adaugă/șterge fișiere atașate"
+
+#: lib/Permission.php:43
+msgid "view/add/delete grader_* attachments"
+msgstr "vezi/adaugă șterge fișiere atașate grader_*"
+
+#: lib/Permission.php:47
+msgid "permission management"
+msgstr "gestiunea permisiunilor"
+
+#: lib/Permission.php:52
+msgid "problem management"
+msgstr "gestiunea problemelor"
+
+#: lib/Permission.php:57
+msgid "attachment management"
+msgstr "gestiunea fișierelor atașate"
 
 #: lib/Util.php:65
 msgid "You are already logged in."
@@ -94,6 +138,14 @@ msgstr "Limita de memorie trebuie să fie pozitivă."
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
+
+#: lib/model/Role.php:14
+msgid "The name must be at least three characters long."
+msgstr "Numele  trebuie să aibă cel puțin trei caractere."
+
+#: lib/model/Role.php:22
+msgid "There already exists a role by this name."
+msgstr "Există deja un rol cu acest nume."
 
 #: lib/model/Source.php:22
 msgid "new"
@@ -282,6 +334,14 @@ msgstr ""
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
+#: www/editRole.php:15
+msgid "Role not found."
+msgstr "Rolul nu există."
+
+#: www/editRole.php:50
+msgid "Role saved."
+msgstr "Am salvat rolul."
+
 #: www/problem.php:22
 msgid "Source file uploaded successfully."
 msgstr "Am încărcat sursa cu succes."
@@ -303,7 +363,7 @@ msgstr "fișiere atașate"
 msgid "back"
 msgstr "înapoi"
 
-#: templates/attachments.tpl:28
+#: templates/attachments.tpl:28 templates/editRole.tpl:17
 msgid "name"
 msgstr "nume"
 
@@ -371,7 +431,7 @@ msgstr "e-mail"
 msgid "enter your email address"
 msgstr "introdu adresa de e-mail"
 
-#: templates/auth/account.tpl:31
+#: templates/auth/account.tpl:31 templates/editRole.tpl:36
 msgid "save"
 msgstr "salvează"
 
@@ -493,7 +553,7 @@ msgstr "schimbă parola"
 msgid "edit problem"
 msgstr "editare problemă"
 
-#: templates/editProblem.tpl:12
+#: templates/editProblem.tpl:12 templates/problems.tpl:15
 msgid "add a problem"
 msgstr "adaugă o problemă"
 
@@ -561,9 +621,17 @@ msgstr "folosește fișiere .ok"
 msgid "preview"
 msgstr "previzualizează"
 
-#: templates/editProblem.tpl:123
+#: templates/editProblem.tpl:123 templates/editRole.tpl:39
 msgid "cancel"
 msgstr "anulează"
+
+#: templates/editRole.tpl:10
+msgid "edit role"
+msgstr "editare rol"
+
+#: templates/editRole.tpl:12
+msgid "add a role"
+msgstr "adaugă un rol"
 
 #: templates/email/changePass.tpl:1
 msgid "Hi,"
@@ -660,6 +728,10 @@ msgstr "surse trimise"
 #: templates/problem.tpl:36
 msgid "submit a source file"
 msgstr "trimite o sursă"
+
+#: templates/roles.tpl:3
+msgid "roles"
+msgstr "roluri"
 
 #: templates/source.tpl:3
 msgid "source"

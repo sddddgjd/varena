@@ -13,7 +13,7 @@
          class="form-control"
          id="{$field}"
          name="{$field}"
-         value="{$problem->$field}"
+         value="{$value}"
          placeholder="{$placeholder}"
          {if $autofocus}autofocus{/if}>
   {include "bits/fieldErrors.tpl" errors=$errors.$field|default:null}

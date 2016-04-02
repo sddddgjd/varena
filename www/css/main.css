@@ -2,6 +2,10 @@ h3:first-letter {
   text-transform: uppercase;
 }
 
+fieldset legend {
+  margin-bottom: 5px;
+}
+
 /* footer style */
 
 .footer {

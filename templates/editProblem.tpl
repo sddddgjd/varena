@@ -1,12 +1,12 @@
 {extends file="layout.tpl"}
 
 {block name=title}
-  {($problem->name) ? {$problem->name} : "new problem"|_}
+  {($p->name) ? {$p->name} : "new problem"|_}
 {/block}
 
 {block name=content}
   <h3>
-    {if $problem->id}
+    {if $p->id}
       {"edit problem"|_}
     {else}
       {"add a problem"|_}
@@ -22,11 +22,11 @@
 
     <div class="panel panel-info">
       <div class="panel-heading">
-        <div class="panel-title">{$problem->name}</div>
+        <div class="panel-title">{$p->name}</div>
       </div>
 
       <div class="panel-body" id="statement">
-        {$problem->getHtml()}
+        {$p->getHtml()}
       </div>
     </div>
   {/if}
@@ -60,7 +60,7 @@
                    class="form-control"
                    id="name"
                    name="name"
-                   value="{$problem->name}"
+                   value="{$p->name}"
                    placeholder="{"problem name"|_}">
             <span class="input-group-btn">
               <button type="submit"
@@ -82,17 +82,17 @@
                       name="statement"
                       placeholder="{"problem statement"|_}"
                       autofocus
-                      >{$problem->statement}</textarea>
+                      >{$p->statement}</textarea>
             {include "bits/fieldErrors.tpl" errors=$errors.statement|default:null}
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="parametersTab">
-          {include "bits/fgf.tpl" field="timeLimit" step="0.01" label={"time limit (seconds)"|_}}
-          {include "bits/fgf.tpl" field="memoryLimit" label={"memory limit (kibibytes)"|_}}
-          {include "bits/fgf.tpl" field="numTests" label={"number of tests"|_}}
-          {include "bits/fgf.tpl" field="testGroups" type="text" label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
-          {include "bits/fgf.tpl" field="grader" type="text" label={"grader"|_} placeholder={"leave empty for diff evaluation"|_}}
+          {include "bits/fgf.tpl" field="timeLimit" value=$p->timeLimit step="0.01" label={"time limit (seconds)"|_}}
+          {include "bits/fgf.tpl" field="memoryLimit" value=$p->memoryLimit label={"memory limit (kibibytes)"|_}}
+          {include "bits/fgf.tpl" field="numTests" value=$p->numTests label={"number of tests"|_}}
+          {include "bits/fgf.tpl" field="testGroups" type="text" value=$p->testGroups label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
+          {include "bits/fgf.tpl" field="grader" type="text" value=$p->grader label={"grader"|_} placeholder={"leave empty for diff evaluation"|_}}
 
           <div class="checkbox">
             <label for="hasWitness">
@@ -100,7 +100,7 @@
                      id="hasWitness"
                      name="hasWitness"
                      value="1"
-                     {if $problem->hasWitness}checked{/if}>
+                     {if $p->hasWitness}checked{/if}>
               {"uses .ok files"|_}
             </label>
           </div>
@@ -119,8 +119,8 @@
       {"save"|_}
     </button>
 
-    {if $problem->id}
-      <a href="problem.php?id={$problem->id}">{"cancel"|_}</a>
+    {if $p->id}
+      <a href="problem.php?id={$p->id}">{"cancel"|_}</a>
     {else}
       <a href="problems.php">{"cancel"|_}</a>
     {/if}

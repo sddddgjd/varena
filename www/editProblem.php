@@ -12,58 +12,58 @@ $save = Request::isset('save');
 $user = Session::getUser();
 
 if ($id) {
-  $problem = Problem::get_by_id($id);
-  if (!$problem) {
+  $p = Problem::get_by_id($id);
+  if (!$p) {
     FlashMessage::add(_('Problem not found.'));
     Http::redirect(Util::$wwwRoot);
   }
 
-  if (!$problem->editableBy($user)) {
+  if (!$p->editableBy($user)) {
     FlashMessage::add(_('You cannot edit this problem.'));
     Http::redirect("problem.php?id={$id}");
   }
 } else {
-  $problem = Model::factory('Problem')->create();
-  $problem->userId = $user->id;
+  $p = Model::factory('Problem')->create();
+  $p->userId = $user->id;
 }
 
 if ($generate || $save || $preview) {
-  $origDir = $problem->getAttachmentDir();
-  $problem->name = Request::get('name');
-  $problem->statement = Request::get('statement');
-  $problem->numTests = Request::get('numTests');
-  $problem->testGroups = Request::get('testGroups');
-  $problem->hasWitness = Request::isset('hasWitness');
-  $problem->grader = Request::get('grader');
-  $problem->timeLimit = Request::get('timeLimit');
-  $problem->memoryLimit = Request::get('memoryLimit');
+  $origDir = $p->getAttachmentDir();
+  $p->name = Request::get('name');
+  $p->statement = Request::get('statement');
+  $p->numTests = Request::get('numTests');
+  $p->testGroups = Request::get('testGroups');
+  $p->hasWitness = Request::isset('hasWitness');
+  $p->grader = Request::get('grader');
+  $p->timeLimit = Request::get('timeLimit');
+  $p->memoryLimit = Request::get('memoryLimit');
 
   if ($generate) {
-    SmartyWrap::assign('problem', $problem);
-    $problem->statement = SmartyWrap::fetch('textile/problem.tpl');
+    SmartyWrap::assign('p', $p);
+    $p->statement = SmartyWrap::fetch('textile/problem.tpl');
   } else { // preview / save
-    $errors = $problem->validate();
+    $errors = $p->validate();
     if ($errors) {
       SmartyWrap::assign('errors', $errors);
     }
     if ($save && !$errors) {
-      $dir = $problem->getAttachmentDir();
-      if ($problem->id && ($dir != $origDir)) {
+      $dir = $p->getAttachmentDir();
+      if ($p->id && ($dir != $origDir)) {
         @rename($origDir, $dir); // may not exist yet
         FlashMessage::add(_('The problem name has changed. Remember to update any statement references (file names, attachments).'), 'warning');
       }
     
-      $problem->save();
+      $p->save();
 
       FlashMessage::add(_('Problem saved.'), 'success');
-      Http::redirect("problem.php?id={$problem->id}");
+      Http::redirect("problem.php?id={$p->id}");
     } else if ($preview) { // preview
       SmartyWrap::assign('previewed', true);
     }
   }
 }
 
-SmartyWrap::assign('problem', $problem);
+SmartyWrap::assign('p', $p);
 SmartyWrap::display('editProblem.tpl');
 
 ?>

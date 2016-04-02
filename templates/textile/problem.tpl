@@ -2,11 +2,11 @@ Descriere și cerință...
 
 h2. Date de intrare
 
-Fișierul de intrare @{$problem->name}.in@ ...
+Fișierul de intrare @{$p->name}.in@ ...
 
 h2. Date de ieșire
 
-În fișierul de ieșire @{$problem->name}.out@ ...
+În fișierul de ieșire @{$p->name}.out@ ...
 
 h2. Restricții
 
@@ -16,7 +16,7 @@ h2. Exemplu
 
 table(example table table-bordered).
 |^.
-|_. {$problem->name}.in |_. {$problem->name}.out |
+|_. {$p->name}.in |_. {$p->name}.out |
 |-.
 |(file). linia 1
 linia 2

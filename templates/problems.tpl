@@ -12,6 +12,6 @@
   </ul>
 
   {if $user}
-    <a href="editProblem.php">adaugă o problemă</a>
+    <a href="editProblem.php">{"add a problem"|_}</a>
   {/if}
 {/block}
