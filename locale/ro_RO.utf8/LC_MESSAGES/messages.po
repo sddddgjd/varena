@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-02 16:13+0300\n"
-"PO-Revision-Date: 2016-04-02 16:14+0300\n"
+"POT-Creation-Date: 2016-04-02 16:35+0300\n"
+"PO-Revision-Date: 2016-04-02 16:35+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -632,6 +632,10 @@ msgstr "editare rol"
 #: templates/editRole.tpl:12
 msgid "add a role"
 msgstr "adaugă un rol"
+
+#: templates/editRole.tpl:43
+msgid "Users having this role"
+msgstr "Utilizatori cu acest rol"
 
 #: templates/email/changePass.tpl:1
 msgid "Hi,"

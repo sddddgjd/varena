@@ -24,8 +24,6 @@ class Role extends BaseObject {
 
     return $errors;
   }
-
-  
 }
 
 ?>

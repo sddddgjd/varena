@@ -61,7 +61,7 @@ foreach ($rps as $rp) {
   $permTable[$rp->permission] = true;
 }
 
-// collect the data to display
+// collect the permission data to display
 $data = [];
 foreach (Permission::$GROUPS as $groupName => $groupPerms) {
   $group = [];
@@ -73,6 +73,16 @@ foreach (Permission::$GROUPS as $groupName => $groupPerms) {
     ];
   }
   $data[$groupName] = $group;
+}
+
+// users having this role
+if ($role->id) {
+  $users = Model::factory('User')
+         ->select('user.*')
+         ->join('user_role', array('user_role.userId', '=', 'user.id'))
+         ->where('user_role.roleId', $role->id)
+         ->find_many();
+  SmartyWrap::assign('users', $users);
 }
 
 SmartyWrap::assign('role', $role);

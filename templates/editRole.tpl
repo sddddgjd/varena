@@ -38,4 +38,14 @@
 
     <a href="roles.php">{"cancel"|_}</a>
   </form>
+
+  {if $role->id}
+    <h3>{"Users having this role"|_}</h3>
+
+    <ul>
+      {foreach $users as $u}
+        <li>{include "bits/userLink.tpl" u=$u}</li>
+      {/foreach}
+    </ul>
+  {/if}
 {/block}
