@@ -35,7 +35,7 @@ function evalLoop() {
     do {
       // Find a new or pending job
       $source = Model::factory('Source')
-              ->where_not_in('status', [Source::STATUS_DONE, Source::STATUS_COMPILE_ERROR])
+              ->where_in('status', [Source::STATUS_NEW, Source::STATUS_PENDING])
               ->where_raw('id % ? = ?', [$mod, $rem])
               ->order_by_asc('id')
               ->find_one();
