@@ -37,7 +37,16 @@
     </button>
 
     <a href="roles.php">{"cancel"|_}</a>
-  </form>
+
+    {if $role->id}
+      <div class="pull-right">
+        <button type="submit" class="btn btn-danger" name="delete">
+          <i class="glyphicon glyphicon-trash"></i>
+          {"delete"|_}
+        </button>
+      </div>
+    {/if}
+</form>
 
   {if $role->id}
     <h3>{"Users having this role"|_}</h3>

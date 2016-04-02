@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-02 16:35+0300\n"
-"PO-Revision-Date: 2016-04-02 16:35+0300\n"
+"POT-Creation-Date: 2016-04-02 16:58+0300\n"
+"PO-Revision-Date: 2016-04-02 16:58+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -334,11 +334,15 @@ msgstr ""
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
-#: www/editRole.php:15
+#: www/editRole.php:16
 msgid "Role not found."
 msgstr "Rolul nu există."
 
-#: www/editRole.php:50
+#: www/editRole.php:25
+msgid "Role deleted."
+msgstr "Am șters rolul."
+
+#: www/editRole.php:57
 msgid "Role saved."
 msgstr "Am salvat rolul."
 
@@ -383,7 +387,7 @@ msgstr "dată"
 msgid "download"
 msgstr "descarcă"
 
-#: templates/attachments.tpl:62
+#: templates/attachments.tpl:62 templates/editRole.tpl:45
 msgid "delete"
 msgstr "șterge"
 
@@ -633,7 +637,7 @@ msgstr "editare rol"
 msgid "add a role"
 msgstr "adaugă un rol"
 
-#: templates/editRole.tpl:43
+#: templates/editRole.tpl:52
 msgid "Users having this role"
 msgstr "Utilizatori cu acest rol"
 

@@ -6,6 +6,7 @@ Util::requireLoggedIn();
 
 $id = Request::get('id');
 $save = Request::isset('save');
+$delete = Request::isset('delete');
 
 $user = Session::getUser();
 
@@ -17,6 +18,12 @@ if ($id) {
   }
 } else {
   $role = Model::factory('Role')->create();
+}
+
+if ($delete) {
+  $role->delete();
+  FlashMessage::add(_('Role deleted.'), 'success');
+  Http::redirect('roles.php');
 }
 
 if ($save) {

@@ -24,6 +24,22 @@ class Role extends BaseObject {
 
     return $errors;
   }
+
+  function delete() {
+    // delete dependent UserRoles
+    $urs = UserRole::get_all_by_roleId($this->id);
+    foreach ($urs as $ur) {
+      $ur->delete();
+    }
+
+    // delete dependent RolePermissions
+    $rps = RolePermission::get_all_by_roleId($this->id);
+    foreach ($rps as $rp) {
+      $rp->delete();
+    }
+
+    return parent::delete();
+  }
 }
 
 ?>
