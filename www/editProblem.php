@@ -23,7 +23,7 @@ if ($id) {
     Http::redirect("problem.php?id={$id}");
   }
 } else {
-  Permission::enforce($user, Permission::PERM_ADD_PROBLEM, "problems.php");
+  Permission::enforce(Permission::PERM_ADD_PROBLEM, "problems.php");
 
   $p = Model::factory('Problem')->create();
   $p->userId = $user->id;

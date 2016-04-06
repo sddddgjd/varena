@@ -69,7 +69,9 @@ class Permission {
     return self::$NAMES[$perm];
   }
 
-  static function enforce($user, $perm, $target) {
+  static function enforce($perm, $target) {
+    $user = Session::getUser();
+
     if (!$user || !$user->can($perm)) {
       $msg = sprintf(_('Missing permission: %s'), self::getName($perm));
       FlashMessage::add($msg);

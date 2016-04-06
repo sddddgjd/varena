@@ -2,13 +2,11 @@
 
 require_once '../lib/Util.php';
 
+Permission::enforce(Permission::PERM_ROLES, "index.php");
+
 $id = Request::get('id');
 $save = Request::isset('save');
 $delete = Request::isset('delete');
-
-$user = Session::getUser();
-
-Permission::enforce($user, Permission::PERM_ROLES, "index.php");
 
 if ($id) {
   $role = Role::get_by_id($id);

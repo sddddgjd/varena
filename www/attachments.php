@@ -17,9 +17,7 @@ if (!$problem) {
 }
 
 if ($files) {
-  Permission::enforce($user,
-                      Permission::PERM_ATTACHMENTS,
-                      "attachments.php?id={$id}");
+  Permission::enforce(Permission::PERM_ATTACHMENTS, "attachments.php?id={$id}");
 
   if (processUploads($files, $problem, $user)) {
     $msg = sprintf(_('%s file(s) uploaded successfully.'),
@@ -30,7 +28,7 @@ if ($files) {
 }
 
 if ($delete) {
-  deleteAttachments($user, $problem, $attachmentIds);
+  deleteAttachments($problem, $attachmentIds);
 }
 
 $attachments = Model::factory('Attachment')
@@ -75,8 +73,7 @@ function processUploads($files, $problem, $user) {
     $grader |= StringUtil::StartsWith($fileName, Attachment::PREFIX_GRADER);
   }
   if ($grader) {
-    Permission::enforce($user,
-                        Permission::PERM_GRADER_ATTACHMENTS,
+    Permission::enforce(Permission::PERM_GRADER_ATTACHMENTS,
                         "attachments.php?id={$problem->id}");
   }
 
@@ -115,9 +112,8 @@ function processUploads($files, $problem, $user) {
   return $success;
 }
 
-function deleteAttachments($user, $problem, $attachmentIds) {
-  Permission::enforce($user,
-                      Permission::PERM_ATTACHMENTS,
+function deleteAttachments($problem, $attachmentIds) {
+  Permission::enforce(Permission::PERM_ATTACHMENTS,
                       "attachments.php?id={$problem->id}");
 
   foreach ($attachmentIds as $aid) {
@@ -128,8 +124,7 @@ function deleteAttachments($user, $problem, $attachmentIds) {
     }
 
     if (StringUtil::StartsWith($a->name, Attachment::PREFIX_GRADER)) {
-      Permission::enforce($user,
-                          Permission::PERM_GRADER_ATTACHMENTS,
+      Permission::enforce(Permission::PERM_GRADER_ATTACHMENTS,
                           "attachments.php?id={$problem->id}");
     }
   }
