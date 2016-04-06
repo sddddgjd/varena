@@ -11,7 +11,7 @@ $u = User::get_by_username($argv[1]) or die("User not found.\n");
 print "User {$u->username} (ID = {$u->id}) found.\n";
 
 $role = Model::factory('Role')->create();
-$role->name = _('temporary role');
+$role->name = _('god');
 $role->save();
 print "Created role '{$role->name}', ID = {$role->id}\n";
 
