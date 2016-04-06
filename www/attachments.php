@@ -17,9 +17,9 @@ if (!$problem) {
 }
 
 if ($files) {
-  if (!$problem->editableBy($user)) {
-    FlashMessage::add(_('You cannot edit this problem.'));
-    Http::redirect("problem.php?id={$id}");
+  if (!$user || !$user->can(Permission::PERM_ATTACHMENTS)) {
+    FlashMessage::add(Permission::error(Permission::PERM_ATTACHMENTS));
+    Http::redirect("attachments.php?id={$id}");
   }
 
   if (processUploads($files, $problem, $user)) {
@@ -31,17 +31,7 @@ if ($files) {
 }
 
 if ($delete) {
-  if (!$problem->editableBy($user)) {
-    FlashMessage::add(_('You cannot edit this problem.'));
-    Http::redirect("problem.php?id={$id}");
-  }
-  foreach ($attachmentIds as $aid) {
-    Attachment::delete_all_by_id($aid);
-  }
-  
-  $msg = sprintf(_('%s attachment(s) deleted.'), count($attachmentIds));
-  FlashMessage::add($msg, 'success');
-  Http::redirect("attachments.php?id={$id}");
+  deleteAttachments($user, $problem, $attachmentIds);
 }
 
 $attachments = Model::factory('Attachment')
@@ -49,13 +39,27 @@ $attachments = Model::factory('Attachment')
   ->order_by_asc('name')
   ->find_many();
 
-$massActions = $problem->editableBy($user) ||
-             $problem->testsViewableBy($user);
+$data = [];
+$massActions = false;
+foreach ($attachments as $a) {
+  if (StringUtil::StartsWith($a->name, Attachment::PREFIX_GRADER)) {
+    $selectable = $user && $user->can(Permission::PERM_GRADER_ATTACHMENTS);
+  } else {
+    $selectable = true;
+  }
+  $massActions |= $selectable;
+  
+  $data[] = [
+    'a' => $a,
+    'selectable' => $selectable,
+  ];
+}
 
 SmartyWrap::addJs('fileUpload');
 SmartyWrap::assign('problem', $problem);
-SmartyWrap::assign('attachments', $attachments);
+SmartyWrap::assign('data', $data);
 SmartyWrap::assign('massActions', $massActions);
+SmartyWrap::assign('permAddDelete', $user && $user->can(Permission::PERM_ATTACHMENTS));
 SmartyWrap::display('attachments.tpl');
 
 /**************************************************************************/
@@ -65,6 +69,16 @@ function processUploads($files, $problem, $user) {
   // Multiple files are uploaded as [ 'name' => ['f1.txt', 'f2.txt'], 'type' => ... ]
   $count = count($files['name']);
   $success = true;
+
+  // Check grader permissions if needed
+  $grader = false;
+  foreach ($files['name'] as $fileName) {
+    $grader |= StringUtil::StartsWith($fileName, Attachment::PREFIX_GRADER);
+  }
+  if ($grader && !$user->can(Permission::PERM_GRADER_ATTACHMENTS)) {
+    FlashMessage::add(Permission::error(Permission::PERM_GRADER_ATTACHMENTS));
+    Http::redirect("attachments.php?id={$problem->id}");
+  }
 
   for ($i = 0; $i < $count; $i++) {
     $e = true; // Assume error until the end
@@ -97,7 +111,38 @@ function processUploads($files, $problem, $user) {
       $success = false;
     }
   }
+
   return $success;
+}
+
+function deleteAttachments($user, $problem, $attachmentIds) {
+  if (!$user || !$user->can(Permission::PERM_ATTACHMENTS)) {
+    FlashMessage::add(Permission::error(Permission::PERM_ATTACHMENTS));
+    Http::redirect("attachments.php?id={$problem->id}");
+  }
+
+  foreach ($attachmentIds as $aid) {
+    $a = Attachment::get_by_id($aid);
+    if (!$a || ($a->problemId != $problem->id)) {
+      FlashMessage::add(_('Attachment not found or belongs to a different problem.'));
+      Http::redirect("attachments.php?id={$problem->id}");
+    }
+
+    if (StringUtil::StartsWith($a->name, Attachment::PREFIX_GRADER) &&
+        !$user->can(Permission::PERM_GRADER_ATTACHMENTS)) {
+      FlashMessage::add(Permission::error(Permission::PERM_GRADER_ATTACHMENTS));
+      Http::redirect("attachments.php?id={$problem->id}");
+    }
+  }
+
+  // Checks passed, perform the actual deletion.
+  foreach ($attachmentIds as $aid) {
+    Attachment::delete_all_by_id($aid);
+  }
+  
+  $msg = sprintf(_('%s attachment(s) deleted.'), count($attachmentIds));
+  FlashMessage::add($msg, 'success');
+  Http::redirect("attachments.php?id={$problem->id}");
 }
 
 ?>

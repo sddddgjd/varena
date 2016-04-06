@@ -15,7 +15,7 @@
 
   <form method="post" role="form">
     <div class="panel panel-default">
-      <div class="panel-heading">{"attachments"|_} ({$attachments|count})</div>
+      <div class="panel-heading">{"attachments"|_} ({$data|count})</div>
 
       <table class="table">
         <thead>
@@ -32,21 +32,24 @@
           </tr>
         </thead>
         <tbody>
-          {foreach from=$attachments item=a}
+          {foreach from=$data item=d}
             <tr>
               {if $massActions}
                 <td>
-                  <input type="checkbox" name="attachmentIds[]" value="{$a->id}">
+                  <input type="checkbox"
+                         name="attachmentIds[]"
+                         value="{$d.a->id}"
+                         {if !$d.selectable}disabled{/if}>
                 </td>
               {/if}
               <td>
-                <a href="file/{$problem->name}/{$a->name}">
-                  {$a->name}
+                <a href="file/{$problem->name}/{$d.a->name}">
+                  {$d.a->name}
                 </a>
               </td>
-              <td>{include "bits/fileSize.tpl" s=$a->size}</td>
-              <td>{include "bits/userLink.tpl" u=$a->getUser()}</td>
-              <td>{include "bits/dateTime.tpl" ts=$a->created}</td>
+              <td>{include "bits/fileSize.tpl" s=$d.a->size}</td>
+              <td>{include "bits/userLink.tpl" u=$d.a->getUser()}</td>
+              <td>{include "bits/dateTime.tpl" ts=$d.a->created}</td>
             </tr>
           {/foreach}
         </tbody>
@@ -57,33 +60,37 @@
       <i class="glyphicon glyphicon-download-alt"></i>
       {"download"|_}
     </button>
-    <button type="submit" class="btn btn-default" name="delete">
-      <i class="glyphicon glyphicon-remove"></i>
-      {"delete"|_}
+    {if $permAddDelete}
+      <button type="submit" class="btn btn-default" name="delete">
+        <i class="glyphicon glyphicon-remove"></i>
+        {"delete"|_}
+    {/if}
     </button>
   </form>
 
-  <h3>{"Add attachments"|_}</h3>
+  {if $permAddDelete}
+    <h3>{"Add attachments"|_}</h3>
 
-  <form method="post" role="form" enctype="multipart/form-data">
-    <div class="col-lg-6 col-sm-6 col-12">
+    <form method="post" role="form" enctype="multipart/form-data">
+      <div class="col-lg-6 col-sm-6 col-12">
 
-      <div class="input-group">
-        <span class="input-group-btn">
-          <span class="btn btn-default btn-file">
-            <i class="glyphicon glyphicon-folder-open"></i>
-            &nbsp; {"browse..."|_}
-            <input type="file" name="files[]" multiple data-max-size="100000000">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <span class="btn btn-default btn-file">
+              <i class="glyphicon glyphicon-folder-open"></i>
+              &nbsp; {"browse..."|_}
+              <input type="file" name="files[]" multiple data-max-size="100000000">
+            </span>
           </span>
-        </span>
-        <input type="text" class="form-control" readonly>
+          <input type="text" class="form-control" readonly>
+        </div>
+
       </div>
 
-    </div>
-
-    <button type="submit" class="btn btn-default">
-      <i class="glyphicon glyphicon-upload"></i>
-      {"upload"|_}
-    </button>
-  </form>
+      <button type="submit" class="btn btn-default">
+        <i class="glyphicon glyphicon-upload"></i>
+        {"upload"|_}
+      </button>
+    </form>
+  {/if}
 {/block}

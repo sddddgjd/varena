@@ -3,6 +3,6 @@ $(function() {
 
   $('#master-checkbox').click(function() {
     var state = $(this).prop('checked');
-    $('[name="attachmentIds[]"]').prop('checked', state);
+    $('[name="attachmentIds[]"]:not([disabled])').prop('checked', state);
   });
 });

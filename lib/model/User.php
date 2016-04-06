@@ -2,6 +2,16 @@
 
 class User extends BaseObject {
 
+  function can($permission) {
+    $count = Model::factory('User')
+           ->table_alias('u')
+           ->join('user_role', ['u.id', '=', 'ur.userId'], 'ur')
+           ->join('role_permission', ['ur.roleId', '=', 'rp.roleId'], 'rp')
+           ->where('rp.permission', $permission)
+           ->count();
+    return ($count > 0);
+  }
+
   /**
    * Validates a user for correctness. Returns an array of { field => array of errors }.
    * Passwords are validated separately.

@@ -75,4 +75,8 @@ class Permission {
     return self::$NAMES[$perm];
   }
 
+  static function error($perm) {
+    return sprintf(_('Missing permission: %s'), self::getName($perm));
+  }
+
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-02 16:58+0300\n"
-"PO-Revision-Date: 2016-04-02 16:58+0300\n"
+"POT-Creation-Date: 2016-04-06 15:47+0300\n"
+"PO-Revision-Date: 2016-04-06 15:48+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Bookmarks: -1,51,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: lib\n"
 "X-Poedit-SearchPath-1: templates\n"
@@ -49,7 +49,7 @@ msgstr "adaugă/șterge fișiere atașate"
 
 #: lib/Permission.php:43
 msgid "view/add/delete grader_* attachments"
-msgstr "vezi/adaugă șterge fișiere atașate grader_*"
+msgstr "vezi/adaugă/șterge fișiere atașate grader_*"
 
 #: lib/Permission.php:47
 msgid "permission management"
@@ -62,6 +62,11 @@ msgstr "gestiunea problemelor"
 #: lib/Permission.php:57
 msgid "attachment management"
 msgstr "gestiunea fișierelor atașate"
+
+#: lib/Permission.php:79
+#, php-format
+msgid "Missing permission: %s"
+msgstr "Nu ai permisiunea: %s"
 
 #: lib/Util.php:65
 msgid "You are already logged in."
@@ -214,7 +219,7 @@ msgstr "răspuns incorect"
 msgid "graded (%s)"
 msgstr "verificat (%s)"
 
-#: lib/model/User.php:15
+#: lib/model/User.php:25
 msgid ""
 "Your username must be between 3 and 25 characters long and consist of "
 "letters, digits, '-', '.' and '_'."
@@ -222,15 +227,15 @@ msgstr ""
 "Numele de utilizator trebuie să aibă între 3 și 25 de caractere și să "
 "conțină litere, cifre, '-', '.' și '_'."
 
-#: lib/model/User.php:17
+#: lib/model/User.php:27
 msgid "Your username must contain at least three letters."
 msgstr "Numele de utilizator trebuie să conțină cel puțin trei litere."
 
-#: lib/model/User.php:25
+#: lib/model/User.php:35
 msgid "This username is taken."
 msgstr "Numele de utilizator este luat."
 
-#: lib/model/User.php:29
+#: lib/model/User.php:39
 msgid ""
 "Your name must be between 3 and 50 characters long and consist of letters, "
 "spaces, '-' and '.'."
@@ -238,19 +243,19 @@ msgstr ""
 "Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
 "spații, '-' și '.'."
 
-#: lib/model/User.php:33
+#: lib/model/User.php:43
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:41
+#: lib/model/User.php:51
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
 
-#: lib/model/User.php:57
+#: lib/model/User.php:67
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
-#: lib/model/User.php:61
+#: lib/model/User.php:71
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
@@ -258,24 +263,24 @@ msgstr "Parolele nu coincid."
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:21 www/attachments.php:35 www/editProblem.php:22
-msgid "You cannot edit this problem."
-msgstr "Nu poți edita această problemă."
-
 #: www/attachments.php:26
 #, php-format
 msgid "%s file(s) uploaded successfully."
 msgstr "Am încărcat cu succes %s fișier(e)."
 
-#: www/attachments.php:42
-#, php-format
-msgid "%s attachment(s) deleted."
-msgstr "Am șters %s fișiere."
-
-#: www/attachments.php:95 www/problem.php:53
+#: www/attachments.php:109 www/problem.php:53
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
+
+#: www/attachments.php:127
+msgid "Attachment not found or belongs to a different problem."
+msgstr "Fișierul atașat nu există sau aparține altei probleme."
+
+#: www/attachments.php:143
+#, php-format
+msgid "%s attachment(s) deleted."
+msgstr "Am șters %s fișiere."
 
 #: www/auth/account.php:36
 msgid "Could not find your OpenID; did you really log in?"
@@ -321,6 +326,10 @@ msgstr "Te rugăm să contactezi un administrator."
 #: www/auth/newPass.php:41
 msgid "Password changed."
 msgstr "Am schimbat parola."
+
+#: www/editProblem.php:22
+msgid "You cannot edit this problem."
+msgstr "Nu poți edita această problemă."
 
 #: www/editProblem.php:53
 msgid ""
@@ -383,23 +392,23 @@ msgstr "autor"
 msgid "date"
 msgstr "dată"
 
-#: templates/attachments.tpl:58
+#: templates/attachments.tpl:61
 msgid "download"
 msgstr "descarcă"
 
-#: templates/attachments.tpl:62 templates/editRole.tpl:45
+#: templates/attachments.tpl:66 templates/editRole.tpl:45
 msgid "delete"
 msgstr "șterge"
 
-#: templates/attachments.tpl:66
+#: templates/attachments.tpl:72
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:75 templates/problem.tpl:45
+#: templates/attachments.tpl:81 templates/problem.tpl:45
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:86 templates/problem.tpl:56
+#: templates/attachments.tpl:92 templates/problem.tpl:56
 msgid "upload"
 msgstr "încarcă"
 
