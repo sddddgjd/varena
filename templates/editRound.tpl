@@ -25,7 +25,7 @@
     </div>
   {/if}
 
-  <form method="post" role="form">
+  <form method="post" role="form" id="roundForm">
     {include "bits/fgf.tpl" type="text" field="name" value=$r->name label={"name"|_}}
 
     <div class="form-group {if isset($errors.statement)}has-error{/if}">
@@ -39,7 +39,22 @@
       {include "bits/fieldErrors.tpl" errors=$errors.description|default:null}
     </div>
 
-    {include "bits/fgf.tpl" type="text" field="start" value=$r->start label={"start date/time"|_}}
+    {* Cannot reuse code here -- date picker *}
+    <div class="container nopadding">
+      {* TODO Fix width *}
+      <div class="form-group {if isset($errors.start)}has-error{/if}">        
+        <label for="start">{"start date/time"|_}</label>
+        <div class="input-group date" id="start-dtp">
+          <input type="text"
+                 class="form-control"
+                 id="start"
+                 name="start"
+                 value="{$r->start}">
+        </div>
+        {include "bits/fieldErrors.tpl" errors=$errors.start|default:null}
+      </div>
+    </div>
+
     {include "bits/fgf.tpl" field="duration" value=$r->duration label={"duration (minutes)"|_}}
 
     <button type="submit" class="btn btn-default" name="preview">

@@ -46,6 +46,8 @@ if ($save || $preview) {
 }
 
 SmartyWrap::assign('r', $r);
+SmartyWrap::addCss('datetime');
+SmartyWrap::addJs('datetime');
 SmartyWrap::display('editRound.tpl');
 
 ?>

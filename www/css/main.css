@@ -35,6 +35,11 @@ fieldset legend {
   border-top: 2px solid #bbbbbb;
 }
 
+/* We need containers on datetimepickers, but we don't want the padding. */
+.nopadding {
+  padding-left: 0px;
+}
+
 /* Prettier file upload button */
 
 .btn-file {

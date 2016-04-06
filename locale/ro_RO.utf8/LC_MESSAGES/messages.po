@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 18:20+0300\n"
-"PO-Revision-Date: 2016-04-06 18:21+0300\n"
+"POT-Creation-Date: 2016-04-06 19:43+0300\n"
+"PO-Revision-Date: 2016-04-06 19:43+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -646,7 +646,7 @@ msgstr "lasă gol pentru evaluare cu diff"
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:115 templates/editRound.tpl:47
+#: templates/editProblem.tpl:115 templates/editRound.tpl:62
 msgid "preview"
 msgstr "previzualizează"
 
@@ -682,11 +682,11 @@ msgstr "descriere"
 msgid "round description (optional)"
 msgstr "descrierea rundei (opțională)"
 
-#: templates/editRound.tpl:42
+#: templates/editRound.tpl:46
 msgid "start date/time"
 msgstr "data/ora de start"
 
-#: templates/editRound.tpl:43
+#: templates/editRound.tpl:58
 msgid "duration (minutes)"
 msgstr "durata (minute)"
 

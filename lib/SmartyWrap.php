@@ -51,7 +51,8 @@ class SmartyWrap {
           self::$cssFiles[1] = 'bootstrap-3.3.6.min.css';
           self::$cssFiles[2] = 'bootstrap-theme-3.3.6.min.css';
           break;
-        case 'main':               self::$cssFiles[3] = 'main.css'; break;
+        case 'datetime':           self::$cssFiles[3] = 'bootstrap-datetimepicker.min.css'; break;
+        case 'main':               self::$cssFiles[4] = 'main.css'; break;
         default:
           FlashMessage::add("Cannot load CSS file {$id}");
           Http::redirect(Util::$wwwRoot);
@@ -65,7 +66,11 @@ class SmartyWrap {
       switch($id) {
         case 'jquery':           self::$jsFiles[1] = 'jquery-2.2.1.min.js'; break; 
         case 'bootstrap':        self::$jsFiles[2] = 'bootstrap-3.3.6.min.js'; break; 
-        case 'fileUpload':       self::$jsFiles[3] = 'fileUpload.js'; break; 
+        case 'fileUpload':       self::$jsFiles[3] = 'fileUpload.js'; break;
+        case 'datetime':
+          self::$jsFiles[4] = 'moment.min.js';
+          self::$jsFiles[5] = 'bootstrap-datetimepicker.min.js';
+          break;
         default:
           FlashMessage::add("Cannot load JS script {$id}");
           Http::redirect(Util::$wwRoot);
