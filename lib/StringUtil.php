@@ -17,14 +17,6 @@ class StringUtil {
     return mb_substr($s, $i, 1);
   }
 
-  static function shortenString($s, $maxLength) {
-    $l = mb_strlen($s);
-    if ($l >= $maxLength) {
-      return mb_substr($s, 0, $maxLength - 3) . '...';
-    }
-    return $s;
-  }
-
   static function sanitize($s) {
     if (is_string($s)) {
       $s = trim($s);

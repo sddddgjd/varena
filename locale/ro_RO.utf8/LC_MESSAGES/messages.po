@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 15:47+0300\n"
-"PO-Revision-Date: 2016-04-06 15:48+0300\n"
+"POT-Creation-Date: 2016-04-06 16:44+0300\n"
+"PO-Revision-Date: 2016-04-06 16:44+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -19,51 +19,43 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
+#: lib/Permission.php:32
+msgid "manage user roles and permissions"
+msgstr "gestionează rolurile și permisiunile utilizatorilor"
+
 #: lib/Permission.php:34
-msgid "add/rename roles, delete unused roles"
-msgstr "adaugă/redenumește roluri, șterge roluri nefolosite"
-
-#: lib/Permission.php:35
-msgid "map users to roles"
-msgstr "asignează utilizatori la roluri"
-
-#: lib/Permission.php:36
-msgid "map roles to permissions"
-msgstr "asignează roluri la permisiuni"
-
-#: lib/Permission.php:38
 msgid "add problems"
 msgstr "adaugă probleme"
 
-#: lib/Permission.php:39
+#: lib/Permission.php:35
 msgid "edit problems"
 msgstr "editează probleme"
 
-#: lib/Permission.php:40
+#: lib/Permission.php:36
 msgid "delete problems"
 msgstr "șterge probleme"
 
-#: lib/Permission.php:42
+#: lib/Permission.php:38
 msgid "add/delete attachments"
 msgstr "adaugă/șterge fișiere atașate"
 
-#: lib/Permission.php:43
+#: lib/Permission.php:39
 msgid "view/add/delete grader_* attachments"
 msgstr "vezi/adaugă/șterge fișiere atașate grader_*"
 
-#: lib/Permission.php:47
+#: lib/Permission.php:43
 msgid "permission management"
 msgstr "gestiunea permisiunilor"
 
-#: lib/Permission.php:52
+#: lib/Permission.php:46
 msgid "problem management"
 msgstr "gestiunea problemelor"
 
-#: lib/Permission.php:57
+#: lib/Permission.php:51
 msgid "attachment management"
 msgstr "gestiunea fișierelor atașate"
 
-#: lib/Permission.php:79
+#: lib/Permission.php:74
 #, php-format
 msgid "Missing permission: %s"
 msgstr "Nu ai permisiunea: %s"
@@ -75,10 +67,6 @@ msgstr "Ești deja conectat."
 #: lib/Util.php:72
 msgid "Please log in to continue."
 msgstr "Conectează-te pentru a continua."
-
-#: lib/Util.php:80
-msgid "Access denied."
-msgstr "Acces interzis."
 
 #: lib/model/Problem.php:80
 #, php-format
@@ -263,7 +251,7 @@ msgstr "Parolele nu coincid."
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:26
+#: www/attachments.php:25
 #, php-format
 msgid "%s file(s) uploaded successfully."
 msgstr "Am încărcat cu succes %s fișier(e)."
@@ -273,11 +261,11 @@ msgstr "Am încărcat cu succes %s fișier(e)."
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
 
-#: www/attachments.php:127
+#: www/attachments.php:126
 msgid "Attachment not found or belongs to a different problem."
 msgstr "Fișierul atașat nu există sau aparține altei probleme."
 
-#: www/attachments.php:143
+#: www/attachments.php:142
 #, php-format
 msgid "%s attachment(s) deleted."
 msgstr "Am șters %s fișiere."
@@ -331,7 +319,7 @@ msgstr "Am schimbat parola."
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
-#: www/editProblem.php:53
+#: www/editProblem.php:55
 msgid ""
 "The problem name has changed. Remember to update any statement references "
 "(file names, attachments)."
@@ -339,7 +327,7 @@ msgstr ""
 "Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
 "enunț (nume de fișiere, fișiere atașate)."
 
-#: www/editProblem.php:58
+#: www/editProblem.php:60
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
@@ -817,3 +805,15 @@ msgstr "Comanda de compilare"
 #: templates/source.tpl:112
 msgid "Compiler output"
 msgstr "Ieșirea compilatorului"
+
+#~ msgid "add/rename roles, delete unused roles"
+#~ msgstr "adaugă/redenumește roluri, șterge roluri nefolosite"
+
+#~ msgid "map users to roles"
+#~ msgstr "asignează utilizatori la roluri"
+
+#~ msgid "map roles to permissions"
+#~ msgstr "asignează roluri la permisiuni"
+
+#~ msgid "Access denied."
+#~ msgstr "Acces interzis."

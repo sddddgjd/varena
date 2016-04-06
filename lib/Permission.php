@@ -10,30 +10,26 @@ Permission::init();
 class Permission {
 
   // increment this when adding new permissions
-  const NUM_PERMISSIONS = 8;
+  const NUM_PERMISSIONS = 6;
 
   // permission management
-  const PERM_ROLES = 1; // add/rename roles, delete unused roles
-  const PERM_MAP_USER_ROLE = 2;
-  const PERM_MAP_ROLE_PERMISSION = 3;
+  const PERM_ROLES = 1;
 
   // problems
-  const PERM_ADD_PROBLEM = 4;
-  const PERM_EDIT_PROBLEM = 5;  // TODO - until the problem is published or something
-  const PERM_DELETE_PROBLEM = 6;
+  const PERM_ADD_PROBLEM = 2;
+  const PERM_EDIT_PROBLEM = 3;  // TODO - until the problem is published or something
+  const PERM_DELETE_PROBLEM = 4;
 
   // attachments
-  const PERM_ATTACHMENTS = 7;
-  const PERM_GRADER_ATTACHMENTS = 8; // view/add/delete grader_* files, regardless of problem status
+  const PERM_ATTACHMENTS = 5;
+  const PERM_GRADER_ATTACHMENTS = 6; // view/add/delete grader_* files, regardless of problem status
 
   static $NAMES = null;
   static $GROUPS = null;
 
   static function init() {
     self::$NAMES = [
-      self::PERM_ROLES => _('add/rename roles, delete unused roles'),
-      self::PERM_MAP_USER_ROLE => _('map users to roles'),
-      self::PERM_MAP_ROLE_PERMISSION => _('map roles to permissions'),
+      self::PERM_ROLES => _('manage user roles and permissions'),
 
       self::PERM_ADD_PROBLEM => _('add problems'),
       self::PERM_EDIT_PROBLEM => _('edit problems'),
@@ -46,8 +42,6 @@ class Permission {
     self::$GROUPS = [
       _('permission management') => [
         self::PERM_ROLES,
-        self::PERM_MAP_USER_ROLE,
-        self::PERM_MAP_ROLE_PERMISSION,
       ],
       _('problem management') => [
         self::PERM_ADD_PROBLEM,
