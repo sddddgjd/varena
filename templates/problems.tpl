@@ -11,7 +11,7 @@
     {/foreach}
   </ul>
 
-  {if $user}
+  {if $canAdd}
     <a href="editProblem.php">{"add a problem"|_}</a>
   {/if}
 {/block}

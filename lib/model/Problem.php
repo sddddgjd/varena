@@ -171,12 +171,12 @@ class Problem extends BaseObject {
   /**
    * Current policy:
    * * anonymous users can not edit anything (duh);
-   * * admins can edit all problems;
+   * * people with the proper permission can edit all problems;
    * * users can edit problems they created.
    **/
   function editableBy($user) {
     return $user &&
-      ($user->admin ||
+      ($user->can(Permission::PERM_EDIT_PROBLEM) ||
        ($user->id == $this->userId));
   }
 

@@ -75,8 +75,11 @@ class Permission {
     return self::$NAMES[$perm];
   }
 
-  static function error($perm) {
-    return sprintf(_('Missing permission: %s'), self::getName($perm));
+  static function enforce($user, $perm, $target) {
+    if (!$user || !$user->can($perm)) {
+      $msg = sprintf(_('Missing permission: %s'), self::getName($perm));
+      FlashMessage::add($msg);
+      Http::redirect($target);
+    }
   }
-
 }

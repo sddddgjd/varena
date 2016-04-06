@@ -74,14 +74,6 @@ class Util {
     }
   }
 
-  static function requireAdmin() {
-    self::requireLoggedIn();
-    if (!Session::getUser()->admin) {
-      FlashMessage::add(_('Access denied.'));
-      Http::redirect(self::$wwwRoot);
-    }
-  }
-
   /* Notify the appropriate evaluator that a new source is available. */
   static function notifyEvaluator($source) {
     $port = Config::get('eval.port');

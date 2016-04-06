@@ -17,10 +17,9 @@ if (!$problem) {
 }
 
 if ($files) {
-  if (!$user || !$user->can(Permission::PERM_ATTACHMENTS)) {
-    FlashMessage::add(Permission::error(Permission::PERM_ATTACHMENTS));
-    Http::redirect("attachments.php?id={$id}");
-  }
+  Permission::enforce($user,
+                      Permission::PERM_ATTACHMENTS,
+                      "attachments.php?id={$id}");
 
   if (processUploads($files, $problem, $user)) {
     $msg = sprintf(_('%s file(s) uploaded successfully.'),
@@ -75,9 +74,10 @@ function processUploads($files, $problem, $user) {
   foreach ($files['name'] as $fileName) {
     $grader |= StringUtil::StartsWith($fileName, Attachment::PREFIX_GRADER);
   }
-  if ($grader && !$user->can(Permission::PERM_GRADER_ATTACHMENTS)) {
-    FlashMessage::add(Permission::error(Permission::PERM_GRADER_ATTACHMENTS));
-    Http::redirect("attachments.php?id={$problem->id}");
+  if ($grader) {
+    Permission::enforce($user,
+                        Permission::PERM_GRADER_ATTACHMENTS,
+                        "attachments.php?id={$problem->id}");
   }
 
   for ($i = 0; $i < $count; $i++) {
@@ -116,10 +116,9 @@ function processUploads($files, $problem, $user) {
 }
 
 function deleteAttachments($user, $problem, $attachmentIds) {
-  if (!$user || !$user->can(Permission::PERM_ATTACHMENTS)) {
-    FlashMessage::add(Permission::error(Permission::PERM_ATTACHMENTS));
-    Http::redirect("attachments.php?id={$problem->id}");
-  }
+  Permission::enforce($user,
+                      Permission::PERM_ATTACHMENTS,
+                      "attachments.php?id={$problem->id}");
 
   foreach ($attachmentIds as $aid) {
     $a = Attachment::get_by_id($aid);
@@ -128,10 +127,10 @@ function deleteAttachments($user, $problem, $attachmentIds) {
       Http::redirect("attachments.php?id={$problem->id}");
     }
 
-    if (StringUtil::StartsWith($a->name, Attachment::PREFIX_GRADER) &&
-        !$user->can(Permission::PERM_GRADER_ATTACHMENTS)) {
-      FlashMessage::add(Permission::error(Permission::PERM_GRADER_ATTACHMENTS));
-      Http::redirect("attachments.php?id={$problem->id}");
+    if (StringUtil::StartsWith($a->name, Attachment::PREFIX_GRADER)) {
+      Permission::enforce($user,
+                          Permission::PERM_GRADER_ATTACHMENTS,
+                          "attachments.php?id={$problem->id}");
     }
   }
 
