@@ -2,8 +2,6 @@
 
 require_once '../lib/Util.php';
 
-Util::requireLoggedIn();
-
 $id = Request::get('id');
 $generate = Request::isset('generate');
 $preview = Request::isset('preview');

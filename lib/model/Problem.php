@@ -16,11 +16,7 @@ class Problem extends BaseObject {
 
   function getHtml() {
     if ($this->html === null) {
-      require_once Util::$rootPath . '/lib/third-party/Textile/Parser.php';
-      require_once Util::$rootPath . '/lib/third-party/Textile/DataBag.php';
-      require_once Util::$rootPath . '/lib/third-party/Textile/Tag.php';
-      $p = new Netcarver\Textile\Parser();
-      $this->html = $p->parse($this->statement);
+      $this->html = StringUtil::textile($this->statement);
     }
     return $this->html;
   }

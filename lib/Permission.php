@@ -10,7 +10,7 @@ Permission::init();
 class Permission {
 
   // increment this when adding new permissions
-  const NUM_PERMISSIONS = 6;
+  const NUM_PERMISSIONS = 7;
 
   // permission management
   const PERM_ROLES = 1;
@@ -23,6 +23,9 @@ class Permission {
   // attachments
   const PERM_ATTACHMENTS = 5;
   const PERM_GRADER_ATTACHMENTS = 6; // view/add/delete grader_* files, regardless of problem status
+
+  // rounds
+  const PERM_ROUND = 7;
 
   static $NAMES = null;
   static $GROUPS = null;
@@ -37,6 +40,8 @@ class Permission {
 
       self::PERM_ATTACHMENTS => _('add/delete attachments'),
       self::PERM_GRADER_ATTACHMENTS => _('view/add/delete grader_* attachments'),
+
+      self::PERM_ROUND => _('add/edit/delete rounds'),
     ];
 
     self::$GROUPS = [
@@ -51,6 +56,9 @@ class Permission {
       _('attachment management') => [
         self::PERM_ATTACHMENTS,
         self::PERM_GRADER_ATTACHMENTS,
+      ],
+      _('round management') => [
+        self::PERM_ROUND,
       ],
     ];
 

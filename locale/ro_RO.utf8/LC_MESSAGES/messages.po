@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 16:44+0300\n"
-"PO-Revision-Date: 2016-04-06 16:44+0300\n"
+"POT-Creation-Date: 2016-04-06 18:20+0300\n"
+"PO-Revision-Date: 2016-04-06 18:21+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -19,43 +19,51 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
-#: lib/Permission.php:32
+#: lib/Permission.php:35
 msgid "manage user roles and permissions"
 msgstr "gestionează rolurile și permisiunile utilizatorilor"
 
-#: lib/Permission.php:34
+#: lib/Permission.php:37
 msgid "add problems"
 msgstr "adaugă probleme"
 
-#: lib/Permission.php:35
+#: lib/Permission.php:38
 msgid "edit problems"
 msgstr "editează probleme"
 
-#: lib/Permission.php:36
+#: lib/Permission.php:39
 msgid "delete problems"
 msgstr "șterge probleme"
 
-#: lib/Permission.php:38
+#: lib/Permission.php:41
 msgid "add/delete attachments"
 msgstr "adaugă/șterge fișiere atașate"
 
-#: lib/Permission.php:39
+#: lib/Permission.php:42
 msgid "view/add/delete grader_* attachments"
 msgstr "vezi/adaugă/șterge fișiere atașate grader_*"
 
-#: lib/Permission.php:43
+#: lib/Permission.php:44
+msgid "add/edit/delete rounds"
+msgstr "adaugă/modifică/șterge runde"
+
+#: lib/Permission.php:48
 msgid "permission management"
 msgstr "gestiunea permisiunilor"
 
-#: lib/Permission.php:46
+#: lib/Permission.php:51
 msgid "problem management"
 msgstr "gestiunea problemelor"
 
-#: lib/Permission.php:51
+#: lib/Permission.php:56
 msgid "attachment management"
 msgstr "gestiunea fișierelor atașate"
 
-#: lib/Permission.php:74
+#: lib/Permission.php:60
+msgid "round management"
+msgstr "gestiunea rundelor"
+
+#: lib/Permission.php:84
 #, php-format
 msgid "Missing permission: %s"
 msgstr "Nu ai permisiunea: %s"
@@ -68,37 +76,37 @@ msgstr "Ești deja conectat."
 msgid "Please log in to continue."
 msgstr "Conectează-te pentru a continua."
 
-#: lib/model/Problem.php:80
+#: lib/model/Problem.php:76
 #, php-format
 msgid "Too many dashes in group %d."
 msgstr "Prea multe cratime în grupa %d."
 
-#: lib/model/Problem.php:84
+#: lib/model/Problem.php:80
 #, php-format
 msgid "Illegal character in group %d."
 msgstr "Caracter incorect în grupa %d."
 
-#: lib/model/Problem.php:88
+#: lib/model/Problem.php:84
 #, php-format
 msgid "Wrong order in group %d."
 msgstr "Ordine greșită în grupa %d."
 
-#: lib/model/Problem.php:92
+#: lib/model/Problem.php:88
 #, php-format
 msgid "Group %d should start at test %d."
 msgstr "Grupa %d trebuie să înceapă la testul %d."
 
-#: lib/model/Problem.php:97
+#: lib/model/Problem.php:93
 #, php-format
 msgid "Value exceeds number of tests in group %d."
 msgstr "Valoarea depășește numărul de teste în grupa %d."
 
-#: lib/model/Problem.php:105
+#: lib/model/Problem.php:101
 #, php-format
 msgid "Tests %d through %d are missing."
 msgstr "Testele de la %d la %d lipsesc."
 
-#: lib/model/Problem.php:128
+#: lib/model/Problem.php:124
 msgid ""
 "The problem name must be between 2 and 15 symbols long and contain lowercase "
 "letters and digits only."
@@ -106,39 +114,51 @@ msgstr ""
 "Numele problemei trebuie să aibă între 2 și 15 simboluri și să conțină doar "
 "litere mici și cifre."
 
-#: lib/model/Problem.php:136
+#: lib/model/Problem.php:132
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
-#: lib/model/Problem.php:140
+#: lib/model/Problem.php:136
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:145
+#: lib/model/Problem.php:141
 #, php-format
 msgid "Problems must have between %d and %d tests."
 msgstr "Problemele trebuie să aibă între %d și %d de teste."
 
-#: lib/model/Problem.php:151
+#: lib/model/Problem.php:147
 msgid "The time limit must be positive."
 msgstr "Limita de timp trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:155
+#: lib/model/Problem.php:151
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:159
+#: lib/model/Problem.php:155
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
 
-#: lib/model/Role.php:14
+#: lib/model/Role.php:14 lib/model/Round.php:29
 msgid "The name must be at least three characters long."
 msgstr "Numele  trebuie să aibă cel puțin trei caractere."
 
 #: lib/model/Role.php:22
 msgid "There already exists a role by this name."
 msgstr "Există deja un rol cu acest nume."
+
+#: lib/model/Round.php:37
+msgid "There already exists a round with this name."
+msgstr "Există deja o rundă cu acest nume."
+
+#: lib/model/Round.php:41
+msgid "The start date/time cannot be empty."
+msgstr "Data/ora de start nu pot fi vide."
+
+#: lib/model/Round.php:45
+msgid "The duration must be positive."
+msgstr "Durata trebuie să fie pozitivă."
 
 #: lib/model/Source.php:22
 msgid "new"
@@ -247,25 +267,25 @@ msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/attachments.php:15 www/editProblem.php:17 www/problem.php:11
+#: www/attachments.php:15 www/editProblem.php:15 www/problem.php:11
 msgid "Problem not found."
 msgstr "Problema nu există."
 
-#: www/attachments.php:25
+#: www/attachments.php:23
 #, php-format
 msgid "%s file(s) uploaded successfully."
 msgstr "Am încărcat cu succes %s fișier(e)."
 
-#: www/attachments.php:109 www/problem.php:53
+#: www/attachments.php:106 www/problem.php:53
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
 
-#: www/attachments.php:126
+#: www/attachments.php:122
 msgid "Attachment not found or belongs to a different problem."
 msgstr "Fișierul atașat nu există sau aparține altei probleme."
 
-#: www/attachments.php:142
+#: www/attachments.php:137
 #, php-format
 msgid "%s attachment(s) deleted."
 msgstr "Am șters %s fișiere."
@@ -315,11 +335,11 @@ msgstr "Te rugăm să contactezi un administrator."
 msgid "Password changed."
 msgstr "Am schimbat parola."
 
-#: www/editProblem.php:22
+#: www/editProblem.php:20
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
-#: www/editProblem.php:55
+#: www/editProblem.php:53
 msgid ""
 "The problem name has changed. Remember to update any statement references "
 "(file names, attachments)."
@@ -327,21 +347,33 @@ msgstr ""
 "Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
 "enunț (nume de fișiere, fișiere atașate)."
 
-#: www/editProblem.php:60
+#: www/editProblem.php:58
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
-#: www/editRole.php:16
+#: www/editRole.php:14
 msgid "Role not found."
 msgstr "Rolul nu există."
 
-#: www/editRole.php:25
+#: www/editRole.php:23
 msgid "Role deleted."
 msgstr "Am șters rolul."
 
-#: www/editRole.php:57
+#: www/editRole.php:55
 msgid "Role saved."
 msgstr "Am salvat rolul."
+
+#: www/editRound.php:12 www/round.php:10
+msgid "Round not found."
+msgstr "Runda nu există."
+
+#: www/editRound.php:39
+msgid "Round saved."
+msgstr "Am salvat runda."
+
+#: www/editRound.php:42 templates/editProblem.tpl:19
+msgid "This is only a preview. Don't forget to save your changes!"
+msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 
 #: www/problem.php:22
 msgid "Source file uploaded successfully."
@@ -400,7 +432,7 @@ msgstr "alege..."
 msgid "upload"
 msgstr "încarcă"
 
-#: templates/auth/account.tpl:1 templates/layout.tpl:48
+#: templates/auth/account.tpl:1 templates/layout.tpl:49
 msgid "my account"
 msgstr "contul meu"
 
@@ -474,7 +506,7 @@ msgstr "Conectează-te aici."
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:53
+#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:54
 msgid "login"
 msgstr "conectare"
 
@@ -558,10 +590,6 @@ msgstr "editare problemă"
 msgid "add a problem"
 msgstr "adaugă o problemă"
 
-#: templates/editProblem.tpl:19
-msgid "This is only a preview. Don't forget to save your changes!"
-msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
-
 #: templates/editProblem.tpl:40
 msgid "statement"
 msgstr "enunț"
@@ -618,7 +646,7 @@ msgstr "lasă gol pentru evaluare cu diff"
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:115
+#: templates/editProblem.tpl:115 templates/editRound.tpl:47
 msgid "preview"
 msgstr "previzualizează"
 
@@ -637,6 +665,30 @@ msgstr "adaugă un rol"
 #: templates/editRole.tpl:52
 msgid "Users having this role"
 msgstr "Utilizatori cu acest rol"
+
+#: templates/editRound.tpl:10
+msgid "edit round"
+msgstr "editare rundă"
+
+#: templates/editRound.tpl:12
+msgid "add a round"
+msgstr "adaugă o rundă"
+
+#: templates/editRound.tpl:32
+msgid "description"
+msgstr "descriere"
+
+#: templates/editRound.tpl:37
+msgid "round description (optional)"
+msgstr "descrierea rundei (opțională)"
+
+#: templates/editRound.tpl:42
+msgid "start date/time"
+msgstr "data/ora de start"
+
+#: templates/editRound.tpl:43
+msgid "duration (minutes)"
+msgstr "durata (minute)"
 
 #: templates/email/changePass.tpl:1
 msgid "Hi,"
@@ -698,7 +750,11 @@ msgstr "acasă"
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:49
+#: templates/layout.tpl:34
+msgid "rounds"
+msgstr "runde"
+
+#: templates/layout.tpl:50
 msgid "logout"
 msgstr "deconectare"
 
@@ -737,6 +793,14 @@ msgstr "trimite o sursă"
 #: templates/roles.tpl:3
 msgid "roles"
 msgstr "roluri"
+
+#: templates/round.tpl:17
+msgid "duration"
+msgstr "durată"
+
+#: templates/round.tpl:18
+msgid "minutes"
+msgstr "minute"
 
 #: templates/source.tpl:3
 msgid "source"
@@ -805,15 +869,3 @@ msgstr "Comanda de compilare"
 #: templates/source.tpl:112
 msgid "Compiler output"
 msgstr "Ieșirea compilatorului"
-
-#~ msgid "add/rename roles, delete unused roles"
-#~ msgstr "adaugă/redenumește roluri, șterge roluri nefolosite"
-
-#~ msgid "map users to roles"
-#~ msgstr "asignează utilizatori la roluri"
-
-#~ msgid "map roles to permissions"
-#~ msgstr "asignează roluri la permisiuni"
-
-#~ msgid "Access denied."
-#~ msgstr "Acces interzis."

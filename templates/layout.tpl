@@ -31,6 +31,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{$wwwRoot}">{"home"|_}</a></li>
             <li><a href="{$wwwRoot}problems.php">{"problems"|_}</a></li>
+            <li><a href="{$wwwRoot}rounds.php">{"rounds"|_}</a></li>
             <li>
               <a href="{$wwwRoot}evaluator.php{if $user}?userId={$user->id}{/if}">
                 {"evaluator"|_}
