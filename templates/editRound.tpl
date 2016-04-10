@@ -43,7 +43,7 @@
     <div class="container nopadding">
       {* TODO Fix width *}
       <div class="form-group {if isset($errors.start)}has-error{/if}">        
-        <label for="start">{"start date/time"|_}</label>
+        <label for="start">{"start date/time (YYYY-MM-DD HH:MM)"|_}</label>
         <div class="input-group date" id="start-dtp">
           <input type="text"
                  class="form-control"

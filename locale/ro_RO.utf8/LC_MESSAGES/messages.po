@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-06 19:43+0300\n"
-"PO-Revision-Date: 2016-04-06 19:43+0300\n"
+"POT-Creation-Date: 2016-04-10 17:24+0300\n"
+"PO-Revision-Date: 2016-04-10 17:24+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.7\n"
 "X-Poedit-Bookmarks: -1,51,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: lib\n"
 "X-Poedit-SearchPath-1: templates\n"
@@ -683,8 +683,8 @@ msgid "round description (optional)"
 msgstr "descrierea rundei (opțională)"
 
 #: templates/editRound.tpl:46
-msgid "start date/time"
-msgstr "data/ora de start"
+msgid "start date/time (YYYY-MM-DD HH:MM)"
+msgstr "data/ora de start (AAAA-LL-ZZ HH:MM)"
 
 #: templates/editRound.tpl:58
 msgid "duration (minutes)"
@@ -793,6 +793,10 @@ msgstr "trimite o sursă"
 #: templates/roles.tpl:3
 msgid "roles"
 msgstr "roluri"
+
+#: templates/round.tpl:11
+msgid "start date/time"
+msgstr "data/ora de start"
 
 #: templates/round.tpl:17
 msgid "duration"
