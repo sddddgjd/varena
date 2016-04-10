@@ -14,6 +14,7 @@ if (!$round) {
 $user = Session::getUser();
 
 SmartyWrap::assign('round', $round);
+SmartyWrap::assign('problems', $round->getProblems());
 SmartyWrap::assign('canManage', $user && $user->can(Permission::PERM_ROUND));
 SmartyWrap::display('round.tpl');
 

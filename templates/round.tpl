@@ -26,6 +26,14 @@
     {$round->getHtml()}
   </div>
 
+  <h3>{"problems"|_}</h3>
+  
+  <ul>
+    {foreach $problems as $p}
+      <li>{include "bits/problemLink.tpl"}</li>
+    {/foreach}
+  </ul>
+
   {if $canManage}
     <a href="editRound.php?id={$round->id}">{"edit"|_}</a>
   {/if}

@@ -7,7 +7,7 @@ $(function() {
     showTodayButton: true,
     sideBySide: true,
   });
-  var dp = $('#start-dtp').data("DateTimePicker");
+  var dp = $('#start-dtp').data('DateTimePicker');
   if (timestamp) {
     dp.date(moment.unix(timestamp));
   }
@@ -19,4 +19,15 @@ $(function() {
     $('#start').val(timestamp);
     return true;
   });
+
+  $('#problemIds').select2({
+    ajax: {
+      url: 'ajax/getProblems.php',
+      dataType: 'json',
+      delay: 250,
+    },
+    minimumInputLength: 1,
+  });
+
+  $('#problemIds').trigger('change');
 });

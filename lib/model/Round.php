@@ -19,6 +19,16 @@ class Round extends BaseObject {
     return $this->html;
   }
 
+  function getProblems() {
+    return Model::factory('Problem')
+      ->table_alias('p')
+      ->select('p.*')
+      ->join('round_problem', ['p.id', '=', 'rp.problemId'], 'rp')
+      ->where('rp.roundId', $this->id)
+      ->order_by_asc('rp.rank')
+      ->find_many();
+  }
+
   /**
    * Validates a round for correctness. Returns an array of { field => array of errors }.
    **/

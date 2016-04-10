@@ -57,6 +57,17 @@
 
     {include "bits/fgf.tpl" field="duration" value=$r->duration label={"duration (minutes)"|_}}
 
+    <div class="form-group">
+      <label for="problemIds">{"problems"|_}</label>
+      <div class="select2-container form-control select2">
+        <select id="problemIds" name="problemIds[]" multiple="multiple" style="width: 100%">
+          {foreach $problems as $p}
+            <option value="{$p->id}" selected>{$p->name}</option>
+          {/foreach}
+        </select>
+      </div>
+    </div>
+    
     <button type="submit" class="btn btn-default" name="preview">
       <i class="glyphicon glyphicon-refresh"></i>
       {"preview"|_}
