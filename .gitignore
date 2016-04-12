@@ -1,3 +1,8 @@
 *~
 varena2.conf
 www/.htaccess
+
+deploy/.vagrant/
+deploy/roles/geerlingguy.nginx/
+deploy/roles/geerlingguy.php/
+deploy/playbook.retry

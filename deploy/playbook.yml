@@ -1,0 +1,25 @@
+---
+
+- hosts: all
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  vars_files:
+    - vars/php.yml
+    - vars/nginx.yml
+
+
+  pre_tasks:
+
+    - name: Fail if Ansible is ancient
+      fail: msg="We need Ansible >= 2.0. Please update your kit. \'pip install -U Ansible\'"
+      when: ansible_version.major < 2
+
+    - name: Update packages via apt
+      when: ansible_os_family == 'Debian'
+      apt: upgrade=dist update_cache=yes
+
+  roles:
+
+    - role: geerlingguy.php
+    - role: geerlingguy.nginx

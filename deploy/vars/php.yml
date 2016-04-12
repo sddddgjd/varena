@@ -1,0 +1,9 @@
+php_enable_webserver: true
+php_webserver_daemon: "nginx"
+php_enable_fpm: true
+php_packages:
+  - php5
+  - php5-cli
+  - php5-common
+  - php-gettext
+  - php5-fpm
