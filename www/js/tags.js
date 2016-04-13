@@ -18,7 +18,7 @@ $(function() {
     stemLi = $('#stem').detach().removeAttr('id');
 
     // collapse all subtrees
-    $('#tagTree ul').hide();
+    // $('#tagTree ul').hide();
   }
 
   function toggleSubtree(e) {

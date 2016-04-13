@@ -32,7 +32,7 @@ if ($save) {
     }
     $tag->value = $rec->value;
     $tag->parentId = $tagIds[$rec->level - 1];
-    $tag->rank = ++$numChildren[$rec->level - 1];
+    $tag->rank = $numChildren[$rec->level - 1]++;
     $tag->save();
     $tagIds[$rec->level] = $tag->id;
     $numChildren[$rec->level] = 0;
