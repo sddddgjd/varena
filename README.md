@@ -3,14 +3,6 @@ Varena2
 
 Varena2 is a web program that lets you host and evaluate programming problems and contests.
 
-Includes:
-
-* OpenID authentication (multiple OpenID identites per account, email login failsafe);
-* a database patching system;
-* session-based flash messages;
-* localization (English and Romanian at the moment).
-
-
 Installation
 ------------
 
