@@ -7,3 +7,4 @@ php_packages:
   - php5-common
   - php-gettext
   - php5-fpm
+  - php5-mysql
