@@ -1,0 +1,18 @@
+mysql_root_username: root
+mysql_root_password: root
+
+
+mysql_root_password_update: yes
+mysql_enabled_on_startup: yes
+overwrite_global_mycnf: yes
+
+
+mysql_databases:
+  - name: varena2
+    encoding: utf8
+
+mysql_users:
+  - name: varena2
+    host: "%"
+    password: varena2
+    priv: "varena2.*:ALL"

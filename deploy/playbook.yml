@@ -7,19 +7,21 @@
   vars_files:
     - vars/php.yml
     - vars/nginx.yml
-
-
-  pre_tasks:
-
-    - name: Fail if Ansible is ancient
-      fail: msg="We need Ansible >= 2.0. Please update your kit. \'pip install -U Ansible\'"
-      when: ansible_version.major < 2
-
-    - name: Update packages via apt
-      when: ansible_os_family == 'Debian'
-      apt: upgrade=dist update_cache=yes
+    - vars/mysql.yml
 
   roles:
 
     - role: geerlingguy.php
     - role: geerlingguy.nginx
+    - role: geerlingguy.mysql
+
+  tasks:
+
+    - name: Run setup.sh
+      shell: ./setup.sh
+      args:
+        chdir: /var/www/varena2/scripts/
+        executable: /bin/bash
+
+    - name: Copy varena2.conf
+      copy: src=./files/varena2.cfg dest=/var/www/varena2/varena2.conf owner=www-data group=www-data mode=0644

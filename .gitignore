@@ -5,4 +5,5 @@ www/.htaccess
 deploy/.vagrant/
 deploy/roles/geerlingguy.nginx/
 deploy/roles/geerlingguy.php/
+deploy/roles/geerlingguy.mysql/
 deploy/playbook.retry
