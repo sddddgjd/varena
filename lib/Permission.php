@@ -65,7 +65,7 @@ class Permission {
       _('round management') => [
         self::PERM_ROUND,
       ],
-      _('tags management') => [
+      _('tag management') => [
         self::PERM_TAGS,
       ],
     ];

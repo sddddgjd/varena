@@ -1,35 +1,40 @@
-.expand {
+.indent {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.left {
   float: left;
-  width: 24px;
-  height: 24px;
+  padding-right: 0.5em;
 }
 
-.expand.open {
-  background: red;
+.center {
+  display: block;
 }
 
-.expand.closed {
-  background: green;
+/* placeholder */
+.glyphicon-none:before {
+  color: transparent !important;
+  content: "+";
 }
 
+/* Force proper height on empty values */
 .value {
-  min-height: 25px;
-  padding: 3px;
+  display: inline-block;
+}
+
+.selected > .list-group-item {
+  background-color: #d9edf7;
+}
+
+.selected > .children .list-group-item {
+  background-color: #eaf6fb;
 }
 
 #menuBar {
-  background-color: #90c9e8;
   display: none;
-  padding: 3px;
 }
 
 #menuActions {
   float: right;
-}
-
-#tagTree .list-group {
-  margin-bottom: 0px;
-}
-
-#tagTree .list-group-item {
 }

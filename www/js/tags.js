@@ -1,11 +1,35 @@
 $(function() {
+
+  // Ensures the subtree is expanded and the glyphicon is correct.
+  $.fn.ensureOpen = function() {
+    $(this).find('> .list-group-item > .left > .expander')
+      .removeClass('glyphicon-none')
+      .removeClass('glyphicon-plus')
+      .addClass('glyphicon-minus');
+    $(this).find('> .children').slideDown();
+    return $(this);
+  }
+
+  // Check or set the number of span.indent
+  $.fn.indent = function(level) {
+    if (typeof level === 'undefined') {
+      return $(this).find('> .list-group-item > .left > .indent').length;
+    } else {
+      var p = $(this).find('> .list-group-item > .left');
+      for (var i = 0; i < level; i++) {
+        p.prepend('<span class="indent"></span>');
+      }
+      return $(this);
+    }
+  }
+
   var menuBar = null;
-  var stemLi = null;
-  var sel = null; // selected <li>
+  var stem = null;
+  var sel = null; // selected .wrapper
 
   function init() {
-    $('.expand').click(toggleSubtree);
-    $('#tagTree li, #stem').click(tagClick);
+    $('.expander').click(glyphClick);
+    $('.wrapper, #stem').click(tagClick);
     $('#butUp').click(moveTagUp);
     $('#butDown').click(moveTagDown);
     $('#butLeft').click(moveTagLeft);
@@ -15,30 +39,15 @@ $(function() {
     $('#butDelete').click(deleteTag);
     $('#butSave').click(saveTree);
     menuBar = $('#menuBar').detach();
-    stemLi = $('#stem').detach().removeAttr('id');
-
-    // collapse all subtrees
-    // $('#tagTree ul').hide();
+    stem = $('#stem').detach().removeAttr('id');
   }
 
-  function toggleSubtree(e) {
-    e.stopPropagation();
-    var li = $(this).parent();
-    if ($(this).hasClass('closed')) {
-      openSubtree(li);
-    } else if ($(this).hasClass('open')) {
-      closeSubtree(li);
+  function glyphClick(e) {
+    if ($(this).is('.glyphicon-plus, .glyphicon-minus')) {      // if it has a subtree
+      $(this).toggleClass('glyphicon-plus glyphicon-minus');    // toggle the glyph
+      $(this).closest('.wrapper').find('> .children').slideToggle(); // toggle the children
     }
-  }
-
-  function openSubtree(li, args) {
-    li.children('.expand').removeClass('closed').addClass('open');
-    li.children('ul').slideDown(args);
-  }
-
-  function closeSubtree(li, args) {
-    li.children('.expand').removeClass('open').addClass('closed');
-    li.children('ul').slideUp(args);
+    return false;
   }
 
   function tagClick(e) {
@@ -49,7 +58,7 @@ $(function() {
     endEdit();
     sel = $(this);
     sel.addClass('selected');
-    var value = sel.find('> .value').hide();
+    var value = $(this).find('> .list-group-item > .center > .value').hide();
     menuBar.insertAfter(value).show();
     menuBar.find('#valueBox').val(value.text()).focus();
   }
@@ -66,54 +75,42 @@ $(function() {
   }
 
   function moveTagUp() {
-    sel.insertBefore(sel.prev());
+    sel.prev().before(sel);
   }
 
   function moveTagDown() {
-    sel.insertAfter(sel.next());
+    sel.next().after(sel);
   }
 
   function moveTagLeft() {
-    var parentLi = sel.parent().parent('li');
-    if (parentLi.length) {
-      sel.insertAfter(parentLi);
-      var numChildren = parentLi.find('> ul > li').length;
-      if (!numChildren) {
-        parentLi.find('.expand').removeClass('open');
+    var p = sel.parent().closest('.wrapper');
+    if (p.length) {
+      p.after(sel);
+      // remove one level of indentation from the whole subtree
+      sel.find('.indent:first-child').remove();
+      if (!p.find('.wrapper').length) {          // the node has no children left
+        p.find('.expander').toggleClass('glyphicon-minus glyphicon-none');
       }
     }
   }
 
   function moveTagRight() {
-    var parentLi = sel.prev();
-    if (parentLi.length) {
-      var ul = ensureUl(parentLi);
-      openSubtree(parentLi, {
-        complete: function() {
-          sel.appendTo(ul);
-        },
-      });
+    var p = sel.prev();
+    if (p.length) {
+      // add one level of indentation to the whole subtree
+      sel.find('.left').prepend('<span class="indent"></span>');
+      p.ensureOpen().children('.children').append(sel);
     }
   }
 
   function addSibling() {
-    var newNode = stemLi.clone(true);
-    newNode.insertAfter(sel).click();
+    stem.clone(true).indent(sel.indent()).insertAfter(sel).click();
   }
 
   function addChild() {
-    var ul = ensureUl(sel);
-    openSubtree(sel);
-    var newNode = stemLi.clone(true);
-    newNode.appendTo(ul).click();
-  }
-
-  // Ensures the node has a <ul> child, creates it if it doesn't, and returns the <ul> child.
-  function ensureUl(node) {
-    if (!node.children('ul').length) {
-      node.append('<ul></ul>');
-    }
-    return node.children('ul');
+    var node = stem.clone(true).indent(1 + sel.indent());
+    sel.ensureOpen().children('.children').append(node);
+    node.click();
   }
 
   function deleteTag() {
@@ -121,14 +118,13 @@ $(function() {
     if (blockers.length) {
       alert('Cannot delete tag - some problems use it.');
     } else {
+      var p = sel.parent().closest('.wrapper');
       var toDelete = sel;
-      var parentLi = sel.parent().parent('li');
-      var numSiblings = sel.siblings().length;
       endEdit();
       toDelete.remove();
 
-      if (parentLi.length && !numSiblings) {
-        parentLi.find('.expand').removeClass('open');
+      if (!p.find('.wrapper').length) {          // the node has no children left
+        p.find('.expander').toggleClass('glyphicon-minus glyphicon-none');
       }
     }
   }
@@ -153,7 +149,7 @@ $(function() {
     }
 
     $('.value').each(function(i) {
-      var level = $(this).parentsUntil($('#tagTree'), 'li').length;
+      var level = $(this).parentsUntil($('#tagTree'), '.wrapper').length;
       results.push({
         id: $(this).data('id'),
         value: $(this).text(),

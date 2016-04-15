@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-10 17:24+0300\n"
-"PO-Revision-Date: 2016-04-10 17:24+0300\n"
+"POT-Creation-Date: 2016-04-15 07:26+0300\n"
+"PO-Revision-Date: 2016-04-15 07:28+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -19,51 +19,59 @@ msgstr ""
 "X-Poedit-SearchPath-1: templates\n"
 "X-Poedit-SearchPath-2: www\n"
 
-#: lib/Permission.php:35
+#: lib/Permission.php:38
 msgid "manage user roles and permissions"
 msgstr "gestionează rolurile și permisiunile utilizatorilor"
 
-#: lib/Permission.php:37
+#: lib/Permission.php:40
 msgid "add problems"
 msgstr "adaugă probleme"
 
-#: lib/Permission.php:38
+#: lib/Permission.php:41
 msgid "edit problems"
 msgstr "editează probleme"
 
-#: lib/Permission.php:39
+#: lib/Permission.php:42
 msgid "delete problems"
 msgstr "șterge probleme"
 
-#: lib/Permission.php:41
+#: lib/Permission.php:44
 msgid "add/delete attachments"
 msgstr "adaugă/șterge fișiere atașate"
 
-#: lib/Permission.php:42
+#: lib/Permission.php:45
 msgid "view/add/delete grader_* attachments"
 msgstr "vezi/adaugă/șterge fișiere atașate grader_*"
 
-#: lib/Permission.php:44
+#: lib/Permission.php:47
 msgid "add/edit/delete rounds"
 msgstr "adaugă/modifică/șterge runde"
 
-#: lib/Permission.php:48
+#: lib/Permission.php:49
+msgid "add/edit/delete tags"
+msgstr "adaugă/modifică/șterge etichete"
+
+#: lib/Permission.php:53
 msgid "permission management"
 msgstr "gestiunea permisiunilor"
 
-#: lib/Permission.php:51
+#: lib/Permission.php:56
 msgid "problem management"
 msgstr "gestiunea problemelor"
 
-#: lib/Permission.php:56
+#: lib/Permission.php:61
 msgid "attachment management"
 msgstr "gestiunea fișierelor atașate"
 
-#: lib/Permission.php:60
+#: lib/Permission.php:65
 msgid "round management"
 msgstr "gestiunea rundelor"
 
-#: lib/Permission.php:84
+#: lib/Permission.php:68
+msgid "tag management"
+msgstr "gestiunea etichetelor"
+
+#: lib/Permission.php:92
 #, php-format
 msgid "Missing permission: %s"
 msgstr "Nu ai permisiunea: %s"
@@ -140,7 +148,7 @@ msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
 
-#: lib/model/Role.php:14 lib/model/Round.php:29
+#: lib/model/Role.php:14 lib/model/Round.php:39
 msgid "The name must be at least three characters long."
 msgstr "Numele  trebuie să aibă cel puțin trei caractere."
 
@@ -148,15 +156,15 @@ msgstr "Numele  trebuie să aibă cel puțin trei caractere."
 msgid "There already exists a role by this name."
 msgstr "Există deja un rol cu acest nume."
 
-#: lib/model/Round.php:37
+#: lib/model/Round.php:47
 msgid "There already exists a round with this name."
 msgstr "Există deja o rundă cu acest nume."
 
-#: lib/model/Round.php:41
+#: lib/model/Round.php:51
 msgid "The start date/time cannot be empty."
 msgstr "Data/ora de start nu pot fi vide."
 
-#: lib/model/Round.php:45
+#: lib/model/Round.php:55
 msgid "The duration must be positive."
 msgstr "Durata trebuie să fie pozitivă."
 
@@ -367,11 +375,11 @@ msgstr "Am salvat rolul."
 msgid "Round not found."
 msgstr "Runda nu există."
 
-#: www/editRound.php:39
+#: www/editRound.php:50
 msgid "Round saved."
 msgstr "Am salvat runda."
 
-#: www/editRound.php:42 templates/editProblem.tpl:19
+#: www/editRound.php:53 templates/editProblem.tpl:19
 msgid "This is only a preview. Don't forget to save your changes!"
 msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 
@@ -388,6 +396,10 @@ msgstr "Extensie necunoscută «.%s»."
 msgid "Source not found."
 msgstr "Sursa nu există."
 
+#: www/tags.php:45
+msgid "Tags saved."
+msgstr "Am salvat etichetele."
+
 #: templates/attachments.tpl:4 templates/problem.tpl:32
 msgid "attachments"
 msgstr "fișiere atașate"
@@ -396,7 +408,7 @@ msgstr "fișiere atașate"
 msgid "back"
 msgstr "înapoi"
 
-#: templates/attachments.tpl:28 templates/editRole.tpl:17
+#: templates/attachments.tpl:28 templates/editProblem.tpl:57
 msgid "name"
 msgstr "nume"
 
@@ -464,7 +476,7 @@ msgstr "e-mail"
 msgid "enter your email address"
 msgstr "introdu adresa de e-mail"
 
-#: templates/auth/account.tpl:31 templates/editRole.tpl:36
+#: templates/auth/account.tpl:31 templates/editProblem.tpl:119
 msgid "save"
 msgstr "salvează"
 
@@ -586,7 +598,7 @@ msgstr "schimbă parola"
 msgid "edit problem"
 msgstr "editare problemă"
 
-#: templates/editProblem.tpl:12 templates/problems.tpl:15
+#: templates/editProblem.tpl:12
 msgid "add a problem"
 msgstr "adaugă o problemă"
 
@@ -646,11 +658,11 @@ msgstr "lasă gol pentru evaluare cu diff"
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:115 templates/editRound.tpl:62
+#: templates/editProblem.tpl:115
 msgid "preview"
 msgstr "previzualizează"
 
-#: templates/editProblem.tpl:123 templates/editRole.tpl:39
+#: templates/editProblem.tpl:123
 msgid "cancel"
 msgstr "anulează"
 
@@ -689,6 +701,10 @@ msgstr "data/ora de start (AAAA-LL-ZZ HH:MM)"
 #: templates/editRound.tpl:58
 msgid "duration (minutes)"
 msgstr "durata (minute)"
+
+#: templates/editRound.tpl:61
+msgid "problems"
+msgstr "probleme"
 
 #: templates/email/changePass.tpl:1
 msgid "Hi,"
@@ -745,10 +761,6 @@ msgstr "Varena2 funcționează!"
 #: templates/layout.tpl:32
 msgid "home"
 msgstr "acasă"
-
-#: templates/layout.tpl:33
-msgid "problems"
-msgstr "probleme"
 
 #: templates/layout.tpl:34
 msgid "rounds"
@@ -873,3 +885,35 @@ msgstr "Comanda de compilare"
 #: templates/source.tpl:112
 msgid "Compiler output"
 msgstr "Ieșirea compilatorului"
+
+#: templates/tags.tpl:3
+msgid "tags"
+msgstr "etichete"
+
+#: templates/tags.tpl:10
+msgid "Click on any line for a menu. Don't forget to save your changes!"
+msgstr "Click pe orice linie pentru un meniu. Nu uita să salvezi modificările!"
+
+#: templates/tags.tpl:34
+msgid "the tag changes places with the previous sibling"
+msgstr "eticheta schimbă locul cu fratele anterior"
+
+#: templates/tags.tpl:38
+msgid "the tag changes places with the next sibling"
+msgstr "eticheta schimbă locul cu fratele următor"
+
+#: templates/tags.tpl:42
+msgid "the tag becomes its parent's next sibling"
+msgstr "eticheta devine fratele următor al părintelui ei."
+
+#: templates/tags.tpl:46
+msgid "the tag becomes its previous sibling's child"
+msgstr "eticheta devine fiu al fratelui ei anterior"
+
+#: templates/tags.tpl:51
+msgid "add sibling"
+msgstr "adaugă frate"
+
+#: templates/tags.tpl:55
+msgid "add child"
+msgstr "adaugă fiu"

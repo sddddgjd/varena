@@ -11,30 +11,53 @@
     </div>
   </div>
 
-  <li id="stem">
-    <div class="expand"></div>
-    <div class="value" data-id="" data-can-delete="1"></div>
-  </li>
+  <div class="wrapper" id="stem">
+    <div class="list-group-item">
+      <span class="left">
+        <i class="expander glyphicon glyphicon-none"></i>
+      </span>
+
+      <span class="center">
+        <span class="value" data-can-delete="1"></span>
+      </span>
+    </div>
+
+    <div class="children"></div>
+  </div>
+
   {include file="bits/tagTree.tpl" tags=$tags id="tagTree"}
 
   <div id="menuBar">
     <input type="text" name="value" value="" id="valueBox" size="20">
     <div id="menuActions">
-      <button id="butUp"
-              title="{"the tag changes places with the previous sibling"|_}"
-              >⇧</button>
-      <button id="butDown"
-              title="{"the tag changes places with the next sibling"|_}"
-              >⇩</button>
-      <button id="butLeft"
-              title="{"the tag becomes its parent's next sibling"|_}"
-              >⇦</button>
-      <button id="butRight"
-              title="{"the tag becomes its previous sibling's child"|_}"
-              >⇨</button>
-      <button id="butAddSibling">{"add a sibling"|_}</button>
-      <button id="butAddChild">{"add a child"|_}</button>
-      <button id="butDelete">{"delete"|_}</button>
+      <button id="butUp" class="btn btn-default btn-xs"
+              title="{"the tag changes places with the previous sibling"|_}">
+        <i class="glyphicon glyphicon-arrow-up"></i>
+      </button>
+      <button id="butDown" class="btn btn-default btn-xs"
+              title="{"the tag changes places with the next sibling"|_}">
+        <i class="glyphicon glyphicon-arrow-down"></i>
+      </button>
+      <button id="butLeft" class="btn btn-default btn-xs"
+              title="{"the tag becomes its parent's next sibling"|_}">
+        <i class="glyphicon glyphicon-arrow-left"></i>
+      </button>
+      <button id="butRight" class="btn btn-default btn-xs"
+              title="{"the tag becomes its previous sibling's child"|_}">
+        <i class="glyphicon glyphicon-arrow-right"></i>
+      </button>
+      <button id="butAddSibling" class="btn btn-default btn-xs">
+        <i class="glyphicon glyphicon-chevron-right"></i>
+        {"add sibling"|_}
+      </button>
+      <button id="butAddChild" class="btn btn-default btn-xs">
+        <i class="glyphicon glyphicon-chevron-down"></i>
+        {"add child"|_}
+      </button>
+      <button id="butDelete" class="btn btn-default btn-xs">
+        <i class="glyphicon glyphicon-trash"></i>
+        {"delete"|_}
+      </button>
     </div>
   </div>
 
