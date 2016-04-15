@@ -4,4 +4,15 @@ $(function() {
       $('#parametersTab .has-error').length) {
     $('.nav-tabs a[href="#parametersTab"]').tab('show');
   }
+
+  $('#tagIds').select2({
+    ajax: {
+      url: 'ajax/getTags.php',
+      dataType: 'json',
+      delay: 250,
+    },
+    minimumInputLength: 1,
+  });
+
+  $('#tagIds').trigger('change');
 });

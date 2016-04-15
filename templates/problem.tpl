@@ -26,11 +26,25 @@
     {$problem->getHtml()}
   </div>
 
-  {if $problem->editableBy($user)}
-    <a href="editProblem.php?id={$problem->id}">{"edit"|_}</a> |
+  {if $tags}
+    <h3>{"tags"|_|ucfirst}</h3>
+
+    <div class="container">
+      {foreach $problem->getTags() as $t}
+        <span class="label label-primary">{$t->value}</span>
+      {/foreach}
+    </div>
   {/if}
-  <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a> |
-  <a href="evaluator.php?problemId={$problem->id}">{"submitted sources"|_}</a>
+
+  <div class="voffset3"></div>
+
+  <div class="container">
+    {if $problem->editableBy($user)}
+      <a href="editProblem.php?id={$problem->id}">{"edit"|_}</a> |
+    {/if}
+    <a href="attachments.php?id={$problem->id}">{"attachments"|_}</a> |
+    <a href="evaluator.php?problemId={$problem->id}">{"submitted sources"|_}</a>
+  </div>
 
   {if $user}
     <h3>{"submit a source file"|_}</h3>

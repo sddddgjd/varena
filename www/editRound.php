@@ -27,7 +27,7 @@ if ($save || $preview) {
   $r->description = Request::get('description');
   $r->start = Request::get('start');
   $r->duration = Request::get('duration');
-  $problemIds = Request::get('problemIds');
+  $problemIds = Request::get('problemIds', []);
 
   $errors = $r->validate();
   if ($errors) {
