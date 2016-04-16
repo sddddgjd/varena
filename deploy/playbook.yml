@@ -9,6 +9,20 @@
     - vars/nginx.yml
     - vars/mysql.yml
 
+  pre_tasks:
+
+    - name: Add dotdeb.org repository (for PHP7)
+      apt_repository: repo='deb http://packages.dotdeb.org jessie all' state=present
+
+    - name: Add dotdeb.org src repository (for PHP7)
+      apt_repository: repo='deb-src http://packages.dotdeb.org jessie all' state=present
+
+    - name: Import dotdeb.org repository key (for PHP7)
+      apt_key: url=https://www.dotdeb.org/dotdeb.gpg state=present
+
+    - name: Update APT
+      apt: upgrade=yes update_cache=yes
+
   roles:
 
     - role: geerlingguy.php
