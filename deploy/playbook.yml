@@ -54,3 +54,18 @@
       command: php grantAllPermissions.php admin
       args:
         chdir: /var/www/varena2/scripts/
+
+    - name: Fix 'php-fpm' permissions and enable error display
+      lineinfile:
+        dest: "{{ php_fpm_pool_conf_path }}"
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+        - regexp: "^php_flag\\[display_errors\\].?=.+$"
+          line: "php_flag[display_errors] = on"
+        - regexp: "^listen\\.owner.?=.+$"
+          line: "listen.owner = www-data"
+        - regexp: "^listen\\.group.?=.+$"
+          line: "listen.group = www-data"
+      notify: restart php-fpm

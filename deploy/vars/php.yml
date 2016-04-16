@@ -1,6 +1,8 @@
 php_enable_webserver: true
 php_webserver_daemon: "nginx"
-php_enable_fpm: true
+php_enable_php_fpm: true
+php_display_errors: "On"
+php_fpm_listen: /run/php/php7.0-fpm.sock
 php_packages:
   - php7.0
   - php7.0-cli
@@ -14,5 +16,6 @@ php_conf_paths:
 php_extension_conf_paths:
   - /etc/php/7.0/fpm/conf.d
   - /etc/php/7.0/cli/conf.d
-php_fpm_daemon: php-fpm7.0
+php_fpm_daemon: php7.0-fpm
 php_fpm_conf_path: "/etc/php/7.0/fpm"
+php_fpm_pool_conf_path: "{{ php_fpm_conf_path }}/pool.d/www.conf"
