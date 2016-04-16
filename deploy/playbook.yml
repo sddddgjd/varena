@@ -44,3 +44,13 @@
       command: php migration.php
       args:
         chdir: /var/www/varena2/scripts/
+
+    - name: Create 'admin' user
+      command: php createUser.php admin admin@localhost admin
+      args:
+        chdir: /var/www/varena2/scripts/
+
+    - name: Make 'admin' god!
+      command: php grantAllPermissions.php admin
+      args:
+        chdir: /var/www/varena2/scripts/
