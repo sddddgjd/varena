@@ -40,6 +40,7 @@ if ($user) {
 }
 
 SmartyWrap::assign('problem', $problem);
+SmartyWrap::assign('tags', $problem->getTags());
 SmartyWrap::assign('score', $score);
 SmartyWrap::addJs('fileUpload');
 SmartyWrap::display('problem.tpl');

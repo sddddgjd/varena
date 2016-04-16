@@ -21,6 +21,16 @@ class Problem extends BaseObject {
     return $this->html;
   }
 
+  function getTags() {
+    return Model::factory('Tag')
+      ->table_alias('t')
+      ->select('t.*')
+      ->join('problem_tag', ['t.id', '=', 'pt.tagId'], 'pt')
+      ->where('pt.problemId', $this->id)
+      ->order_by_asc('pt.rank')
+      ->find_many();
+  }
+
   function getAttachmentDir() {
     return sprintf("%s/uploads/attachments/%s",
                    Util::$rootPath,

@@ -36,13 +36,18 @@
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
-          <a href="#statementTab" aria-controls="eval" role="tab" data-toggle="tab">
+          <a href="#statementTab" aria-controls="statementTab" role="tab" data-toggle="tab">
             {"statement"|_}
           </a>
         </li>
         <li role="presentation">
-          <a href="#parametersTab" aria-controls="source" role="tab" data-toggle="tab">
+          <a href="#parametersTab" aria-controls="parametersTab" role="tab" data-toggle="tab">
             {"parameters"|_}
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#tagsTab" aria-controls="tagsTab" role="tab" data-toggle="tab">
+            {"tags"|_}
           </a>
         </li>
       </ul>
@@ -103,6 +108,20 @@
                      {if $p->hasWitness}checked{/if}>
               {"uses .ok files"|_}
             </label>
+          </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="tagsTab">
+
+          <div class="form-group">
+            <label for="tagIds">{"tags"|_}</label>
+            <div class="select2-container form-control select2">
+              <select id="tagIds" name="tagIds[]" multiple="multiple" style="width: 100%">
+                {foreach $tags as $t}
+                  <option value="{$t->id}" selected>{$t->value}</option>
+                {/foreach}
+              </select>
+            </div>
           </div>
 
         </div>
