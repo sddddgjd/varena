@@ -1,0 +1,40 @@
+.indent {
+  display: inline-block;
+  width: 1.5em;
+}
+
+.left {
+  float: left;
+  padding-right: 0.5em;
+}
+
+.center {
+  display: block;
+}
+
+/* placeholder */
+.glyphicon-none:before {
+  color: transparent !important;
+  content: "+";
+}
+
+/* Force proper height on empty values */
+.value {
+  display: inline-block;
+}
+
+.selected > .list-group-item {
+  background-color: #d9edf7;
+}
+
+.selected > .children .list-group-item {
+  background-color: #eaf6fb;
+}
+
+#menuBar {
+  display: none;
+}
+
+#menuActions {
+  float: right;
+}

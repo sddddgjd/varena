@@ -29,12 +29,20 @@ class SmartyWrap {
   }
 
   static function display($template) {
-    // Add {$template}.js if the file exists
     $baseName = pathinfo($template)['filename'];
+
+    // Add {$template}.js if the file exists
     $jsFile = $baseName . '.js';
     $fileName = Util::$rootPath . '/www/js/' . $jsFile;
     if (file_exists($fileName)) {
       self::$jsFiles[] = $jsFile;
+    }
+
+    // Add {$template}.css if the file exists
+    $cssFile = $baseName . '.css';
+    $fileName = Util::$rootPath . '/www/css/' . $cssFile;
+    if (file_exists($fileName)) {
+      self::$cssFiles[] = $cssFile;
     }
 
     self::assign('cssFiles', self::$cssFiles);
