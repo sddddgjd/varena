@@ -37,8 +37,17 @@
         chdir: /var/www/varena2/scripts/
         executable: /bin/bash
 
-    - name: Copy varena2.conf
-      copy: src=./files/varena2.cfg dest=/var/www/varena2/varena2.conf owner=www-data group=www-data mode=0644
+    - name: Modify varena2.conf
+      lineinfile:
+        dest: /var/www/varena2/varena2.conf
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+        - regexp: "^database.?=.+$"
+          line: "database = \"mysql://varena2:varena2@localhost/varena2\""
+        - regexp: "^api.?=.+$"
+          line: "api = \"http://localhost/api.php\""
 
     - name: Run migration.php
       command: php migration.php
