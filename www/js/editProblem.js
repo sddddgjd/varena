@@ -14,5 +14,15 @@ $(function() {
     minimumInputLength: 1,
   });
 
+  $('#authorName').select2({
+    ajax: {
+      url: 'ajax/getAuthors.php',
+      dataType: 'json',
+      delay: 250,
+    },
+    minimumInputLength: 1,
+    tags: true,
+  });
+
   $('#tagIds').trigger('change');
 });

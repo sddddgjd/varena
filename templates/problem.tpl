@@ -26,6 +26,11 @@
     {$problem->getHtml()}
   </div>
 
+  {if $problem->author}
+    <h3>{"author"|_|ucfirst}</h3>
+    <p>{$problem->author}</p>
+  {/if}
+
   {if $tags}
     <h3>{"tags"|_|ucfirst}</h3>
 
