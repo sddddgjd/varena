@@ -1,0 +1,10 @@
+---
+
+- src: geerlingguy.nginx
+  version: 1.8.0
+
+- src: geerlingguy.php
+  version: 2.0.3
+
+- src: geerlingguy.mysql
+  version: 2.0.2

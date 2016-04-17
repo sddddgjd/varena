@@ -46,8 +46,8 @@
           </a>
         </li>
         <li role="presentation">
-          <a href="#tagsTab" aria-controls="tagsTab" role="tab" data-toggle="tab">
-            {"tags"|_}
+          <a href="#metadataTab" aria-controls="metadataTab" role="tab" data-toggle="tab">
+            {"metadata"|_}
           </a>
         </li>
       </ul>
@@ -111,7 +111,7 @@
           </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="tagsTab">
+        <div role="tabpanel" class="tab-pane" id="metadataTab">
 
           <div class="form-group">
             <label for="tagIds">{"tags"|_}</label>
@@ -120,6 +120,14 @@
                 {foreach $tags as $t}
                   <option value="{$t->id}" selected>{$t->value}</option>
                 {/foreach}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="authorName">{"author"|_}</label>
+            <div class="select2-container form-control select2">
+              <select id="authorName" name="authorName" style="width: 100%">
+                  <option value="{$p->author}" selected>{$p->author}</option>
               </select>
             </div>
           </div>

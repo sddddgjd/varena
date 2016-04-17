@@ -37,6 +37,7 @@ if ($generate || $save || $preview) {
   $p->grader = Request::get('grader');
   $p->timeLimit = Request::get('timeLimit');
   $p->memoryLimit = Request::get('memoryLimit');
+  $p->author = Request::get('authorName');
   $tagIds = Request::get('tagIds', []);
 
   if ($generate) {
@@ -53,7 +54,7 @@ if ($generate || $save || $preview) {
         @rename($origDir, $dir); // may not exist yet
         FlashMessage::add(_('The problem name has changed. Remember to update any statement references (file names, attachments).'), 'warning');
       }
-    
+
       $p->save();
 
       // delete old ProblemTag entries and save new ones
