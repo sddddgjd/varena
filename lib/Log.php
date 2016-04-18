@@ -7,10 +7,13 @@ class Log {
   static $level;
 
   static function init() {
-    self::$file = fopen(Config::get('logging.file'), 'a');
+    $fileName = Config::get('logging.file');
+    self::$file = fopen($fileName, 'a');
     self::$level = Config::get('logging.level'); // no constant() call needed
+    @chmod($fileName, 0666);
   }
 
+  // TODO print the file and line number
   static function write($level, $format, $args) {
     if ($level <= self::$level) {
       $date = date("Y-m-d H:i:s");

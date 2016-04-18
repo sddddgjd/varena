@@ -19,7 +19,7 @@ class Util {
     require_once "{$tp}/idiorm/idiorm.php";
     require_once "{$tp}/idiorm/paris.php";
     require_once "{$tp}/smarty/Smarty.class.php";
-    Db::init(Config::get('general.database'));
+    Db::init();
     Session::init();
     FlashMessage::restoreFromSession();
     SmartyWrap::init();

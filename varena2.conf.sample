@@ -56,3 +56,15 @@ replyToHeader = "Reply-To: Varena2 <email@example.com>"
 
 ; signature line at the end of outgoing emails
 signature = "The Varena2 team"
+
+[testing]
+
+; When true, put the website in testing mode and use the testing database.
+enabled = false
+
+; Database connection
+; database = "mysql://user[:password]@host/database"
+database = "mysql://root@localhost/varena2_testing"
+
+; URL to exercise
+url = "http://localhost/varena2/www/"

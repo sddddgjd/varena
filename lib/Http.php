@@ -25,6 +25,7 @@ class Http {
     exit;
   }
 
+  // TODO: fetch to file, not in memory
   /* Returns a pair of ($contents, $httpCode) */
   static function fetchUrl($url) {
     $ch = curl_init($url);
