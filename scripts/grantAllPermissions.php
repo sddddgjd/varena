@@ -6,7 +6,7 @@ if ($argc != 2) {
   die("Usage: {$argv[0]} <username>\n");
 }
 
-$ROLE_NAME = 'god';
+$ROLE_NAME = _('god');
 
 $u = User::get_by_username($argv[1]) or die("User not found.\n");
 
@@ -18,7 +18,7 @@ if ($role) {
   print "Role '{$role->name}' already exists!\n";
 } else {
   $role = Model::factory('Role')->create();
-  $role->name = _($ROLE_NAME);
+  $role->name = $ROLE_NAME;
   $role->save();
   print "Created role '{$role->name}', ID = {$role->id}\n";
 }

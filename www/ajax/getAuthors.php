@@ -11,10 +11,13 @@ $problems = Model::factory('Problem')
 
 $data = [ 'results' => [] ];
 foreach ($problems as $p) {
-  $data['results'][] = [
+  $author = [
     'id' => $p->author,
     'text' => $p->author,
   ];
+  if (!in_array($author, $data['results'])) {
+    $data['results'][] = $author;
+  }
 }
 
 print json_encode($data);
