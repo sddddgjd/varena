@@ -75,8 +75,8 @@
     <footer class="footer">
       <div class="container">
         <p class="text-muted">
-          © 2016 Cătălin Frâncu |
-          <a href="https://github.com/CatalinFrancu/varena">GitHub</a>
+          © 2016 Varena |
+          <a href="https://github.com/varena/varena">GitHub</a>
         </p>
       </div>
     </footer>

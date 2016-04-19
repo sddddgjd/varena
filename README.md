@@ -8,7 +8,7 @@ Installation
 
 * Get a copy of the code:
 
-        $ git clone https://github.com/CatalinFrancu/varena
+        $ git clone https://github.com/varena/varena
 
 * Some light local configuration:
 
