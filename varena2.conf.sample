@@ -4,7 +4,7 @@
 ; database = "mysql://user[:password]@host/database"
 database = "mysql://root@localhost/varena2"
 
-; Locale for localized formats
+; Interface language
 locale = ro_RO.utf8
 
 ; Name of the cookie we set on the client browser for persistent logins
@@ -61,6 +61,9 @@ signature = "The Varena2 team"
 
 ; When true, put the website in testing mode and use the testing database.
 enabled = false
+
+; Testing interface language
+locale = en_US.utf8
 
 ; Database connection
 ; database = "mysql://user[:password]@host/database"

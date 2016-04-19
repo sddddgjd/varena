@@ -7,8 +7,4 @@ deploy/roles/geerlingguy.php/
 deploy/roles/geerlingguy.mysql/
 deploy/playbook.retry
 
-test/composer.lock
-test/composer.phar
-test/vendor
-
 www/.htaccess

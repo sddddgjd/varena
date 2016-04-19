@@ -34,23 +34,6 @@ class Db {
     return ($r !== false);
   }
 
-  /**
-   * Drops and recreates the testing DB using the general DB schema.
-   * Execute this at PDO level, since we cannot connect to a non-existing DB.
-   **/
-  static function wipeTestingDatabase() {
-    $gdsn = self::parseDsn(Config::get('general.database'));
-    $tdsn = self::parseDsn(Config::get('testing.database'));
-
-    $pdo = new PDO('mysql:host=' . $tdsn['host'], $tdsn['user'], $tdsn['password']);
-    $pdo->query('drop database if exists ' . $tdsn['database']);
-    $pdo->query('create database if not exists ' . $tdsn['database']);
-
-    exec(sprintf('mysqldump -h %s %s -d | mysql -h %s %s',
-                 $gdsn['host'], $gdsn['database'],
-                 $tdsn['host'], $tdsn['database']));
-  }
-
   /** Returns a DB result set that you can iterate with foreach ($result as $row) **/
   static function execute($query, $fetchStyle = PDO::FETCH_BOTH) {
     return ORM::get_db()->query($query, $fetchStyle);

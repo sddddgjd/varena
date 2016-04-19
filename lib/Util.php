@@ -45,7 +45,10 @@ class Util {
 
   private static function setLocale() {
     mb_internal_encoding("UTF-8");
-    setlocale(LC_ALL, Config::get('general.locale'));
+    $locale = Config::get('testing.enabled')
+            ? Config::get('testing.locale')
+            : Config::get('general.locale');
+    setlocale(LC_ALL, $locale);
     $domain = "messages";
     bindtextdomain($domain, self::$rootPath . '/locale');
     bind_textdomain_codeset($domain, 'UTF-8');
