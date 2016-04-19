@@ -68,6 +68,3 @@ locale = en_US.utf8
 ; Database connection
 ; database = "mysql://user[:password]@host/database"
 database = "mysql://root@localhost/varena2_testing"
-
-; URL to exercise
-url = "http://localhost/varena2/www/"
