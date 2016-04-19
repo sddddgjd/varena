@@ -13,7 +13,7 @@ class Util {
   static function init() {
     self::definePaths();
     spl_autoload_register('self::autoloadClasses');
-    Config::load(self::$rootPath . "/varena2.conf");
+    Config::load(self::$rootPath . "/varena.conf");
     self::setLocale();
     $tp = self::$rootPath . '/lib/third-party'; // third-party libs
     require_once "{$tp}/idiorm/idiorm.php";

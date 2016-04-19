@@ -1,5 +1,5 @@
 *~
-varena2.conf
+varena.conf
 
 deploy/.vagrant/
 deploy/roles/geerlingguy.nginx/

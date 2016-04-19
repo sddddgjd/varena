@@ -34,35 +34,35 @@
     - name: Run setup.sh
       shell: ./setup.sh
       args:
-        chdir: /var/www/varena2/scripts/
+        chdir: /var/www/varena/scripts/
         executable: /bin/bash
 
-    - name: Modify varena2.conf
+    - name: Modify varena.conf
       lineinfile:
-        dest: /var/www/varena2/varena2.conf
+        dest: /var/www/varena/varena.conf
         regexp: "{{ item.regexp }}"
         line: "{{ item.line }}"
         state: present
       with_items:
         - regexp: "^database.?=.+$"
-          line: "database = \"mysql://varena2:varena2@localhost/varena2\""
+          line: "database = \"mysql://varena:varena@localhost/varena\""
         - regexp: "^api.?=.+$"
           line: "api = \"http://localhost/api.php\""
 
     - name: Run migration.php
       command: php migration.php
       args:
-        chdir: /var/www/varena2/scripts/
+        chdir: /var/www/varena/scripts/
 
     - name: Create 'admin' user
       command: php createUser.php admin admin@localhost admin
       args:
-        chdir: /var/www/varena2/scripts/
+        chdir: /var/www/varena/scripts/
 
     - name: Make 'admin' god!
       command: php grantAllPermissions.php admin
       args:
-        chdir: /var/www/varena2/scripts/
+        chdir: /var/www/varena/scripts/
 
     - name: Fix 'php-fpm' permissions and enable error display
       lineinfile:

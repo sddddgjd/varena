@@ -1,25 +1,25 @@
-Varena2
+Varena
 =======
 
-Varena2 is a web program that lets you host and evaluate programming problems and contests.
+Varena is a web program that lets you host and evaluate programming problems and contests.
 
 Installation
 ------------
 
 * Get a copy of the code:
 
-        $ git clone https://github.com/CatalinFrancu/varena2
+        $ git clone https://github.com/CatalinFrancu/varena
 
 * Some light local configuration:
 
-        $ cd varena2
+        $ cd varena
         $ scripts/setup.sh
 
 * Create the database (adapt to suit your needs):
 
-        $ mysql -u root -e 'create database varena2 charset utf8'
+        $ mysql -u root -e 'create database varena charset utf8'
 
-* Modify varena2.conf to reflect your locale, database config etc.
+* Modify varena.conf to reflect your locale, database config etc.
 * Apply any patches to bring the database schema to date:
 
         $ php scripts/migration.php
@@ -41,7 +41,7 @@ Installation
 Localization (for users)
 ------------------------
 
-To use Varena2 in your language, you need three things:
+To use Varena in your language, you need three things:
 
 * Install the locale you want on your system
 * Make sure there is a corresponding entry in the locale/ directory. Note that the names must match exactly. For instance, if your system has a ro_RO locale, but the locale/ directory has a ro_RO.utf8 subdirectory, localization won't work.
@@ -86,7 +86,7 @@ We use poedit for translation. It needs some light customization for the Smarty 
 * Under Edit -> Preferences -> Parsers, hit New to add a new Parser. Set these values:
   * language: Smarty
   * extensions = *.tpl
-  * parser command = php /path/to/varena2/scripts/tplParser.php %o %F
+  * parser command = php /path/to/varena/scripts/tplParser.php %o %F
   * an item in input files list = %f
 
 To do the actual translation:

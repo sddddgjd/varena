@@ -3,7 +3,7 @@
   <head>
     <title>
       {block name=title}{/block}
-      | Varena2
+      | Varena
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">varena2</a>
+          <a class="navbar-brand" href="#">varena</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -76,7 +76,7 @@
       <div class="container">
         <p class="text-muted">
           © 2016 Cătălin Frâncu |
-          <a href="https://github.com/CatalinFrancu/varena2">GitHub</a>
+          <a href="https://github.com/CatalinFrancu/varena">GitHub</a>
         </p>
       </div>
     </footer>

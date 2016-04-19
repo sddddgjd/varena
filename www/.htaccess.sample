@@ -1,7 +1,7 @@
 RewriteEngine on
 Options -MultiViews
-# Uncomment the next line when running varena2 in a subdirectory
-# RewriteBase /~user/varena2/www/
+# Uncomment the next line when running varena in a subdirectory
+# RewriteBase /~user/varena/www/
 
 RewriteRule ^file/([^/]+)/([^/]+)$ file.php?problemName=$1&fileName=$2 [L]
 

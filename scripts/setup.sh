@@ -10,10 +10,10 @@ cd $ROOT_DIR
 echo "The root of your client appears to be $ROOT_DIR"
 
 # Create a copy of the config file unless it already exists
-if [ ! -e varena2.conf ]
+if [ ! -e varena.conf ]
 then
-  cp varena2.conf.sample varena2.conf
-  echo "*** Please remember to edit varena2.conf according to your needs"
+  cp varena.conf.sample varena.conf
+  echo "*** Please remember to edit varena.conf according to your needs"
 fi
 
 # Create a copy of .htaccess unless it already exists

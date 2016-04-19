@@ -8,11 +8,11 @@ overwrite_global_mycnf: yes
 
 
 mysql_databases:
-  - name: varena2
+  - name: varena
     encoding: utf8
 
 mysql_users:
-  - name: varena2
+  - name: varena
     host: "%"
-    password: varena2
-    priv: "varena2.*:ALL"
+    password: varena
+    priv: "varena.*:ALL"

@@ -2,7 +2,7 @@
 
 ; Database connection
 ; database = "mysql://user[:password]@host/database"
-database = "mysql://root@localhost/varena2"
+database = "mysql://root@localhost/varena"
 
 ; Interface language
 locale = ro_RO.utf8
@@ -16,7 +16,7 @@ apiPassword = 1234
 [logging]
 
 ; Log file name. Can also be "php://stdout" or "php://stderr"
-file = "/tmp/varena2.log"
+file = "/tmp/varena.log"
 
 ; Maximum priority level. See <http://php.net/manual/en/function.syslog.php>.
 level = LOG_DEBUG
@@ -35,7 +35,7 @@ port = 4556
 index = 0
 
 ; URL of the API
-api = "http://localhost/varena2/www/api.php"
+api = "http://localhost/varena/www/api.php"
 
 ; Cache directory for test data, graders, sources and binaries
 cacheDir = "/tmp/eval"
@@ -49,13 +49,13 @@ workDir = "/tmp/eval-work"
 enabled = false
 
 ; From address when sending emails
-fromHeader = "From: Varena2 <email@example.com>"
+fromHeader = "From: Varena <email@example.com>"
 
 ; Reply-to address when sending emails
-replyToHeader = "Reply-To: Varena2 <email@example.com>"
+replyToHeader = "Reply-To: Varena <email@example.com>"
 
 ; signature line at the end of outgoing emails
-signature = "The Varena2 team"
+signature = "The Varena team"
 
 [testing]
 
@@ -67,4 +67,4 @@ locale = en_US.utf8
 
 ; Database connection
 ; database = "mysql://user[:password]@host/database"
-database = "mysql://root@localhost/varena2_testing"
+database = "mysql://root@localhost/varena_testing"

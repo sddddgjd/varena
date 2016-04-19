@@ -12,7 +12,7 @@ check_run() {
 changed_files="$(git diff-tree -r --name-only --no-commit-id HEAD@{1} HEAD)"
 messages=()
 
-check_run varena2.conf.sample "Please reconcile your varena2.conf with varena2.conf.sample"
+check_run varena.conf.sample "Please reconcile your varena.conf with varena.conf.sample"
 check_run www/.htaccess.sample "Please reconcile your www/.htaccess with www/.htaccess.sample and/or Nginx"
 check_run scripts/setup.sh "Please rerun scripts/setup.sh on your client"
 check_run patches/ 'The database schema has changed. Please run "php scripts/migration.php"'

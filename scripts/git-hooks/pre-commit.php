@@ -2,36 +2,36 @@
 <?php
 
 /**
- * Checks whether the developer modified one of the files varena2.conf or
+ * Checks whether the developer modified one of the files varena.conf or
  * www/.htaccess. If they did, they should push the same changes to
- * varena2.conf.sample and www/.htaccess.sample respectively. Specifically,
+ * varena.conf.sample and www/.htaccess.sample respectively. Specifically,
  * we check whether
- * - there are new sections in varena2.conf;
- * - there are new variables in varena2.conf;
- * - some variables changed type in varena2.conf;
+ * - there are new sections in varena.conf;
+ * - there are new variables in varena.conf;
+ * - some variables changed type in varena.conf;
  * - there are new RewriteRules (commented or not) in www/.htaccess.
  */
 
 // We should already be at the root of the client
-if (($conf = parse_ini_file('varena2.conf', true)) === false) {
-  error('Cannot read varena2.conf');
+if (($conf = parse_ini_file('varena.conf', true)) === false) {
+  error('Cannot read varena.conf');
 }
-if (($confSample = parse_ini_file('varena2.conf.sample', true)) === false) {
-  error('Cannot read varena2.conf');
+if (($confSample = parse_ini_file('varena.conf.sample', true)) === false) {
+  error('Cannot read varena.conf');
 }
 
 foreach ($conf as $sectionTitle => $sectionVars) {
   // Check that no new sections are defined
   if (!array_key_exists($sectionTitle, $confSample)) {
-    error("The section *** [$sectionTitle] *** is defined in varena2.conf, " .
-          "but not in varena2.conf.sample. Please add it to varena2.conf.sample.");
+    error("The section *** [$sectionTitle] *** is defined in varena.conf, " .
+          "but not in varena.conf.sample. Please add it to varena.conf.sample.");
   }
 
   foreach ($sectionVars as $key => $value) {
     // Check that no new variables are defined
     if (!array_key_exists($key, $confSample[$sectionTitle])) {
-      error("The variable *** [$sectionTitle.$key] *** is defined in varena2.conf, " .
-            "but not in varena2.conf.sample. Please add it to varena2.conf.sample.");
+      error("The variable *** [$sectionTitle.$key] *** is defined in varena.conf, " .
+            "but not in varena.conf.sample. Please add it to varena.conf.sample.");
     }
 
     // Check that variable types haven't changed
@@ -39,7 +39,7 @@ foreach ($conf as $sectionTitle => $sectionVars) {
     $typeConfSample = gettype($confSample[$sectionTitle][$key]);
     if ($typeConf != $typeConfSample) {
       error("The variable *** [$sectionTitle].$key *** has type '$typeConf' in " .
-            "varena2.conf, but type '$typeConfSample' in varena2.conf.sample. " .
+            "varena.conf, but type '$typeConfSample' in varena.conf.sample. " .
             "Please reconcile them.");
     }
   }
