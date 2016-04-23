@@ -15,6 +15,10 @@ class SmartyWrap {
     self::addJs('jquery', 'bootstrap');
   }
 
+  static function registerPlugin($type, $name, $callback) {
+    self::$theSmarty->registerPlugin($type, $name, $callback);
+  }
+
   static function assign($name, $value) {
     self::$theSmarty->assign($name, $value);
   }
@@ -76,8 +80,8 @@ class SmartyWrap {
     // Note the priorities. This allows files to be added in any order, regardless of dependencies
     foreach (func_get_args() as $id) {
       switch($id) {
-        case 'jquery':           self::$jsFiles[1] = 'jquery-2.2.1.min.js'; break; 
-        case 'bootstrap':        self::$jsFiles[2] = 'bootstrap-3.3.6.min.js'; break; 
+        case 'jquery':           self::$jsFiles[1] = 'jquery-2.2.1.min.js'; break;
+        case 'bootstrap':        self::$jsFiles[2] = 'bootstrap-3.3.6.min.js'; break;
         case 'fileUpload':       self::$jsFiles[3] = 'fileUpload.js'; break;
         case 'datetime':
           self::$jsFiles[4] = 'moment.min.js';

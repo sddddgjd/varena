@@ -43,7 +43,7 @@
                 </td>
               {/if}
               <td>
-                <a href="file/{$problem->name}/{$d.a->name}">
+                <a href="file.php?problemName={$problem->name}&amp;fileName={$d.a->name}">
                   {$d.a->name}
                 </a>
               </td>
