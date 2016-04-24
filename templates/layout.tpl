@@ -46,12 +46,12 @@
                   {$user->username} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="{$wwwRoot}auth/account">{"my account"|_}</a></li>
-                  <li><a href="{$wwwRoot}auth/logout">{"logout"|_}</a></li>
+                  <li><a href="{$wwwRoot}auth/account.php">{"my account"|_}</a></li>
+                  <li><a href="{$wwwRoot}auth/logout.php">{"logout"|_}</a></li>
                 </ul>
               </li>
             {else}
-              <li><a href="{$wwwRoot}auth/login">{"login"|_}</a></li>
+              <li><a href="{$wwwRoot}auth/login.php">{"login"|_}</a></li>
             {/if}
           </ul>
         </div><!--/.nav-collapse -->

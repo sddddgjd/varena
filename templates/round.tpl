@@ -27,7 +27,7 @@
   </div>
 
   <h3>{"problems"|_}</h3>
-  
+
   <ul>
     {foreach $problems as $p}
       <li>{include "bits/problemLink.tpl"}</li>

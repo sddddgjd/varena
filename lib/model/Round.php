@@ -5,6 +5,10 @@ class Round extends BaseObject {
   private $user = null;
   private $html = null;
 
+  const STATUS_EXPIRED = 0;
+  const STATUS_ONGOING = 1;
+  const STATUS_UPCOMING = 2;
+
   function getUser() {
     if (!$this->user) {
       $this->user = User::get_by_id($this->userId);
@@ -17,6 +21,21 @@ class Round extends BaseObject {
       $this->html = StringUtil::textile($this->description);
     }
     return $this->html;
+  }
+
+  function getStatus() {
+    $now = time();
+    $valid_until = $this->start + ($this->duration * 60);
+
+    if ($now < $this->start) {
+      return $this::STATUS_UPCOMING;
+    }
+    else if ($now > $this->start && $now < $valid_until) {
+      return $this::STATUS_ONGOING;
+    }
+    else if ($now > $valid_until) {
+      return $this::STATUS_EXPIRED;
+    }
   }
 
   function getProblems() {

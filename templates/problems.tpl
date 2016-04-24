@@ -7,7 +7,7 @@
 
   <ul>
     {foreach from=$problems item=p}
-      <li><a href="{$wwwRoot}problem?id={$p->id}">{$p->name}</a></li>
+      <li><a href="{$wwwRoot}problem.php?id={$p->id}">{$p->name}</a></li>
     {/foreach}
   </ul>
 

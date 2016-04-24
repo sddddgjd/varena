@@ -44,7 +44,7 @@
         line: "{{ item.line }}"
         state: present
       with_items:
-        - regexp: "^database.?=.+$"
+        - regexp: "^database.?=.+varena\"$"
           line: "database = \"mysql://varena:varena@localhost/varena\""
         - regexp: "^api.?=.+$"
           line: "api = \"http://localhost/api.php\""
@@ -77,4 +77,6 @@
           line: "listen.owner = www-data"
         - regexp: "^listen\\.group.?=.+$"
           line: "listen.group = www-data"
-      notify: restart php-fpm
+      notify:
+        restart php-fpm
+        restart nginx

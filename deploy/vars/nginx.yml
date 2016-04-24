@@ -6,7 +6,18 @@ nginx_vhosts:
     root: "/var/www/varena/www"
     index: "index.php index.html index.htm"
     extra_parameters: |
+      location /file {
+        rewrite ^/file/([^/]+)/([^/]+)$ /file.php?problemName=$1&fileName=$2 break;
+      }
+      location / {
+        if ($request_uri ~ "(/[-a-zA-Z]+)(\?.+$|$)"){
+          rewrite (.*)$ /$1.php$2 last;
+        }
+      }
       location ~ \.php$ {
+        if (!-e $document_root$document_uri){
+          return 404;
+        }
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         fastcgi_index index.php;
