@@ -31,7 +31,7 @@ if ($user) {
           ->where('problemId', $problem->id)
           ->where('userId', $user->id)
           // Keep in sync with Source->hasScore()
-          ->where_in('status', [Source::STATUS_DONE, Source::STATUS_COMPILE_ERROR])
+          ->where_in('status', Source::$STATUSES_WITH_SCORE)
           ->order_by_desc('created')
           ->find_one();
   $score = $source ? $source->score : null;

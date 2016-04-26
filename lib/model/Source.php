@@ -11,6 +11,7 @@ class Source extends BaseObject {
   const STATUS_COMPILE_ERROR = 6;
   const STATUS_DONE = 7;
   private static $STATUS_NAMES = null;
+  static $STATUSES_WITH_SCORE = [self::STATUS_DONE, self::STATUS_COMPILE_ERROR];
 
   static $ACCEPTED_EXTENSIONS = ['c', 'cpp'];
 
@@ -108,7 +109,7 @@ class Source extends BaseObject {
 
   /* Returns true if the status indicates the score field is meaningful. */
   function hasScore() {
-    return in_array($this->status, [self::STATUS_DONE, self::STATUS_COMPILE_ERROR]);
+    return in_array($this->status, self::$STATUSES_WITH_SCORE);
   }
 
   /* Returns true if the status indicates the existence of test results. */

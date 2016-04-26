@@ -4,6 +4,7 @@ class Round extends BaseObject {
 
   private $user = null;
   private $html = null;
+  private $problems = null;
 
   const STATUS_EXPIRED = 0;
   const STATUS_ONGOING = 1;
@@ -23,9 +24,13 @@ class Round extends BaseObject {
     return $this->html;
   }
 
+  function getEndTime() {
+    return $this->start + ($this->duration * 60);
+  }
+
   function getStatus() {
     $now = time();
-    $valid_until = $this->start + ($this->duration * 60);
+    $valid_until = $this->getEndTime();
 
     if ($now < $this->start) {
       return $this::STATUS_UPCOMING;
@@ -39,12 +44,27 @@ class Round extends BaseObject {
   }
 
   function getProblems() {
-    return Model::factory('Problem')
-      ->table_alias('p')
-      ->select('p.*')
-      ->join('round_problem', ['p.id', '=', 'rp.problemId'], 'rp')
-      ->where('rp.roundId', $this->id)
-      ->order_by_asc('rp.rank')
+    if (!$this->problems) {
+      $this->problems = Model::factory('Problem')
+                      ->table_alias('p')
+                      ->select('p.*')
+                      ->join('round_problem', ['p.id', '=', 'rp.problemId'], 'rp')
+                      ->where('rp.roundId', $this->id)
+                      ->order_by_asc('rp.rank')
+                      ->find_many();
+    }
+    return $this->problems;
+  }
+
+  function getSources() {
+    $problemIds = array_keys($this->getProblems());
+
+    return Model::factory('Source')
+      ->where_in('problemId', $problemIds)
+      ->where_in('status', Source::$STATUSES_WITH_SCORE)
+      ->where_gte('created', $this->start)
+      ->where_lte('created', $this->getEndTime())
+      ->order_by_asc('created')
       ->find_many();
   }
 

@@ -34,6 +34,39 @@
     {/foreach}
   </ul>
 
+  <h3>{"scoreboard"|_}</h3>
+
+  {if $scoreboard}
+    <table class="table table-bordered table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>{"rank"|_}</th>
+          <th>{"user"|_}</th>
+          {foreach $problems as $p}
+            <th>{include "bits/problemLink.tpl"}</th>
+          {/foreach}
+          <th>{"total"|_}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {foreach $scoreboard as $i=> $rec}
+          <tr>
+            <td>{$i+1}</td>
+            <td>{include "bits/userLink.tpl" u=$rec.user}</td>
+            {foreach $rec.scores as $s}
+              <td>{$s|default:"&mdash;"}</td>
+            {/foreach}
+            <td>{$rec.total}</td>
+          </tr>
+        {/foreach}
+      </tbody>
+    </table>
+  {else}
+    <div>
+      {"No submissions yet."|_}
+    </div>
+  {/if}
+
   {if $canManage}
     <a href="editRound.php?id={$round->id}">{"edit"|_}</a>
   {/if}

@@ -7,7 +7,7 @@
 
   <table class="table table-bordered">
     <thead>
-      <th>{"Name"|_}</th>
+      <th>{"name"|_}</th>
       <th>{"start date/time"|_}</th>
       <th>{"duration"|_}</th>
     </thead>

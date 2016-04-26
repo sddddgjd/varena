@@ -286,6 +286,8 @@ class EvalUtil {
     $t->score = $stdout;
     $t->message = $stderr;
     $t->status = ($t->score == 100) ? Test::STATUS_PASSED : Test::STATUS_GRADED;
+    Log::debug("Grader message: {$t->message}");
+    Log::debug("Grader score: {$t->score}");
   }
 
   /**

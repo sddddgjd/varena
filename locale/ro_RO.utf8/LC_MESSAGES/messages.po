@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 13:50+0300\n"
-"PO-Revision-Date: 2016-04-19 13:51+0300\n"
+"POT-Creation-Date: 2016-04-26 16:52+0300\n"
+"PO-Revision-Date: 2016-04-26 16:52+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-Bookmarks: -1,51,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: lib\n"
 "X-Poedit-SearchPath-1: templates\n"
@@ -148,7 +148,7 @@ msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
 
-#: lib/model/Role.php:14 lib/model/Round.php:39
+#: lib/model/Role.php:14 lib/model/Round.php:78
 msgid "The name must be at least three characters long."
 msgstr "Numele  trebuie să aibă cel puțin trei caractere."
 
@@ -156,47 +156,47 @@ msgstr "Numele  trebuie să aibă cel puțin trei caractere."
 msgid "There already exists a role by this name."
 msgstr "Există deja un rol cu acest nume."
 
-#: lib/model/Round.php:47
+#: lib/model/Round.php:86
 msgid "There already exists a round with this name."
 msgstr "Există deja o rundă cu acest nume."
 
-#: lib/model/Round.php:51
+#: lib/model/Round.php:90
 msgid "The start date/time cannot be empty."
 msgstr "Data/ora de start nu pot fi vide."
 
-#: lib/model/Round.php:55
+#: lib/model/Round.php:94
 msgid "The duration must be positive."
 msgstr "Durata trebuie să fie pozitivă."
 
-#: lib/model/Source.php:22
+#: lib/model/Source.php:23
 msgid "new"
 msgstr "nouă"
 
-#: lib/model/Source.php:23
+#: lib/model/Source.php:24
 msgid "pending"
 msgstr "se evaluează"
 
-#: lib/model/Source.php:24
+#: lib/model/Source.php:25
 msgid "missing test files"
 msgstr "lipsesc fișiere de test"
 
-#: lib/model/Source.php:25
+#: lib/model/Source.php:26
 msgid "missing grader"
 msgstr "verificatorul lipsește"
 
-#: lib/model/Source.php:26
+#: lib/model/Source.php:27
 msgid "grader does not compile"
 msgstr "verificatorul nu se compilează"
 
-#: lib/model/Source.php:27
+#: lib/model/Source.php:28
 msgid "missing source file"
 msgstr "fișierul sursă lipsește"
 
-#: lib/model/Source.php:28
+#: lib/model/Source.php:29
 msgid "compilation error"
 msgstr "eroare de compilare"
 
-#: lib/model/Source.php:29
+#: lib/model/Source.php:30
 msgid "done"
 msgstr "evaluată"
 
@@ -829,6 +829,22 @@ msgstr "durată"
 #: templates/round.tpl:18
 msgid "minutes"
 msgstr "minute"
+
+#: templates/round.tpl:37
+msgid "scoreboard"
+msgstr "scoruri"
+
+#: templates/round.tpl:43
+msgid "rank"
+msgstr "loc"
+
+#: templates/round.tpl:48
+msgid "total"
+msgstr "total"
+
+#: templates/round.tpl:66
+msgid "No submissions yet."
+msgstr "Nu există surse trimise deocamdată."
 
 #: templates/source.tpl:3
 msgid "source"
