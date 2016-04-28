@@ -40,15 +40,22 @@ class Db {
   }
 
   static function executeSqlFile($fileName) {
-    // TODO execute at OS level
-    $statements = file_get_contents($fileName);
-    $statements = explode(";\n", $statements);
-    foreach ($statements as $statement) {
-      $statement = trim($statement);
-      if ($statement != '') {
-        self::execute($statement);
-      }
+    $dsn = Config::get('general.database');
+    $parts = Db::parseDsn($dsn);
+    $command = sprintf("cat {$fileName} | mysql -u %s -h %s %s",
+                       $parts['user'],
+                       $parts['host'],
+                       $parts['database']);
+
+    $exitCode = 0;
+    $output = null;
+    Log::info("Executing $command");
+    exec($command, $output, $exitCode);
+    if ($exitCode) {
+      Log::critical('Output: ' . implode("\n", $output));
+      die("Failed command: $command (code $exitCode)\n");
     }
+
   }
 
 }

@@ -13,11 +13,25 @@ class Log {
     @chmod($fileName, 0666);
   }
 
-  // TODO print the file and line number
   static function write($level, $format, $args) {
     if ($level <= self::$level) {
+      // Find the bottom-most call outside this class
+      $trace = debug_backtrace();
+      $i = 0;
+      while ($trace[$i]['file'] == __FILE__) {
+        $i++;
+      }
+
+      $file = basename($trace[$i]['file']);
+      $line = $trace[$i]['line'];
       $date = date("Y-m-d H:i:s");
-      vfprintf(self::$file, "[{$date}] {$format}\n", $args);
+      $user = Session::getUser();
+
+      fprintf(self::$file, "[{$date}] [{$file}:{$line}] ");
+      if ($user) {
+        fprintf(self::$file, "[{$user->username}] ");
+      }
+      vfprintf(self::$file, "{$format}\n", $args);
     }
   }
 

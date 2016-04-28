@@ -22,8 +22,8 @@ $dryRun = false;
 foreach ($argv as $i => $arg) {
   if ($i) {
     switch ($arg) {
-    case '--dry-run': $dryRun = true; break;
-    default: die("Unknown flag $arg\n");
+      case '--dry-run': $dryRun = true; break;
+      default: die("Unknown flag $arg\n");
     }
   }
 }
@@ -31,6 +31,17 @@ foreach ($argv as $i => $arg) {
 if ($dryRun) {
   print "---- DRY RUN ONLY ----\n";
 }
+
+// Make sure we are not in testing mode.
+!Config::get('testing.enabled')
+  or die("Please set enabled = false in the [testing] section.\n");
+
+// Create the database if it doesn't exist
+// Execute this at PDO level, since idiorm cannot connect to a non-existing DB.
+$dsn = Db::parseDsn(Config::get('general.database'));
+$pdo = new PDO('mysql:host=' . $dsn['host'], $dsn['user'], $dsn['password']);
+$pdo->query('create database if not exists ' . $dsn['database']);
+
 $schemaVersion = Db::tableExists('variable') ? Variable::peek('Schema.version', '00000') : '00000';
 print "Current schema version is <$schemaVersion>\n";
 
