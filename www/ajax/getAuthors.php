@@ -5,6 +5,8 @@ require_once '../../lib/Util.php';
 $q = Request::get('q');
 
 $problems = Model::factory('Problem')
+          ->select('author')
+          ->distinct()
           ->where_like('author', "%{$q}%")
           ->limit(10)
           ->find_many();
@@ -15,9 +17,7 @@ foreach ($problems as $p) {
     'id' => $p->author,
     'text' => $p->author,
   ];
-  if (!in_array($author, $data['results'])) {
-    $data['results'][] = $author;
-  }
+  $data['results'][] = $author;
 }
 
 print json_encode($data);
