@@ -13,11 +13,11 @@
     </thead>
     <tbody>
       {foreach from=$rounds item=r}
-      <tr class="{$r|round_class}">
-	<td><a href="{$wwwRoot}round.php?id={$r->id}">{$r->name}</a></td>
-	<td>{include "bits/dateTime.tpl" ts=$r->start}</td>
-	<td>{$r->duration} {"minutes"|_}</td>
-      </tr>
+        <tr class="{$r|round_class}">
+	        <td><a href="{$wwwRoot}round.php?id={$r->id}">{$r->name}</a></td>
+	        <td>{include "bits/dateTime.tpl" ts=$r->start}</td>
+	        <td>{$r->duration} {"minutes"|_}</td>
+        </tr>
       {/foreach}
     </tbody>
   </table>

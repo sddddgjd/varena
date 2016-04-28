@@ -1,11 +1,29 @@
 <?php
 
+Problem::init();
+
 class Problem extends BaseObject {
   const MIN_TESTS = 1;
   const MAX_TESTS = 100;
 
+  const VIS_PRIVATE = 0;
+  const VIS_PUBLIC = 1;
+
+  private static $VIS_NAMES = null;
+
   private $user = null;
   private $html = null;
+
+  static function init() {
+    self::$VIS_NAMES = [
+      self::VIS_PRIVATE => _('private'),
+      self::VIS_PUBLIC => _('public'),
+    ];
+  }
+
+  static function getVisibilities() {
+    return self::$VIS_NAMES;
+  }
 
   function getUser() {
     if (!$this->user) {
@@ -172,6 +190,18 @@ class Problem extends BaseObject {
     }
 
     return $errors;
+  }
+
+  /**
+   * Current policy:
+   * * people with the proper permission can view it
+   * * the author can view it.
+   **/
+  function viewableBy($user) {
+    return
+      ($this->visibility == self::VIS_PUBLIC) ||
+      ($user && $user->can(Permission::PERM_EDIT_PROBLEM)) ||
+      ($user && ($user->id == $this->userId));
   }
 
   /**

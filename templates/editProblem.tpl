@@ -123,15 +123,26 @@
               </select>
             </div>
           </div>
+
           <div class="form-group">
             <label for="authorName">{"author"|_}</label>
             <div class="select2-container form-control select2">
               <select id="authorName" name="authorName" style="width: 100%">
-                  <option value="{$p->author}" selected>{$p->author}</option>
+                <option value="{$p->author}" selected>{$p->author}</option>
               </select>
             </div>
           </div>
 
+          <div class="form-group">
+            <label for="visibility">{"visibility"|_}</label>
+            <select id="visibility" name="visibility" class="form-control">
+              {foreach Problem::getVisibilities() as $v => $name}
+                <option value="{$v}" {if $p->visibility == $v}selected{/if}>
+                  {$name}
+                </option>
+              {/foreach}
+            </select>
+          </div>
         </div>
 
       </div>

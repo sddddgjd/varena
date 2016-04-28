@@ -19,17 +19,24 @@
         <th>{"your score"|_}</th>
         <td>{if $score === null}{"N/A"|_}{else}{$score} {"points"|_}{/if}</td>
       </tr>
+      <tr>
+        <th>{"author"|_}</th>
+        <td>{$problem->author}</td>
+        <th></th>
+        <td></td>
+      </tr>
     </tbody>
   </table>
+
+  <div>
+    {if $problem->visibility == Problem::VIS_PRIVATE}
+      <span class="label label-warning"></span>
+    {/if}
+  </div>
 
   <div id="statement">
     {$problem->getHtml()}
   </div>
-
-  {if $problem->author}
-    <h3>{"author"|_|ucfirst}</h3>
-    <p>{$problem->author}</p>
-  {/if}
 
   {if $tags}
     <h3>{"tags"|_|ucfirst}</h3>
