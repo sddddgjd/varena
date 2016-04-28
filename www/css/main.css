@@ -35,6 +35,11 @@ fieldset legend {
   border-top: 2px solid #bbbbbb;
 }
 
+/* Glyphicon spacing in <a> tags */
+a .glyphicon {
+  margin-right: 4px;
+}
+
 /* We need containers on datetimepickers, but we don't want the padding. */
 .nopadding {
   padding-left: 0px;

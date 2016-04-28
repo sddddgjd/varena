@@ -47,6 +47,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="{$wwwRoot}auth/account.php">{"my account"|_}</a></li>
+                  {if $user->hasRoles()}
+                    <li><a href="{$wwwRoot}admin.php">{"admin"|_}</a></li>
+                  {/if}
                   <li><a href="{$wwwRoot}auth/logout.php">{"logout"|_}</a></li>
                 </ul>
               </li>

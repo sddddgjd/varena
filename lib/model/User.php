@@ -13,6 +13,14 @@ class User extends BaseObject {
   }
 
   /**
+   * Returns true iff the user has any roles.
+   **/
+  function hasRoles() {
+    $ur = UserRole::get_by_userId($this->id); // any one of them
+    return $ur != null;
+  }
+
+  /**
    * Validates a user for correctness. Returns an array of { field => array of errors }.
    * Passwords are validated separately.
    **/
