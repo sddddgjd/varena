@@ -11,7 +11,25 @@ $user = Session::getUser();
 if (!$problem) {
   FlashMessage::add(_('Problem not found.'));
   Http::redirect(Util::$wwwRoot);
-} else if (!$problem->viewableBy($user)) {
+}
+
+// Make the problem public if it is part of an ongoing round.
+if ($problem->visibility == Problem::VIS_PRIVATE) {
+  $timestamp = time();
+  $r = Model::factory('Round')
+     ->table_alias('r')
+     ->join('round_problem', [ 'r.id', '=', 'rp.roundId' ], 'rp')
+     ->where('rp.problemId', $problem->id)
+     ->where_lte('r.start', $timestamp)
+     ->where_raw('(? <= r.start + r.duration * 60)', [ $timestamp ])
+     ->find_one();
+  if ($r) {
+    $problem->visibility = Problem::VIS_PUBLIC;
+    $problem->save();
+  }
+}
+
+if (!$problem->viewableBy($user)) {
   FlashMessage::add(_('Permission denied to view this problem.'));
   Http::redirect(Util::$wwwRoot);
 }
