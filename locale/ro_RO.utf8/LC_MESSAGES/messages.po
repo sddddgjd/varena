@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-26 16:52+0300\n"
-"PO-Revision-Date: 2016-04-26 16:52+0300\n"
+"POT-Creation-Date: 2016-04-29 16:10+0300\n"
+"PO-Revision-Date: 2016-04-29 16:11+0300\n"
 "Last-Translator: Cătălin Frâncu <cata@francu.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -84,37 +84,45 @@ msgstr "Ești deja conectat."
 msgid "Please log in to continue."
 msgstr "Conectează-te pentru a continua."
 
-#: lib/model/Problem.php:86
+#: lib/model/Problem.php:17
+msgid "private"
+msgstr "privată"
+
+#: lib/model/Problem.php:18
+msgid "public"
+msgstr "publică"
+
+#: lib/model/Problem.php:102
 #, php-format
 msgid "Too many dashes in group %d."
 msgstr "Prea multe cratime în grupa %d."
 
-#: lib/model/Problem.php:90
+#: lib/model/Problem.php:106
 #, php-format
 msgid "Illegal character in group %d."
 msgstr "Caracter incorect în grupa %d."
 
-#: lib/model/Problem.php:94
+#: lib/model/Problem.php:110
 #, php-format
 msgid "Wrong order in group %d."
 msgstr "Ordine greșită în grupa %d."
 
-#: lib/model/Problem.php:98
+#: lib/model/Problem.php:114
 #, php-format
 msgid "Group %d should start at test %d."
 msgstr "Grupa %d trebuie să înceapă la testul %d."
 
-#: lib/model/Problem.php:103
+#: lib/model/Problem.php:119
 #, php-format
 msgid "Value exceeds number of tests in group %d."
 msgstr "Valoarea depășește numărul de teste în grupa %d."
 
-#: lib/model/Problem.php:111
+#: lib/model/Problem.php:127
 #, php-format
 msgid "Tests %d through %d are missing."
 msgstr "Testele de la %d la %d lipsesc."
 
-#: lib/model/Problem.php:134
+#: lib/model/Problem.php:150
 msgid ""
 "The problem name must be between 2 and 15 symbols long and contain lowercase "
 "letters and digits only."
@@ -122,28 +130,28 @@ msgstr ""
 "Numele problemei trebuie să aibă între 2 și 15 simboluri și să conțină doar "
 "litere mici și cifre."
 
-#: lib/model/Problem.php:142
+#: lib/model/Problem.php:158
 msgid "There already exists a problem with this name."
 msgstr "Există deja o problemă cu acest nume."
 
-#: lib/model/Problem.php:146
+#: lib/model/Problem.php:162
 msgid "The statement cannot be empty."
 msgstr "Enunțul nu poate fi vid."
 
-#: lib/model/Problem.php:151
+#: lib/model/Problem.php:167
 #, php-format
 msgid "Problems must have between %d and %d tests."
 msgstr "Problemele trebuie să aibă între %d și %d de teste."
 
-#: lib/model/Problem.php:157
+#: lib/model/Problem.php:173
 msgid "The time limit must be positive."
 msgstr "Limita de timp trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:161
+#: lib/model/Problem.php:177
 msgid "The memory limit must be positive."
 msgstr "Limita de memorie trebuie să fie pozitivă."
 
-#: lib/model/Problem.php:165
+#: lib/model/Problem.php:181
 msgid "Problems must either use a grader or .ok files (or both)."
 msgstr ""
 "Problemele trebuie să folosească un verificator sau fișiere .ok (sau ambele)."
@@ -235,7 +243,7 @@ msgstr "răspuns incorect"
 msgid "graded (%s)"
 msgstr "verificat (%s)"
 
-#: lib/model/User.php:25
+#: lib/model/User.php:33
 msgid ""
 "Your username must be between 3 and 25 characters long and consist of "
 "letters, digits, '-', '.' and '_'."
@@ -243,15 +251,15 @@ msgstr ""
 "Numele de utilizator trebuie să aibă între 3 și 25 de caractere și să "
 "conțină litere, cifre, '-', '.' și '_'."
 
-#: lib/model/User.php:27
+#: lib/model/User.php:35
 msgid "Your username must contain at least three letters."
 msgstr "Numele de utilizator trebuie să conțină cel puțin trei litere."
 
-#: lib/model/User.php:35
+#: lib/model/User.php:43
 msgid "This username is taken."
 msgstr "Numele de utilizator este luat."
 
-#: lib/model/User.php:39
+#: lib/model/User.php:47
 msgid ""
 "Your name must be between 3 and 50 characters long and consist of letters, "
 "spaces, '-' and '.'."
@@ -259,23 +267,23 @@ msgstr ""
 "Numele trebuie să aibă între 3 și 50 de caractere și să conțină litere, "
 "spații, '-' și '.'."
 
-#: lib/model/User.php:43
+#: lib/model/User.php:51
 msgid "The email address is invalid."
 msgstr "Adresa de e-mail este incorectă."
 
-#: lib/model/User.php:51
+#: lib/model/User.php:59
 msgid "The email address is already in use."
 msgstr "Adresa de e-mail este deja folosită."
 
-#: lib/model/User.php:67
+#: lib/model/User.php:75
 msgid "The password must be between 6 and 200 characters long."
 msgstr "Parola trebuie să aibă între 6 și 200 de caractere."
 
-#: lib/model/User.php:71
+#: lib/model/User.php:79
 msgid "Passwords don't match."
 msgstr "Parolele nu coincid."
 
-#: www/attachments.php:15 www/editProblem.php:15 www/problem.php:11
+#: www/attachments.php:15 www/editProblem.php:15 www/problem.php:12
 msgid "Problem not found."
 msgstr "Problema nu există."
 
@@ -284,7 +292,7 @@ msgstr "Problema nu există."
 msgid "%s file(s) uploaded successfully."
 msgstr "Am încărcat cu succes %s fișier(e)."
 
-#: www/attachments.php:106 www/problem.php:54
+#: www/attachments.php:106 www/problem.php:57
 #, php-format
 msgid "There was a problem uploading «%s»."
 msgstr "A apărut o eroare la încărcarea lui «%s»."
@@ -347,7 +355,7 @@ msgstr "Am schimbat parola."
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
-#: www/editProblem.php:55
+#: www/editProblem.php:56
 msgid ""
 "The problem name has changed. Remember to update any statement references "
 "(file names, attachments)."
@@ -355,7 +363,7 @@ msgstr ""
 "Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
 "enunț (nume de fișiere, fișiere atașate)."
 
-#: www/editProblem.php:70
+#: www/editProblem.php:71
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
@@ -383,11 +391,15 @@ msgstr "Am salvat runda."
 msgid "This is only a preview. Don't forget to save your changes!"
 msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 
-#: www/problem.php:22
+#: www/problem.php:15
+msgid "Permission denied to view this problem."
+msgstr "Nu ai permisiunea să vezi această problemă."
+
+#: www/problem.php:25
 msgid "Source file uploaded successfully."
 msgstr "Am încărcat sursa cu succes."
 
-#: www/problem.php:67
+#: www/problem.php:70
 #, php-format
 msgid "Unknown extension «.%s»."
 msgstr "Extensie necunoscută «.%s»."
@@ -400,7 +412,19 @@ msgstr "Sursa nu există."
 msgid "Tags saved."
 msgstr "Am salvat etichetele."
 
-#: templates/attachments.tpl:4 templates/problem.tpl:50
+#: templates/admin.tpl:3
+msgid "admin tasks"
+msgstr "acțiuni de administrator"
+
+#: templates/admin.tpl:12
+msgid "edit roles"
+msgstr "editează rolurile"
+
+#: templates/admin.tpl:21
+msgid "edit tags"
+msgstr "editează etichetele"
+
+#: templates/attachments.tpl:4 templates/problem.tpl:57
 msgid "attachments"
 msgstr "fișiere atașate"
 
@@ -436,11 +460,11 @@ msgstr "șterge"
 msgid "Add attachments"
 msgstr "Atașează fișiere"
 
-#: templates/attachments.tpl:81 templates/problem.tpl:64
+#: templates/attachments.tpl:81 templates/problem.tpl:71
 msgid "browse..."
 msgstr "alege..."
 
-#: templates/attachments.tpl:92 templates/problem.tpl:75
+#: templates/attachments.tpl:92 templates/problem.tpl:82
 msgid "upload"
 msgstr "încarcă"
 
@@ -476,7 +500,7 @@ msgstr "e-mail"
 msgid "enter your email address"
 msgstr "introdu adresa de e-mail"
 
-#: templates/auth/account.tpl:31 templates/editProblem.tpl:146
+#: templates/auth/account.tpl:31 templates/editProblem.tpl:157
 msgid "save"
 msgstr "salvează"
 
@@ -518,7 +542,7 @@ msgstr "Conectează-te aici."
 msgid "Email login"
 msgstr "Conectare prin e-mail"
 
-#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:54
+#: templates/auth/emailLogin.tpl:6 templates/layout.tpl:57
 msgid "login"
 msgstr "conectare"
 
@@ -666,15 +690,19 @@ msgstr "folosește fișiere .ok"
 msgid "tags"
 msgstr "etichete"
 
-#: templates/editProblem.tpl:127
+#: templates/editProblem.tpl:128
 msgid "author"
 msgstr "autor"
 
-#: templates/editProblem.tpl:142
+#: templates/editProblem.tpl:137
+msgid "visibility"
+msgstr "vizibilitate"
+
+#: templates/editProblem.tpl:153
 msgid "preview"
 msgstr "previzualizează"
 
-#: templates/editProblem.tpl:150
+#: templates/editProblem.tpl:161
 msgid "cancel"
 msgstr "anulează"
 
@@ -778,7 +806,11 @@ msgstr "acasă"
 msgid "rounds"
 msgstr "runde"
 
-#: templates/layout.tpl:50
+#: templates/layout.tpl:51
+msgid "admin"
+msgstr "admin"
+
+#: templates/layout.tpl:53
 msgid "logout"
 msgstr "deconectare"
 
@@ -802,15 +834,15 @@ msgstr "scorul tău"
 msgid "N/A"
 msgstr "N/A"
 
-#: templates/problem.tpl:48
+#: templates/problem.tpl:55
 msgid "edit"
 msgstr "editează"
 
-#: templates/problem.tpl:51
+#: templates/problem.tpl:58
 msgid "submitted sources"
 msgstr "surse trimise"
 
-#: templates/problem.tpl:55
+#: templates/problem.tpl:62
 msgid "submit a source file"
 msgstr "trimite o sursă"
 

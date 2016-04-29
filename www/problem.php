@@ -6,14 +6,17 @@ $id = Request::get('id');
 $file = Request::getFiles('source');
 
 $problem = Problem::get_by_id($id);
+$user = Session::getUser();
 
 if (!$problem) {
   FlashMessage::add(_('Problem not found.'));
   Http::redirect(Util::$wwwRoot);
+} else if (!$problem->viewableBy($user)) {
+  FlashMessage::add(_('Permission denied to view this problem.'));
+  Http::redirect(Util::$wwwRoot);
 }
 
 if ($file) {
-  $user = Session::getUser();
   if (!$user) {
     Util::requireLoggedIn();
   }

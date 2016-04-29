@@ -1,7 +1,5 @@
 <?php
 
-Problem::init();
-
 class Problem extends BaseObject {
   const MIN_TESTS = 1;
   const MAX_TESTS = 100;
@@ -224,5 +222,7 @@ class Problem extends BaseObject {
   }
 
 }
+
+Problem::init();
 
 ?>

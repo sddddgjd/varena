@@ -38,6 +38,7 @@ if ($generate || $save || $preview) {
   $p->timeLimit = Request::get('timeLimit');
   $p->memoryLimit = Request::get('memoryLimit');
   $p->author = Request::get('authorName');
+  $p->visibility = Request::get('visibility');
   $tagIds = Request::get('tagIds', []);
 
   if ($generate) {
