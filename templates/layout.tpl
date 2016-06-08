@@ -39,6 +39,12 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li>
+              <select class="form-control" id="languageSelector">
+                <option value="one">{"Romanian"|_}</option>
+                <option value="two">{"English"|_}</option>
+              </select>
+            </li>
             {if $user}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
