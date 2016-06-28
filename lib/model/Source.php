@@ -81,7 +81,7 @@ class Source extends BaseObject {
       if ($first == $last) {
         // single tests always count
         $t = $tmap[$first];
-        $g['score'] = $points[$t->number] * $t->score / 100;
+        $g['score'] = round($points[$t->number] * $t->score / 100);
       } else {
         // grouped tests get all or nothing
         $passed = true;
@@ -92,7 +92,7 @@ class Source extends BaseObject {
           $score += $points[$t->number];
         }
         if ($passed) {
-          $g['score'] = $score;
+          $g['score'] = round($score);
         } else {
           $g['score'] = 0;
         }
