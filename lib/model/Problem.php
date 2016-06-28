@@ -181,6 +181,33 @@ class Problem extends BaseObject {
       $errors['grader'] = _('Problems must either use a grader or .ok files (or both).');
     }
 
+    if ($this->publicSources!=0 && $this->publicSources!=1) {
+      $errors['publicSources'] = _('Public sources field has to be true or false.');
+    }
+
+    if ($this->publicTests!=0 && $this->publicTests!=1) {
+      $errors['publicTests']= _ ('Public tests field has to be true or false.');
+    }
+
+    if ($this->year<1970 || $this->year>date("Y")) {
+      $errors['year']= _ ('Year is invalid.');
+    }
+
+    if ($this->grade!='juniors' && $this->grade!='seniors') {
+      $arr = str_split($this->grade);
+      $i = 0;
+      $gradeInt = 0;
+
+      while ($i<count($arr) && $arr[$i]>='0' && $arr[$i]<='9') {
+        $gradeInt = $gradeInt*10 + $arr[$i] - '0';
+        $i++;
+      }
+      
+      if ($i!=count($arr) || $gradeInt<5 || $gradeInt>12) {
+        $errors['grade'] = _('Grade must range from 5 to 12, or be either juniors or seniors');
+      }
+    }
+
     try {
       $this->getTestGroups();
     } catch (Exception $e) {

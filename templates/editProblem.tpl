@@ -71,7 +71,7 @@
               <button type="submit"
                       class="btn btn-default"
                       name="generate"
-                      title="{"generate a statement template based on the problem's name"|_}">
+                      title="{"generate a statement template based on the problems name"|_}">
                 <i class="glyphicon glyphicon-pencil"></i>
                 {"generate template"|_}
               </button>
@@ -98,7 +98,15 @@
           {include "bits/fgf.tpl" field="numTests" value=$p->numTests label={"number of tests"|_}}
           {include "bits/fgf.tpl" field="testGroups" type="text" value=$p->testGroups label={"test grouping"|_} placeholder={"e.g. 1-5; 6; 7; 8-10"|_}}
           {include "bits/fgf.tpl" field="grader" type="text" value=$p->grader label={"grader"|_} placeholder={"leave empty for diff evaluation"|_}}
-
+          {include "bits/fgf.tpl" field="publicSources" value=$p->publicSources label={"public sources"|_}}
+          {include "bits/fgf.tpl" field="publicTests" value=$p->publicTests label={"public tests"|_}}
+          {include "bits/fgf.tpl" field="feedbackTests" value=$p->feedbackTests type="text" label={"feedback tests"|_}
+          placeholder={"e.g. 1,2,3,4"|_}}
+          {include "bits/fgf.tpl" field="contest" value=$p->contest type="text" label={"contest"|_}
+          placeholder={"contest"|_}}
+          {include "bits/fgf.tpl" field="year" value=$p->year label={"year"|_}}
+          {include "bits/fgf.tpl" field="grade" value=$p->grade type="text" label={"grade"|_}
+          placeholder={"grade"|_}}
           <div class="checkbox">
             <label for="hasWitness">
               <input type="checkbox"
