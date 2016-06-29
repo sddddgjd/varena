@@ -39,6 +39,12 @@ if ($generate || $save || $preview) {
   $p->memoryLimit = Request::get('memoryLimit');
   $p->author = Request::get('authorName');
   $p->visibility = Request::get('visibility');
+  $p->publicSources = Request::get('publicSources');
+  $p->publicTests = Request::get('publicTests');
+  $p->feedbackTests = Request::get('feedbackTests');
+  $p->contest = Request::get('contest');
+  $p->year = Request::get('year');
+  $p->grade = Request::get('grade');
   $tagIds = Request::get('tagIds', []);
 
   if ($generate) {

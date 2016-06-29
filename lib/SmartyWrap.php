@@ -88,11 +88,11 @@ class SmartyWrap {
           self::$jsFiles[5] = 'bootstrap-datetimepicker.min.js';
           break;
         case 'select2':          self::$jsFiles[6] = 'select2.min.js'; break;
-	      case 'cookies':
-	        self::$jsFiles[6] = 'jquery.cookie.js';
-	        self::$jsFiles[7] = 'languageCookie.js';
+	    case 'cookies':
+	      self::$jsFiles[6] = 'jquery.cookie.js';
+	      self::$jsFiles[7] = 'languageCookie.js';
 	      break;   
-	      default:
+	    default:
           FlashMessage::add("Cannot load JS script {$id}");
           Http::redirect(Util::$wwRoot);
       }
