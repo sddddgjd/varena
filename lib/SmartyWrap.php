@@ -89,8 +89,8 @@ class SmartyWrap {
           break;
         case 'select2':          self::$jsFiles[6] = 'select2.min.js'; break;
 	    case 'cookies':
-	      self::$jsFiles[6] = 'jquery.cookie.js';
-	      self::$jsFiles[7] = 'languageCookie.js';
+	      self::$jsFiles[7] = 'jquery.cookie.js';
+	      self::$jsFiles[8] = 'languageCookie.js';
 	      break;   
 	    default:
           FlashMessage::add("Cannot load JS script {$id}");
