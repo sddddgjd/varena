@@ -40,10 +40,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <select class="form-control" id="languageSelector">
-                <option value="one">{"Romanian"|_}</option>
-                <option value="two">{"English"|_}</option>
-              </select>
+              <form role="form" name="languageForm">
+                <select class="form-control" name="languageSelector" id="languageSelector" onchange="changeLanguage()">
+                  <option value="ro_RO.utf8">{"Romanian"|_}</option>
+                  <option value="en_US.utf8">{"English"|_}</option>
+                </select>
+              </form>
             </li>
             {if $user}
               <li class="dropdown">

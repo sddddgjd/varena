@@ -48,6 +48,16 @@ class Util {
     $locale = Config::get('testing.enabled')
             ? Config::get('testing.locale')
             : Config::get('general.locale');
+    if(isset($_COOKIE['locale'])){
+      $localeCookie = $_COOKIE['locale'];
+      //if it's the same locale erase the cookie
+      if($localeCookie == $locale){
+        unset($_COOKIE['locale']);
+        setcookie('locale',null,-1,'/');
+      } else{
+        $locale = $localeCookie;
+      }
+    }
     setlocale(LC_ALL, $locale);
     $domain = "messages";
     bindtextdomain($domain, self::$rootPath . '/locale');
