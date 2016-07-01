@@ -123,7 +123,7 @@
 
           <div class="form-group">
             <label for="tagIds">{"tags"|_}</label>
-            <div class="select2-container form-control select2">
+            <div class="select2-container form-group select2" style="width:100%">
               <select id="tagIds" name="tagIds[]" multiple="multiple" style="width: 100%">
                 {foreach $tags as $t}
                   <option value="{$t->id}" selected>{$t->value}</option>
@@ -133,12 +133,13 @@
           </div>
 
           <div class="form-group">
-            <label for="authorName">{"author"|_}</label>
-            <div class="select2-container form-control select2">
-              <select id="authorName" name="authorName" style="width: 100%">
-                <option value="{$p->author}" selected>{$p->author}</option>
-              </select>
-            </div>
+            <label for="authorName">author</label>
+            <input list="authors" id="authorName" name="authorName">
+            <datalist id="authors">
+              {foreach $authors as $author}
+                <option value={$author}>
+              {/foreach}
+            </datalist>
           </div>
 
           <div class="form-group">
