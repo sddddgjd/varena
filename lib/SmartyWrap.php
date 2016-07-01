@@ -9,6 +9,8 @@ class SmartyWrap {
     self::$theSmarty = new Smarty();
     self::$theSmarty->template_dir = Util::$rootPath . '/templates';
     self::$theSmarty->compile_dir = Util::$rootPath . '/templates_c';
+    self::assign('availableLocales', Util::$availableLocales);
+    self::assign('availableLang',Util::$availableLang);
     self::assign('wwwRoot', Util::$wwwRoot);
     self::assign('user', Session::getUser());
     self::addCss('bootstrap', 'main');

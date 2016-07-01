@@ -41,9 +41,11 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
               <form role="form" name="languageForm">
-                <select class="form-control" name="languageSelector" id="languageSelector" onchange="changeLanguage()">
-                  <option value="ro_RO.utf8">{"Romanian"|_}</option>
-                  <option value="en_US.utf8">{"English"|_}</option>
+                <select class="form-control" name="languageSelector" id="languageSelector">
+                  {foreach $availableLocales as $key=>$locale}
+                    <option value={$locale}>{$availableLang[$key]}</option>
+                   {/foreach}
+                  }
                 </select>
               </form>
             </li>
