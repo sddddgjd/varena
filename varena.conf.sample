@@ -6,7 +6,8 @@ database = "mysql://root@localhost/varena"
 
 ; Interface language
 locale = ro_RO.utf8
-
+availableLocales[] = "English|en_US.utf8"
+availableLocales[] = "Romanian|ro_RO.utf8"
 ; Name of the cookie we set on the client browser for persistent logins
 loginCookieName = loginCookie
 

@@ -9,12 +9,15 @@ Util::init();
 class Util {
   static $rootPath;
   static $wwwRoot;
-  
+  static $availableLocales;
+  static $availableLang;
+
   static function init() {
     self::definePaths();
     spl_autoload_register('self::autoloadClasses');
     Config::load(self::$rootPath . "/varena.conf");
     self::setLocale();
+    self::getLocales();
     $tp = self::$rootPath . '/lib/third-party'; // third-party libs
     require_once "{$tp}/idiorm/idiorm.php";
     require_once "{$tp}/idiorm/paris.php";
@@ -41,6 +44,21 @@ class Util {
         return;
       }
     }
+  }
+
+  private static function getLocales(){
+    $temp = Config::get('general.availableLocales');
+    $languages = array();
+    $locales= array();
+
+    foreach ($temp as $t) {
+      $tNew = explode("|",$t);
+      array_push($languages, $tNew[0]);
+      array_push($locales, $tNew[1]);
+    }
+
+    self::$availableLang = $languages;
+    self::$availableLocales = $locales;
   }
 
   private static function setLocale() {

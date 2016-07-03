@@ -11,6 +11,7 @@ $user = Session::getUser();
 
 if ($id) {
   $p = Problem::get_by_id($id);
+
   if (!$p) {
     FlashMessage::add(_('Problem not found.'));
     Http::redirect(Util::$wwwRoot);
@@ -88,7 +89,24 @@ if ($generate || $save || $preview) {
   SmartyWrap::assign('tags', $p->getTags());
 }
 
+$problems = Model::factory('Problem')->find_many();
+$authors = array();
+$contests = array();
+$grades = array();
+foreach ($problems as $problem){
+  array_push ($authors,$problem->author);
+  array_push ($contests,$problem->contest);
+  array_push ($grades,$problem->grade);
+}
+
+$authors = array_unique($authors);
+$contests = array_unique($contests);
+$grades = array_unique($grades);
+
 SmartyWrap::assign('p', $p);
+SmartyWrap::assign('authors',$authors);
+SmartyWrap::assign('contests',$contests);
+SmartyWrap::assign('grades',$grades);
 SmartyWrap::addCss('select2');
 SmartyWrap::addJs('select2');
 SmartyWrap::display('editProblem.tpl');
