@@ -102,11 +102,30 @@
           {include "bits/fgf.tpl" field="publicTests" value=$p->publicTests label={"public tests"|_}}
           {include "bits/fgf.tpl" field="feedbackTests" value=$p->feedbackTests type="text" label={"feedback tests"|_}
           placeholder={"e.g. 1,2,3,4"|_}}
-          {include "bits/fgf.tpl" field="contest" value=$p->contest type="text" label={"contest"|_}
-          placeholder={"contest"|_}}
           {include "bits/fgf.tpl" field="year" value=$p->year label={"year"|_}}
-          {include "bits/fgf.tpl" field="grade" value=$p->grade type="text" label={"grade"|_}
-          placeholder={"grade"|_}}
+          
+          <div class="form-group">
+            <label for="contest">{"contest"|_}</label>
+            <br>
+            <input list="contests" id="contest" name="contest" value="{$p->contest}">
+            <datalist id="contests">
+              {foreach $contests as $contest}
+                <option value={$contest}></option>
+              {/foreach}
+            </datalist>
+          </div>
+
+          <div class="form-group">
+            <label for="grade">{"grade"|_}</label>
+            <br>
+            <input list="grades" id="grade" name="grade" value="{$p->grade}">
+            <datalist id="grades">
+              {foreach $grades as $grade}
+                <option value={$grade}></option>
+              {/foreach}
+            </datalist>
+          </div>
+
           <div class="checkbox">
             <label for="hasWitness">
               <input type="checkbox"
@@ -137,7 +156,7 @@
             <input list="authors" id="authorName" name="authorName">
             <datalist id="authors">
               {foreach $authors as $author}
-                <option value={$author}>
+                <option value={$author}></option>
               {/foreach}
             </datalist>
           </div>
@@ -153,10 +172,7 @@
             </select>
           </div>
         </div>
-
       </div>
-    </div>
-
     <button type="submit" class="btn btn-default" name="preview">
       <i class="glyphicon glyphicon-refresh"></i>
       {"preview"|_}

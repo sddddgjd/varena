@@ -91,13 +91,22 @@ if ($generate || $save || $preview) {
 
 $problems = Model::factory('Problem')->find_many();
 $authors = array();
-foreach($problems as $problem){
-  array_push($authors,$problem->author);
+$contests = array();
+$grades = array();
+foreach ($problems as $problem){
+  array_push ($authors,$problem->author);
+  array_push ($contests,$problem->contest);
+  array_push ($grades,$problem->grade);
 }
-$authors=array_unique($authors);
+
+$authors = array_unique($authors);
+$contests = array_unique($contests);
+$grades = array_unique($grades);
 
 SmartyWrap::assign('p', $p);
 SmartyWrap::assign('authors',$authors);
+SmartyWrap::assign('contests',$contests);
+SmartyWrap::assign('grades',$grades);
 SmartyWrap::addCss('select2');
 SmartyWrap::addJs('select2');
 SmartyWrap::display('editProblem.tpl');

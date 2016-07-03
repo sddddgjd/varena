@@ -22,8 +22,14 @@
       <tr>
         <th>{"author"|_}</th>
         <td>{$problem->author}</td>
-        <th></th>
-        <td></td>
+        <th>{"contest"|_}</th>
+        <td>{$problem->contest}</td>
+      </tr>
+      <tr>
+        <th>{"grade"|_}</th>
+        <td>{$problem->grade}</td>
+        <th>{"year"|_}</th>
+        <td>{$problem->year}</td>
       </tr>
     </tbody>
   </table>
