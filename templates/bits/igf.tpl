@@ -6,7 +6,7 @@
 {$placeholder=$placeholder|default:""}
 {$required=$required|default:true}
 {$autofocus=$autofocus|default:false}
-<div class="input-group {if $errors.$field}has-error{/if}">
+<div class="input-group">
   {if $glyph}
     <span class="input-group-addon">
       <i class="glyphicon glyphicon-{$glyph}"></i>

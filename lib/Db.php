@@ -42,10 +42,11 @@ class Db {
   static function executeSqlFile($fileName) {
     $dsn = Config::get('general.database');
     $parts = Db::parseDsn($dsn);
-    $command = sprintf("cat {$fileName} | mysql -u %s -h %s %s",
+    $command = sprintf("cat {$fileName} | mysql -u %s -h %s %s --password=%s",
                        $parts['user'],
                        $parts['host'],
-                       $parts['database']);
+                       $parts['database'],
+                       $parts['password']);
 
     $exitCode = 0;
     $output = null;

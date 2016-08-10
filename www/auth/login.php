@@ -18,9 +18,10 @@ if ($method == 'login') {
   if ($u && password_verify($password, $u->password)) {
     Session::login($u, $remember);
   } else {
-    $errors['email'] = [ _('Incorrect email or password.') ];
+    FlashMessage::add(_('Incorrect email or password'));
   }
 } else if ($method == 'signup') {
+  
   $u = Model::factory('User')->create();
   $u->email = $email;
   $u->username = $username;
@@ -33,10 +34,14 @@ if ($method == 'login') {
     $u->save();
     Session::login($u, false);
   }
+  else{
+    foreach($errors as $error){
+      FlashMessage::add(implode("",$error));
+    }
+  }
 }
 
 SmartyWrap::assign('method', $method);
-SmartyWrap::assign('errors', $errors);
 SmartyWrap::assign('email', $email);
 SmartyWrap::assign('username', $username);
 SmartyWrap::assign('name', $name);
