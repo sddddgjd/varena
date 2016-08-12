@@ -21,7 +21,7 @@ if ($method == 'login') {
     FlashMessage::add(_('Incorrect email or password'));
   }
 } else if ($method == 'signup') {
-  
+  alert('a');
   $u = Model::factory('User')->create();
   $u->email = $email;
   $u->username = $username;
@@ -41,11 +41,19 @@ if ($method == 'login') {
   }
 }
 
+$errors['email']='';
+$errors['password']='';
+$errors['username']='';
+$errors['name']='';
+$errors['password']='';
+$errors['password2']='';
+
 SmartyWrap::assign('method', $method);
 SmartyWrap::assign('email', $email);
 SmartyWrap::assign('username', $username);
 SmartyWrap::assign('name', $name);
 SmartyWrap::assign('remember', $remember);
+SmartyWrap::assign('errors',$errors);
 SmartyWrap::display('auth/login.tpl');
 
 ?>

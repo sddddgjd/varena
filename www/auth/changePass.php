@@ -9,7 +9,7 @@ require_once '../../lib/Util.php';
 Util::requireNotLoggedIn();
 
 $email = Request::get('email');
-
+$errors['email']='';
 if ($email) {
   if (!Config::get('email.enabled')) {
     FlashMessage::add(_('The system is configured not to send out any emails. Please contact an administrator.'));
@@ -51,6 +51,7 @@ if ($email) {
   Http::redirect(Util::$wwwRoot);
 }
 
+SmartyWrap::assign('errors',$errors);
 SmartyWrap::display('auth/changePass.tpl');
 
 ?>
