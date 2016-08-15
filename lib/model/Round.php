@@ -19,7 +19,7 @@ class Round extends BaseObject {
 
   function getHtml() {
     if ($this->html === null) {
-      $this->html = StringUtil::textile($this->description);
+      $this->html = StringUtil::textile($this->description,false);
     }
     return $this->html;
   }
