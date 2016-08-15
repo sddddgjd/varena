@@ -32,7 +32,7 @@ class Problem extends BaseObject {
 
   function getHtml() {
     if ($this->html === null) {
-      $this->html = StringUtil::textile($this->statement);
+      $this->html = StringUtil::textile($this->statement,false);
     }
     return $this->html;
   }

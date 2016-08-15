@@ -8,7 +8,7 @@ $email = Request::get('email');
 $newPassword = Request::get('newpassword');
 $newPassword2 = Request::get('newpassword2');
 $password= Request::get('password');
-$submitButton = Request::get('name');
+$submitButton = Request::get('submitButton');
 $errors=[];
 
 Util::requireLoggedIn();
@@ -38,7 +38,7 @@ if ($submitButton && password_verify($password, $user->password)) {
 } else if($submitButton){
   FlashMessage::add(_('Incorrect password.'));
 }
-
+SmartyWrap::assign('wwwRoot',Util::$wwwRoot);
 SmartyWrap::assign('editUser', $user);
 SmartyWrap::display('auth/account.tpl');
 
