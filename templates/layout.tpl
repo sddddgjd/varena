@@ -37,6 +37,14 @@
                 {"evaluator"|_}
               </a>
             </li>
+            <li>
+              <form action="search.php" class="form-inline" method="GET" id="searchForm"> 
+                <input type="text" class="form-control" name="search" placeholder="search"> 
+                <button type="submit">
+                  <span class=" glyphicon glyphicon-search" type="submit"></span>
+                </button>
+              </form>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
