@@ -12,6 +12,12 @@
         {"edit roles"|_}
       </a>
     </div>
+    <div>
+      <a href="userRoles.php">
+        <i class="glyphicon glyphicon-cog"></i>
+        {"edit user roles"|_}
+      </a>
+    </div>
   {/if}
 
   {if $tags}

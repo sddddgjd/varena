@@ -8,53 +8,43 @@
 
 require_once '../../lib/Util.php';
 
-$username = Util::getRequestParameter('username');
-$name = Util::getRequestParameter('name');
-$email = Util::getRequestParameter('email');
-$submitButton = Util::getRequestParameter('submitButton');
+$name = Request::get('name');
+$email = Request::get('email');
+$newPassword = Request::get('newpassword');
+$newPassword2 = Request::get('newpassword2');
+$password= Request::get('password');
+$submitButton = Request::get('name');
+$errors=[];
 
-// Determine whether we have a first-time login
-list($identity, $user) = Session::retrieveFirstLogin();
-
-if ($user) {
-  $firstLogin = true;
-  Util::requireNotLoggedIn();
-} else {
-  $firstLogin = false;
-  Util::requireLoggedIn();
-  $user = User::get_by_id(Session::getUser()->id); // cannot cache resource objects, need to refresh them
-}
-
+Util::requireLoggedIn();
+$user = User::get_by_id(Session::getUser()->id);
 // Save action
-if ($submitButton) {
-  if ($firstLogin) {
-    $user->username = $username;
-  }
+if ($submitButton && password_verify($password, $user->password)) {
   $user->name = $name;
   $user->email = $email;
-  if ($firstLogin && !$identity) {
-    FlashMessage::add(_('Could not find your OpenID; did you really log in?'));
+
+  if ($newPassword){
+    $user->password=$newPassword;
+    $errors = array_merge($user->validate(), $user->validatePassword($newPassword2));
   }
-  $user->validate();
+  else
+    $errors = $user->validate();
   
-  if (!FlashMessage::hasErrors()) {
+  if (!count($errors)) {
     $user->save();
-    if ($firstLogin) {
-      $identity->userId = $user->id;
-      $identity->save();
-      Session::unsetVariable('firstLogin');
-      Session::login($user);
-    } else {
-      Session::set('user', $user); // cache the new values
-      FlashMessage::add(_('Changes saved.'), 'info');
-      Http::redirect('account');
-    }
+    Session::set('user', $user); // cache the new values
+    FlashMessage::add(_('Changes saved.'), 'info');
+    Http::redirect('account');
+  } else{
+      foreach($errors as $error){
+        FlashMessage::add(implode("",$error));
+      }
   }
+} else if($submitButton){
+  FlashMessage::add(_('Incorrect password.'));
 }
 
 SmartyWrap::assign('editUser', $user);
-SmartyWrap::assign('firstLogin', $firstLogin);
-SmartyWrap::assign('identities', $firstLogin ? array() : Identity::get_all_by_userId($user->id));
 SmartyWrap::display('auth/account.tpl');
 
 ?>
