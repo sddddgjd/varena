@@ -69,3 +69,18 @@ locale = en_US.utf8
 ; Database connection
 ; database = "mysql://user[:password]@host/database"
 database = "mysql://root@localhost/varena_testing"
+
+[search]
+
+; Search feature
+; Minimum/ maximum query length
+
+searchMinLength = 3
+searchMaxLength  = 30
+
+; Score points for matches
+
+nameScore = 30
+authorScore = 20
+tagScore = 10
+statementScore = 2
