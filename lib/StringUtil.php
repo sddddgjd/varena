@@ -25,12 +25,12 @@ class StringUtil {
     return $s;
   }
 
-  static function textile($s) {
+  static function textile($s,$restricted) {
     require_once Util::$rootPath . '/lib/third-party/Textile/Parser.php';
     require_once Util::$rootPath . '/lib/third-party/Textile/DataBag.php';
     require_once Util::$rootPath . '/lib/third-party/Textile/Tag.php';
     $p = new Netcarver\Textile\Parser();
-    return $p->parse($s);
+    return $p->setRestricted($restricted)->parse($s);
   }
 }
 
