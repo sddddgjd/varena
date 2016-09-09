@@ -35,13 +35,19 @@ if ($generate || $save || $preview) {
   $p->numTests = Request::get('numTests');
   $p->testGroups = Request::get('testGroups');
   $p->hasWitness = Request::isset('hasWitness');
+  if(!$p->hasWitness)
+    $p->hasWitness = 0;
   $p->grader = Request::get('grader');
   $p->timeLimit = Request::get('timeLimit');
   $p->memoryLimit = Request::get('memoryLimit');
   $p->author = Request::get('authorName');
   $p->visibility = Request::get('visibility');
   $p->publicSources = Request::get('publicSources');
+  if(!$p->publicSources)
+    $p->publicSources = 0;
   $p->publicTests = Request::get('publicTests');
+  if(!$p->publicTests)
+    $p->publicTests = 0;
   $p->feedbackTests = Request::get('feedbackTests');
   $p->contest = Request::get('contest');
   $p->year = Request::get('year');

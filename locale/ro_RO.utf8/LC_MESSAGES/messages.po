@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Varena\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 11:27+0200\n"
-"PO-Revision-Date: 2016-06-30 11:29+0200\n"
+"POT-Creation-Date: 2016-09-09 20:16+0200\n"
+"PO-Revision-Date: 2016-09-09 20:23+0200\n"
 "Last-Translator: Zloteanu Anastasia <zlot.anastasia@gmail.com>\n"
 "Language-Team: cata@francu.com\n"
 "Language: ro_RO\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: www\n"
 "X-Poedit-SearchPath-1: templates\n"
 
-#: www/attachments.php:15 www/problem.php:12 www/editProblem.php:15
+#: www/attachments.php:15 www/problem.php:12 www/editProblem.php:16
 msgid "Problem not found."
 msgstr "Problema nu există."
 
@@ -70,6 +70,19 @@ msgstr "Aceasta este doar o previzualizare. Nu uita să salvezi modificările!"
 msgid "Tags saved."
 msgstr "Am salvat etichetele."
 
+#: www/saveAvatar.php:30
+msgid "Image was deleted."
+msgstr "Am șters imaginea."
+
+#: www/saveAvatar.php:36
+msgid "Your profile image does not exist anymore. Please reupload it."
+msgstr ""
+"Poza dumneavoastră de profil nu mai există. Vă rugam sa o încărcați din nou."
+
+#: www/saveAvatar.php:52
+msgid "Image was saved."
+msgstr "Am salvat imaginea."
+
 #: www/editRole.php:14
 msgid "Role not found."
 msgstr "Rolul nu există."
@@ -81,6 +94,14 @@ msgstr "Am șters rolul."
 #: www/editRole.php:55
 msgid "Role saved."
 msgstr "Am salvat rolul."
+
+#: www/editAvatar.php:19
+msgid "You cannot pick a profile image if you are not logged in"
+msgstr "Nu puteți alege o imagine de profil dacă nu sunteți logat"
+
+#: www/editAvatar.php:30
+msgid "An error has occured when copying the file."
+msgstr "O eroare a avut loc cănd copiam fișierul."
 
 #: www/userRoles.php:13
 msgid "User role deleted."
@@ -94,11 +115,15 @@ msgstr "Rolul a fost salvat."
 msgid "User not found."
 msgstr "Rolul nu există."
 
-#: www/editProblem.php:20
+#: www/changeLanguage.php:13
+msgid "Invalid locale. "
+msgstr "Limbă invalidă."
+
+#: www/editProblem.php:21
 msgid "You cannot edit this problem."
 msgstr "Nu poți edita această problemă."
 
-#: www/editProblem.php:62
+#: www/editProblem.php:69
 msgid ""
 "The problem name has changed. Remember to update any statement references "
 "(file names, attachments)."
@@ -106,7 +131,7 @@ msgstr ""
 "Numele problemei s-a schimbat. Nu uita să actualizezi orice referințe din "
 "enunț (nume de fișiere, fișiere atașate)."
 
-#: www/editProblem.php:77
+#: www/editProblem.php:84
 msgid "Problem saved."
 msgstr "Am salvat problema."
 
@@ -115,7 +140,7 @@ msgid "Source not found."
 msgstr "Sursa nu există."
 
 #: www/auth/login.php:21
-msgid "Incorrect email or password."
+msgid "Incorrect email or password"
 msgstr "Adresa de e-mail sau parola sunt incorecte."
 
 #: www/auth/newPass.php:21
@@ -151,13 +176,41 @@ msgstr ""
 "Am trimit un mesaj către <b>%s</b>. Deschide linkul inclus pentru a-ți "
 "schimba parola."
 
-#: www/auth/account.php:36
-msgid "Could not find your OpenID; did you really log in?"
-msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
-
-#: www/auth/account.php:49
+#: www/auth/account.php:31
 msgid "Changes saved."
 msgstr "Am salvat modificările."
+
+#: www/auth/account.php:39
+msgid "Incorrect password."
+msgstr "Parola este incorectă."
+
+#: templates/user.tpl:3
+msgid "User profile"
+msgstr "Profil utilizator"
+
+#: templates/user.tpl:18
+msgid "About me"
+msgstr "Despre mine"
+
+#: templates/user.tpl:23
+msgid "Rating"
+msgstr "Rating"
+
+#: templates/user.tpl:28
+msgid "Statistics"
+msgstr "Statistici"
+
+#: templates/user.tpl:37
+msgid "Edit description."
+msgstr "Editează descrierea"
+
+#: templates/user.tpl:45
+msgid "Solved problems:"
+msgstr "Probleme reușite:"
+
+#: templates/user.tpl:51
+msgid "Attempted problems:"
+msgstr "Probleme încercate:"
 
 #: templates/evaluator.tpl:3
 msgid "evaluator"
@@ -199,36 +252,27 @@ msgstr "puncte"
 msgid "home"
 msgstr "acasă"
 
-#: templates/layout.tpl:33
+#: templates/layout.tpl:33 templates/problems.tpl:3
 msgid "problems"
 msgstr "probleme"
 
-#: templates/layout.tpl:34
+#: templates/layout.tpl:34 templates/rounds.tpl:3
 msgid "rounds"
 msgstr "runde"
 
-#: templates/layout.tpl:45
-msgid "Romanian"
-msgstr "Română"
-
-#: templates/layout.tpl:46
-msgid "English"
-msgstr "Engleză"
-
-#: templates/layout.tpl:57 templates/auth/account.tpl:1
+#: templates/layout.tpl:59
 msgid "my account"
 msgstr "contul meu"
 
-#: templates/layout.tpl:59
+#: templates/layout.tpl:61
 msgid "admin"
 msgstr "admin"
 
-#: templates/layout.tpl:61
+#: templates/layout.tpl:63
 msgid "logout"
 msgstr "deconectare"
 
-#: templates/layout.tpl:65 templates/auth/login.tpl:3
-#: templates/auth/emailLogin.tpl:6
+#: templates/layout.tpl:67 templates/auth/login.tpl:3
 msgid "login"
 msgstr "conectare"
 
@@ -240,7 +284,11 @@ msgstr "acțiuni de administrator"
 msgid "edit roles"
 msgstr "editează rolurile"
 
-#: templates/admin.tpl:21
+#: templates/admin.tpl:18
+msgid "edit user roles"
+msgstr "editează rolurile utilizatorilor"
+
+#: templates/admin.tpl:27
 msgid "edit tags"
 msgstr "editează etichetele"
 
@@ -320,11 +368,11 @@ msgstr "editare rol"
 msgid "add a role"
 msgstr "adaugă un rol"
 
-#: templates/editRole.tpl:17 templates/auth/account.tpl:17
+#: templates/editRole.tpl:17 templates/rounds.tpl:10
 msgid "name"
 msgstr "nume"
 
-#: templates/editRole.tpl:36 templates/auth/account.tpl:31
+#: templates/editRole.tpl:36
 msgid "save"
 msgstr "salvează"
 
@@ -352,7 +400,7 @@ msgstr "Utilizatori care au roluri:"
 msgid "Assign a role to a user:"
 msgstr "Atribuie un rol unui utilizator:"
 
-#: templates/userRoles.tpl:18 templates/auth/account.tpl:6
+#: templates/userRoles.tpl:18 templates/auth/login.tpl:80
 msgid "username"
 msgstr "nume de utilizator"
 
@@ -364,7 +412,7 @@ msgstr "rol"
 msgid "roles"
 msgstr "roluri"
 
-#: templates/round.tpl:11
+#: templates/round.tpl:11 templates/rounds.tpl:11
 msgid "start date/time"
 msgstr "data/ora de start"
 
@@ -372,11 +420,11 @@ msgstr "data/ora de start"
 msgid "added by"
 msgstr "adăugată de"
 
-#: templates/round.tpl:17
+#: templates/round.tpl:17 templates/rounds.tpl:12
 msgid "duration"
 msgstr "durată"
 
-#: templates/round.tpl:18
+#: templates/round.tpl:18 templates/rounds.tpl:19
 msgid "minutes"
 msgstr "minute"
 
@@ -480,19 +528,43 @@ msgstr "N/A"
 msgid "author"
 msgstr "autor"
 
-#: templates/problem.tpl:58
+#: templates/problem.tpl:25
+msgid "contest"
+msgstr "concurs"
+
+#: templates/problem.tpl:29
+msgid "grade"
+msgstr "clasa"
+
+#: templates/problem.tpl:31
+msgid "year"
+msgstr "an"
+
+#: templates/problem.tpl:64
 msgid "submitted sources"
 msgstr "surse trimise"
 
-#: templates/problem.tpl:62
+#: templates/problem.tpl:68
 msgid "submit a source file"
 msgstr "trimite o sursă"
+
+#: templates/editAvatar.tpl:3
+msgid "Edit profile avatar"
+msgstr "Editează avatarul"
+
+#: templates/editAvatar.tpl:51
+msgid "Save"
+msgstr "Salvează"
+
+#: templates/editAvatar.tpl:52
+msgid "Quit"
+msgstr "Renuntă"
 
 #: templates/editRound.tpl:10
 msgid "edit round"
 msgstr "editare rundă"
 
-#: templates/editRound.tpl:12
+#: templates/editRound.tpl:12 templates/rounds.tpl:26
 msgid "add a round"
 msgstr "adaugă o rundă"
 
@@ -524,7 +596,7 @@ msgstr "Varena funcționează!"
 msgid "edit problem"
 msgstr "editare problemă"
 
-#: templates/editProblem.tpl:12
+#: templates/editProblem.tpl:12 templates/problems.tpl:15
 msgid "add a problem"
 msgstr "adaugă o problemă"
 
@@ -600,23 +672,11 @@ msgstr "teste feedback"
 msgid "e.g. 1,2,3,4"
 msgstr "de ex 1,2,3,4"
 
-#: templates/editProblem.tpl:105
-msgid "contest"
-msgstr "concurs"
-
-#: templates/editProblem.tpl:107
-msgid "year"
-msgstr "an"
-
-#: templates/editProblem.tpl:108
-msgid "grade"
-msgstr "clasa"
-
-#: templates/editProblem.tpl:117
+#: templates/editProblem.tpl:136
 msgid "uses .ok files"
 msgstr "folosește fișiere .ok"
 
-#: templates/editProblem.tpl:145
+#: templates/editProblem.tpl:165
 msgid "visibility"
 msgstr "vizibilitate"
 
@@ -648,11 +708,11 @@ msgstr "parolă nouă"
 msgid "Choose a new password"
 msgstr "Alege-ți o parolă nouă"
 
-#: templates/auth/newPass.tpl:16
+#: templates/auth/newPass.tpl:16 templates/auth/login.tpl:24
 msgid "password"
 msgstr "parolă"
 
-#: templates/auth/newPass.tpl:20
+#: templates/auth/newPass.tpl:20 templates/auth/login.tpl:92
 msgid "password (again)"
 msgstr "parolă (din nou)"
 
@@ -660,41 +720,45 @@ msgstr "parolă (din nou)"
 msgid "change password"
 msgstr "schimbă parola"
 
-#: templates/auth/beginAuth.tpl:1
-msgid "Redirecting you to your OpenID provider..."
-msgstr "Te redirectăm către furnizorul de OpenID..."
+#: templates/auth/account.tpl:3
+msgid "My account"
+msgstr "Contul meu"
 
-#: templates/auth/account.tpl:9
-msgid "choose a username"
-msgstr "alege-ți un nume de utilizator"
+#: templates/auth/account.tpl:15
+msgid "Confirm image deletion?"
+msgstr "Confirmați ștergerea imaginii?"
 
-#: templates/auth/account.tpl:10
-msgid "required; 3-20 characters including letters, digits, '-', '.' and '_'"
-msgstr "obligatoriu; 3-20 caractere incluzând litere, cifre, '-', '.' și '_'"
+#: templates/auth/account.tpl:15
+msgid "Delete image"
+msgstr "Șterge imaginea"
 
-#: templates/auth/account.tpl:19
-msgid "enter your full name"
-msgstr "introdu numele tău complet"
+#: templates/auth/account.tpl:22
+msgid "Name"
+msgstr "Nume"
 
-#: templates/auth/account.tpl:20
-msgid "optional; 3-50 characters"
-msgstr "opțional; 3-50 caractere"
+#: templates/auth/account.tpl:28
+msgid "Email"
+msgstr "Email"
 
-#: templates/auth/account.tpl:24 templates/auth/emailLogin.tpl:4
-msgid "email"
-msgstr "e-mail"
+#: templates/auth/account.tpl:34
+msgid "New password"
+msgstr "Parolă nouă"
 
-#: templates/auth/account.tpl:26
-msgid "enter your email address"
-msgstr "introdu adresa de e-mail"
+#: templates/auth/account.tpl:40
+msgid "Confirm password"
+msgstr "Confirmă parola"
 
-#: templates/auth/account.tpl:37
-msgid "OpenID identities"
-msgstr "Identități OpenID"
+#: templates/auth/account.tpl:46
+msgid "Enter current password"
+msgstr "Introdu parola curentă"
 
-#: templates/auth/account.tpl:45
-msgid "link another OpenID to this account"
-msgstr "leagă alt OpenID de acest cont"
+#: templates/auth/account.tpl:69
+msgid "Maximum dimension is 2MB."
+msgstr "Dimensiunea maxima este de 2MB."
+
+#: templates/auth/account.tpl:71
+msgid "Only jpeg,png or gif images are allowed."
+msgstr "Doar imagini in formatul jpeg,png sau gif sunt permise."
 
 #: templates/auth/changePass.tpl:3
 msgid "password change"
@@ -705,6 +769,10 @@ msgid "Type in your email and we'll send you an email to change your password."
 msgstr ""
 "Introdu adresa de e-mail și îți vom trimite un mesaj pentru a-ți schimba "
 "parola."
+
+#: templates/auth/changePass.tpl:18
+msgid "email"
+msgstr "e-mail"
 
 #: templates/auth/changePass.tpl:24
 msgid "send"
@@ -750,41 +818,66 @@ msgstr "înregistrare"
 msgid "Already have an account?"
 msgstr "Ai deja un cont?"
 
-#: templates/auth/emailLogin.tpl:1
-msgid "Email login"
-msgstr "Conectare prin e-mail"
+#~ msgid "Could not find your OpenID; did you really log in?"
+#~ msgstr "Nu ți-am putut găsi OpenID-ul; chiar te-ai conectat?"
 
-#: templates/auth/emailLogin.tpl:10
-msgid ""
-"You can use this form to request a one-time token to login via email. This "
-"may be necessary in two cases:"
-msgstr ""
-"Cu acest formular poți cere un cod de unică folosință cu care să te "
-"conectezi prin e-mail. Poți avea nevoie de aceasta în două cazuri:"
+#~ msgid "Romanian"
+#~ msgstr "Română"
 
-#: templates/auth/emailLogin.tpl:13
-msgid "Your OpenID provider is currently down;"
-msgstr "Furnizorul tău de OpenID este momentan indisponibil;"
+#~ msgid "English"
+#~ msgstr "Engleză"
 
-#: templates/auth/emailLogin.tpl:14
-msgid ""
-"Your account was migrated from another system and is not linked with any "
-"OpenID yet."
-msgstr ""
-"Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
-"OpenID."
+#~ msgid "Redirecting you to your OpenID provider..."
+#~ msgstr "Te redirectăm către furnizorul de OpenID..."
+
+#~ msgid "choose a username"
+#~ msgstr "alege-ți un nume de utilizator"
+
+#~ msgid ""
+#~ "required; 3-20 characters including letters, digits, '-', '.' and '_'"
+#~ msgstr ""
+#~ "obligatoriu; 3-20 caractere incluzând litere, cifre, '-', '.' și '_'"
+
+#~ msgid "enter your full name"
+#~ msgstr "introdu numele tău complet"
+
+#~ msgid "optional; 3-50 characters"
+#~ msgstr "opțional; 3-50 caractere"
+
+#~ msgid "enter your email address"
+#~ msgstr "introdu adresa de e-mail"
+
+#~ msgid "OpenID identities"
+#~ msgstr "Identități OpenID"
+
+#~ msgid "link another OpenID to this account"
+#~ msgstr "leagă alt OpenID de acest cont"
+
+#~ msgid "Email login"
+#~ msgstr "Conectare prin e-mail"
+
+#~ msgid ""
+#~ "You can use this form to request a one-time token to login via email. "
+#~ "This may be necessary in two cases:"
+#~ msgstr ""
+#~ "Cu acest formular poți cere un cod de unică folosință cu care să te "
+#~ "conectezi prin e-mail. Poți avea nevoie de aceasta în două cazuri:"
+
+#~ msgid "Your OpenID provider is currently down;"
+#~ msgstr "Furnizorul tău de OpenID este momentan indisponibil;"
+
+#~ msgid ""
+#~ "Your account was migrated from another system and is not linked with any "
+#~ "OpenID yet."
+#~ msgstr ""
+#~ "Contul tău a fost migrat de pe alt sistem și încă nu este legat de niciun "
+#~ "OpenID."
 
 #~ msgid "manage user roles and permissions"
 #~ msgstr "gestionează rolurile și permisiunile utilizatorilor"
 
 #~ msgid "add problems"
 #~ msgstr "adaugă probleme"
-
-#~ msgid "edit problems"
-#~ msgstr "editează probleme"
-
-#~ msgid "delete problems"
-#~ msgstr "șterge probleme"
 
 #~ msgid "add/delete attachments"
 #~ msgstr "adaugă/șterge fișiere atașate"
