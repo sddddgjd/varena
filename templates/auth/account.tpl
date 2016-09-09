@@ -11,7 +11,7 @@
       {include file="bits/avatar.tpl" user=$editUser}<br>
       <label for="avatarFileName">Fișier:</label>
       <input id="avatarFileName" type="file" name="avatarFileName"><br>
-      <input id="avatarSubmit" type="submit" name="submit" value="Editează" disabled="disabled">
+      <input id="avatarSubmit" type="submit" name="submit" value="Editează">
       <a href="../saveAvatar?delete=1" onclick="return confirm('{"Confirm image deletion?"|_}');">{"Delete image"|_}</a>
       <br><br>
     </form>
@@ -80,4 +80,3 @@
        return false;
    });
   </script>
-{/block}
