@@ -42,12 +42,27 @@
           
         </div>
         <div class="tab-pane fade in" id="tab3">
-          
+          <h3> {"Solved problems:"|_} </h3>
+          <ul class="glyphicon glyphicon-triangle-right">
+            {foreach $solved as $key=>$p}
+               <li style="display:inline"><a href="problem.php?id=$p->id">{$p->name}</a></li>
+             {/foreach}
+           </ul>
+          <h3> {"Attempted problems:"|_} </h3>
+          <ul class="glyphicon glyphicon-triangle-right">
+            {foreach $attempts as $key=>$p}
+               <li style="display:inline"><a href="problem.php?id=$p->id">{$p->name}</a></li>
+             {/foreach}
+           </ul>
         </div>
       </div>
     </div>
     
     </div>
             
-    
+    <style>
+    .glyphicon{
+        font-size:18px;
+    }
+    </style>
 {/block}
