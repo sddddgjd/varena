@@ -114,7 +114,7 @@
               {/foreach}
             </datalist>
           </div>
-
+          {include "bits/fieldErrors.tpl" errors=$errors.grade|default:null}
           <div class="form-group">
             <label for="grade">{"grade"|_}</label>
             <br>

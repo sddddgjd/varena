@@ -21,7 +21,6 @@ if ($method == 'login') {
     FlashMessage::add(_('Incorrect email or password'));
   }
 } else if ($method == 'signup') {
-  alert('a');
   $u = Model::factory('User')->create();
   $u->email = $email;
   $u->username = $username;
