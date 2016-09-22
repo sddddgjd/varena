@@ -18,7 +18,7 @@
   {/if}
   <div class="tab-content ">
 
-    <div class="tab-pane active" id="1">
+    <div class="tab-pane active" id="1" value="1">
       <table class="table table-striped table-hover">
         <thead>
           <th>#</th>
@@ -35,7 +35,16 @@
           {foreach from=$problems key=key item=p}
              <tr class="{if $score[$key]->score==100}success{elseif $score[$key]}warning{/if}">
               <th scope="row">{$p->id}</th>
-              <td><a href="problem.php?id={$p->id}">{$p->name}</a></td>
+              <td>
+                <a href="problem.php?id={$p->id}">{$p->name}</a>
+                {if $p->publicSources}
+                <span class="glyphicon glyphicon-eye-open" title="{"Public sources"|_}" style="float:right;"></span>
+                {/if}
+                {if $p->publicTests}
+                <span class="glyphicon glyphicon-folder-open" title="{"Public tests"|_}" style="float:right;"></span>
+                {/if}
+              </td>     
+              </td>
               <td>{$p->author}</td>
               <td>{$p->contest}</td>
               <td>{$p->grade}</td>
@@ -69,7 +78,15 @@
           {foreach from=$unsolved key=key item=p}
              <tr>
               <th scope="row">{$p->id}</th>
-              <td><a href="problem.php?id={$p->id}">{$p->name}</a></td>
+              <td>
+                <a href="problem.php?id={$p->id}">{$p->name}</a>
+                {if $p->publicSources}
+                <span class="glyphicon glyphicon-eye-open" title="{"Public sources"|_}" style="float:right;"></span>
+                {/if}
+                {if $p->publicTests}
+                <span class="glyphicon glyphicon-folder-open" title="{"Public tests"|_}" style="float:right;"></span>
+                {/if}
+              </td> 
               <td>{$p->author}</td>
               <td>{$p->contest}</td>
               <td>{$p->grade}</td>
@@ -103,7 +120,15 @@
           {foreach from=$attempted key=key item=p}
              <tr class="warning">
               <th scope="row">{$p->id}</th>
-              <td><a href="problem.php?id={$p->id}">{$p->name}</a></td>
+              <td>
+                <a href="problem.php?id={$p->id}">{$p->name}</a>
+                {if $p->publicSources}
+                <span class="glyphicon glyphicon-eye-open" title="{"Public sources"|_}" style="float:right;"></span>
+                {/if}
+                {if $p->publicTests}
+                <span class="glyphicon glyphicon-folder-open" title="{"Public tests"|_}" style="float:right;"></span>
+                {/if}
+              </td> 
               <td>{$p->author}</td>
               <td>{$p->contest}</td>
               <td>{$p->grade}</td>
@@ -137,7 +162,15 @@
           {foreach from=$solved key=key item=p}
              <tr class="success">
               <th scope="row">{$p->id}</th>
-              <td><a href="problem.php?id={$p->id}">{$p->name}</a></td>
+              <td>
+                <a href="problem.php?id={$p->id}">{$p->name}</a>
+                {if $p->publicSources}
+                <span class="glyphicon glyphicon-eye-open" title="{"Public sources"|_}" style="float:right;"></span>
+                {/if}
+                {if $p->publicTests}
+                <span class="glyphicon glyphicon-folder-open" title="{"Public tests"|_}" style="float:right;"></span>
+                {/if}
+              </td> 
               <td>{$p->author}</td>
               <td>{$p->contest}</td>
               <td>{$p->grade}</td>
@@ -160,6 +193,12 @@
   <style>
     .table{
       font-size:17px;
+    }
+    .glyphicon:before{
+    	margin-right:15px;
+    }
+    p{
+    	display:inline-block;
     }
     thead{
     	background-color:#373A3C;
