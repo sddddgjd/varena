@@ -68,6 +68,14 @@ a .glyphicon {
   display: block;
 }
 
+#searchForm{
+  margin-top:10px;
+}
+#searchForm button{
+  border:0;
+  background:transparent;
+}
+
 /* Textile styles */
 
 #statement code {
