@@ -76,6 +76,7 @@ if ($entries) {
   }
 }
 
+
 SmartyWrap::assign('problems', array_slice($problems, ($page-1)*$displayNum,$displayNum,true));
 SmartyWrap::assign('attempted',array_slice($attempted, ($page-1)*$displayNum,$displayNum,true));
 SmartyWrap::assign('solved',array_slice($solved, ($page-1)*$displayNum,$displayNum,true));
