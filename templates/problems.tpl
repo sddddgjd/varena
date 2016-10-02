@@ -5,20 +5,20 @@
 {block name=content}
   {if $user}
   <ul class="nav nav-tabs">
-    <li class="active">
-      <a  href="#1" data-toggle="tab">{"All problems"|_}</a>
+    <li>
+      <a  href="problems?tab=1">{"All problems"|_}</a>
     </li>
-    <li><a href="#2" data-toggle="tab">{"Unsolved"|_}</a>
+    <li><a href="problems?tab=2">{"Unsolved"|_}</a>
     </li>
-    <li><a href="#3" data-toggle="tab">{"Attempted"|_}</a>
+    <li><a href="problems?tab=3">{"Attempted"|_}</a>
     </li>
-    <li><a href="#4" data-toggle="tab">{"Solved"|_}</a>
+    <li><a href="problems?tab=4" >{"Solved"|_}</a>
     </li>
   </ul>
   {/if}
   <div class="tab-content ">
 
-    <div class="tab-pane active" id="1" value="1">
+    <div class="tab-pane" id="1" value="1">
       <table class="table table-striped table-hover">
         <thead>
           <th>#</th>
@@ -187,6 +187,37 @@
       </table>
     </div>
   </div>
+  <div>
+    <ul style="display:inline">
+      {foreach $first as $i}
+        {if $i==$page}
+          <strong> <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li> </strong>
+        {else}
+        <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li>
+      {/if}
+      {/foreach}
+    </ul>
+    {if $middle}
+       <p>...</p>
+       {foreach $middle as $i}
+         {if $i==$page}
+            <strong> <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li> </strong>
+          {else}
+          <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li>
+          {/if}
+       {/foreach}
+    {/if}
+    {if $last}
+      <p> ... </p>
+    	{foreach $last as $i}
+      	  {if $i==$page}
+      	    <strong> <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li> </strong>
+      	  {else}
+          <li style="display:inline"><a href="problems.php?tab={$tab}&page={$i}">{$i}</a></li>
+        {/if}
+      {/foreach}
+    {/if}
+  </div>
   {if $canAdd}
     <a href="editProblem.php">{"add a problem"|_}</a>
   {/if}
@@ -205,4 +236,17 @@
     	color:white;
     }
   </style>
+  <script>
+    $(document).ready(function() {
+    	var url_parts = location.href.split('/');
+      var last_segment = url_parts[url_parts.length-1];
+
+      if (last_segment == "problems.php")
+      	  last_segment = "problems?tab=1";
+
+      $('.nav-tabs a[href="'+last_segment+'"]').parents('li').addClass('active');
+      var tab ={$tab};
+      $('#'+tab).addClass('active');
+});
+  </script>
 {/block}
